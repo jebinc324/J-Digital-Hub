@@ -18,5 +18,17 @@
     document.querySelectorAll('button[data-filter]').forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});
     document.querySelectorAll('.app-card[data-category]').forEach(card=>{card.hidden=!(chosen==='all'||card.dataset.category===chosen)});
   }));
+
+  // Our 24 topics: independent from the J Apps filter.
+  const topicButtons=[...document.querySelectorAll('[data-topic-filter]')];
+  const topicCards=[...document.querySelectorAll('[data-topic-group]')];
+  const topicCounter=document.getElementById('topic-counter');
+  topicButtons.forEach(button=>button.addEventListener('click',()=>{
+    const chosen=button.dataset.topicFilter;
+    topicButtons.forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});
+    let visible=0;
+    topicCards.forEach(card=>{const show=chosen==='all'||card.dataset.topicGroup===chosen;card.hidden=!show;if(show)visible++;});
+    if(topicCounter)topicCounter.textContent=`${visible} ${visible===1?'topic':'topics'}`;
+  }));
   const year=document.getElementById('year'); if(year)year.textContent=String(new Date().getFullYear());
 })();
