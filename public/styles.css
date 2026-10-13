@@ -41,3 +41,8 @@ html[data-theme=dark] .topic-filter.is-active{color:#1b201c}
 @media(max-width:1160px){.catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.catalog-guidance{grid-template-columns:1fr}.apps-hero-layout{gap:30px}}
 @media(max-width:830px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.apps-hero-layout{grid-template-columns:1fr}.apps-hero-art{min-height:245px}.giant-j{font-size:190px}.giant-dot{font-size:125px}.catalog-head{display:block}.catalog-head p{margin-top:18px}.catalog-guidance{padding:25px}.access-points{grid-template-columns:1fr}}
 @media(max-width:580px){.apps-hero{padding:48px 0}.apps-overline{font-size:8px}.apps-overline>span:last-child{display:none}.apps-hero h1,.access-page h1{font-size:52px}.apps-hero p{font-size:14px}.apps-hero-art{min-height:205px}.giant-j{font-size:158px}.giant-dot{font-size:107px}.catalog-area{padding:62px 0}.catalog-grid{grid-template-columns:1fr}.catalog-card{min-height:245px}.catalog-toolbar{align-items:stretch}.catalog-search-label{flex-basis:100%}.access-filters{flex:1}.access-filter{flex:1;padding:9px 5px}.catalog-platform{max-width:none;width:100%}.catalog-meta>span:last-child{display:none}.catalog-head h2{font-size:40px}.guidance-steps{grid-template-columns:1fr}.access-page{padding:65px 0 80px}.access-page-icon{font-size:64px}.access-lead{font-size:14px}}
+
+/* Just 24 Things by J&J - global brand byline */
+.jj-logo-byline{font-size:8px;font-weight:750;letter-spacing:.02em;align-self:flex-end;margin:0 0 7px 3px;white-space:nowrap;color:var(--muted)}
+.jj-byline{display:inline-block;font:750 12px 'DM Sans',sans-serif;letter-spacing:.03em;margin-left:9px;vertical-align:middle;color:var(--olive)}
+@media(max-width:600px){.jj-logo-byline{font-size:7px}.jj-byline{font-size:10px}}
