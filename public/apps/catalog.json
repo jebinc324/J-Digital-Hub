@@ -1,12 +1,13 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "brand": "Just 24 Things by J&J",
   "release": {
     "repository": "jebinc324/J-Digital-Hub",
     "tag": "just24-public-v1",
-    "source": "GitHub Releases public API"
+    "source": "GitHub Releases public API",
+    "lastVerified": "2026-10-13"
   },
-  "notice": "Restricted assets are never in this JSON. Open asset links appear only when a matching GitHub Release asset has been uploaded. APK files are not yet publicly published.",
+  "notice": "20 of 54 selected Open entries are hosted in GitHub Releases; 34 are pending. 10 restricted listings have no public download links. Hosted does not mean installation-tested.",
   "items": [
     {
       "id": "j-control-hub",
@@ -19,7 +20,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-control-hub.apk",
       "approxSizeMB": 56.02,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-control-hub.apk",
+      "verifiedUpload": {
+        "file": "j-control-hub.apk",
+        "sizeBytes": 56016187,
+        "sha256": "2478b573ff4cd16b7c6b606f45c38e432770e51ae8566b82c3e3bff5df5f20d1"
+      }
     },
     {
       "id": "j-mep-toolbox",
@@ -31,7 +38,7 @@
       "versionLabel": "v0.25.0",
       "uploadedFile": true,
       "releaseAsset": "j-mep-toolbox.apk",
-      "approxSizeMB": 13.0,
+      "approxSizeMB": 13,
       "note": "Debug/test build: confirm a production-ready version."
     },
     {
@@ -71,7 +78,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-dj-studio.apk",
       "approxSizeMB": 9.93,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-dj-studio.apk",
+      "verifiedUpload": {
+        "file": "j-dj-studio.apk",
+        "sizeBytes": 9931712,
+        "sha256": "d1432b4350df79d7f5b5b3b96742e61f080d72ce077e54701945132d6d66aca4"
+      }
     },
     {
       "id": "j-earth-time-machine",
@@ -84,7 +97,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-earth-time-machine.apk",
       "approxSizeMB": 26.58,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-earth-time-machine.apk",
+      "verifiedUpload": {
+        "file": "j-earth-time-machine.apk",
+        "sizeBytes": 26582817,
+        "sha256": "9e5cecb8ccf287f0015b483bc4e80eb18521a234706751d8091e3d768c1d83d4"
+      }
     },
     {
       "id": "j-recovery-cleaner",
@@ -97,7 +116,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-recovery-cleaner.apk",
       "approxSizeMB": 14.47,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-recovery-cleaner.apk",
+      "verifiedUpload": {
+        "file": "j-recovery-cleaner.apk",
+        "sizeBytes": 14466481,
+        "sha256": "2d2826f2118801271e0601b8077373b728d2eeef08637bf4027201712280fcc8"
+      }
     },
     {
       "id": "j-grocery-planner",
@@ -240,7 +265,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-digital-toolbox.apk",
       "approxSizeMB": 3.44,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-digital-toolbox.apk",
+      "verifiedUpload": {
+        "file": "j-digital-toolbox.apk",
+        "sizeBytes": 3439171,
+        "sha256": "53677a886f7ddba50fd16eb7b4e8b8460099f5dd7c0afba8c185fbd9ccf9664f"
+      }
     },
     {
       "id": "j-phone-guardian",
@@ -279,7 +310,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-photo-studio.apk",
       "approxSizeMB": 8.02,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-photo-studio.apk",
+      "verifiedUpload": {
+        "file": "j-photo-studio.apk",
+        "sizeBytes": 8016664,
+        "sha256": "bc43ec8902316ff6d6ac4a42298a03766acea440360821770e6c893540b4e1e9"
+      }
     },
     {
       "id": "chartanalyzer",
@@ -305,7 +342,13 @@
       "uploadedFile": true,
       "releaseAsset": "forex-trading-calculator-forex-trader-pro.apk",
       "approxSizeMB": 0.02,
-      "note": "APK only about 20 KB; verify that it installs and runs. Debug/test build: confirm a production-ready version."
+      "note": "APK only about 20 KB; verify that it installs and runs. Debug/test build: confirm a production-ready version.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/forex-trading-calculator-forex-trader-pro.apk",
+      "verifiedUpload": {
+        "file": "forex-trading-calculator-forex-trader-pro.apk",
+        "sizeBytes": 20389,
+        "sha256": "deddc07604b1b6e2e718de4b70f74049c15633f299318e9198f96a5a40620693"
+      }
     },
     {
       "id": "nifty-lot-calculator",
@@ -370,7 +413,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-revit-standards-manager.zip",
       "approxSizeMB": 0.04,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-revit-standards-manager.zip",
+      "verifiedUpload": {
+        "file": "j-revit-standards-manager.zip",
+        "sizeBytes": 44464,
+        "sha256": "f2e344937bb5b46e295997a89e5f5247a37aa1aefa263a8fed4341f26879fb52"
+      }
     },
     {
       "id": "j-tag-arrow-manager",
@@ -409,7 +458,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-purge-manager.zip",
       "approxSizeMB": 0.02,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-purge-manager.zip",
+      "verifiedUpload": {
+        "file": "j-purge-manager.zip",
+        "sizeBytes": 20592,
+        "sha256": "77f3fa4d52db59f0dd79bf720d7d83d146c311a19b190c12c8aad01bffce97f9"
+      }
     },
     {
       "id": "j-dwg-manager",
@@ -422,7 +477,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-dwg-manager.zip",
       "approxSizeMB": 0.02,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-dwg-manager.zip",
+      "verifiedUpload": {
+        "file": "j-dwg-manager.zip",
+        "sizeBytes": 20592,
+        "sha256": "77f3fa4d52db59f0dd79bf720d7d83d146c311a19b190c12c8aad01bffce97f9"
+      }
     },
     {
       "id": "j-live-clash-monitor",
@@ -474,7 +535,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-family-parameter-manager.zip",
       "approxSizeMB": 3.94,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-family-parameter-manager.zip",
+      "verifiedUpload": {
+        "file": "j-family-parameter-manager.zip",
+        "sizeBytes": 3939630,
+        "sha256": "ac543bb7ea266557172e63182f6fda6082e187bc4f84e3c5afcd7d6503d416aa"
+      }
     },
     {
       "id": "j-tag-text-align",
@@ -500,7 +567,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-section-box-orient-to-face.zip",
       "approxSizeMB": 3.94,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-section-box-orient-to-face.zip",
+      "verifiedUpload": {
+        "file": "j-section-box-orient-to-face.zip",
+        "sizeBytes": 3939630,
+        "sha256": "ac543bb7ea266557172e63182f6fda6082e187bc4f84e3c5afcd7d6503d416aa"
+      }
     },
     {
       "id": "j-parameter-find-replace",
@@ -604,7 +677,13 @@
       "uploadedFile": true,
       "releaseAsset": "family-parameter-manager.dyn",
       "approxSizeMB": 0.04,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/family-parameter-manager.dyn",
+      "verifiedUpload": {
+        "file": "family-parameter-manager.dyn",
+        "sizeBytes": 35763,
+        "sha256": "7c21b1b25b90ab63f83f418b663917634afcc6bd4a8b5104b625cb523ee6c67e"
+      }
     },
     {
       "id": "j-revit-standards-manager-dynamo",
@@ -617,7 +696,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-revit-standards-manager-dynamo.dyn",
       "approxSizeMB": 0.1,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-revit-standards-manager-dynamo.dyn",
+      "verifiedUpload": {
+        "file": "j-revit-standards-manager-dynamo.dyn",
+        "sizeBytes": 96406,
+        "sha256": "0d59b1c074c17595a2d57a53dd96fc8f3495fd30cbce7c78db99304829c7f5c9"
+      }
     },
     {
       "id": "j-tag-arrow-manager-dynamo",
@@ -630,7 +715,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-tag-arrow-manager-dynamo.dyn",
       "approxSizeMB": 0.03,
-      "note": "Uploaded v0.3, older than previously discussed v0.6."
+      "note": "Uploaded v0.3, older than previously discussed v0.6.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-tag-arrow-manager-dynamo.dyn",
+      "verifiedUpload": {
+        "file": "j-tag-arrow-manager-dynamo.dyn",
+        "sizeBytes": 26183,
+        "sha256": "a0c9fa2f9609b090a7c9763fef8a8bd0e0bf56b762eb009b471305aff6cd3586"
+      }
     },
     {
       "id": "j-select-similar-selected-views",
@@ -656,7 +747,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-select-similar-multicategory-selected-views.dyn",
       "approxSizeMB": 0.01,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-select-similar-multicategory-selected-views.dyn",
+      "verifiedUpload": {
+        "file": "j-select-similar-multicategory-selected-views.dyn",
+        "sizeBytes": 13806,
+        "sha256": "54e29c8de8ca8d12cd4ad7de830fe5b94e12344a95bc1e9d2385438e7432fa56"
+      }
     },
     {
       "id": "j-purge-dwg-manager",
@@ -669,7 +766,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-purge-dwg-manager.dyn",
       "approxSizeMB": 0.03,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-purge-dwg-manager.dyn",
+      "verifiedUpload": {
+        "file": "j-purge-dwg-manager.dyn",
+        "sizeBytes": 25912,
+        "sha256": "49c14a728b57eeabda2dafe28e7133c2cf1d38f00ccd981b841afda4106c7de2"
+      }
     },
     {
       "id": "j-mirror-model-sync",
@@ -682,7 +785,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-mirror-model-sync.dyn",
       "approxSizeMB": 0.1,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-mirror-model-sync.dyn",
+      "verifiedUpload": {
+        "file": "j-mirror-model-sync.dyn",
+        "sizeBytes": 100930,
+        "sha256": "62b284c1f31f0d575e5410e7a068a01791b46d4250fecd940af40932fdbc3a54"
+      }
     },
     {
       "id": "j-parameter-find-replace",
@@ -786,7 +895,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-section-box-orient-to-face-pyrevit.dyn",
       "approxSizeMB": 0.01,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-section-box-orient-to-face-pyrevit.dyn",
+      "verifiedUpload": {
+        "file": "j-section-box-orient-to-face-pyrevit.dyn",
+        "sizeBytes": 13530,
+        "sha256": "85b4834a2e7582d1bbdd287d98c6fd26889cfb22e85be85fc8ef1b86ab8a5f55"
+      }
     },
     {
       "id": "j-bim360-batch-sheet-manager-dynamo",
@@ -812,7 +927,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-tools-combined-dynamo-pack.zip",
       "approxSizeMB": 0.02,
-      "note": ""
+      "note": "",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-tools-combined-dynamo-pack.zip",
+      "verifiedUpload": {
+        "file": "j-tools-combined-dynamo-pack.zip",
+        "sizeBytes": 16023,
+        "sha256": "b8e56ac22defacb7f8da28ed257adffbe46c70933c798c1f591343f21a301f62"
+      }
     },
     {
       "id": "j-duct-sizer",
