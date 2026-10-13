@@ -1,36 +1,36 @@
-# J Digital Hub — Render starter site
+# Just24Things Premium v1.1.0 — Render Static Site
 
-A responsive, standalone static website (HTML, CSS, vanilla JS). No Node/npm, paid dependencies or external assets required. Includes J Apps portfolio, Just24Things page, and an honest J Arcade roadmap. The 12 Android games and online backend are **not** included; they require existing source/projects and follow-up development.
+Premium redesign using the user's actual Just24Things YouTube cover art and chosen handwritten `Just` / olive green `24` / spaced `THINGS` brand. The original generated cover and logo are provided as optimized assets in `public/assets/`.
 
-## GitHub web upload
+## Included
+- `public/index.html`: branded homepage; J Apps showcase, Just24Things topics, future arcade and backend notes
+- `public/just24things/index.html`: channel introduction and topic anchors
+- `public/games/index.html`: transparent development-status page (no pretend playable games)
+- `public/styles.css`: light/dark mode, responsive styling
+- `public/script.js`: persistent theme switch, working mobile nav, app category filter
+- `public/assets/just24-cover.webp`: original Just24Things YouTube banner, optimized for web
+- `public/assets/just24-wordmark.png`: adapted transparent logo from original
+- `public/favicon.svg`, `robots.txt`, `sitemap.xml`
+- `backend/README.md`: retained original planning note. No API service has been deployed or claimed to be implemented.
 
-1. Create a repository named `J-Digital-Hub` at https://github.com/new, with README initialization **OFF** (optional).
-2. **Extract** the distributed ZIP on your computer (do not upload the ZIP file as-is).
-3. Open repository → **uploading an existing file** (or Add file → Upload files).
-4. Drag all **contents** of `J-Digital-Hub-Starter/` into the page, preserving folder paths (`public/index.html` etc.).
-5. Commit changes to `main`. Do not commit credentials or signing keys.
+## Render settings (keep the existing Static Site)
+Service URL: https://just24things.onrender.com
+GitHub repository: `jebinc324/J-Digital-Hub` branch `main`
+Root Directory: empty (repository root)
+Build Command: `echo "Static site ready"`
+Publish Directory: `public`
 
-## Render deployment
+## Update safely (GitHub browser)
+1. Download this ZIP and extract. Do **not** upload the ZIP itself as site content.
+2. In the existing GitHub repository, upload/overwrite the contents of `public/` at the same paths as indicated; include new assets and nested HTML pages.
+3. Commit to `main`; Render auto deploys if enabled. Otherwise select Manual Deploy > Deploy latest commit.
+4. Hard refresh website or check in incognito to bypass cached CSS.
+5. Check `/`, `/games/`, `/just24things/` and responsive/mobile behavior.
 
-New → Static Site → select `J-Digital-Hub` repo → Connect.
+Do not create a second Static Site: retain the existing name and URL.
 
-| Field | Value |
-|---|---|
-| Name | `j-digital-hub` (subject to availability) |
-| Branch | `main` |
-| Root Directory | Leave empty |
-| Build Command | `echo "Static site ready"` |
-| Publish Directory | `public` |
-
-Then choose **Create Static Site** / **Deploy Static Site**. Visit the assigned HTTPS `*.onrender.com` URL when Render reports a successful deployment.
-
-## Local preview
-
-Open `public/index.html` in any browser or use `python -m http.server 8000 --directory public` and open http://localhost:8000.
-
-## Important
-
-- The site is a real deployable frontend, but browser games and backend are **not** implemented yet.
-- Showcases use existing project names; release links are not included without verified download URLs.
-- Static hosting has Render usage limits. Render's free web backend can spin down after inactivity.
-- To port 12 games faithfully, provide the original 12-game source assets/project. APK alone often cannot reproduce full editable game logic.
+## Future work and honest limits
+- YouTube link: https://www.youtube.com/@just24things
+- J Apps download links remain absent until APK builds/signatures/availability are verified.
+- Browser games require original Android sources and a real port; no fake games are present.
+- Android backend is not running, and offline apps have not been changed.

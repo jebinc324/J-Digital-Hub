@@ -1,97 +1,98 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0c111c">
-  <meta name="description" content="J Digital Hub — explore J Apps, J Arcade and Just24Things.">
-  <title>J Digital Hub — Apps, Games & Stories</title>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./script.js" defer></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f8f6f1">
+  <meta name="description" content="Just24Things — one creative space for kids, trading, engineering, food, daily vlogs, J Apps, and our future browser arcade.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Just24Things — 24 ideas, endless curiosity">
+  <meta property="og:description" content="Kids. Trading. Engineering. Food. Daily life. A world of ideas from @just24things.">
+  <meta property="og:image" content="https://just24things.onrender.com/assets/just24-cover.webp">
+  <meta property="og:url" content="https://just24things.onrender.com/">
+  <link rel="canonical" href="https://just24things.onrender.com/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/script.js" defer></script>
+  <title>Just24Things — Ideas, Apps & Play</title>
 </head>
 <body>
-  <a class="skip-link" href="#content">Skip to content</a>
-  <div class="top-bar">A HOME FOR IDEAS, APPS & EXPERIENCES <span aria-hidden="true">✦</span> MADE TO EXPLORE</div>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div class="announcement"><span class="announcement-star">✦</span> TWENTY FOUR TOPICS. ONE CREATIVE SPACE. <span class="announcement-star">✦</span></div>
   <header class="site-header">
-    <nav class="nav shell" aria-label="Main navigation">
-      <a class="brand" href="./" aria-label="J Digital Hub Home">
-        <span class="mark">J<span class="mark-dot">.</span></span>
-        <span class="brand-words"><strong>J DIGITAL</strong><small>HUB</small></span>
-      </a>
-      <button class="mobile-menu" type="button" aria-expanded="false" aria-controls="nav-links">Menu <span aria-hidden="true">☰</span></button>
+    <nav class="site-nav container" aria-label="Main navigation">
+      <a class="site-logo" href="/" aria-label="Just24Things home"><span class="logo-script">Just</span><span class="logo-rule"></span><span class="logo-24">24</span><span class="logo-things">THINGS</span></a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-controls="nav-links" aria-expanded="false">☰ <span>Menu</span></button>
       <div class="nav-links" id="nav-links">
+        <a href="#explore">Explore</a>
         <a href="#apps">J Apps</a>
-        <a href="./games/">J Arcade</a>
-        <a href="./just24things/">Just24Things</a>
-        <a href="#cloud">J Cloud</a>
+        <a href="/games/">J Arcade</a>
+        <a href="/just24things/">About the channel</a>
       </div>
-      <button class="theme-switch" id="theme-switch" type="button" aria-label="Switch theme" title="Switch theme">◐</button>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" title="Toggle light/dark theme"><span aria-hidden="true" id="theme-icon">☾</span></button>
+        <a class="nav-youtube" href="https://www.youtube.com/@just24things" target="_blank" rel="noopener noreferrer" aria-label="Visit Just24Things on YouTube"><span aria-hidden="true">▶</span><span class="nav-youtube-label">YouTube</span></a>
+      </div>
     </nav>
   </header>
 
-  <main id="content">
-    <section class="hero shell" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="alive-dot" aria-hidden="true"></span> WELCOME TO J DIGITAL HUB</div>
-        <h1 id="hero-title">Small ideas.<br><em>Big possibilities.</em></h1>
-        <p>One creative space for useful apps, original games and curious stories. Explore the world of <strong>J Apps</strong> and <strong>Just24Things</strong>.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#apps">Explore J Apps <span aria-hidden="true">↗</span></a>
-          <a class="btn secondary" href="./games/">J Arcade <span aria-hidden="true">→</span></a>
+  <main id="main">
+    <section class="masthead" aria-labelledby="main-title">
+      <div class="container masthead-top">
+        <div class="eyebrow"><span class="dot"></span> AN ORIGINAL SPACE BY JUST24THINGS</div>
+        <div class="issue-no">EST. 2026 <span class="issue-divider">/</span> DIGITAL CREATIVE JOURNAL</div>
+      </div>
+      <div class="container"><h1 id="main-title" class="sr-only">Just 24 Things — 24 topics, one creative space</h1>
+        <div class="cover-frame">
+          <img class="cover-image" src="/assets/just24-cover.webp" alt="The original Just24Things YouTube banner — Just handwritten in black, olive green 24, and THINGS lettering on an ivory and gold abstract background" fetchpriority="high" width="1672" height="941">
+          <div class="cover-bottom"><span>THE OFFICIAL JUST24THINGS SPACE</span><span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div>
         </div>
-        <p class="hero-note">Independently created. Built for everyday discovery.</p>
       </div>
-      <div class="hero-art" aria-label="Graphic representation of apps, games and content">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="central-glyph">J<span>.</span></div>
-        <div class="floating-card float-a"><span class="floating-icon">⌘</span><span><b>J APPS</b><small>Tools for life</small></span></div>
-        <div class="floating-card float-b"><span class="floating-icon">✦</span><span><b>JUST24THINGS</b><small>Stories & more</small></span></div>
-        <div class="floating-card float-c"><span class="floating-icon">◈</span><span><b>J ARCADE</b><small>Play, learn, repeat</small></span></div>
+      <div class="container intro-row">
+        <div class="intro-left"><span class="intro-overline">WELCOME TO THE JOURNEY</span><h2>A little bit of <em>everything.</em><br>A lot of curiosity.</h2></div>
+        <div class="intro-right"><p>One destination for the things we love — playful learning, smart tools, trading insights, engineering, good food, and the moments in between.</p><div class="cta-row"><a class="button button-primary" href="https://www.youtube.com/@just24things" target="_blank" rel="noopener noreferrer">Explore our YouTube <span aria-hidden="true">↗</span></a><a class="text-link" href="#explore">Discover the topics <span aria-hidden="true">↓</span></a></div></div>
       </div>
     </section>
 
-    <section class="feature-strip" aria-label="Main areas"><div class="shell strip-grid">
-      <div><span class="strip-symbol">▣</span><span>APPS <small>Practical tools</small></span></div>
-      <div><span class="strip-symbol">✳</span><span>GAMES <small>Arcade experiences</small></span></div>
-      <div><span class="strip-symbol">◉</span><span>CREATOR <small>Just24Things</small></span></div>
-      <div><span class="strip-symbol">⌘</span><span>TECH <small>Connected features</small></span></div>
-    </div></section>
-
-    <section id="apps" class="section shell">
-      <div class="section-top"><div><div class="eyebrow muted">01 / OUR PROJECTS</div><h2>Discover <em>J Apps.</em></h2></div><p>A collection of creative mobile projects — from productivity and engineering to fun and learning.</p></div>
-      <div class="chip-row" role="group" aria-label="Filter apps">
-        <button class="chip active" data-filter="all" aria-pressed="true">All apps</button>
-        <button class="chip" data-filter="utility" aria-pressed="false">Utilities</button>
-        <button class="chip" data-filter="creative" aria-pressed="false">Creative</button>
-        <button class="chip" data-filter="learning" aria-pressed="false">Learning</button>
+    <section class="topic-section surface-warm" id="explore" aria-labelledby="topic-title">
+      <div class="container section-shell">
+        <div class="section-heading"><div><span class="section-label">01 / THE CHANNEL</span><h2 id="topic-title">Explore what <em>inspires.</em></h2></div><p>There is always something new to learn, create or enjoy. Five of our featured content areas are below, with more topics to come.</p></div>
+        <div class="topic-grid">
+          <a class="topic-card topic-kids" href="/just24things/#kids"><span class="topic-card-head">01 / PLAY & LEARN</span><span class="topic-illustration" aria-hidden="true">✿</span><div class="topic-card-bottom"><h3>Kids &<br>Learning</h3><span class="arrow-circle" aria-hidden="true">↗</span></div></a>
+          <a class="topic-card topic-trading" href="/just24things/#trading"><span class="topic-card-head">02 / MARKETS</span><span class="topic-illustration" aria-hidden="true">↗</span><div class="topic-card-bottom"><h3>Trading &<br>Markets</h3><span class="arrow-circle" aria-hidden="true">↗</span></div></a>
+          <a class="topic-card topic-engineering" href="/just24things/#engineering"><span class="topic-card-head">03 / HOW IT WORKS</span><span class="topic-illustration" aria-hidden="true">⌘</span><div class="topic-card-bottom"><h3>Engineering<br>& Tech</h3><span class="arrow-circle" aria-hidden="true">↗</span></div></a>
+          <a class="topic-card topic-food" href="/just24things/#food"><span class="topic-card-head">04 / GOOD TASTE</span><span class="topic-illustration" aria-hidden="true">◒</span><div class="topic-card-bottom"><h3>Food &<br>Lifestyle</h3><span class="arrow-circle" aria-hidden="true">↗</span></div></a>
+          <a class="topic-card topic-vlogs" href="/just24things/#vlogs"><span class="topic-card-head">05 / EVERYDAY STORIES</span><span class="topic-illustration" aria-hidden="true">✳</span><div class="topic-card-bottom"><h3>Daily<br>Vlogs</h3><span class="arrow-circle" aria-hidden="true">↗</span></div></a>
+        </div>
+        <p class="mini-note">Our name stands for exploring many topics — this is the beginning, not a claim that all 24 categories are already published.</p>
       </div>
+    </section>
+
+    <section class="section-shell container" id="apps" aria-labelledby="apps-title">
+      <div class="section-heading"><div><span class="section-label">02 / MADE WITH PURPOSE</span><h2 id="apps-title">Meet <em>J Apps.</em></h2></div><p>Useful Android projects, thoughtfully built. Explore the collection; download links will be added only for verified public releases.</p></div>
+      <div class="chips" role="group" aria-label="Filter apps by type"><button class="chip is-active" type="button" data-filter="all" aria-pressed="true">All projects</button><button class="chip" type="button" data-filter="utility" aria-pressed="false">Tools</button><button class="chip" type="button" data-filter="learning" aria-pressed="false">Learning</button><button class="chip" type="button" data-filter="creative" aria-pressed="false">Creative</button></div>
       <div class="app-grid">
-        <article class="app-card" data-category="utility"><div class="app-icon icon-a">↗</div><span class="category">UTILITY</span><h3>J Flow Launcher</h3><p>A personalized Android launcher focused on speed and simplicity.</p><span class="app-foot">ANDROID PROJECT <span aria-hidden="true">↗</span></span></article>
-        <article class="app-card" data-category="utility"><div class="app-icon icon-b">▥</div><span class="category">ENGINEERING</span><h3>J MEP Toolbox</h3><p>Engineering calculators and project workspace tools.</p><span class="app-foot">ANDROID PROJECT <span aria-hidden="true">↗</span></span></article>
-        <article class="app-card" data-category="learning"><div class="app-icon icon-c">✿</div><span class="category">LEARNING</span><h3>J Kids Fun Pack</h3><p>Playful learning experiences for younger explorers.</p><span class="app-foot">ANDROID PROJECT <span aria-hidden="true">↗</span></span></article>
-        <article class="app-card" data-category="creative"><div class="app-icon icon-d">♫</div><span class="category">MUSIC</span><h3>J DJ Studio</h3><p>Music mixing concepts built for a hands-on experience.</p><span class="app-foot">ANDROID PROJECT <span aria-hidden="true">↗</span></span></article>
-        <article class="app-card" data-category="utility"><div class="app-icon icon-e">◎</div><span class="category">FINANCE</span><h3>J Expense Tracker</h3><p>Personal expense tracking, reports and budget planning.</p><span class="app-foot">ANDROID PROJECT <span aria-hidden="true">↗</span></span></article>
-        <article class="app-card" data-category="utility"><div class="app-icon icon-f">⇄</div><span class="category">SHARING</span><h3>J AirGap Share</h3><p>Offline file-transfer experiments using optical QR transfer.</p><span class="app-foot">ANDROID PROJECT <span aria-hidden="true">↗</span></span></article>
-        <article class="app-card" data-category="learning"><div class="app-icon icon-g">★</div><span class="category">EDUCATION</span><h3>J Fun Lab</h3><p>Exploration and games designed around learning through play.</p><span class="app-foot">ANDROID PROJECT <span aria-hidden="true">↗</span></span></article>
-        <article class="app-card" data-category="utility"><div class="app-icon icon-h">▤</div><span class="category">PLANNING</span><h3>J Grocery Planner</h3><p>Shopping lists, budgets and organized grocery planning.</p><span class="app-foot">ANDROID PROJECT <span aria-hidden="true">↗</span></span></article>
+        <article class="app-card" data-category="utility"><div class="app-icon app-olive">J<span>.</span></div><span class="app-tag">ANDROID / PERSONALIZATION</span><h3>J Flow Launcher</h3><p>A personal launcher built around a clean, customizable Android experience.</p><span class="project-status">PROJECT SHOWCASE</span></article>
+        <article class="app-card" data-category="utility"><div class="app-icon app-terracotta">▤</div><span class="app-tag">ANDROID / ENGINEERING</span><h3>J MEP Toolbox</h3><p>MEP calculators, project workspace and organized engineering results.</p><span class="project-status">PROJECT SHOWCASE</span></article>
+        <article class="app-card" data-category="learning"><div class="app-icon app-yellow">✿</div><span class="app-tag">ANDROID / EDUCATION</span><h3>J Kids Fun Pack</h3><p>Colorful activities that bring early learning and play together.</p><span class="project-status">PROJECT SHOWCASE</span></article>
+        <article class="app-card" data-category="creative"><div class="app-icon app-lilac">♫</div><span class="app-tag">ANDROID / MUSIC</span><h3>J DJ Studio</h3><p>A two-deck music mixing experience made for hands-on creativity.</p><span class="project-status">PROJECT SHOWCASE</span></article>
+        <article class="app-card" data-category="utility"><div class="app-icon app-sand">◎</div><span class="app-tag">ANDROID / FINANCE</span><h3>J Expense Tracker</h3><p>Budgets, expenses, reports, and practical money management.</p><span class="project-status">PROJECT SHOWCASE</span></article>
+        <article class="app-card" data-category="utility"><div class="app-icon app-slate">⇄</div><span class="app-tag">ANDROID / FILES</span><h3>J AirGap Share</h3><p>Offline file transfer through animated QR codes and optical scanning.</p><span class="project-status">PROJECT SHOWCASE</span></article>
+        <article class="app-card" data-category="learning"><div class="app-icon app-peach">★</div><span class="app-tag">ANDROID / PLAY</span><h3>J Fun Lab</h3><p>Creative mini experiences that make exploration fun and interactive.</p><span class="project-status">PROJECT SHOWCASE</span></article>
+        <article class="app-card" data-category="utility"><div class="app-icon app-mint">☷</div><span class="app-tag">ANDROID / PLANNING</span><h3>J Grocery Planner</h3><p>Plan shopping, follow spending, and organize essentials in one place.</p><span class="project-status">PROJECT SHOWCASE</span></article>
       </div>
-      <p class="fine-print">Project showcase only. Official download links will appear after APKs and release permissions are verified.</p>
     </section>
 
-    <section id="arcade" class="section alt-bg"><div class="shell split-showcase">
-      <div><div class="eyebrow muted">02 / J ARCADE</div><h2>Press play.<br><em>Stay curious.</em></h2><p>A home for the 12-game arcade collection. The browser edition will be released only after individual Android game mechanics, progression and arcade points are accurately ported and tested.</p><a class="btn primary" href="./games/">View arcade roadmap <span aria-hidden="true">↗</span></a></div>
-      <div class="arcade-graphic" aria-hidden="true"><div class="controller"><div class="d-pad">+</div><div class="controller-center">J</div><div class="game-buttons"><i></i><i></i><i></i><i></i></div></div><span class="graphic-label">ARCADE / BROWSER EDITION</span></div>
-    </div></section>
+    <section class="arcade-section" id="arcade" aria-labelledby="arcade-title"><div class="container arcade-layout"><div class="arcade-copy"><span class="section-label">03 / SOMETHING TO PLAY</span><h2 id="arcade-title">The world of<br><em>J Arcade.</em></h2><p>Our 12-game collection is coming to the browser. We're keeping the original game mechanics, levels, progress and controls in focus as we prepare real playable versions — not demos presented as finished games.</p><a class="button button-primary" href="/games/">Explore J Arcade plans <span aria-hidden="true">↗</span></a></div><div class="arcade-panel" aria-hidden="true"><div class="arcade-arc arcade-arc-one"></div><div class="arcade-arc arcade-arc-two"></div><div class="arcade-symbol">J<span>PLAY</span></div><span class="arcade-stamp">12 ORIGINAL GAMES · WEB EDITION IN DEVELOPMENT</span></div></div></section>
 
-    <section class="section shell media-section" id="creator">
-      <div><div class="eyebrow muted">03 / JUST24THINGS</div><h2>Curiosity has<br><em>many categories.</em></h2><p>Kids content, trading, engineering, food, everyday life and everything in between — all under Just24Things.</p><div class="topic-row"><span>Kids & learning</span><span>Trading</span><span>Engineering</span><span>Food</span><span>Vlogs</span></div><a class="btn secondary" href="./just24things/">Explore Just24Things <span aria-hidden="true">↗</span></a></div>
-      <div class="video-tile" aria-label="Just24Things creator section"><div class="video-24">24<span>THINGS</span></div><div class="video-play">▶</div><div class="video-caption">CURIOUS BY NATURE. ORIGINAL BY DESIGN.</div></div>
-    </section>
+    <section class="section-shell container connect-section" id="channel" aria-labelledby="connect-title"><div class="section-heading"><div><span class="section-label">04 / STAY CONNECTED</span><h2 id="connect-title">Come along for <em>the story.</em></h2></div><p>Follow @just24things for new videos, shorts and creative experiments. The channel is growing, and there's more to explore.</p></div><div class="connect-card"><div class="connect-card-logo"><img src="/assets/just24-wordmark.png" alt="Just 24 Things logo" loading="lazy" width="984" height="527"></div><div class="connect-card-content"><span class="section-label">THE OFFICIAL CHANNEL</span><h3>@just24things</h3><p>Kids · Trading · Engineering · Food · Daily vlogs</p><a class="button button-youtube" href="https://www.youtube.com/@just24things" target="_blank" rel="noopener noreferrer">Watch on YouTube <span aria-hidden="true">↗</span></a></div></div></section>
 
-    <section class="section alt-bg cloud-section" id="cloud"><div class="shell cloud-inner"><div><div class="eyebrow muted">04 / J CLOUD</div><h2>Built to <em>connect.</em></h2><p>An optional API layer for future online app features. Existing offline apps stay independent; the server, authentication and persistent storage will be configured separately before being activated.</p></div><div class="status-card"><div class="status-head"><span class="status-dot"></span> BACKEND STATUS</div><strong>Not deployed yet</strong><small>Website launch is step one. Backend comes next.</small></div></div></section>
+    <section class="cloud-note container" aria-label="Backend roadmap"><div><span class="cloud-note-icon" aria-hidden="true">✳</span><div><h2>Building beyond the browser</h2><p>An optional online API is planned for future app services. Existing offline Android apps stay offline-first; no backend is claimed to be running yet.</p></div></div><span class="cloud-note-pill">BACKEND / PLANNED</span></section>
   </main>
 
-  <footer class="site-footer"><div class="shell footer-inner"><div><a class="brand" href="./"><span class="mark small">J<span class="mark-dot">.</span></span><span class="brand-words"><strong>J DIGITAL</strong><small>HUB</small></span></a><p>Ideas, experiences and everyday tools.</p></div><div class="footer-links"><a href="#apps">J Apps</a><a href="./games/">J Arcade</a><a href="./just24things/">Just24Things</a><a href="#cloud">J Cloud</a></div><div class="copyright">© <span id="year">2026</span> J Digital Hub. All rights reserved.</div></div></footer>
+  <footer class="site-footer"><div class="container footer-main"><div><a href="/" class="footer-brand">Just <span>24</span> Things<span class="footer-point">.</span></a><p>Twenty-four topics. One curious little corner of the internet.</p></div><div class="footer-nav"><a href="#explore">Explore topics</a><a href="#apps">J Apps</a><a href="/games/">J Arcade</a><a href="/just24things/">Our story</a><a href="https://www.youtube.com/@just24things" target="_blank" rel="noopener noreferrer">YouTube ↗</a></div></div><div class="container footer-bottom"><span>© <span id="year">2026</span> Just24Things. All rights reserved.</span><span>MADE WITH CURIOSITY <span aria-hidden="true">✦</span></span></div></footer>
 </body>
 </html>

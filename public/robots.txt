@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://just24things.onrender.com/sitemap.xml
