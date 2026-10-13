@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "notice": "Proposed access labels pending owner confirmation. No APK files or private object keys are stored here.",
+  "contactUrl": "",
+  "apps": [
+    {
+      "id": "kids-fun-pack",
+      "name": "J Kids Fun Pack",
+      "category": "Education",
+      "platform": "Android",
+      "access": "public",
+      "description": "Playful preschool activities: animal sounds, ABC, colours and puzzles.",
+      "symbol": "✿",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "fun-lab",
+      "name": "J Fun Lab",
+      "category": "Games",
+      "platform": "Android",
+      "access": "public",
+      "description": "Creative learning games, puzzles, coding and discovery.",
+      "symbol": "★",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "grocery-planner",
+      "name": "J Grocery Planner",
+      "category": "Lifestyle",
+      "platform": "Android",
+      "access": "public",
+      "description": "Weekly planning, shopping lists and grocery price history.",
+      "symbol": "☷",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "wifi-share",
+      "name": "J WiFi Share",
+      "category": "Utilities",
+      "platform": "Android",
+      "access": "public",
+      "description": "Send and receive files over a local Wi-Fi connection.",
+      "symbol": "⇄",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "dj-studio",
+      "name": "J DJ Studio",
+      "category": "Creative",
+      "platform": "Android",
+      "access": "public",
+      "description": "Two decks, a crossfader and hands-on DJ controls.",
+      "symbol": "♫",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "media-player",
+      "name": "J Media Player",
+      "category": "Creative",
+      "platform": "Android",
+      "access": "public",
+      "description": "Offline music and video playback with a clean interface.",
+      "symbol": "▶",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "duct-sizer",
+      "name": "J Duct Sizer",
+      "category": "Engineering",
+      "platform": "Windows",
+      "access": "public",
+      "description": "Desktop duct-sizing calculations for engineering workflows.",
+      "symbol": "▤",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "mep-toolbox",
+      "name": "J MEP Toolbox",
+      "category": "Engineering",
+      "platform": "Android",
+      "access": "restricted",
+      "description": "MEP calculators, project workspace and reports.",
+      "symbol": "◫",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "expense-tracker",
+      "name": "J Expense Tracker",
+      "category": "Finance",
+      "platform": "Android",
+      "access": "restricted",
+      "description": "Budgets, reports, expense tracking and money management.",
+      "symbol": "◎",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "flow-launcher",
+      "name": "J Flow Launcher",
+      "category": "Utilities",
+      "platform": "Android",
+      "access": "restricted",
+      "description": "Personal Android home-screen and layout customization.",
+      "symbol": "⌂",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "control-hub",
+      "name": "J Control Hub",
+      "category": "Utilities",
+      "platform": "Android",
+      "access": "restricted",
+      "description": "Offline phone controls and smart automation workflows.",
+      "symbol": "⚙",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "airgap-share",
+      "name": "J AirGap Share",
+      "category": "Utilities",
+      "platform": "Android + Windows",
+      "access": "restricted",
+      "description": "Offline optical file transfer with animated QR codes.",
+      "symbol": "▦",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "navi",
+      "name": "J NAVI",
+      "category": "Navigation",
+      "platform": "Android",
+      "access": "restricted",
+      "description": "Offline-first navigation and downloadable map packs.",
+      "symbol": "➤",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "recovery-cleaner",
+      "name": "J Recovery & Cleaner",
+      "category": "Utilities",
+      "platform": "Android",
+      "access": "restricted",
+      "description": "Device cleanup and recovery-oriented utility features.",
+      "symbol": "✧",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "earth-time-machine",
+      "name": "J Earth Time Machine",
+      "category": "Creative",
+      "platform": "Android",
+      "access": "restricted",
+      "description": "Geographic imagery comparisons and perspective alignment.",
+      "symbol": "◉",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "market-scout",
+      "name": "J Market Scout",
+      "category": "Finance",
+      "platform": "Android",
+      "access": "restricted",
+      "description": "Indian stocks research and market-tracking tools.",
+      "symbol": "↗",
+      "version": "",
+      "downloadUrl": ""
+    },
+    {
+      "id": "algo-trader-ea",
+      "name": "J AlgoTrader EA",
+      "category": "Finance",
+      "platform": "MT5",
+      "access": "restricted",
+      "description": "MetaTrader strategy automation with risk and trade controls.",
+      "symbol": "⌁",
+      "version": "",
+      "downloadUrl": ""
+    }
+  ]
+}

@@ -1,20 +1,22 @@
-# Just24Things Premium v1.2.0 — The 24 Things Update
+# Just24Things v1.3.0 — Mixed J Apps Catalogue
 
-Built on the original v1.1.0 website, preserving the user's original YouTube cover, brand colors, J Apps list, 12-game roadmap, offline-first policy and navigation.
+Built on original v1.2.0 website; the original hero banner, 24 topics, games page, channel page, responsive styling and themes remain in place.
 
-## Updated
-- Homepage Explore now displays **exactly 24** real content categories from the user's interests and past projects, with functioning topic filters (Kids & Games / Apps & Tech / Engineering / Markets / Money & Business / Lifestyle).
-- Each category links to a matching section of `/just24things/`, with 24 matching descriptions.
-- Footer, SEO and intro updated to reference 24 categories.
-- Both light/dark modes and all pre-existing content are preserved.
-- `/games/` remains a roadmap rather than pretending the games are already browser playable.
-- No Android backend or APK download link is falsely claimed to exist.
+## Ready now
+- `/apps/` app directory with search, Public / Restricted filters and platform filters.
+- 17 project cards, with **PROPOSED** access labels only; **owner must approve classifications before any public release**.
+- `public/apps/catalog.json` is the editable registry. Add genuine GitHub Release URLs to `downloadUrl` for owner-approved **public** items only. Until then, public cards show `Download coming soon`.
+- Restricted cards link to `/apps/access/`. This is an explanation page — NOT live authentication. No private APK, passwords, token or private object paths are in the public package.
+- Homepage and secondary pages link to the download centre.
 
-## Render deployment
-Keep your **existing** Render Static Site at https://just24things.onrender.com and your **existing** GitHub repo `jebinc324/J-Digital-Hub` (`main`). Do NOT create a new service.
+## Approval checklist
+1. Review each `access` in `public/apps/catalog.json` and change `public` / `restricted` as you decide.
+2. Upload approved public APKs to GitHub **Releases**, not ordinary public repo directories. Paste verified public release asset URLs in `downloadUrl` only after checking APK signature and package IDs.
+3. Do not store restricted APKs in this repository, Render static files, a public GitHub release, or public R2 buckets.
+4. For restricted access, configure backend authentication, permission checks, private R2 bucket (or equivalent), and short-lived signed GET URLs. This requires a separate running backend and private storage credentials.
+5. Verify app versions, screenshots, hashes and release notes before calling any app downloadable.
 
-1. Unzip. Upload the contents of this package to the repository, preserving folder paths (especially `public/index.html`, `public/styles.css`, `public/script.js`, `public/just24things/index.html`). Replace the old version files.
-2. Commit to main, which triggers Render deploy if configured. Otherwise: Render > Manual Deploy > Deploy latest commit.
-3. Confirm homepage, 24-filter buttons, `/just24things/` anchors, light/dark toggle and `/games/`. If old version persists, hard refresh (Ctrl+F5).
+## Deployment
+Render Static Site: branch `main`, root directory blank, build command `echo "Static site ready"`, publish directory `public`. GitHub pushes should auto deploy.
 
-Render settings unchanged: branch main, root blank, build command `echo "Static site ready"`, publish directory `public`.
+**No APK download is enabled by default.** Switching a card to `restricted` is a label, not an access control. Never put a real restricted binary URL into `catalog.json`.
