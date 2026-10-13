@@ -4,6 +4,7 @@
  if(!cards)return;
  const count=document.getElementById('catalog-count'),empty=document.getElementById('catalog-empty');
  const search=document.getElementById('app-search');
+ const statusFilter=document.getElementById('j-upload-status');
  const accessButtons=[...document.querySelectorAll('button[data-access]')];
  const familyButtons=[...document.querySelectorAll('button[data-family]')];
  let all=[],access='all',family='all',releaseAssets=new Map();
@@ -18,8 +19,8 @@
       const note=el('p','j-card-note',item.note);card.append(note);
    }
    const bottom=el('div','j-card-bottom');
-   const ver=item.approxSizeMB && item.access==='public' ? `${item.approxSizeMB} MB • FILE RECEIVED`:
-     item.uploadedFile?'FILE RECEIVED':'FILE NOT SUPPLIED';
+   const downloadable=item.access==='public'&&typeof item.downloadUrl==='string'&&item.downloadUrl.startsWith('https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/');
+   const ver=downloadable ? 'UPLOADED • '+(item.verifiedUpload?.sizeBytes/1048576).toFixed(2)+' MiB' : item.access==='restricted'?'RESTRICTED':(item.uploadedFile?'UPLOAD PENDING':'FILE NOT SUPPLIED');
    bottom.append(el('span','j-card-file',ver));
    if(item.access==='restricted'){
      const a=el('a','j-card-action','Access details ↗');
@@ -28,20 +29,21 @@
    } else {
      const asset=item.releaseAsset ? releaseAssets.get(item.releaseAsset):undefined;
      let url=null;try{
-      if(asset){const u=new URL(asset.browser_download_url);if(u.protocol==='https:' && u.hostname==='github.com')url=u.href;}
+      const raw=item.downloadUrl || asset?.browser_download_url;
+      if(raw){const u=new URL(raw);if(u.protocol==='https:' && u.hostname==='github.com' && u.pathname.startsWith('/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/'))url=u.href;}
      }catch(_){}
      if(url){
        const a=el('a','j-card-action','Download ↗');a.href=url;a.target='_blank';a.rel='noopener noreferrer';
        a.setAttribute('aria-label','Download '+item.name+' from official GitHub Releases');bottom.append(a);
      }else{
-       bottom.append(el('span','j-card-pending',item.uploadedFile?'Release pending':'No file yet'));
+       bottom.append(el('span','j-card-pending',item.uploadedFile?'Upload pending':'No file yet'));
      }
    }
    card.append(bottom);return card;
  }
  function draw(){
    const q=search.value.trim().toLocaleLowerCase();
-   const filtered=all.filter(item=>(access==='all'||item.access===access)&&(family==='all'||item.family===family)&&
+   const filtered=all.filter(item=>(access==='all'||item.access===access)&&(family==='all'||item.family===family)&&( !statusFilter || statusFilter.value==='all' || (statusFilter.value==='uploaded' ? item.access==='public'&&Boolean(item.downloadUrl) : statusFilter.value==='pending' ? item.access==='public'&&!item.downloadUrl : item.access==='restricted'))&&
       [item.name,item.family,item.description].some(s=>s.toLocaleLowerCase().includes(q)));
    cards.replaceChildren(...filtered.map(makeCard));count.textContent=`Showing ${filtered.length} of ${all.length} selected projects`;
    empty.hidden=filtered.length>0;
@@ -57,6 +59,7 @@
    draw();
  }));
  search.addEventListener('input',draw);
+ statusFilter?.addEventListener('change',draw);
  async function init(){
    try{
      const result=await fetch('/apps/catalog.json',{cache:'no-store'});
