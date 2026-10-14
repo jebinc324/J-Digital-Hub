@@ -79,3 +79,9 @@ This adds image media without changing existing binary download links. Do not in
 - `public/games/embedded.css` styles the in-page game frame. Original `app.js`, styles, local saved progress and optional unconfigured Firebase multiplayer remain untouched.
 - The public GitHub release archive was not deleted; only the website's download CTA was removed. Android app downloads in the separate J Apps catalogue were not changed.
 - A browser/device playthrough remains necessary to verify all 12 games work well inside the embedded viewport.
+
+## Arcade: one-scroll embedded layout (2026-10-14)
+- `/games/embed.js` observes the original same-origin J Retro Arcade screen, expanding the iframe to the full home/store content height so visitors scroll only the outer Just24Things page.
+- Selecting gameplay, loading or the stage roadmap restores a normal playable viewport height, and keeps the game within view after long lists collapse.
+- The embedded-only `jj-in-page-arcade` CSS class suppresses document-level nested scrollbars without changing standalone game play or the game-specific 1000-stage roadmap scroller.
+- No APK or game rules, stage save data, arcade points, or downloads were modified. Check real phone/desktop browser behavior after Render deploy.
