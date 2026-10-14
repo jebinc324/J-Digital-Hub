@@ -46,3 +46,41 @@ html[data-theme=dark] .topic-filter.is-active{color:#1b201c}
 .jj-logo-byline{font-size:8px;font-weight:750;letter-spacing:.02em;align-self:flex-end;margin:0 0 7px 3px;white-space:nowrap;color:var(--muted)}
 .jj-byline{display:inline-block;font:750 12px 'DM Sans',sans-serif;letter-spacing:.03em;margin-left:9px;vertical-align:middle;color:var(--olive)}
 @media(max-width:600px){.jj-logo-byline{font-size:7px}.jj-byline{font-size:10px}}
+
+
+/* Floating Back to Top — shared on every Just24Things page. */
+.jj-back-to-top{
+ position:fixed;right:calc(20px + env(safe-area-inset-right,0px));
+ bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:60;
+ display:inline-flex;align-items:center;justify-content:center;gap:10px;
+ min-height:50px;padding:10px 17px 10px 11px;
+ border:1px solid rgba(255,255,255,.22);border-radius:999px;
+ background:#405c44;color:#fff;
+ box-shadow:0 12px 32px rgba(17,40,24,.25);
+ font-size:12px;font-weight:800;letter-spacing:.01em;cursor:pointer;
+ opacity:0;visibility:hidden;pointer-events:none;
+ transform:translate3d(0,14px,0) scale(.97);
+ transition:opacity .24s ease,transform .3s ease,visibility .24s ease,background .2s ease;
+ -webkit-tap-highlight-color:transparent;
+}
+.jj-back-to-top.is-visible{
+ opacity:1;visibility:visible;pointer-events:auto;
+ transform:translate3d(0,0,0) scale(1);
+}
+.jj-back-to-top-arrow{
+ display:grid;place-items:center;width:29px;height:29px;
+ border:1px solid rgba(255,255,255,.22);border-radius:50%;
+ background:rgba(255,255,255,.12);font-size:20px;line-height:1;
+}
+.jj-back-to-top:hover{background:#304a38;box-shadow:0 15px 38px rgba(17,40,24,.3)}
+.jj-back-to-top:focus-visible{outline:3px solid #68d9ed;outline-offset:3px}
+body.japps-neon .jj-back-to-top{
+ background:linear-gradient(115deg,#137e9f,#0a5975);border-color:#5ae6f5;
+ box-shadow:0 8px 27px rgba(27,182,217,.28);
+}
+body.japps-neon .jj-back-to-top:hover{background:linear-gradient(115deg,#1c9bbb,#087597)}
+@media(max-width:640px){
+ .jj-back-to-top{right:calc(12px + env(safe-area-inset-right,0px));bottom:calc(15px + env(safe-area-inset-bottom,0px));min-height:46px;padding:8px 12px 8px 8px;font-size:11px}
+ .jj-back-to-top-arrow{width:28px;height:28px}
+}
+@media(prefers-reduced-motion:reduce){.jj-back-to-top{transition:none}}
