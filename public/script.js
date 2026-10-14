@@ -30,5 +30,42 @@
     topicCards.forEach(card=>{const show=chosen==='all'||card.dataset.topicGroup===chosen;card.hidden=!show;if(show)visible++;});
     if(topicCounter)topicCounter.textContent=`${visible} ${visible===1?'topic':'topics'}`;
   }));
+  // Shared Back to Top control: available on every site page, including reduced-motion mode.
+  const backTop=document.createElement('button');
+  backTop.type='button';
+  backTop.className='jj-back-to-top';
+  backTop.setAttribute('aria-label','Back to top');
+  backTop.setAttribute('title','Back to top');
+  backTop.setAttribute('aria-hidden','true');
+  backTop.tabIndex=-1;
+  const backArrow=document.createElement('span');
+  backArrow.className='jj-back-to-top-arrow';
+  backArrow.textContent='↑';
+  backArrow.setAttribute('aria-hidden','true');
+  const backText=document.createElement('span');
+  backText.textContent='Back to top';
+  backTop.append(backArrow,backText);
+  document.body.append(backTop);
+  let scrollQueued=false;
+  function updateBackTop(){
+    scrollQueued=false;
+    const visible=(window.scrollY||document.documentElement.scrollTop||0)>Math.max(400,window.innerHeight*.5);
+    backTop.classList.toggle('is-visible',visible);
+    backTop.tabIndex=visible?0:-1;
+    backTop.setAttribute('aria-hidden',String(!visible));
+  }
+  function queueBackTop(){
+    if(scrollQueued)return;
+    scrollQueued=true;
+    window.requestAnimationFrame(updateBackTop);
+  }
+  window.addEventListener('scroll',queueBackTop,{passive:true});
+  window.addEventListener('resize',queueBackTop,{passive:true});
+  backTop.addEventListener('click',()=>{
+    const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0,left:0,behavior:reduce?'instant':'smooth'});
+  });
+  updateBackTop();
+
   const year=document.getElementById('year'); if(year)year.textContent=String(new Date().getFullYear());
 })();
