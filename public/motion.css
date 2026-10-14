@@ -119,47 +119,85 @@ html.jj-motion-enabled .j2-dialog[open]::backdrop {
 }
 
 
-/* Original Just24Things cover — reversible scroll-controlled rolled-paper edge.
-   The actual cover image asset stays unchanged; only the clipping is animated. */
-html.jj-motion-enabled .cover-frame.jj-paper-roll {
-  --jj-paper-hidden:0%;
-  --jj-paper-edge-opacity:0;
+/* Original Just24Things cover — scroll-linked layout collapse + thick paper roller.
+   Unlike clip-path alone, the slot's physical height shrinks with the image.
+   Everything below follows upward with no empty reserved banner region. */
+html.jj-paper-active { overflow-anchor:none; }
+html.jj-paper-active .jj-paper-slot {
   position:relative;
-  clip-path:inset(0 0 var(--jj-paper-hidden) 0 round 7px);
+  overflow:hidden;
   isolation:isolate;
+  width:100%;
+  border-radius:7px;
+  overflow-anchor:none;
 }
-html.jj-motion-enabled .cover-frame.jj-paper-roll::after {
+html.jj-paper-active .jj-paper-slot .cover-frame {
+  position:absolute;
+  top:0;left:0;
+  width:100%;
+  height:auto;
+  clip-path:none;
+  border-radius:7px;
+}
+html.jj-paper-active .jj-paper-slot .cover-image {
+  transform:none!important;
+}
+/* The diffuse fold casts light and shade across the last visible part. */
+html.jj-paper-active .jj-paper-slot::before {
   content:"";
+  position:absolute;
+  z-index:4;
+  left:0;right:0;bottom:0;
+  height:100px;
   pointer-events:none;
+  opacity:var(--jj-paper-edge-opacity,0);
+  background:linear-gradient(to bottom,
+    transparent 0%,
+    rgba(51,49,41,.06) 30%,
+    rgba(30,28,25,.20) 69%,
+    rgba(255,255,255,.24) 100%);
+}
+/* Thicker 62px curled-paper cylinder (mobile 42px), tied to roll progress. */
+html.jj-paper-active .jj-paper-slot::after {
+  content:"";
   position:absolute;
   z-index:5;
-  top:calc(100% - var(--jj-paper-hidden) - 18px);
-  left:-1%;width:102%;height:25px;
-  border-radius:50% 50% 12px 12px / 45% 45% 35% 35%;
+  left:-1.5%;width:103%;
+  bottom:-8px;
+  height:62px;
+  pointer-events:none;
+  opacity:var(--jj-paper-edge-opacity,0);
+  border-radius:52% 52% 15% 15% / 58% 58% 32% 32%;
+  border-top:2px solid rgba(255,255,255,.95);
   background:linear-gradient(to bottom,
-    rgba(255,255,255,.98) 0%,
-    rgba(250,248,238,.97) 16%,
-    rgba(197,190,173,.94) 49%,
-    rgba(100,102,92,.45) 68%,
-    rgba(250,245,231,.92) 93%);
-  border-top:1px solid rgba(255,255,255,.93);
-  box-shadow:0 -11px 17px rgba(52,49,38,.14),0 12px 16px rgba(23,29,26,.20);
-  opacity:var(--jj-paper-edge-opacity);
-  transform:perspective(520px) rotateX(-22deg);
-}
-html.jj-motion-enabled .cover-frame.jj-paper-roll .cover-image{
-  /* Remove the old always-on image zoom: the original banner is now the paper. */
-  transform:translate3d(0,var(--jj-cover-offset,0px),0);
+    #fffdf6 0%,
+    #f4f0e7 14%,
+    #d5d0c3 29%,
+    #878379 46%,
+    #f6f1e5 66%,
+    #cbc3b1 84%,
+    #79776d 100%);
+  box-shadow:0 -13px 24px rgba(28,31,30,.15),
+             0 10px 19px rgba(23,29,26,.25),
+             inset 0 6px 7px rgba(255,255,255,.83),
+             inset 0 -6px 10px rgba(47,44,38,.24);
+  transform:perspective(650px) rotateX(-19deg);
 }
 @media(max-width:640px) {
-  html.jj-motion-enabled .cover-frame.jj-paper-roll::after {
-    height:17px;top:calc(100% - var(--jj-paper-hidden) - 13px);
-    box-shadow:0 -5px 10px rgba(52,49,38,.12),0 7px 9px rgba(23,29,26,.18);
+  html.jj-paper-active .jj-paper-slot {border-radius:3px}
+  html.jj-paper-active .jj-paper-slot::before {height:70px}
+  html.jj-paper-active .jj-paper-slot::after {
+    height:42px;
+    bottom:-6px;
+    box-shadow:0 -7px 13px rgba(28,31,30,.13),
+               0 7px 11px rgba(23,29,26,.24),
+               inset 0 4px 6px rgba(255,255,255,.83),
+               inset 0 -4px 8px rgba(47,44,38,.24);
   }
 }
 @media(prefers-reduced-motion:reduce) {
-  html.jj-motion-enabled .cover-frame.jj-paper-roll {
-    clip-path:none!important;
-  }
-  html.jj-motion-enabled .cover-frame.jj-paper-roll::after{display:none!important}
+  html.jj-paper-active .jj-paper-slot {height:auto!important;overflow:visible!important}
+  html.jj-paper-active .jj-paper-slot .cover-frame {position:relative!important}
+  html.jj-paper-active .jj-paper-slot::before,
+  html.jj-paper-active .jj-paper-slot::after {display:none!important}
 }
