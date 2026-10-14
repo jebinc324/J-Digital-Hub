@@ -5,28 +5,23 @@
  const count=document.getElementById('catalog-count'),empty=document.getElementById('catalog-empty');
  const search=document.getElementById('app-search');
  const statusFilter=document.getElementById('j-upload-status');
- const accessButtons=[...document.querySelectorAll('button[data-access]')];
  const familyButtons=[...document.querySelectorAll('button[data-family]')];
- let all=[],access='all',family='all',releaseAssets=new Map();
+ let all=[],family='all',releaseAssets=new Map();
  function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
  function iconFor(type){return {'Android':'▣','Revit Add-ins':'⌗','Revit Dynamo':'◇','Windows & Trading':'▤'}[type]||'J';}
  function makeCard(item){
    const card=el('article','j-card');
    const top=el('div','j-card-top');
-   top.append(el('span','j-card-icon',iconFor(item.family)),el('span','j-card-badge '+item.access,item.access==='public'?'OPEN':'RESTRICTED'));
+   top.append(el('span','j-card-icon',iconFor(item.family)),el('span','j-card-badge '+item.access,item.launchStatus==='awaiting-release-review'?'FREE · COMING SOON':'FREE'));
    card.append(top,el('div','j-card-type',item.family),el('h3','',item.name),el('p','j-card-desc',item.description));
    if(item.note){
       const note=el('p','j-card-note',item.note);card.append(note);
    }
    const bottom=el('div','j-card-bottom');
    const downloadable=item.access==='public'&&typeof item.downloadUrl==='string'&&item.downloadUrl.startsWith('https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/');
-   const ver=downloadable ? 'UPLOADED • '+(item.verifiedUpload?.sizeBytes/1048576).toFixed(2)+' MiB' : item.access==='restricted'?'RESTRICTED':(item.uploadedFile?'UPLOAD PENDING':'FILE NOT SUPPLIED');
+   const ver=downloadable ? 'FREE DOWNLOAD • '+(item.verifiedUpload?.sizeBytes/1048576).toFixed(2)+' MiB' : item.launchStatus==='awaiting-release-review'?'FREE RELEASE · AWAITING REVIEW':'RELEASE NOT AVAILABLE';
    bottom.append(el('span','j-card-file',ver));
-   if(item.access==='restricted'){
-     const a=el('a','j-card-action','Access details ↗');
-     a.href='/apps/access/?app='+encodeURIComponent(item.id);
-     bottom.append(a);
-   } else {
+   {
      const asset=item.releaseAsset ? releaseAssets.get(item.releaseAsset):undefined;
      let url=null;try{
       const raw=item.downloadUrl || asset?.browser_download_url;
@@ -36,23 +31,18 @@
        const a=el('a','j-card-action','Download ↗');a.href=url;a.target='_blank';a.rel='noopener noreferrer';
        a.setAttribute('aria-label','Download '+item.name+' from official GitHub Releases');bottom.append(a);
      }else{
-       bottom.append(el('span','j-card-pending',item.uploadedFile?'Upload pending':'No file yet'));
+       bottom.append(el('span','j-card-pending',item.launchStatus==='awaiting-release-review'?'Release review pending':'Upload pending'));
      }
    }
    card.append(bottom);return card;
  }
  function draw(){
    const q=search.value.trim().toLocaleLowerCase();
-   const filtered=all.filter(item=>(access==='all'||item.access===access)&&(family==='all'||item.family===family)&&( !statusFilter || statusFilter.value==='all' || (statusFilter.value==='uploaded' ? item.access==='public'&&Boolean(item.downloadUrl) : statusFilter.value==='pending' ? item.access==='public'&&!item.downloadUrl : item.access==='restricted'))&&
+   const filtered=all.filter(item=>(family==='all'||item.family===family)&&( !statusFilter || statusFilter.value==='all' || (statusFilter.value==='uploaded' ? item.access==='public'&&Boolean(item.downloadUrl) : statusFilter.value==='pending' ? item.access==='public'&&!item.downloadUrl : false))&&
       [item.name,item.family,item.description].some(s=>s.toLocaleLowerCase().includes(q)));
    cards.replaceChildren(...filtered.map(makeCard));count.textContent=`Showing ${filtered.length} of ${all.length} selected projects`;
    empty.hidden=filtered.length>0;
  }
- accessButtons.forEach(button=>button.addEventListener('click',()=>{
-   access=button.dataset.access;
-   accessButtons.forEach(b=>{const yes=b===button;b.classList.toggle('active',yes);b.setAttribute('aria-pressed',String(yes));});
-   draw();
- }));
  familyButtons.forEach(button=>button.addEventListener('click',()=>{
    family=button.dataset.family;
    familyButtons.forEach(b=>{const yes=b===button;b.classList.toggle('active',yes);b.setAttribute('aria-pressed',String(yes));});
