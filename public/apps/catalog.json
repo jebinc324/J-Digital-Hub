@@ -7,7 +7,7 @@
     "source": "GitHub Releases public API",
     "lastVerified": "2026-10-13"
   },
-  "notice": "20 of 54 selected Open entries are hosted in GitHub Releases; 34 are pending. 10 restricted listings have no public download links. Hosted does not mean installation-tested.",
+  "notice": "42 approved catalogue listings after removing 22 workbook-marked entries. Existing GitHub Releases files were not deleted. Restricted listings remain protected.",
   "items": [
     {
       "id": "j-control-hub",
@@ -319,19 +319,6 @@
       }
     },
     {
-      "id": "chartanalyzer",
-      "name": "ChartAnalyzer",
-      "family": "Android",
-      "type": "Android app",
-      "access": "public",
-      "description": "Trading chart analysis and OCR prototype.",
-      "versionLabel": "OCR prototype",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": ""
-    },
-    {
       "id": "forex-trading-calculator-forex-trader-pro",
       "name": "Forex Trading Calculator / Forex Trader Pro",
       "family": "Android",
@@ -435,19 +422,6 @@
       "note": "Source package, not a ready installer."
     },
     {
-      "id": "j-select-similar",
-      "name": "J Select Similar",
-      "family": "Revit Add-ins",
-      "type": "Revit add-in",
-      "access": "public",
-      "description": "Selected views, multiple categories",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": "May be a module inside the combined J Revit Tools package; standalone release not supplied."
-    },
-    {
       "id": "j-purge-manager",
       "name": "J Purge Manager",
       "family": "Revit Add-ins",
@@ -486,32 +460,6 @@
       }
     },
     {
-      "id": "j-live-clash-monitor",
-      "name": "J Live Clash Monitor",
-      "family": "Revit Add-ins",
-      "type": "Revit add-in",
-      "access": "public",
-      "description": "Clash and clearance detection",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": "May be a module inside the combined J Revit Tools package; standalone release not supplied."
-    },
-    {
-      "id": "j-batch-sheet-editor",
-      "name": "J Batch Sheet Editor",
-      "family": "Revit Add-ins",
-      "type": "Revit add-in",
-      "access": "public",
-      "description": "Batch sheet properties",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": "May be a module inside the combined J Revit Tools package; standalone release not supplied."
-    },
-    {
       "id": "j-equipment-schedule-manager",
       "name": "J Equipment Schedule Manager",
       "family": "Revit Add-ins",
@@ -544,19 +492,6 @@
       }
     },
     {
-      "id": "j-tag-text-align",
-      "name": "J Tag / Text Align",
-      "family": "Revit Add-ins",
-      "type": "Revit add-in",
-      "access": "public",
-      "description": "Alignment and leader preservation",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": "May be a module inside the combined J Revit Tools package; standalone release not supplied."
-    },
-    {
       "id": "j-section-box-orient-to-face",
       "name": "J Section Box Orient to Face",
       "family": "Revit Add-ins",
@@ -587,84 +522,6 @@
       "releaseAsset": "",
       "approxSizeMB": null,
       "note": "May be a module inside the combined J Revit Tools package; standalone release not supplied."
-    },
-    {
-      "id": "j-bim360-batch-sheet-manager",
-      "name": "J BIM360 Batch Sheet Manager",
-      "family": "Revit Add-ins",
-      "type": "Revit add-in",
-      "access": "public",
-      "description": "Batch edits across cloud models",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": "May be a module inside the combined J Revit Tools package; standalone release not supplied."
-    },
-    {
-      "id": "j-revit-batch-sheet-manager-multisource",
-      "name": "J Revit Batch Sheet Manager MultiSource",
-      "family": "Revit Add-ins",
-      "type": "Revit add-in",
-      "access": "public",
-      "description": "Multiple model/source processing",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": "Package not included in this upload."
-    },
-    {
-      "id": "revit-batch-nwc-exporter",
-      "name": "Revit Batch NWC Exporter",
-      "family": "Revit Add-ins",
-      "type": "Revit add-in",
-      "access": "public",
-      "description": "Export Navisworks views from multiple RVTs",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": "Requested workflow; completed working binary not supplied."
-    },
-    {
-      "id": "refsheet-number-view-reference-tool",
-      "name": "RefSheet Number / View Reference Tool",
-      "family": "Revit Add-ins",
-      "type": "Revit add-in",
-      "access": "public",
-      "description": "Linked layout sheet references via annotation",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": "Concept/source discussions; no distributable build supplied."
-    },
-    {
-      "id": "revit-flip-shortcut",
-      "name": "Revit Flip Shortcut",
-      "family": "Revit Add-ins",
-      "type": "Revit add-in",
-      "access": "public",
-      "description": "Revit shortcut utility",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": "May be a module inside the combined J Revit Tools package; standalone release not supplied."
-    },
-    {
-      "id": "layout-to-riser-tool",
-      "name": "Layout-to-Riser Tool",
-      "family": "Revit Add-ins",
-      "type": "Revit add-in",
-      "access": "public",
-      "description": "Layout → riser automation",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": "Concept, no distributable build supplied."
     },
     {
       "id": "family-parameter-manager",
@@ -724,19 +581,6 @@
       }
     },
     {
-      "id": "j-select-similar-selected-views",
-      "name": "J Select Similar — Selected Views",
-      "family": "Revit Dynamo",
-      "type": "Dynamo script",
-      "access": "public",
-      "description": "select",
-      "versionLabel": "v1.0",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": ""
-    },
-    {
       "id": "j-select-similar-multicategory-selected-views",
       "name": "J Select Similar — MultiCategory Selected Views",
       "family": "Revit Dynamo",
@@ -794,97 +638,6 @@
       }
     },
     {
-      "id": "j-parameter-find-replace",
-      "name": "J Parameter Find & Replace",
-      "family": "Revit Dynamo",
-      "type": "Dynamo script",
-      "access": "public",
-      "description": "select",
-      "versionLabel": "`.dyn`",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": ""
-    },
-    {
-      "id": "j-parameter-value-find-replace",
-      "name": "J Parameter Value Find & Replace",
-      "family": "Revit Dynamo",
-      "type": "Dynamo script",
-      "access": "public",
-      "description": "select",
-      "versionLabel": "v2–v6",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": ""
-    },
-    {
-      "id": "parameter-value-find-replace-closed-model",
-      "name": "Parameter Value Find & Replace — Closed Model",
-      "family": "Revit Dynamo",
-      "type": "Dynamo script",
-      "access": "public",
-      "description": "select",
-      "versionLabel": "v7",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": ""
-    },
-    {
-      "id": "j-tag-text-align",
-      "name": "J Tag Text Align",
-      "family": "Revit Dynamo",
-      "type": "Dynamo script",
-      "access": "public",
-      "description": "select",
-      "versionLabel": "Revit 2024",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": ""
-    },
-    {
-      "id": "j-scope-section-box-align",
-      "name": "J Scope / Section Box Align",
-      "family": "Revit Dynamo",
-      "type": "Dynamo script",
-      "access": "public",
-      "description": "Experimental box orientation tool.",
-      "versionLabel": "v1.0.1, experimental",
-      "uploadedFile": true,
-      "releaseAsset": "j-scope-section-box-align.dyn",
-      "approxSizeMB": 0.01,
-      "note": "Experimental; Scope Box functionality was later removed in final workflow."
-    },
-    {
-      "id": "j-box-to-reference-align",
-      "name": "J Box to Reference Align",
-      "family": "Revit Dynamo",
-      "type": "Dynamo script",
-      "access": "public",
-      "description": "select",
-      "versionLabel": "v1.0.0, test",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": ""
-    },
-    {
-      "id": "j-scope-box-orient-to-reference",
-      "name": "J Scope Box Orient to Reference",
-      "family": "Revit Dynamo",
-      "type": "Dynamo script",
-      "access": "public",
-      "description": "select",
-      "versionLabel": "v1.0.0, discontinued",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": "Previously discontinued; listing is informational only."
-    },
-    {
       "id": "j-section-box-orient-to-face-pyrevit",
       "name": "J Section Box Orient to Face / PyRevit",
       "family": "Revit Dynamo",
@@ -904,19 +657,6 @@
       }
     },
     {
-      "id": "j-bim360-batch-sheet-manager-dynamo",
-      "name": "J BIM360 Batch Sheet Manager Dynamo",
-      "family": "Revit Dynamo",
-      "type": "Dynamo script",
-      "access": "public",
-      "description": "select",
-      "versionLabel": "v0.1.1 fixed",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": ""
-    },
-    {
       "id": "j-tools-combined-dynamo-pack",
       "name": "J Tools Combined Dynamo Pack",
       "family": "Revit Dynamo",
@@ -934,32 +674,6 @@
         "sizeBytes": 16023,
         "sha256": "b8e56ac22defacb7f8da28ed257adffbe46c70933c798c1f591343f21a301f62"
       }
-    },
-    {
-      "id": "j-duct-sizer",
-      "name": "J Duct Sizer",
-      "family": "Windows & Trading",
-      "type": "Windows / MT5",
-      "access": "public",
-      "description": "Desktop HVAC sizing calculations.",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": ""
-    },
-    {
-      "id": "j-algotrader-mt5-ea",
-      "name": "J AlgoTrader MT5 EA",
-      "family": "Windows & Trading",
-      "type": "Windows / MT5",
-      "access": "public",
-      "description": "MetaTrader 5 automation with risk management.",
-      "versionLabel": "",
-      "uploadedFile": false,
-      "releaseAsset": "",
-      "approxSizeMB": null,
-      "note": ""
     }
   ]
 }
