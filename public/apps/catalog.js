@@ -9,39 +9,46 @@
  let all=[],family='all',releaseAssets=new Map();
  function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
  function iconFor(type){return {'Android':'▣','Revit Add-ins':'⌗','Revit Dynamo':'◇','Windows & Trading':'▤'}[type]||'J';}
+ function getRelease(item){
+   if(!item||item.access!=='public'||!item.releaseAsset)return null;
+   const asset=releaseAssets.get(item.releaseAsset);
+   const raw=item.downloadUrl||asset?.browser_download_url;
+   if(typeof raw!=='string')return null;
+   try{
+     const url=new URL(raw);
+     const path='/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/'+encodeURIComponent(item.releaseAsset);
+     if(url.protocol!=='https:'||url.hostname!=='github.com'||url.pathname!==path)return null;
+     const sizeBytes=Number(item.verifiedUpload?.sizeBytes||asset?.size||0);
+     return {url:url.href,sizeBytes:Number.isFinite(sizeBytes)?sizeBytes:0};
+   }catch(_){return null;}
+ }
  function makeCard(item){
+   const available=getRelease(item);
    const card=el('article','j-card');
    const top=el('div','j-card-top');
-   top.append(el('span','j-card-icon',iconFor(item.family)),el('span','j-card-badge '+item.access,item.launchStatus==='awaiting-release-review'?'FREE · COMING SOON':'FREE'));
+   top.append(el('span','j-card-icon',iconFor(item.family)),el('span','j-card-badge public',available?'FREE':'FREE · COMING SOON'));
    card.append(top,el('div','j-card-type',item.family),el('h3','',item.name),el('p','j-card-desc',item.description));
-   if(item.note){
-      const note=el('p','j-card-note',item.note);card.append(note);
-   }
+   if(item.note&&!available)card.append(el('p','j-card-note',item.note));
    const bottom=el('div','j-card-bottom');
-   const downloadable=item.access==='public'&&typeof item.downloadUrl==='string'&&item.downloadUrl.startsWith('https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/');
-   const ver=downloadable ? 'FREE DOWNLOAD • '+(item.verifiedUpload?.sizeBytes/1048576).toFixed(2)+' MiB' : item.launchStatus==='awaiting-release-review'?'FREE RELEASE · AWAITING REVIEW':'RELEASE NOT AVAILABLE';
-   bottom.append(el('span','j-card-file',ver));
-   {
-     const asset=item.releaseAsset ? releaseAssets.get(item.releaseAsset):undefined;
-     let url=null;try{
-      const raw=item.downloadUrl || asset?.browser_download_url;
-      if(raw){const u=new URL(raw);if(u.protocol==='https:' && u.hostname==='github.com' && u.pathname.startsWith('/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/'))url=u.href;}
-     }catch(_){}
-     if(url){
-       const a=el('a','j-card-action','Download ↗');a.href=url;a.target='_blank';a.rel='noopener noreferrer';
-       a.setAttribute('aria-label','Download '+item.name+' from official GitHub Releases');bottom.append(a);
-     }else{
-       bottom.append(el('span','j-card-pending',item.launchStatus==='awaiting-release-review'?'Release review pending':'Upload pending'));
-     }
-   }
+   const size=available&&available.sizeBytes?(available.sizeBytes/1048576).toFixed(2)+' MiB':'';
+   bottom.append(el('span','j-card-file',available?'FREE DOWNLOAD'+(size?' · '+size:''):'FREE · RELEASE PENDING'));
+   if(available){
+      const a=el('a','j-card-action','Download ↗');
+      a.href=available.url;a.target='_blank';a.rel='noopener noreferrer';
+      a.setAttribute('aria-label','Download '+item.name+' from official GitHub Releases');bottom.append(a);
+   }else{bottom.append(el('span','j-card-pending','Upload pending'));}
    card.append(bottom);return card;
  }
- function draw(){
+  function draw(){
    const q=search.value.trim().toLocaleLowerCase();
-   const filtered=all.filter(item=>(family==='all'||item.family===family)&&( !statusFilter || statusFilter.value==='all' || (statusFilter.value==='uploaded' ? item.access==='public'&&Boolean(item.downloadUrl) : statusFilter.value==='pending' ? item.access==='public'&&!item.downloadUrl : false))&&
+   const filtered=all.filter(item=>(family==='all'||item.family===family)&&( !statusFilter || statusFilter.value==='all' || (statusFilter.value==='uploaded' ? Boolean(getRelease(item)) : statusFilter.value==='pending' ? !getRelease(item) : false))&&
       [item.name,item.family,item.description].some(s=>s.toLocaleLowerCase().includes(q)));
    cards.replaceChildren(...filtered.map(makeCard));count.textContent=`Showing ${filtered.length} of ${all.length} selected projects`;
    empty.hidden=filtered.length>0;
+   const ready=all.filter(item=>Boolean(getRelease(item))).length;
+   const progress=document.getElementById('j-progress-label');if(progress)progress.textContent=ready+' ready · '+(all.length-ready)+' pending';
+   const readyStat=document.getElementById('j-ready-count'),pendingStat=document.getElementById('j-pending-count');
+   if(readyStat)readyStat.textContent=String(ready);if(pendingStat)pendingStat.textContent=String(all.length-ready);
  }
  familyButtons.forEach(button=>button.addEventListener('click',()=>{
    family=button.dataset.family;
