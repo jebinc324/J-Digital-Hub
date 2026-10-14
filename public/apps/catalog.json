@@ -8,7 +8,7 @@
     "lastVerified": "2026-10-14",
     "filenameMappingConfigured": "2026-10-14"
   },
-  "notice": "J&J Free Launch: 43 selected projects are listed. 42 existing public release downloads are linked. J Batch NWC Exporter (Revit 2024) is newly listed and awaits package review/upload to the same public GitHub Release. File hosting is not proof of working installation or safe distribution.",
+  "notice": "J&J Free Launch: all 43 project download files are published on official GitHub Releases. File availability does not establish package safety, build compatibility, or function verification.",
   "items": [
     {
       "id": "j-control-hub",
@@ -674,13 +674,19 @@
       "access": "public",
       "description": "Batch NWC export workflow for Revit 2024 models, intended for Navisworks coordination.",
       "versionLabel": "Revit 2024 · standalone package",
-      "uploadedFile": false,
+      "uploadedFile": true,
       "sourceFileProvided": true,
       "sourceArchive": "J_Batch_NWC_Standalone_Revit2024.zip",
       "releaseAsset": "j-batch-nwc-standalone-revit2024.zip",
       "approxSizeMB": 0.006,
-      "launchStatus": "awaiting-release-review",
-      "note": "6.3 KB ZIP received. Package contents, installer status, prerequisites and batch export function have not been verified. Free download becomes available only after release upload; review the archive for confidential files before publishing."
+      "launchStatus": "uploaded-unverified",
+      "note": "GitHub Release ZIP uploaded (6.3 KB). The archive has not been independently inspected or tested in Revit 2024; installation steps, prerequisites and batch NWC export functionality are unverified.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-batch-nwc-standalone-revit2024.zip",
+      "verifiedUpload": {
+        "file": "j-batch-nwc-standalone-revit2024.zip",
+        "sizeBytes": 6293,
+        "sha256": "80f7278463684d51715dd8a80cf0715225ab9619dbd8be6b345453e075554724"
+      }
     },
     {
       "id": "family-parameter-manager",
@@ -840,9 +846,7 @@
     "pricing": "free",
     "accountRequired": false,
     "updatedAt": "2026-10-14",
-    "pendingSafetyChecks": [
-      "j-batch-nwc-standalone-revit2024"
-    ],
+    "pendingSafetyChecks": [],
     "unverifiedBuilds": [
       "j-wifi-share",
       "j-grocery-planner",
