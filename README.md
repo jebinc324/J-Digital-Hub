@@ -85,3 +85,11 @@ This adds image media without changing existing binary download links. Do not in
 - Selecting gameplay, loading or the stage roadmap restores a normal playable viewport height, and keeps the game within view after long lists collapse.
 - The embedded-only `jj-in-page-arcade` CSS class suppresses document-level nested scrollbars without changing standalone game play or the game-specific 1000-stage roadmap scroller.
 - No APK or game rules, stage save data, arcade points, or downloads were modified. Check real phone/desktop browser behavior after Render deploy.
+
+## J Arcade Hybrid Retro Premium full-page theme (2026-10-14)
+- Main `/games/` now uses the scoped `jj-retro-arcade` theme: dark navy, neon cyan/magenta, pixel/console labels, J art, PRESS START and illuminated game cabinet.
+- `public/games/retro-premium.css` styles only the J Arcade main page, including header/nav colors and footer, without affecting the other Just24Things pages.
+- `/games/retro-arcade/?embed=1` loads the original 12-game application inside the main page and adds an embedded-only `jj-in-page-arcade` neon card/control skin from `retro-embedded.css`.
+- The original game engine (`app.js`) and its local saved data, lives, stages, points, controls and resizing logic remain unchanged; the normal `/games/retro-arcade/` route retains its original appearance.
+- The single outer page scroll height bridge in `/games/embed.js` is preserved. No ZIP download option, login, or separate page/window is introduced.
+- CSS has responsive narrow-screen rules and reduced-motion support. Playthrough in desktop and mobile browsers is still recommended after deployment.
