@@ -1,0 +1,18 @@
+/* Just24Things / J&J — accessible site-wide ambient orbit wallpaper.
+   Decorative fixed canvas, never receives clicks, never participates in layout.
+   All existing pages and embedded game controls keep their normal behavior. */
+#jj-ambient-orbits{
+  position:fixed;inset:0;
+  display:block;width:100%;height:100%;
+  pointer-events:none!important;
+  user-select:none;-webkit-user-select:none;
+  touch-action:none;
+  z-index:24;
+  opacity:.66;
+  contain:strict;
+}
+@media(max-width:760px){#jj-ambient-orbits{opacity:.53}}
+@media(prefers-reduced-motion:reduce){#jj-ambient-orbits{opacity:.30}}
+@media print{#jj-ambient-orbits{display:none!important}}
+/* Header controls live above the wallpaper. Product dialogs use the top layer. */
+body:has(#jj-ambient-orbits) .site-header{z-index:30}
