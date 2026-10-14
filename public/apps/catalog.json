@@ -5,9 +5,9 @@
     "repository": "jebinc324/J-Digital-Hub",
     "tag": "just24-public-v1",
     "source": "GitHub Releases public API",
-    "lastVerified": "2026-10-13"
+    "lastVerified": "2026-10-14"
   },
-  "notice": "42 approved catalogue listings after removing 22 workbook-marked entries. Existing GitHub Releases files were not deleted. Restricted listings remain protected.",
+  "notice": "29 uploaded, 3 pending, 10 restricted. Files already uploaded have direct links; restricted items have no public files.",
   "items": [
     {
       "id": "j-control-hub",
@@ -39,7 +39,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-mep-toolbox.apk",
       "approxSizeMB": 13,
-      "note": "Debug/test build: confirm a production-ready version."
+      "note": "Debug/test build: confirm a production-ready version.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-mep-toolbox.apk",
+      "verifiedUpload": {
+        "file": "j-mep-toolbox.apk",
+        "sizeBytes": 12998333,
+        "sha256": "58544fc993d668f3b97d258e71fdc364816d57507f9d433f1407a23edf6922d2"
+      }
     },
     {
       "id": "j-airgap-share",
@@ -50,9 +56,15 @@
       "description": "Offline QR-based file transfer, Android and Windows.",
       "versionLabel": "v0.8.1",
       "uploadedFile": true,
-      "releaseAsset": "j-airgap-share.apk",
+      "releaseAsset": "j-airgap-share.v1.apk",
       "approxSizeMB": 29.73,
-      "note": "Debug/test build: confirm a production-ready version."
+      "note": "Debug/test build: confirm a production-ready version.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-airgap-share.v1.apk",
+      "verifiedUpload": {
+        "file": "j-airgap-share.v1.apk",
+        "sizeBytes": 29728124,
+        "sha256": "e02d2d299f410692c91879fd5fe9ca6873d0f5192aab50f7ddbb914d0f69ddd4"
+      }
     },
     {
       "id": "j-wifi-share",
@@ -161,7 +173,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-media-player.apk",
       "approxSizeMB": 11.34,
-      "note": "Uploaded 0.1.1 APK; later v1.3.1 release was discussed."
+      "note": "Uploaded 0.1.1 APK; later v1.3.1 release was discussed.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-media-player.apk",
+      "verifiedUpload": {
+        "file": "j-media-player.apk",
+        "sizeBytes": 11342465,
+        "sha256": "bb8ea77ebcfdeb0b21a95caa6dece8a88767cf493190a7ddb54167536f72eef3"
+      }
     },
     {
       "id": "j-flow-launcher",
@@ -200,7 +218,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-retro-arcade.apk",
       "approxSizeMB": 3.27,
-      "note": "Debug/test build: confirm a production-ready version."
+      "note": "Debug/test build: confirm a production-ready version.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-retro-arcade.apk",
+      "verifiedUpload": {
+        "file": "j-retro-arcade.apk",
+        "sizeBytes": 3267390,
+        "sha256": "8c22a4b1b7921ad52450d955aa817d25264d1388a6dec22b5ad7509649061d19"
+      }
     },
     {
       "id": "j-navi",
@@ -213,7 +237,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-navi.apk",
       "approxSizeMB": 44.94,
-      "note": "Uploaded v0.4.0 APK; newer v0.5.0-dev was discussed. Debug/test build: confirm a production-ready version."
+      "note": "Uploaded v0.4.0 APK; newer v0.5.0-dev was discussed. Debug/test build: confirm a production-ready version.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-navi.apk",
+      "verifiedUpload": {
+        "file": "j-navi.apk",
+        "sizeBytes": 44941789,
+        "sha256": "8a1c412766a8a867069f8244db3b8b7f406f7d16c473f5ad28676abbcbb18886"
+      }
     },
     {
       "id": "j-pdf-toolkit",
@@ -252,7 +282,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-ar-room-designer.apk",
       "approxSizeMB": 1.95,
-      "note": "Debug/test build: confirm a production-ready version."
+      "note": "Debug/test build: confirm a production-ready version.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-ar-room-designer.apk",
+      "verifiedUpload": {
+        "file": "j-ar-room-designer.apk",
+        "sizeBytes": 1949209,
+        "sha256": "7aef2e7e0ba92cec14f8a711586800b751ad5cc8ef1d73f1a76fa5f94b9aac08"
+      }
     },
     {
       "id": "j-digital-toolbox",
@@ -387,7 +423,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-revit-tools-combined.zip",
       "approxSizeMB": 3.94,
-      "note": "Installer/package contains source scripts; inspect before public distribution."
+      "note": "Installer/package contains source scripts; inspect before public distribution.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-revit-tools-combined.zip",
+      "verifiedUpload": {
+        "file": "j-revit-tools-combined.zip",
+        "sizeBytes": 752660,
+        "sha256": "a0a7949ecb0b55e177f8e7ecfaf04db974adbd4df40b6a51a37d37abc0015ae0"
+      }
     },
     {
       "id": "j-revit-standards-manager",
@@ -419,7 +461,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-tag-arrow-manager.zip",
       "approxSizeMB": 0.01,
-      "note": "Source package, not a ready installer."
+      "note": "Source package, not a ready installer.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-tag-arrow-manager.zip",
+      "verifiedUpload": {
+        "file": "j-tag-arrow-manager.zip",
+        "sizeBytes": 10069,
+        "sha256": "c6288ad802bfac943d4d6b20c49457779c904ecaa259c0918d2f6d01472122e8"
+      }
     },
     {
       "id": "j-purge-manager",
@@ -470,7 +518,13 @@
       "uploadedFile": true,
       "releaseAsset": "j-equipment-schedule-manager.zip",
       "approxSizeMB": 0.09,
-      "note": "Source package, not a ready installer."
+      "note": "Source package, not a ready installer.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-equipment-schedule-manager.zip",
+      "verifiedUpload": {
+        "file": "j-equipment-schedule-manager.zip",
+        "sizeBytes": 86478,
+        "sha256": "e112086b8da98f7474f2fd8e8da8822631bd6284a08118d02eae2e562e386ff3"
+      }
     },
     {
       "id": "j-family-parameter-manager",
@@ -519,7 +573,7 @@
       "description": "Parameter search and replacement",
       "versionLabel": "",
       "uploadedFile": false,
-      "releaseAsset": "",
+      "releaseAsset": "j-parameter-find-replace.zip",
       "approxSizeMB": null,
       "note": "May be a module inside the combined J Revit Tools package; standalone release not supplied."
     },
