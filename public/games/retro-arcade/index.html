@@ -6,6 +6,15 @@
   <meta name="theme-color" content="#e7ecf2" />
   <title>J Retro Arcade Online</title>
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Arcade stays original when opened directly; retro skin is for the
+    // embedded J&J /games/ experience only, without touching game logic.
+    if (new URLSearchParams(location.search).get('embed') === '1') {
+      document.documentElement.classList.add('jj-in-page-arcade');
+    }
+  </script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="retro-embedded.css" />
 </head>
 <body>
 <div id="app" class="theme-light">
