@@ -71,3 +71,11 @@ This adds image media without changing existing binary download links. Do not in
 - The original home-cover image (`/assets/just24-cover.webp`) is untouched. A CSS clipped paper-edge rolls it up as scroll progresses and unrolls it when scrolling upward.
 - The effect is reversible and turns off for visitors who prefer reduced motion; it does not resize the page or replace the original banner.
 - J Retro Arcade Web v0.2.1 files are hosted under `/games/retro-arcade/`. Solo mode is the supported mode. Room-based online multiplayer requires an explicitly configured backend.
+
+## Arcade embedded in the J&J page (October 14, 2026)
+- `/games/` now shows the uploaded original J Retro Arcade Web v0.2.1 inside the page, via a responsive `iframe` that loads `/games/retro-arcade/`. The user does not need to navigate to a separate page or download a ZIP to play.
+- **J Arcade** appears in the global header navigation on the Arcade page with `aria-current="page"`. Other top-level pages already have the navigation item.
+- The public Arcade page no longer shows a Download ZIP button or links that navigate to the standalone game page; the "Start playing" button scrolls to the embedded game on the same page.
+- `public/games/embedded.css` styles the in-page game frame. Original `app.js`, styles, local saved progress and optional unconfigured Firebase multiplayer remain untouched.
+- The public GitHub release archive was not deleted; only the website's download CTA was removed. Android app downloads in the separate J Apps catalogue were not changed.
+- A browser/device playthrough remains necessary to verify all 12 games work well inside the embedded viewport.
