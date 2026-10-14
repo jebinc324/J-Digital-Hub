@@ -28,11 +28,22 @@
    const id=active.id;
    const base=preferredGameHeight();
    if(id!==activeId){
+     const previousId=activeId;
      activeId=id;
      // On every screen switch first restore a normal iframe viewport.
      // This prevents a preceding long home/store page from enlarging 100dvh.
      setHeight(base);
      if(id==='homeScreen'||id==='storeScreen')queue();
+     // Choosing a game at the bottom of the list must not strand the visitor
+     // below the now-shorter game view. Keep playing in the same outer page.
+     if(previousId){
+       const top=frame.getBoundingClientRect().top;
+       if(top<68||top>window.innerHeight*.48){
+         const destination=Math.max(0,window.scrollY+top-88);
+         const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+         window.scrollTo({top:destination,behavior:reduce?'instant':'smooth'});
+       }
+     }
      return;
    }
    if(id==='homeScreen'||id==='storeScreen'){
