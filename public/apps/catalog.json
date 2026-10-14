@@ -8,7 +8,7 @@
     "lastVerified": "2026-10-14",
     "filenameMappingConfigured": "2026-10-14"
   },
-  "notice": "All 42 selected free project assets are uploaded to public GitHub Releases and direct download links are wired. Release existence only: APK signing, install behavior and Revit/Dynamo functionality have not been independently verified.",
+  "notice": "J&J Free Launch: 43 selected projects are listed. 42 existing public release downloads are linked. J Batch NWC Exporter (Revit 2024) is newly listed and awaits package review/upload to the same public GitHub Release. File hosting is not proof of working installation or safe distribution.",
   "items": [
     {
       "id": "j-control-hub",
@@ -667,6 +667,22 @@
       }
     },
     {
+      "id": "j-batch-nwc-standalone-revit2024",
+      "name": "J Batch NWC Exporter — Revit 2024",
+      "family": "Revit Add-ins",
+      "type": "Standalone Revit 2024 export utility",
+      "access": "public",
+      "description": "Batch NWC export workflow for Revit 2024 models, intended for Navisworks coordination.",
+      "versionLabel": "Revit 2024 · standalone package",
+      "uploadedFile": false,
+      "sourceFileProvided": true,
+      "sourceArchive": "J_Batch_NWC_Standalone_Revit2024.zip",
+      "releaseAsset": "j-batch-nwc-standalone-revit2024.zip",
+      "approxSizeMB": 0.006,
+      "launchStatus": "awaiting-release-review",
+      "note": "6.3 KB ZIP received. Package contents, installer status, prerequisites and batch export function have not been verified. Free download becomes available only after release upload; review the archive for confidential files before publishing."
+    },
+    {
       "id": "family-parameter-manager",
       "name": "Family Parameter Manager",
       "family": "Revit Dynamo",
@@ -824,7 +840,9 @@
     "pricing": "free",
     "accountRequired": false,
     "updatedAt": "2026-10-14",
-    "pendingSafetyChecks": [],
+    "pendingSafetyChecks": [
+      "j-batch-nwc-standalone-revit2024"
+    ],
     "unverifiedBuilds": [
       "j-wifi-share",
       "j-grocery-planner",
@@ -836,7 +854,9 @@
       "nifty-lot-calculator",
       "my-daily-tracker",
       "j-algo-trader-app-replay-concept"
-    ]
+    ],
+    "listedProjects": 43,
+    "currentReleaseAssets": 42
   },
   "media": {
     "iconRoot": "/assets/apps/icons/",
