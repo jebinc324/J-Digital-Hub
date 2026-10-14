@@ -1,0 +1,271 @@
+/* Just 24 Things · HOMEPAGE BRAND BRIDGES
+   Scoped visual identity: the J Apps cyan workshop and J Retro Arcade premium
+   themes appear in their respective homepage sections. The remaining site,
+   including the original cover roll, 24 topics and J&J header, is untouched. */
+
+/* ─────────── 02 / J Apps digital workshop ─────────── */
+.home-japps{
+  --hj-cyan:#52e1ff;--hj-soft:#abdbec;--hj-line:rgba(82,209,247,.22);
+  position:relative;isolation:isolate;overflow:hidden;
+  color:#e6f9ff;
+  background:
+    radial-gradient(ellipse at 91% 11%,rgba(19,163,212,.19),transparent 32%),
+    radial-gradient(ellipse at 6% 86%,rgba(42,97,164,.17),transparent 38%),
+    linear-gradient(138deg,#061421 0%,#071d2c 55%,#051521 100%);
+  border-block:1px solid #204658;
+}
+.home-japps::before{
+  content:"";pointer-events:none;position:absolute;inset:0;z-index:-1;opacity:.55;
+  background-image:
+    linear-gradient(rgba(84,199,233,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(84,199,233,.06) 1px,transparent 1px);
+  background-size:62px 62px;
+  mask-image:linear-gradient(to bottom,black 0%,black 45%,transparent 99%);
+}
+.home-japps::after{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  width:420px;height:420px;right:-130px;top:-90px;opacity:.13;
+  background:url('/assets/j-apps-cyan-j.png') center / contain no-repeat;
+  filter:drop-shadow(0 0 45px rgba(28,209,249,.8));
+}
+.home-japps .section-shell{position:relative;padding-top:88px;padding-bottom:96px}
+.home-japps .section-heading{position:relative;align-items:center;margin-bottom:27px}
+.home-japps .section-label{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:10px;letter-spacing:.18em;color:#45dcfa;font-weight:850;
+}
+.home-japps .section-label::before{
+  content:"";width:7px;height:7px;flex:none;border-radius:50%;
+  background:#71edff;box-shadow:0 0 16px #55e4ff;
+}
+.home-japps .section-heading h2{
+  color:#f0fbff;font:400 clamp(40px,5vw,68px)/1.1 Georgia,serif;
+  letter-spacing:-.055em;margin-top:15px;
+}
+.home-japps .section-heading h2 em{
+  color:#79e8fd;text-shadow:0 0 29px rgba(64,214,255,.23);
+}
+.home-japps .section-heading>p{
+  max-width:505px;color:#a8c7d5;line-height:1.83;font-size:13px;
+}
+.home-japps .chips{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 30px}
+.home-japps .chip{
+  display:inline-flex;align-items:center;justify-content:center;min-height:35px;
+  border:1px solid rgba(110,203,226,.31);border-radius:999px;
+  background:rgba(13,47,69,.72);color:#adcbda;padding:8px 15px;
+  font:800 11px/1.2 'DM Sans',sans-serif;
+  cursor:pointer;transition:background .2s,color .2s,box-shadow .2s,border-color .2s,transform .2s;
+}
+.home-japps .chip:hover{border-color:rgba(101,233,255,.7);color:#ecfcff;transform:translateY(-1px)}
+.home-japps .chip.is-active{
+  background:#54ddf7;color:#072334;border-color:#85f1ff;
+  box-shadow:0 4px 20px rgba(54,203,241,.26);
+}
+.home-japps .app-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;
+}
+.home-japps .app-card{
+  position:relative;isolation:isolate;overflow:hidden;min-height:281px;
+  display:flex;flex-direction:column;align-items:stretch;
+  padding:23px 21px;border:1px solid rgba(75,175,208,.25);
+  border-radius:16px;
+  background:linear-gradient(145deg,rgba(17,45,65,.96),rgba(9,32,48,.97));
+  color:#eafaff;
+  box-shadow:0 10px 28px rgba(0,6,16,.19),inset 0 1px rgba(255,255,255,.035);
+  transition:border-color .22s,box-shadow .22s,transform .22s;
+}
+.home-japps .app-card::before{
+  content:"";position:absolute;pointer-events:none;z-index:-1;
+  width:155px;height:155px;right:-78px;top:-80px;border-radius:50%;
+  border:1px solid rgba(66,213,245,.14);
+  box-shadow:0 0 0 37px rgba(56,196,229,.025),0 0 0 75px rgba(56,196,229,.018);
+}
+.home-japps .app-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(90,227,248,.70);
+  box-shadow:0 16px 36px rgba(0,5,18,.32),0 0 20px rgba(38,187,238,.11);
+}
+.home-japps .app-card[hidden]{display:none!important}
+.home-japps .app-icon{
+  display:grid;place-items:center;width:61px;height:61px;flex:none;
+  font:800 29px/1 Georgia,serif;
+  color:#d9faff;margin:0 0 19px;border-radius:17px;
+  background:linear-gradient(140deg,#276982,#102a48);
+  border:1px solid rgba(107,226,252,.44);
+  box-shadow:inset 0 1px rgba(255,255,255,.13),0 6px 19px rgba(0,0,0,.24),0 0 22px rgba(49,198,244,.10);
+  text-shadow:0 0 12px rgba(127,237,255,.24);
+}
+.home-japps .app-icon span{color:#80f2ff}
+.home-japps .app-terracotta{background:linear-gradient(135deg,#80627c,#273358);border-color:rgba(247,166,206,.52)}
+.home-japps .app-yellow{background:linear-gradient(135deg,#8c8054,#32445e);border-color:rgba(243,221,151,.58)}
+.home-japps .app-lilac{background:linear-gradient(135deg,#7657a0,#26325b);border-color:rgba(208,164,255,.54)}
+.home-japps .app-sand{background:linear-gradient(135deg,#82685f,#33405c);border-color:rgba(239,189,157,.55)}
+.home-japps .app-slate{background:linear-gradient(135deg,#356784,#26364f);border-color:rgba(135,208,245,.52)}
+.home-japps .app-peach{background:linear-gradient(135deg,#8d5881,#383259);border-color:rgba(248,166,203,.54)}
+.home-japps .app-mint{background:linear-gradient(135deg,#357e77,#253c56);border-color:rgba(129,235,205,.55)}
+.home-japps .app-tag{
+  color:#69cce8;font-size:9px;font-weight:850;letter-spacing:.14em;
+}
+.home-japps .app-card h3{
+  margin:11px 0 8px;color:#e9faff;font-size:19px;line-height:1.25;letter-spacing:-.03em;
+}
+.home-japps .app-card p{
+  color:#a7c4d2;font-size:12px;line-height:1.7;margin:0 0 20px;flex:1;
+}
+.home-japps .project-status{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding-top:13px;border-top:1px solid rgba(94,180,204,.21);
+  font-size:10px;letter-spacing:.10em;font-weight:850;color:#88e9f5;
+}
+.home-japps a.project-status{text-decoration:none}
+.home-japps a.project-status:hover{color:#fff}
+.home-japps a.project-status:focus-visible{outline:2px solid #87eaff;outline-offset:3px}
+.home-japps .homepage-catalog-link{margin-top:29px}
+.home-japps .homepage-catalog-link .button-primary{
+  background:linear-gradient(110deg,#62e4fc,#22bce4);color:#07283a;
+  border:1px solid #7ce9fa;border-radius:9px;
+  box-shadow:0 7px 29px rgba(34,191,235,.26);
+  font-weight:850;
+}
+.home-japps .homepage-catalog-link .button-primary:hover{
+  box-shadow:0 11px 35px rgba(34,191,235,.4);
+}
+
+/* ─────────── 03 / J Retro Arcade hybrid premium ─────────── */
+.home-retro-arcade{
+  --hr-cyan:#64edf6;--hr-pink:#ff5cbd;--hr-yellow:#ffe29a;
+  position:relative;isolation:isolate;overflow:hidden;
+  color:#f1f4ff;border-bottom:1px solid rgba(108,184,235,.26);
+  background:
+    radial-gradient(ellipse at 81% 40%,rgba(121,54,174,.29),transparent 43%),
+    radial-gradient(ellipse at 4% 92%,rgba(13,114,150,.18),transparent 45%),
+    linear-gradient(125deg,#090e22,#11122e 55%,#080e1e);
+}
+.home-retro-arcade::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(rgba(102,153,226,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(102,153,226,.05) 1px,transparent 1px);
+  background-size:51px 51px;
+}
+.home-retro-arcade .arcade-layout{min-height:495px;gap:35px}
+.home-retro-arcade .arcade-copy{max-width:600px;padding:78px 0}
+.home-retro-arcade .arcade-copy .section-label{
+  font:800 10px/1.5 'Chakra Petch',ui-monospace,monospace;
+  color:#74effb;letter-spacing:.20em;
+}
+.home-retro-arcade .arcade-copy .section-label::before{
+  content:"✦";margin-right:10px;color:var(--hr-pink);
+}
+.home-retro-arcade .arcade-copy h2{
+  font:700 clamp(41px,5vw,71px)/1.08 'Chakra Petch',sans-serif;
+  letter-spacing:-.055em;color:#f4f5ff;margin:20px 0 19px;
+}
+.home-retro-arcade .arcade-copy h2 em{
+  font-style:normal;color:var(--hr-cyan);
+  text-shadow:0 0 32px rgba(100,237,246,.23);
+}
+.home-retro-arcade .arcade-copy p{
+  max-width:540px;font-size:14px;line-height:1.85;
+  color:#b5c5df;margin:0 0 24px;
+}
+.home-retro-actions{display:flex;flex-wrap:wrap;align-items:center;gap:19px}
+.home-retro-arcade .arcade-copy .button-primary{
+  background:#63ecf7;color:#06162a;border:1px solid #b0ffff;
+  border-radius:7px;padding:15px 22px;
+  box-shadow:0 0 0 5px rgba(93,235,248,.075),0 0 30px rgba(93,235,248,.25);
+  font:800 12px 'Chakra Petch',ui-monospace,monospace;letter-spacing:.09em;
+}
+.home-retro-arcade .arcade-copy .button-primary:hover{
+  box-shadow:0 0 0 6px rgba(93,235,248,.1),0 0 36px rgba(93,235,248,.45);
+}
+.home-retro-mode{
+  color:#a1f3c8;font:800 10px/1.5 'Chakra Petch',monospace;letter-spacing:.13em;
+}
+.home-retro-arcade .arcade-panel{min-height:455px;overflow:visible;isolation:isolate}
+.home-retro-arcade .arcade-panel::before{
+  content:"";position:absolute;z-index:-1;width:300px;height:300px;
+  background:rgba(255,83,180,.19);filter:blur(74px);border-radius:50%;
+}
+.home-retro-arcade .arcade-arc{
+  width:min(86%,405px);height:auto;aspect-ratio:1;
+  border:1px solid rgba(88,225,248,.33);
+  box-shadow:0 0 30px rgba(74,188,240,.07);
+  transform:rotate(-17deg); 
+}
+.home-retro-arcade .arcade-arc-two{
+  width:min(62%,290px);height:auto;border-color:rgba(255,92,189,.42);
+  transform:rotate(26deg);
+}
+.home-retro-arcade .arcade-symbol{
+  color:transparent;font-family:'Chakra Petch',monospace;
+  font-size:clamp(155px,18vw,248px);font-weight:900;
+  -webkit-text-stroke:2px rgba(104,239,249,.9);
+  text-shadow:6px 8px 0 rgba(255,92,189,.42),0 0 50px rgba(100,237,246,.2);
+  transform:rotate(-10deg);
+}
+.home-retro-arcade .arcade-symbol span{
+  font:800 14px 'Chakra Petch',sans-serif;letter-spacing:.40em;
+  color:var(--hr-yellow);text-shadow:0 0 17px rgba(255,226,154,.3);
+  -webkit-text-stroke:0;
+  margin-top:-25px;margin-left:90px;transform:rotate(10deg);
+}
+.home-retro-arcade .arcade-stamp{
+  color:#a8bacf;bottom:22px;letter-spacing:.15em;
+  font:800 9px 'Chakra Petch',ui-monospace,monospace;text-align:center;
+}
+.home-retro-corner{
+  position:absolute;padding:8px 11px;
+  border:1px solid rgba(96,238,248,.4);border-radius:4px;
+  background:#101a37;color:#a8f4ff;
+  font:800 9px 'Chakra Petch',monospace;letter-spacing:.13em;
+  box-shadow:0 0 16px rgba(96,238,248,.12);
+}
+.home-retro-corner-top{top:18px;left:8%}
+.home-retro-corner-bottom{bottom:55px;right:0;color:#ffe29a;border-color:rgba(255,226,154,.36)}
+
+@media(max-width:1100px){
+ .home-japps .app-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .home-retro-arcade .arcade-layout{gap:10px}
+ .home-retro-arcade .arcade-arc{width:min(90%,315px)}
+ .home-retro-arcade .arcade-arc-two{width:min(63%,210px)}
+}
+@media(max-width:820px){
+ .home-japps .section-shell{padding-top:69px;padding-bottom:73px}
+ .home-japps .app-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .home-japps .section-heading{display:block}
+ .home-japps .section-heading>p{margin-top:16px}
+ .home-japps::after{opacity:.08;width:310px;height:310px}
+ .home-retro-arcade .arcade-layout{grid-template-columns:1fr}
+ .home-retro-arcade .arcade-copy{padding:66px 0 3px}
+ .home-retro-arcade .arcade-panel{min-height:335px}
+ .home-retro-arcade .arcade-symbol{font-size:186px}
+ .home-retro-arcade .arcade-symbol span{font-size:11px;margin-left:62px}
+ .home-retro-corner-bottom{right:8%}
+}
+@media(max-width:600px){
+ .home-japps .section-shell{padding-top:58px;padding-bottom:61px}
+ .home-japps .section-heading h2{font-size:42px}
+ .home-japps .section-heading>p{font-size:12px}
+ .home-japps .chips{gap:7px;margin-bottom:24px}
+ .home-japps .chip{font-size:10px;min-height:32px;padding:7px 12px}
+ .home-japps .app-grid{grid-template-columns:1fr}
+ .home-japps .app-card{min-height:230px;padding:20px}
+ .home-japps .app-icon{width:53px;height:53px;margin-bottom:14px}
+ .home-japps .app-card h3{font-size:18px}
+ .home-japps .homepage-catalog-link .button{width:100%;text-align:center;justify-content:center}
+ .home-retro-arcade .arcade-copy{padding-top:63px}
+ .home-retro-arcade .arcade-copy h2{font-size:47px}
+ .home-retro-arcade .arcade-copy p{font-size:13px}
+ .home-retro-arcade .arcade-panel{min-height:275px}
+ .home-retro-arcade .arcade-arc{width:min(84%,250px)}
+ .home-retro-arcade .arcade-arc-two{width:min(58%,170px)}
+ .home-retro-arcade .arcade-symbol{font-size:153px}
+ .home-retro-arcade .arcade-symbol span{font-size:10px;margin-top:-10px;margin-left:47px}
+ .home-retro-arcade .arcade-stamp{bottom:15px;font-size:8px}
+ .home-retro-corner{font-size:8px;padding:6px 8px}
+ .home-retro-corner-top{top:7px;left:5%}
+ .home-retro-corner-bottom{bottom:42px;right:0}
+}
+@media(prefers-reduced-motion:reduce){
+ .home-japps .app-card,.home-japps .chip{transition:none!important}
+}
