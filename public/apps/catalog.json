@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "brand": "Just 24 Things by J&J",
   "release": {
     "repository": "jebinc324/J-Digital-Hub",
@@ -7,7 +7,7 @@
     "source": "GitHub Releases public API",
     "lastVerified": "2026-10-14"
   },
-  "notice": "All 32 selected Open projects have files published to public GitHub Releases. The 10 Restricted projects have no public download links. Upload presence does not establish build compatibility or safety.",
+  "notice": "Free launch: all 42 projects are openly listed; 32 public download files are live. 10 additional downloads are pending APK safety/version checks and manual GitHub Release upload. No website login required.",
   "items": [
     {
       "id": "j-control-hub",
@@ -71,13 +71,14 @@
       "name": "J WiFi Share",
       "family": "Android",
       "type": "Android app",
-      "access": "restricted",
+      "access": "public",
       "description": "Send and receive files across your local network.",
       "versionLabel": "v0.5.x",
       "uploadedFile": true,
       "releaseAsset": "",
       "approxSizeMB": null,
-      "note": ""
+      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
+      "launchStatus": "awaiting-release-review"
     },
     {
       "id": "j-dj-studio",
@@ -141,26 +142,28 @@
       "name": "J Grocery Planner",
       "family": "Android",
       "type": "Android app",
-      "access": "restricted",
+      "access": "public",
       "description": "Budget-friendly grocery planning and price tracking.",
       "versionLabel": "v0.8.1 referenced",
       "uploadedFile": true,
       "releaseAsset": "",
       "approxSizeMB": null,
-      "note": ""
+      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
+      "launchStatus": "awaiting-release-review"
     },
     {
       "id": "j-expense-tracker-my-expense-tracker",
       "name": "J Expense Tracker / My Expense Tracker",
       "family": "Android",
       "type": "Android app",
-      "access": "restricted",
+      "access": "public",
       "description": "Expenses, budgets, savings and reporting.",
       "versionLabel": "v3.2.x",
       "uploadedFile": true,
       "releaseAsset": "",
       "approxSizeMB": null,
-      "note": ""
+      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
+      "launchStatus": "awaiting-release-review"
     },
     {
       "id": "j-media-player",
@@ -186,13 +189,14 @@
       "name": "J Flow Launcher",
       "family": "Android",
       "type": "Android app",
-      "access": "restricted",
+      "access": "public",
       "description": "A custom Android home launcher.",
       "versionLabel": "v0.8.1",
       "uploadedFile": true,
       "releaseAsset": "",
       "approxSizeMB": null,
-      "note": ""
+      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
+      "launchStatus": "awaiting-release-review"
     },
     {
       "id": "j-kids-fun-pack",
@@ -256,26 +260,28 @@
       "name": "J PDF Toolkit",
       "family": "Android",
       "type": "Android app",
-      "access": "restricted",
+      "access": "public",
       "description": "PDF reading and document utility.",
       "versionLabel": "v1.0.1",
       "uploadedFile": true,
       "releaseAsset": "",
       "approxSizeMB": null,
-      "note": ""
+      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
+      "launchStatus": "awaiting-release-review"
     },
     {
       "id": "j-archive-manager",
       "name": "J Archive Manager",
       "family": "Android",
       "type": "Android app",
-      "access": "restricted",
+      "access": "public",
       "description": "Manage and organize archive files.",
       "versionLabel": "v1.0.2",
       "uploadedFile": true,
       "releaseAsset": "",
       "approxSizeMB": null,
-      "note": ""
+      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
+      "launchStatus": "awaiting-release-review"
     },
     {
       "id": "j-ar-room-designer",
@@ -339,13 +345,14 @@
       "name": "J Calorie Tracker",
       "family": "Android",
       "type": "Android app",
-      "access": "restricted",
+      "access": "public",
       "description": "Personal meal and calorie tracking.",
       "versionLabel": "v1.0.0 project",
       "uploadedFile": true,
       "releaseAsset": "",
       "approxSizeMB": null,
-      "note": ""
+      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
+      "launchStatus": "awaiting-release-review"
     },
     {
       "id": "j-photo-studio",
@@ -390,39 +397,42 @@
       "name": "Nifty Lot Calculator",
       "family": "Android",
       "type": "Android app",
-      "access": "restricted",
+      "access": "public",
       "description": "Indian options lot and risk calculator.",
       "versionLabel": "GitHub repository",
       "uploadedFile": true,
       "releaseAsset": "",
       "approxSizeMB": null,
-      "note": ""
+      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
+      "launchStatus": "awaiting-release-review"
     },
     {
       "id": "my-daily-tracker",
       "name": "My Daily Tracker",
       "family": "Android",
       "type": "Android app",
-      "access": "restricted",
+      "access": "public",
       "description": "Daily routines and personal tracking.",
       "versionLabel": "GitHub repository",
       "uploadedFile": true,
       "releaseAsset": "",
       "approxSizeMB": null,
-      "note": ""
+      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
+      "launchStatus": "awaiting-release-review"
     },
     {
       "id": "j-algo-trader-app-replay-concept",
       "name": "J Algo Trader (app/replay concept)",
       "family": "Android",
       "type": "Android app",
-      "access": "restricted",
+      "access": "public",
       "description": "Market analysis and replay research.",
       "versionLabel": "Research stage",
       "uploadedFile": true,
       "releaseAsset": "",
       "approxSizeMB": null,
-      "note": "Debug APK only about 60 KB; verify before sharing. Debug/test build: confirm a production-ready version."
+      "note": "Debug APK only about 60 KB; verify before sharing. Debug/test build: confirm a production-ready version. Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
+      "launchStatus": "awaiting-release-review"
     },
     {
       "id": "j-revit-tools-combined",
@@ -747,5 +757,23 @@
         "sha256": "b8e56ac22defacb7f8da28ed257adffbe46c70933c798c1f591343f21a301f62"
       }
     }
-  ]
+  ],
+  "launch": {
+    "edition": "J&J Free Launch",
+    "pricing": "free",
+    "accountRequired": false,
+    "updatedAt": "2026-10-14",
+    "pendingSafetyChecks": [
+      "j-wifi-share",
+      "j-grocery-planner",
+      "j-expense-tracker-my-expense-tracker",
+      "j-flow-launcher",
+      "j-pdf-toolkit",
+      "j-archive-manager",
+      "j-calorie-tracker",
+      "nifty-lot-calculator",
+      "my-daily-tracker",
+      "j-algo-trader-app-replay-concept"
+    ]
+  }
 }
