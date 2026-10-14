@@ -5,9 +5,10 @@
     "repository": "jebinc324/J-Digital-Hub",
     "tag": "just24-public-v1",
     "source": "GitHub Releases public API",
-    "lastVerified": "2026-10-14"
+    "lastVerified": "2026-10-14",
+    "filenameMappingConfigured": "2026-10-14"
   },
-  "notice": "Free launch: all 42 projects are openly listed; 32 public download files are live. 10 additional downloads are pending APK safety/version checks and manual GitHub Release upload. No website login required.",
+  "notice": "J&J Free Launch: all 42 listed projects are free. 32 official release assets are currently hosted, while 10 planned APK filenames are mapped for automatic discovery when uploaded to the same public GitHub Release. Uploaded does not imply verified functionality.",
   "items": [
     {
       "id": "j-control-hub",
@@ -75,7 +76,7 @@
       "description": "Send and receive files across your local network.",
       "versionLabel": "v0.5.x",
       "uploadedFile": true,
-      "releaseAsset": "",
+      "releaseAsset": "j-wifi-share.apk",
       "approxSizeMB": null,
       "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
       "launchStatus": "awaiting-release-review"
@@ -146,7 +147,7 @@
       "description": "Budget-friendly grocery planning and price tracking.",
       "versionLabel": "v0.8.1 referenced",
       "uploadedFile": true,
-      "releaseAsset": "",
+      "releaseAsset": "j-grocery-planner.apk",
       "approxSizeMB": null,
       "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
       "launchStatus": "awaiting-release-review"
@@ -160,7 +161,7 @@
       "description": "Expenses, budgets, savings and reporting.",
       "versionLabel": "v3.2.x",
       "uploadedFile": true,
-      "releaseAsset": "",
+      "releaseAsset": "j-expense-tracker-my-expense-tracker.apk",
       "approxSizeMB": null,
       "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
       "launchStatus": "awaiting-release-review"
@@ -193,7 +194,7 @@
       "description": "A custom Android home launcher.",
       "versionLabel": "v0.8.1",
       "uploadedFile": true,
-      "releaseAsset": "",
+      "releaseAsset": "j-flow-launcher.apk",
       "approxSizeMB": null,
       "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
       "launchStatus": "awaiting-release-review"
@@ -264,7 +265,7 @@
       "description": "PDF reading and document utility.",
       "versionLabel": "v1.0.1",
       "uploadedFile": true,
-      "releaseAsset": "",
+      "releaseAsset": "j-pdf-toolkit.apk",
       "approxSizeMB": null,
       "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
       "launchStatus": "awaiting-release-review"
@@ -278,7 +279,7 @@
       "description": "Manage and organize archive files.",
       "versionLabel": "v1.0.2",
       "uploadedFile": true,
-      "releaseAsset": "",
+      "releaseAsset": "j-archive-manager.apk",
       "approxSizeMB": null,
       "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
       "launchStatus": "awaiting-release-review"
@@ -349,7 +350,7 @@
       "description": "Personal meal and calorie tracking.",
       "versionLabel": "v1.0.0 project",
       "uploadedFile": true,
-      "releaseAsset": "",
+      "releaseAsset": "j-calorie-tracker.apk",
       "approxSizeMB": null,
       "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
       "launchStatus": "awaiting-release-review"
@@ -401,7 +402,7 @@
       "description": "Indian options lot and risk calculator.",
       "versionLabel": "GitHub repository",
       "uploadedFile": true,
-      "releaseAsset": "",
+      "releaseAsset": "nifty-lot-calculator.apk",
       "approxSizeMB": null,
       "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
       "launchStatus": "awaiting-release-review"
@@ -415,7 +416,7 @@
       "description": "Daily routines and personal tracking.",
       "versionLabel": "GitHub repository",
       "uploadedFile": true,
-      "releaseAsset": "",
+      "releaseAsset": "my-daily-tracker.apk",
       "approxSizeMB": null,
       "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
       "launchStatus": "awaiting-release-review"
@@ -429,7 +430,7 @@
       "description": "Market analysis and replay research.",
       "versionLabel": "Research stage",
       "uploadedFile": true,
-      "releaseAsset": "",
+      "releaseAsset": "j-algo-trader-app-replay-concept.apk",
       "approxSizeMB": null,
       "note": "Debug APK only about 60 KB; verify before sharing. Debug/test build: confirm a production-ready version. Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
       "launchStatus": "awaiting-release-review"
