@@ -97,3 +97,23 @@ html.jj-motion-enabled .cover-frame .cover-image {
     transform:translateY(-4px);
   }
 }
+
+/* Dialog entrance/exit: subtle depth, no layout or download behavior changes. */
+@keyframes jj-dialog-enter {
+  from { opacity:0; transform:translate3d(0,18px,0) scale(.985); }
+  to { opacity:1; transform:translate3d(0,0,0) scale(1); }
+}
+@keyframes jj-dialog-backdrop {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+html.jj-motion-enabled .j2-dialog[open] {
+  animation:jj-dialog-enter 340ms cubic-bezier(.2,.8,.2,1) both;
+}
+html.jj-motion-enabled .j2-dialog[open]::backdrop {
+  animation:jj-dialog-backdrop 340ms ease-out both;
+}
+@media(prefers-reduced-motion:reduce) {
+  html.jj-motion-enabled .j2-dialog[open],
+  html.jj-motion-enabled .j2-dialog[open]::backdrop { animation:none!important; }
+}
