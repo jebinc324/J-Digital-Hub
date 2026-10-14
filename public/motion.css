@@ -2,13 +2,13 @@
    Visual-only: no layout mutations; never hide content without JS support. */
 @keyframes jj-brand-form {
   0% { opacity:0; filter:blur(6px); transform:translate3d(var(--jx,0px),var(--jy,9px),0) rotate(var(--jr,0deg)); }
-  100% { opacity:1; filter:blur(0); transform:translate3d(0,0,0) rotate(0); }
+  100% { opacity:1; filter:blur(0); transform:translate3d(0,0,0) rotate(var(--jend,0deg)); }
 }
 @keyframes jj-soft-orbit {
   0%,100% { opacity:.66; transform:translate3d(0,0,0) scale(1); }
   50% { opacity:1; transform:translate3d(8px,-6px,0) scale(1.035); }
 }
-html.jj-motion-enabled .site-logo .logo-script { --jx:-17px; --jy:9px; --jr:-13deg; animation:jj-brand-form 790ms cubic-bezier(.18,.8,.25,1) both; }
+html.jj-motion-enabled .site-logo .logo-script { --jend:-8deg; --jx:-17px; --jy:9px; --jr:-13deg; animation:jj-brand-form 790ms cubic-bezier(.18,.8,.25,1) both; }
 html.jj-motion-enabled .site-logo .logo-rule { --jx:0px; --jy:-12px; animation:jj-brand-form 730ms 65ms cubic-bezier(.18,.8,.25,1) both; }
 html.jj-motion-enabled .site-logo .logo-24 { --jx:0px; --jy:18px; --jr:7deg; animation:jj-brand-form 830ms 115ms cubic-bezier(.18,.8,.25,1) both; }
 html.jj-motion-enabled .site-logo .logo-things { --jx:17px; --jy:8px; --jr:6deg; animation:jj-brand-form 800ms 180ms cubic-bezier(.18,.8,.25,1) both; }
@@ -88,4 +88,12 @@ html.jj-motion-enabled .cover-frame .cover-image {
   html.jj-motion-enabled .site-logo span,html.jj-motion-enabled .announcement-star{animation:none!important}
   html.jj-motion-enabled .cover-frame .cover-image,
   html.jj-motion-enabled .jj-parallax-logo{transform:none!important}
+}
+
+@media(hover:hover) and (pointer:fine) {
+  html.jj-motion-enabled .j2-card.jj-visible:hover,
+  html.jj-motion-enabled .thing-card.jj-visible:hover,
+  html.jj-motion-enabled .info-card.jj-visible:hover {
+    transform:translateY(-4px);
+  }
 }
