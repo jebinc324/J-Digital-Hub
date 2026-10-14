@@ -1,0 +1,247 @@
+/* J ARCADE / HYBRID RETRO PREMIUM — public /games/ only.
+   Preserves site brand structure and original iframe gameplay. */
+body.jj-retro-arcade{
+ --retro-night:#080c1d; --retro-deep:#0d1230; --retro-panel:#111a36;
+ --retro-cyan:#56eff5; --retro-pink:#ff5abf; --retro-violet:#ae78ff;
+ --retro-yellow:#ffe38b; --retro-line:rgba(112,186,244,.22);
+ background:var(--retro-night);color:#ecf6ff;
+ --ink:#ecf6ff;--muted:#abc0d9;--border:rgba(112,186,244,.22);
+ --warm:#10162f;--panel:#151d39;--olive:#65e8ec;--olive-deep:#56eff5;
+}
+body.jj-retro-arcade .announcement{
+ background:#080d20;color:#86cbdc;letter-spacing:.26em;
+ border-bottom:1px solid rgba(86,239,245,.16);
+}
+body.jj-retro-arcade .announcement-star{color:var(--retro-pink)}
+body.jj-retro-arcade .site-header{
+ background:rgba(9,15,34,.96);
+ border-bottom:1px solid rgba(86,239,245,.22);
+ box-shadow:0 11px 38px rgba(3,9,25,.5);
+}
+body.jj-retro-arcade .site-logo .logo-script,
+body.jj-retro-arcade .site-logo .logo-things,
+body.jj-retro-arcade .site-logo .jj-logo-byline{color:#f5faff}
+body.jj-retro-arcade .site-logo .logo-24{color:var(--retro-cyan);text-shadow:0 0 15px rgba(86,239,245,.36)}
+body.jj-retro-arcade .site-logo .logo-rule{background:rgba(86,239,245,.4)}
+body.jj-retro-arcade .nav-links a{color:#bbd0e2}
+body.jj-retro-arcade .nav-links a[aria-current=page]{color:#63f3fa;text-shadow:0 0 13px rgba(86,239,245,.46)}
+body.jj-retro-arcade .nav-links a:hover{color:#fff}
+body.jj-retro-arcade .theme-toggle{
+ background:#111d3c;border-color:rgba(86,239,245,.22);color:#d8fcff;
+}
+body.jj-retro-arcade .nav-youtube{
+ background:#164a56;color:#edfbff;border:1px solid rgba(86,239,245,.28);
+}
+body.jj-retro-arcade .menu-toggle{color:#d9f5f8}
+body.jj-retro-arcade .jj-scroll-progress{
+ background:linear-gradient(90deg,var(--retro-pink),var(--retro-violet),var(--retro-cyan));
+ box-shadow:0 0 14px rgba(86,239,245,.45);
+}
+body.jj-retro-arcade .jj-back-to-top{
+ background:#182449;color:var(--retro-cyan);border-color:rgba(86,239,245,.6);
+ box-shadow:0 0 23px rgba(86,239,245,.20);
+}
+body.jj-retro-arcade .jj-back-to-top-arrow{border-color:rgba(86,239,245,.4)}
+body.jj-retro-arcade .site-footer{
+ background:#080d1d;border-top:1px solid rgba(86,239,245,.24);
+}
+body.jj-retro-arcade .site-footer a,body.jj-retro-arcade .site-footer .footer-brand{color:#f3f8ff}
+body.jj-retro-arcade .site-footer .footer-brand span{color:var(--retro-cyan)}
+
+/* Responsive retro hall and fine CRT grid; purely decorative. */
+body.jj-retro-arcade main{
+ position:relative;isolation:isolate;
+ overflow:hidden;
+ background:
+ radial-gradient(ellipse at 82% 13%,rgba(121,52,190,.26),transparent 34%),
+ radial-gradient(ellipse at 0% 40%,rgba(17,162,190,.13),transparent 38%),
+ linear-gradient(180deg,#0c1430 0%,#090d22 52%,#080d1d 100%);
+}
+body.jj-retro-arcade main:before{
+ content:"";pointer-events:none;position:absolute;inset:0;
+ background:linear-gradient(rgba(91,140,225,.035) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(91,140,225,.035) 1px,transparent 1px);
+ background-size:52px 52px;opacity:.7;z-index:-1;
+}
+body.jj-retro-arcade main:after{
+ content:"";pointer-events:none;position:absolute;inset:0;
+ background:repeating-linear-gradient(to bottom,transparent 0 4px,rgba(2,6,18,.07) 5px 6px);
+ opacity:.36;z-index:10;
+}
+body.jj-retro-arcade .j-arcade-page-hero{
+ position:relative;padding-top:75px;padding-bottom:90px;
+}
+body.jj-retro-arcade .j-arcade-hero-layout{
+ display:grid;grid-template-columns:minmax(0,1.15fr) minmax(290px,.85fr);
+ gap:30px;align-items:center;
+}
+body.jj-retro-arcade .j-arcade-page-hero .section-label,
+body.jj-retro-arcade .j-arcade-play-heading .section-label{
+ color:var(--retro-cyan);letter-spacing:.20em;
+ font:700 10px/1.4 "Chakra Petch",ui-monospace,monospace;
+}
+body.jj-retro-arcade .j-arcade-kicker-dot{color:var(--retro-pink);margin-right:11px;text-shadow:0 0 13px currentColor}
+body.jj-retro-arcade .j-arcade-page-hero h1{
+ color:#f2f5ff;max-width:770px;
+ font:700 clamp(44px,5.4vw,78px)/1.08 "Chakra Petch",system-ui,sans-serif;
+ letter-spacing:-.065em;margin:20px 0 24px;
+ text-shadow:0 7px 28px rgba(0,0,0,.24);
+}
+body.jj-retro-arcade .j-arcade-page-hero h1 em{
+ font-style:normal;color:var(--retro-cyan);
+ text-shadow:0 0 30px rgba(86,239,245,.25);
+}
+body.jj-retro-arcade .j-arcade-page-hero .inner-lead{
+ color:#bdcce4;font-size:15px;line-height:1.8;max-width:640px;
+}
+body.jj-retro-arcade .j-arcade-hero-actions{gap:17px;align-items:center}
+body.jj-retro-arcade .j-arcade-start{
+ display:inline-flex;align-items:center;gap:13px;
+ color:#061326!important;background:var(--retro-cyan)!important;
+ padding:15px 22px;border:1px solid #b8ffff!important;
+ border-radius:7px;text-decoration:none;
+ box-shadow:0 0 0 5px rgba(86,239,245,.08),0 0 28px rgba(86,239,245,.28);
+ font:800 13px/1.2 "Chakra Petch",sans-serif;letter-spacing:.12em;
+}
+body.jj-retro-arcade .j-arcade-start:hover{box-shadow:0 0 0 6px rgba(86,239,245,.13),0 0 36px rgba(86,239,245,.47)}
+body.jj-retro-arcade .j-arcade-mode{
+ display:inline-flex;align-items:center;gap:9px;color:#b0ffbd;
+ font:700 10px "Chakra Petch",sans-serif;letter-spacing:.18em;
+}
+body.jj-retro-arcade .j-arcade-mode:before{
+ content:"";width:7px;height:7px;border-radius:50%;background:#a2f5ba;box-shadow:0 0 10px #70e89f;
+}
+body.jj-retro-arcade .j-arcade-credit-strip{
+ display:flex;flex-wrap:wrap;gap:12px;margin-top:35px;
+}
+body.jj-retro-arcade .j-arcade-credit-strip span{
+ border:1px solid rgba(100,178,222,.25);border-radius:4px;
+ padding:8px 11px;color:#a1b6d0;background:rgba(10,20,44,.58);
+ font:700 10px "Chakra Petch",ui-monospace,monospace;letter-spacing:.09em;
+}
+body.jj-retro-arcade .j-arcade-credit-strip strong{color:var(--retro-yellow)}
+/* Retro decorative visual, no image/network assets. */
+body.jj-retro-arcade .j-arcade-hero-visual{
+ position:relative;display:grid;place-items:center;min-height:345px;
+ isolation:isolate;
+}
+body.jj-retro-arcade .j-arcade-hero-visual:before{
+ content:"";position:absolute;inset:11% 8%;border:1px solid rgba(86,239,245,.26);
+ border-radius:50%;box-shadow:0 0 0 35px rgba(86,239,245,.027),0 0 0 78px rgba(255,90,191,.017);
+ transform:rotate(-17deg) scaleX(1.05);
+}
+body.jj-retro-arcade .j-arcade-hero-visual:after{
+ content:"";position:absolute;width:240px;height:240px;border-radius:50%;
+ background:rgba(255,90,191,.10);filter:blur(64px);z-index:-1;
+}
+body.jj-retro-arcade .j-arcade-hero-mark{
+ font:900 clamp(138px,18vw,255px)/.9 "Chakra Petch",monospace;
+ letter-spacing:-.11em;transform:rotate(-10deg);color:transparent;
+ -webkit-text-stroke:2px rgba(86,239,245,.94);
+ text-shadow:6px 8px 0 rgba(255,90,191,.4),0 0 54px rgba(86,239,245,.24);
+ filter:drop-shadow(0 0 26px rgba(86,239,245,.20));
+}
+body.jj-retro-arcade .j-arcade-hero-visual .j-retro-chip{
+ position:absolute;padding:9px 14px;
+ font:800 10px "Chakra Petch",ui-monospace,monospace;letter-spacing:.16em;
+ border-radius:4px;background:#101832;border:1px solid rgba(86,239,245,.5);
+ color:#e3fcff;box-shadow:0 0 19px rgba(86,239,245,.1);
+}
+body.jj-retro-arcade .j-retro-chip.top{top:18px;left:7%}
+body.jj-retro-arcade .j-retro-chip.bottom{bottom:18px;right:6%;color:var(--retro-yellow);border-color:rgba(255,227,139,.45)}
+body.jj-retro-arcade .j-arcade-play-area{
+ position:relative;z-index:1;scroll-margin-top:92px;
+ padding:70px 0 92px;background:linear-gradient(180deg,rgba(7,12,29,.15),rgba(13,16,41,.78));
+ border-top:1px solid rgba(86,239,245,.24);
+}
+body.jj-retro-arcade .j-arcade-play-heading{
+ align-items:center;margin:0 0 29px;
+}
+body.jj-retro-arcade .j-arcade-play-heading h2{
+ font:700 clamp(33px,4.4vw,60px)/1.12 "Chakra Petch",sans-serif;
+ color:#f0f7ff;letter-spacing:-.05em;margin:12px 0 0;
+}
+body.jj-retro-arcade .j-arcade-play-heading h2 em{
+ font-style:normal;color:var(--retro-pink);
+ text-shadow:0 0 20px rgba(255,90,191,.22);
+}
+body.jj-retro-arcade .j-arcade-play-heading p{color:#b1c4dc}
+body.jj-retro-arcade .j-arcade-shell{
+ width:min(100%,960px);overflow:hidden;position:relative;
+ border:2px solid rgba(104,240,247,.60);border-radius:20px;
+ background:#050a18;padding:8px;
+ box-shadow:0 0 0 7px rgba(81,200,240,.045),
+ 0 18px 75px rgba(0,0,0,.48),0 0 55px rgba(77,217,237,.13),
+ inset 0 0 26px rgba(86,239,245,.13);
+}
+body.jj-retro-arcade .j-arcade-shell:before{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ border-radius:19px;background:linear-gradient(145deg,rgba(86,239,245,.12),transparent 18%,transparent 75%,rgba(255,90,191,.12));
+}
+body.jj-retro-arcade .j-arcade-shell-bar{
+ position:relative;z-index:1;height:62px;
+ border-radius:11px 11px 0 0;
+ display:flex;gap:14px;align-items:center;
+ background:linear-gradient(90deg,#111f3f,#0b1530 56%,#1b1236);
+ border-bottom:1px solid rgba(86,239,245,.34);
+ padding:0 22px;box-shadow:none;
+}
+body.jj-retro-arcade .j-arcade-shell-bar strong{
+ color:var(--retro-cyan);text-shadow:0 0 17px rgba(86,239,245,.4);
+ font:800 14px "Chakra Petch",ui-monospace,monospace;letter-spacing:.18em;
+}
+body.jj-retro-arcade .j-arcade-lights i{width:9px;height:9px;box-shadow:0 0 10px currentColor}
+body.jj-retro-arcade .j-arcade-lights i:first-child{color:#ff697c;background:#ff697c}
+body.jj-retro-arcade .j-arcade-lights i:nth-child(2){color:#ffe38b;background:#ffe38b}
+body.jj-retro-arcade .j-arcade-lights i:nth-child(3){color:#79efc3;background:#79efc3}
+body.jj-retro-arcade .j-arcade-shell-status{
+ display:flex;align-items:center;gap:8px;color:#a7ffcf;
+ border-color:rgba(153,255,196,.42);background:rgba(18,77,68,.25);
+ font:800 9px "Chakra Petch",monospace;letter-spacing:.14em;
+}
+body.jj-retro-arcade .j-arcade-shell-status:before{content:"";width:6px;height:6px;background:#99ffc4;border-radius:50%;box-shadow:0 0 9px #99ffc4}
+body.jj-retro-arcade .j-arcade-player{
+ position:relative;z-index:1;
+ width:100%;background:#0f152b;
+ border-radius:0 0 9px 9px;
+}
+body.jj-retro-arcade .j-arcade-control-deck{
+ display:flex;justify-content:space-between;align-items:center;gap:15px;
+ width:min(100%,960px);margin:17px auto 0;
+ color:#8db1c6;font:700 10px "Chakra Petch",monospace;letter-spacing:.12em;
+}
+body.jj-retro-arcade .j-arcade-control-deck strong{color:var(--retro-yellow)}
+body.jj-retro-arcade .j-arcade-helper{
+ max-width:960px;text-align:left;font-size:12px;color:#93abc5;
+ border-top:1px solid rgba(96,172,225,.15);padding-top:18px;margin-top:19px;
+}
+@media(max-width:900px){
+ body.jj-retro-arcade .j-arcade-hero-layout{grid-template-columns:minmax(0,1fr) 240px;gap:14px}
+ body.jj-retro-arcade .j-arcade-hero-visual{min-height:260px}
+ body.jj-retro-arcade .j-arcade-hero-mark{font-size:155px}
+ body.jj-retro-arcade .j-arcade-hero-visual:before{inset:12% 0}
+}
+@media(max-width:700px){
+ body.jj-retro-arcade .site-header .nav-links{background:#0b132b;border-color:rgba(86,239,245,.22)}
+ body.jj-retro-arcade .j-arcade-hero-layout{grid-template-columns:1fr}
+ body.jj-retro-arcade .j-arcade-page-hero{padding:42px 0 40px}
+ body.jj-retro-arcade .j-arcade-page-hero h1{font-size:clamp(40px,9vw,63px)}
+ body.jj-retro-arcade .j-arcade-page-hero .inner-lead{font-size:13px}
+ body.jj-retro-arcade .j-arcade-hero-visual{display:none}
+ body.jj-retro-arcade .j-arcade-start{min-height:48px;padding:13px 17px}
+ body.jj-retro-arcade .j-arcade-credit-strip{margin-top:25px;gap:7px}
+ body.jj-retro-arcade .j-arcade-credit-strip span{font-size:9px;padding:7px 9px}
+ body.jj-retro-arcade .j-arcade-play-area{padding:38px 0 55px}
+ body.jj-retro-arcade .j-arcade-play-heading{display:block}
+ body.jj-retro-arcade .j-arcade-play-heading p{margin-top:10px;font-size:12px}
+ body.jj-retro-arcade .j-arcade-shell{padding:5px;border-radius:13px}
+ body.jj-retro-arcade .j-arcade-shell-bar{height:49px;padding:0 12px;gap:8px}
+ body.jj-retro-arcade .j-arcade-shell-bar strong{font-size:11px;letter-spacing:.08em}
+ body.jj-retro-arcade .j-arcade-shell-status{font-size:8px;padding:4px 6px}
+ body.jj-retro-arcade .j-arcade-control-deck{font-size:9px;flex-wrap:wrap;gap:4px}
+ body.jj-retro-arcade .j-arcade-helper{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+ body.jj-retro-arcade .j-arcade-hero-visual,
+ body.jj-retro-arcade .j-arcade-shell{animation:none!important}
+}
