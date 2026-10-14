@@ -93,3 +93,11 @@ This adds image media without changing existing binary download links. Do not in
 - The original game engine (`app.js`) and its local saved data, lives, stages, points, controls and resizing logic remain unchanged; the normal `/games/retro-arcade/` route retains its original appearance.
 - The single outer page scroll height bridge in `/games/embed.js` is preserved. No ZIP download option, login, or separate page/window is introduced.
 - CSS has responsive narrow-screen rules and reduced-motion support. Playthrough in desktop and mobile browsers is still recommended after deployment.
+
+## Paper Roll v2: collapse the empty height (2026-10-14)
+- Original homepage cover has a `jj-paper-slot` wrapper in `public/index.html`.
+- `public/motion.js` controls the wrapper's real pixel height during scrolling, so the introduction and following sections move up rather than leaving an empty clipped-image space. Reverses exactly on scroll up.
+- `public/motion.css` renders a thicker curved paper cylinder: 62px desktop and 42px mobile, plus a soft paper fold shadow. The original `just24-cover.webp` artwork is untouched.
+- The fixed-size/clip-only version left the entire banner height in document flow. It was replaced rather than stacked with another clip.
+- Reduced-motion users see the full original static cover; CSS and JS remain scoped to the homepage paper slot.
+- A local headless Chromium layout fixture passed both 1200px desktop and 390px mobile scroll-down/up reflow checks. The deployed Render site still needs a manual visual check.
