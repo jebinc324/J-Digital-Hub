@@ -17,3 +17,15 @@ body{background:var(--bg)}#app{min-height:100dvh;background:var(--bg);transition
 .dom-button{pointer-events:auto;position:absolute;border:0;cursor:pointer}.dom-grid{position:absolute;inset:0;pointer-events:none}
 @media(min-width:760px){.home-scroll{max-width:760px}.game-grid{grid-template-columns:repeat(3,1fr)}.game-card{height:222px}.game-card canvas{height:104px}.game-column{max-width:760px;margin:0 auto}.roadmap-body{max-width:760px;margin:0 auto}.sub-header{max-width:780px;margin:0 auto}.loading-wrap canvas{max-width:620px}.pause-card{width:600px}}
 @media(max-width:380px){.brand-title{font-size:21px}.brand-sub{font-size:8.5px}.home-header{gap:4px}.neo-chip{min-width:52px}.wallet-card{padding-left:13px}.wallet-copy{font-size:11px}.game-card{height:198px;padding:10px}.game-card h3{font-size:13px}.game-card canvas{height:88px}}
+
+
+/* Used only when embedded on /games/: the parent page owns vertical scroll.
+   Important: do NOT disable .roadmap-scroll; it is the 1000-stage map control. */
+html.jj-in-page-arcade,
+html.jj-in-page-arcade body {
+  overflow-x:hidden;
+  overflow-y:hidden;
+}
+html.jj-in-page-arcade { scrollbar-width:none; }
+html.jj-in-page-arcade::-webkit-scrollbar,
+html.jj-in-page-arcade body::-webkit-scrollbar {display:none}
