@@ -4,9 +4,9 @@ Website: https://just24things.onrender.com/apps/
 Repository: `jebinc324/J-Digital-Hub` (public static site, Render publish directory `public`).
 
 ## Launch status
-- 42 catalogue listings: 25 Android, 9 Revit Add-ins, 8 Revit Dynamo.
-- All 42 listings are free/open to browse; **no login or registration required**.
-- **42** public release files are linked directly from GitHub Releases.
+- 43 catalogue listings: 25 Android, 10 Revit Add-ins/standalone Revit tools, 8 Revit Dynamo.
+- All 43 listings are free/open to browse; **no login or registration required**.
+- **42** existing public release files are linked directly from GitHub Releases; the J Batch NWC standalone Revit 2024 package is pending publication and not counted as an available download.
 - The 10 additional Android APKs have also been uploaded and linked. Upload confirms availability, not safety or compatibility; these builds remain marked as independently untested.
 - GitHub Release: https://github.com/jebinc324/J-Digital-Hub/releases/tag/just24-public-v1
 - Original Just24Things homepage, cream/olive brand, 24 topics, J Apps cyan neon design, and **Just 24 Things by J&J** branding preserved.
@@ -58,3 +58,10 @@ This adds image media without changing existing binary download links. Do not in
 - Motion is off when the visitor enables reduced-motion in their operating system or when browser APIs are unsupported. Existing content, filters, navigation, themes, and download links remain functional without motion.
 - **Editor's Choice** now highlights Nifty Lot Calculator, J Expense Tracker / My Expense Tracker, and J Algo Trader (research/replay concept). The Algo build has not been installation-verified.
 - If polishing later, keep all app downloads and the original cover/J logo untouched. Test desktop and mobile scroll, search filtering, keyboard accessibility, and reduced-motion setting after deployment.
+
+## Arcade and Revit Batch NWC intake (2026-10-14)
+- Original Retro Arcade browser web package: `J-Retro-Arcade-Web-v0.2.1.zip` (stored in owner's Library).
+- Extract the web package and upload original website-root contents (including `index.html` and relative assets) to `public/games/retro-arcade/` on branch `main`. The folder is already reserved. Browser target: `/games/retro-arcade/`. The main `/games/` page currently says **original web files pending**; it does not claim working gameplay.
+- Revit catalogue contains **J Batch NWC Exporter — Revit 2024**, labelled a standalone Revit 2024 export utility, sourced from `J_Batch_NWC_Standalone_Revit2024.zip` (owner-supplied ~6.3 KB). Contents have not been inspected; do not assert it is a finished installer or verified NWC exporter.
+- Release filename reserved: `j-batch-nwc-standalone-revit2024.zip` on `just24-public-v1`. **Inspect archive before public distribution**, including scripts, credentials and required Autodesk/Navisworks dependencies. The frontend discovers the release asset by exact filename when uploaded; once uploaded, verify the actual URL/version/size before marking fully reviewed.
+- All 42 pre-existing J Apps download URLs and both site brand themes remain unchanged.
