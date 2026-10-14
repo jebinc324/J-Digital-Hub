@@ -73,9 +73,6 @@
      const placeholder=el('div','j2-shot-placeholder');placeholder.append(el('span','','▧'),el('strong','','Official screenshots coming soon'),el('p','','The original app screens will appear here once added to the media library.'));gallery.append(placeholder);
    }
    panel.append(gallery);
-   if(release?.hash){
-     const checksum=el('details','j2-hash');checksum.append(el('summary','','Download checksum (SHA-256)'),el('code','',release.hash));panel.append(checksum);
-   }
    details.append(media,panel);
    if(!dialog.open)dialog.showModal();
    if(updateUrl){const u=new URL(location.href);u.searchParams.set('app',item.id);history.pushState({jApp:item.id},'',u);}
