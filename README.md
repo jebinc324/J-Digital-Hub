@@ -6,7 +6,7 @@ Repository: `jebinc324/J-Digital-Hub` (public static site, Render publish direct
 ## Launch status
 - 43 catalogue listings: 25 Android, 10 Revit Add-ins/standalone Revit tools, 8 Revit Dynamo.
 - All 43 listings are free/open to browse; **no login or registration required**.
-- **42** existing public release files are linked directly from GitHub Releases; the J Batch NWC standalone Revit 2024 package is pending publication and not counted as an available download.
+- **43** project download files are linked directly from GitHub Releases, including J Batch NWC Exporter for Revit 2024. Existence does not verify installation or functionality.
 - The 10 additional Android APKs have also been uploaded and linked. Upload confirms availability, not safety or compatibility; these builds remain marked as independently untested.
 - GitHub Release: https://github.com/jebinc324/J-Digital-Hub/releases/tag/just24-public-v1
 - Original Just24Things homepage, cream/olive brand, 24 topics, J Apps cyan neon design, and **Just 24 Things by J&J** branding preserved.
@@ -33,9 +33,9 @@ This website is a public free-launch catalogue, not a security-scanned app store
 
 ## J Apps premium catalogue UI (October 14 update)
 
-- Premium, responsive cyan-neon product cards are live in `public/apps/index.html`, `catalog.js`, and `neon.css`. Original J-branded hero, global navigation, and all 42 downloads remain in place.
+- Premium, responsive cyan-neon product cards are live in `public/apps/index.html`, `catalog.js`, and `neon.css`. Original J-branded hero, global navigation, and all 43 downloads remain in place.
 - Includes featured apps, category filters, search, version metadata, APK/archive download size, free download actions, and a keyboard-closable product detail dialog.
-- Product details have an official screenshot gallery slot and show the release file SHA-256 (when available). Deep links can use `/apps/?app=j-control-hub`.
+- Product details have an official screenshot gallery slot. SHA-256 hashes remain in catalogue metadata but are hidden from visitors. Deep links can use `/apps/?app=j-control-hub`.
 - **No fake previews:** original per-app icons/screenshots are not yet present in this repository. The UI displays lettermark placeholders and a clearly labeled empty screenshot gallery until real media is provided.
 
 ### Add original app media later
@@ -53,7 +53,7 @@ This adds image media without changing existing binary download links. Do not in
 
 ## Premium sitewide animation update (2026-10-14)
 - Shared `/motion.css` + `/motion.js` are linked on the homepage, J Apps, J Arcade, Our Channel, and J Apps Free Launch information page.
-- Premium effects: J&J logo wordmark entrance, scattered headings gathering into place, one-time viewport card reveals, staggered app cards, gentle J Apps hero parallax, reading progress, and animated app-detail popup.
+- Premium effects: J&J logo wordmark entrance, scattered headings gathering into place, repeatable bidirectional viewport reveals (down and up), staggered app cards, gentle J Apps hero parallax, reading progress, and animated app-detail popup.
 - No external GSAP/CDN dependency. Uses `IntersectionObserver`, CSS transforms, passive scroll handling, and `requestAnimationFrame`.
 - Motion is off when the visitor enables reduced-motion in their operating system or when browser APIs are unsupported. Existing content, filters, navigation, themes, and download links remain functional without motion.
 - **Editor's Choice** now highlights Nifty Lot Calculator, J Expense Tracker / My Expense Tracker, and J Algo Trader (research/replay concept). The Algo build has not been installation-verified.
@@ -61,7 +61,13 @@ This adds image media without changing existing binary download links. Do not in
 
 ## Arcade and Revit Batch NWC intake (2026-10-14)
 - Original Retro Arcade browser web package: `J-Retro-Arcade-Web-v0.2.1.zip` (stored in owner's Library).
-- Extract the web package and upload original website-root contents (including `index.html` and relative assets) to `public/games/retro-arcade/` on branch `main`. The folder is already reserved. Browser target: `/games/retro-arcade/`. The main `/games/` page currently says **original web files pending**; it does not claim working gameplay.
+- Extract the web package and upload original website-root contents (including `index.html` and relative assets) to `public/games/retro-arcade/` on branch `main`. All six original web files are now uploaded. The `/games/` page links to `/games/retro-arcade/` as the solo browser play entry; Firebase multiplayer is not configured.
 - Revit catalogue contains **J Batch NWC Exporter — Revit 2024**, labelled a standalone Revit 2024 export utility, sourced from `J_Batch_NWC_Standalone_Revit2024.zip` (owner-supplied ~6.3 KB). Contents have not been inspected; do not assert it is a finished installer or verified NWC exporter.
-- Release filename reserved: `j-batch-nwc-standalone-revit2024.zip` on `just24-public-v1`. **Inspect archive before public distribution**, including scripts, credentials and required Autodesk/Navisworks dependencies. The frontend discovers the release asset by exact filename when uploaded; once uploaded, verify the actual URL/version/size before marking fully reviewed.
-- All 42 pre-existing J Apps download URLs and both site brand themes remain unchanged.
+- Release asset `j-batch-nwc-standalone-revit2024.zip` is now uploaded and linked on `just24-public-v1` (6,293 bytes). **Inspect and test the archive before treating it as a verified installer or NWC exporter**, including dependencies and confidential data risks.
+- The earlier 42 J Apps downloads remain, with the 43rd NWC tool added; both site brand themes remain unchanged.
+
+## Reversible paper-cover and scroll replay (2026-10-14)
+- `/motion.js` now keeps observing elements, resetting reveal only when they exit the viewport fully. Both scroll-down and scroll-up re-entry animate again.
+- The original home-cover image (`/assets/just24-cover.webp`) is untouched. A CSS clipped paper-edge rolls it up as scroll progresses and unrolls it when scrolling upward.
+- The effect is reversible and turns off for visitors who prefer reduced motion; it does not resize the page or replace the original banner.
+- J Retro Arcade Web v0.2.1 files are hosted under `/games/retro-arcade/`. Solo mode is the supported mode. Room-based online multiplayer requires an explicitly configured backend.
