@@ -8,7 +8,7 @@
     "lastVerified": "2026-10-14",
     "filenameMappingConfigured": "2026-10-14"
   },
-  "notice": "J&J Free Launch: all 42 listed projects are free. 32 official release assets are currently hosted, while 10 planned APK filenames are mapped for automatic discovery when uploaded to the same public GitHub Release. Uploaded does not imply verified functionality.",
+  "notice": "All 42 selected free project assets are uploaded to public GitHub Releases and direct download links are wired. Release existence only: APK signing, install behavior and Revit/Dynamo functionality have not been independently verified.",
   "items": [
     {
       "id": "j-control-hub",
@@ -20,7 +20,7 @@
       "versionLabel": "v0.7.24",
       "uploadedFile": true,
       "releaseAsset": "j-control-hub.apk",
-      "approxSizeMB": 56.02,
+      "approxSizeMB": 53.42,
       "note": "",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-control-hub.apk",
       "verifiedUpload": {
@@ -39,7 +39,7 @@
       "versionLabel": "v0.25.0",
       "uploadedFile": true,
       "releaseAsset": "j-mep-toolbox.apk",
-      "approxSizeMB": 13,
+      "approxSizeMB": 12.4,
       "note": "Debug/test build: confirm a production-ready version.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-mep-toolbox.apk",
       "verifiedUpload": {
@@ -58,7 +58,7 @@
       "versionLabel": "v0.8.1",
       "uploadedFile": true,
       "releaseAsset": "j-airgap-share.v1.apk",
-      "approxSizeMB": 29.73,
+      "approxSizeMB": 28.35,
       "note": "Debug/test build: confirm a production-ready version.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-airgap-share.v1.apk",
       "verifiedUpload": {
@@ -77,9 +77,15 @@
       "versionLabel": "v0.5.x",
       "uploadedFile": true,
       "releaseAsset": "j-wifi-share.apk",
-      "approxSizeMB": null,
-      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
-      "launchStatus": "awaiting-release-review"
+      "approxSizeMB": 23.87,
+      "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-wifi-share.apk",
+      "verifiedUpload": {
+        "file": "j-wifi-share.apk",
+        "sizeBytes": 25025685,
+        "sha256": "4b96271bd53688d4e5c5536cafd8bf1d0ac28ffcdefadaf310fda079d4f6b208"
+      }
     },
     {
       "id": "j-dj-studio",
@@ -91,7 +97,7 @@
       "versionLabel": "Checkpoint saved",
       "uploadedFile": true,
       "releaseAsset": "j-dj-studio.apk",
-      "approxSizeMB": 9.93,
+      "approxSizeMB": 9.47,
       "note": "",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-dj-studio.apk",
       "verifiedUpload": {
@@ -110,7 +116,7 @@
       "versionLabel": "v0.7.1",
       "uploadedFile": true,
       "releaseAsset": "j-earth-time-machine.apk",
-      "approxSizeMB": 26.58,
+      "approxSizeMB": 25.35,
       "note": "",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-earth-time-machine.apk",
       "verifiedUpload": {
@@ -129,7 +135,7 @@
       "versionLabel": "UI update series",
       "uploadedFile": true,
       "releaseAsset": "j-recovery-cleaner.apk",
-      "approxSizeMB": 14.47,
+      "approxSizeMB": 13.8,
       "note": "",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-recovery-cleaner.apk",
       "verifiedUpload": {
@@ -148,9 +154,15 @@
       "versionLabel": "v0.8.1 referenced",
       "uploadedFile": true,
       "releaseAsset": "j-grocery-planner.apk",
-      "approxSizeMB": null,
-      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
-      "launchStatus": "awaiting-release-review"
+      "approxSizeMB": 1.71,
+      "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-grocery-planner.apk",
+      "verifiedUpload": {
+        "file": "j-grocery-planner.apk",
+        "sizeBytes": 1797577,
+        "sha256": "92279f10c43bb70823a4ee22c06ab89465d97813459a5a8f98f8840657dc5e68"
+      }
     },
     {
       "id": "j-expense-tracker-my-expense-tracker",
@@ -162,9 +174,15 @@
       "versionLabel": "v3.2.x",
       "uploadedFile": true,
       "releaseAsset": "j-expense-tracker-my-expense-tracker.apk",
-      "approxSizeMB": null,
-      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
-      "launchStatus": "awaiting-release-review"
+      "approxSizeMB": 21.97,
+      "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-expense-tracker-my-expense-tracker.apk",
+      "verifiedUpload": {
+        "file": "j-expense-tracker-my-expense-tracker.apk",
+        "sizeBytes": 23033610,
+        "sha256": "db1c04ed7ad9c3e32f751795beca43804547d5c197f82cf3e99ac620f35157e8"
+      }
     },
     {
       "id": "j-media-player",
@@ -176,7 +194,7 @@
       "versionLabel": "v1.3.1",
       "uploadedFile": true,
       "releaseAsset": "j-media-player.apk",
-      "approxSizeMB": 11.34,
+      "approxSizeMB": 10.82,
       "note": "Uploaded 0.1.1 APK; later v1.3.1 release was discussed.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-media-player.apk",
       "verifiedUpload": {
@@ -195,9 +213,15 @@
       "versionLabel": "v0.8.1",
       "uploadedFile": true,
       "releaseAsset": "j-flow-launcher.apk",
-      "approxSizeMB": null,
-      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
-      "launchStatus": "awaiting-release-review"
+      "approxSizeMB": 1.55,
+      "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-flow-launcher.apk",
+      "verifiedUpload": {
+        "file": "j-flow-launcher.apk",
+        "sizeBytes": 1627673,
+        "sha256": "97e1e8eadd722bc279cb456c9df1b669d242fbb19798b317a3b9aa91c094cf66"
+      }
     },
     {
       "id": "j-kids-fun-pack",
@@ -209,7 +233,7 @@
       "versionLabel": "v2.7 package",
       "uploadedFile": true,
       "releaseAsset": "j-kids-fun-pack.apk",
-      "approxSizeMB": 25.2,
+      "approxSizeMB": 24.04,
       "note": "Debug/test build: confirm a production-ready version.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-kids-fun-pack.apk",
       "verifiedUpload": {
@@ -228,7 +252,7 @@
       "versionLabel": "v1.5.4",
       "uploadedFile": true,
       "releaseAsset": "j-retro-arcade.apk",
-      "approxSizeMB": 3.27,
+      "approxSizeMB": 3.12,
       "note": "Debug/test build: confirm a production-ready version.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-retro-arcade.apk",
       "verifiedUpload": {
@@ -247,7 +271,7 @@
       "versionLabel": "v0.5.0-dev",
       "uploadedFile": true,
       "releaseAsset": "j-navi.apk",
-      "approxSizeMB": 44.94,
+      "approxSizeMB": 42.86,
       "note": "Uploaded v0.4.0 APK; newer v0.5.0-dev was discussed. Debug/test build: confirm a production-ready version.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-navi.apk",
       "verifiedUpload": {
@@ -266,9 +290,15 @@
       "versionLabel": "v1.0.1",
       "uploadedFile": true,
       "releaseAsset": "j-pdf-toolkit.apk",
-      "approxSizeMB": null,
-      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
-      "launchStatus": "awaiting-release-review"
+      "approxSizeMB": 54.38,
+      "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-pdf-toolkit.apk",
+      "verifiedUpload": {
+        "file": "j-pdf-toolkit.apk",
+        "sizeBytes": 57022837,
+        "sha256": "412a29417e7519e4ab0e7f94e5612df890b5d7ebc59ded3341ff7b44c050e0b8"
+      }
     },
     {
       "id": "j-archive-manager",
@@ -280,9 +310,15 @@
       "versionLabel": "v1.0.2",
       "uploadedFile": true,
       "releaseAsset": "j-archive-manager.apk",
-      "approxSizeMB": null,
-      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
-      "launchStatus": "awaiting-release-review"
+      "approxSizeMB": 10.31,
+      "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-archive-manager.apk",
+      "verifiedUpload": {
+        "file": "j-archive-manager.apk",
+        "sizeBytes": 10814708,
+        "sha256": "2b8c3e6583eb5e264b28dbad585c682fd8a06400692ed23774280288c0f0a2a2"
+      }
     },
     {
       "id": "j-ar-room-designer",
@@ -294,7 +330,7 @@
       "versionLabel": "v0.9.0",
       "uploadedFile": true,
       "releaseAsset": "j-ar-room-designer.apk",
-      "approxSizeMB": 1.95,
+      "approxSizeMB": 1.86,
       "note": "Debug/test build: confirm a production-ready version.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-ar-room-designer.apk",
       "verifiedUpload": {
@@ -313,7 +349,7 @@
       "versionLabel": "Repository/prototype",
       "uploadedFile": true,
       "releaseAsset": "j-digital-toolbox.apk",
-      "approxSizeMB": 3.44,
+      "approxSizeMB": 3.28,
       "note": "",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-digital-toolbox.apk",
       "verifiedUpload": {
@@ -332,7 +368,7 @@
       "versionLabel": "v0.4.1 patch",
       "uploadedFile": true,
       "releaseAsset": "j-phone-guardian.apk",
-      "approxSizeMB": 1.11,
+      "approxSizeMB": 1.06,
       "note": "Debug/test build: confirm a production-ready version.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-phone-guardian.apk",
       "verifiedUpload": {
@@ -351,9 +387,15 @@
       "versionLabel": "v1.0.0 project",
       "uploadedFile": true,
       "releaseAsset": "j-calorie-tracker.apk",
-      "approxSizeMB": null,
-      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
-      "launchStatus": "awaiting-release-review"
+      "approxSizeMB": 1.59,
+      "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-calorie-tracker.apk",
+      "verifiedUpload": {
+        "file": "j-calorie-tracker.apk",
+        "sizeBytes": 1662109,
+        "sha256": "9766b5397c8e71b672e7763f27d68b70d943c67effa855f2724bad641af741d9"
+      }
     },
     {
       "id": "j-photo-studio",
@@ -365,7 +407,7 @@
       "versionLabel": "v0.2.0",
       "uploadedFile": true,
       "releaseAsset": "j-photo-studio.apk",
-      "approxSizeMB": 8.02,
+      "approxSizeMB": 7.65,
       "note": "",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-photo-studio.apk",
       "verifiedUpload": {
@@ -403,9 +445,15 @@
       "versionLabel": "GitHub repository",
       "uploadedFile": true,
       "releaseAsset": "nifty-lot-calculator.apk",
-      "approxSizeMB": null,
-      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
-      "launchStatus": "awaiting-release-review"
+      "approxSizeMB": 7.19,
+      "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/nifty-lot-calculator.apk",
+      "verifiedUpload": {
+        "file": "nifty-lot-calculator.apk",
+        "sizeBytes": 7534400,
+        "sha256": "537bc693aaa31c251fa074e1037133539b61ce1e7da4d49082ec589023687f3e"
+      }
     },
     {
       "id": "my-daily-tracker",
@@ -417,9 +465,15 @@
       "versionLabel": "GitHub repository",
       "uploadedFile": true,
       "releaseAsset": "my-daily-tracker.apk",
-      "approxSizeMB": null,
-      "note": "Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
-      "launchStatus": "awaiting-release-review"
+      "approxSizeMB": 5.71,
+      "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/my-daily-tracker.apk",
+      "verifiedUpload": {
+        "file": "my-daily-tracker.apk",
+        "sizeBytes": 5984849,
+        "sha256": "cee386f29bd915fe795b98513dc264c9e1c039652456b0189544af0b263d9a0f"
+      }
     },
     {
       "id": "j-algo-trader-app-replay-concept",
@@ -431,9 +485,15 @@
       "versionLabel": "Research stage",
       "uploadedFile": true,
       "releaseAsset": "j-algo-trader-app-replay-concept.apk",
-      "approxSizeMB": null,
-      "note": "Debug APK only about 60 KB; verify before sharing. Debug/test build: confirm a production-ready version. Free launch planned. Download pending APK inspection, version/signature checks and public release upload.",
-      "launchStatus": "awaiting-release-review"
+      "approxSizeMB": 0.06,
+      "note": "Small 68 KB APK: uploaded, but install/signature and functionality not tested. May be a debug or demonstration build.",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-algo-trader-app-replay-concept.apk",
+      "verifiedUpload": {
+        "file": "j-algo-trader-app-replay-concept.apk",
+        "sizeBytes": 68064,
+        "sha256": "6b93cfdd444cbdb26ce2b9aaa72046d948ba2965bae92be5b9b9b64b8a92a47c"
+      }
     },
     {
       "id": "j-revit-tools-combined",
@@ -445,7 +505,7 @@
       "versionLabel": "",
       "uploadedFile": true,
       "releaseAsset": "j-revit-tools-combined.zip",
-      "approxSizeMB": 3.94,
+      "approxSizeMB": 0.72,
       "note": "Installer/package contains source scripts; inspect before public distribution.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-revit-tools-combined.zip",
       "verifiedUpload": {
@@ -540,7 +600,7 @@
       "versionLabel": "",
       "uploadedFile": true,
       "releaseAsset": "j-equipment-schedule-manager.zip",
-      "approxSizeMB": 0.09,
+      "approxSizeMB": 0.08,
       "note": "Source package, not a ready installer.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-equipment-schedule-manager.zip",
       "verifiedUpload": {
@@ -559,7 +619,7 @@
       "versionLabel": "",
       "uploadedFile": true,
       "releaseAsset": "j-family-parameter-manager.zip",
-      "approxSizeMB": 3.94,
+      "approxSizeMB": 3.76,
       "note": "",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-family-parameter-manager.zip",
       "verifiedUpload": {
@@ -578,7 +638,7 @@
       "versionLabel": "",
       "uploadedFile": true,
       "releaseAsset": "j-section-box-orient-to-face.zip",
-      "approxSizeMB": 3.94,
+      "approxSizeMB": 3.76,
       "note": "",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-section-box-orient-to-face.zip",
       "verifiedUpload": {
@@ -597,7 +657,7 @@
       "versionLabel": "",
       "uploadedFile": true,
       "releaseAsset": "j-parameter-find-replace.zip",
-      "approxSizeMB": 0.005,
+      "approxSizeMB": 0.01,
       "note": "Standalone ZIP is uploaded (5.46 KB); verify package contents and Revit compatibility before installation.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-parameter-find-replace.zip",
       "verifiedUpload": {
@@ -616,7 +676,7 @@
       "versionLabel": "FINAL v1.3.0",
       "uploadedFile": true,
       "releaseAsset": "family-parameter-manager.dyn",
-      "approxSizeMB": 0.04,
+      "approxSizeMB": 0.03,
       "note": "",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/family-parameter-manager.dyn",
       "verifiedUpload": {
@@ -635,7 +695,7 @@
       "versionLabel": "FINAL v1.3.0",
       "uploadedFile": true,
       "releaseAsset": "j-revit-standards-manager-dynamo.dyn",
-      "approxSizeMB": 0.1,
+      "approxSizeMB": 0.09,
       "note": "",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-revit-standards-manager-dynamo.dyn",
       "verifiedUpload": {
@@ -654,7 +714,7 @@
       "versionLabel": "v0.6",
       "uploadedFile": true,
       "releaseAsset": "j-tag-arrow-manager-dynamo.dyn",
-      "approxSizeMB": 0.03,
+      "approxSizeMB": 0.02,
       "note": "Uploaded v0.3, older than previously discussed v0.6.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-tag-arrow-manager-dynamo.dyn",
       "verifiedUpload": {
@@ -692,7 +752,7 @@
       "versionLabel": "v1.0",
       "uploadedFile": true,
       "releaseAsset": "j-purge-dwg-manager.dyn",
-      "approxSizeMB": 0.03,
+      "approxSizeMB": 0.02,
       "note": "",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-purge-dwg-manager.dyn",
       "verifiedUpload": {
@@ -764,7 +824,8 @@
     "pricing": "free",
     "accountRequired": false,
     "updatedAt": "2026-10-14",
-    "pendingSafetyChecks": [
+    "pendingSafetyChecks": [],
+    "unverifiedBuilds": [
       "j-wifi-share",
       "j-grocery-planner",
       "j-expense-tracker-my-expense-tracker",
