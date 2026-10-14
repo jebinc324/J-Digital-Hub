@@ -6,20 +6,20 @@ Repository: `jebinc324/J-Digital-Hub` (public static site, Render publish direct
 ## Launch status
 - 42 catalogue listings: 25 Android, 9 Revit Add-ins, 8 Revit Dynamo.
 - All 42 listings are free/open to browse; **no login or registration required**.
-- **32** public release files are already linked from GitHub Releases.
-- **10** more Android apps are listed as `FREE · COMING SOON`. Their download buttons are disabled until a verified APK is uploaded. The existing supplied ZIPs do not by themselves establish a safe public release.
+- **42** public release files are linked directly from GitHub Releases.
+- The 10 additional Android APKs have also been uploaded and linked. Upload confirms availability, not safety or compatibility; these builds remain marked as independently untested.
 - GitHub Release: https://github.com/jebinc324/J-Digital-Hub/releases/tag/just24-public-v1
 - Original Just24Things homepage, cream/olive brand, 24 topics, J Apps cyan neon design, and **Just 24 Things by J&J** branding preserved.
 
 ## Free launch release safety
 Do not publish sensitive data such as keystores, signing keys, passwords, tokens, user information or proprietary source packages accidentally.
-Before publishing each additional APK:
+Before promoting a build as verified:
 1. Identify correct application, version, package name and signed build.
 2. Inspect ZIP contents; select distributable APK only, not debug-only or source archives with confidential files.
 3. Check install/launch and key workflows on an actual device when possible.
-4. Upload the verified APK to the public release.
-5. Add its exact GitHub Release filename to `public/apps/catalog.json` as `releaseAsset`, and add the verified public download URL/size.
-6. Remove `launchStatus: awaiting-release-review` after verification.
+4. Replace the file in the GitHub Release if newer/safer, preserving the original app signature and package ID for updates.
+5. Refresh its matching GitHub download URL, size and SHA-256 in `public/apps/catalog.json`.
+6. Mark it tested only after checking install/launch, device support and privacy.
 
 ## Future phases
 - Optional accounts, admin access or paid/professional editions can be designed later. The static site currently has no active login or payments.
