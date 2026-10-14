@@ -109,3 +109,13 @@ This adds image media without changing existing binary download links. Do not in
 - The homepage J Arcade section now accurately states the uploaded 12-game browser build is playable, and the CTA leads to the existing in-page player on `/games/`; the former coming-soon messaging was removed.
 - The theme is pure CSS/HTML, keeps responsive 4/3/2/1-card layouts, reduced-motion preferences and existing site-wide entrance/scroll effects. No game logic, Download ZIP, or catalogue release assets were changed.
 - Visual browser inspection should still be done after Render deploy; GitHub changes alone do not verify the current published Render page.
+
+
+## Ambient wallpaper + indexing preparation (2026-10-14)
+- **Keep J Apps homepage showcase:** the original eight cards, four filters and "Meet J Apps." heading remain in place after user clarified they did not want the cards removed.
+- New `/ambient.js` and `/ambient.css` are connected to the five J&J main site pages (home, apps, apps/access, games, our channel). They paint a viewport-fixed, pointer-transparent, low-opacity orbital wallpaper, with center-based colors reflecting J Apps / Arcade sections.
+- The effect is limited to 30fps and typically 24 desktop / 11 mobile particles, fewer on very low-resource devices; it pauses in background tabs and honors `prefers-reduced-motion`. The independent original game inside the Arcade iframe was not modified, preserving its gameplay performance.
+- The site remains free and the 43 existing J Apps downloads remain intact. The paper-roll cover and in-page Arcade player are unchanged.
+- Existing `robots.txt` allows all crawlers and advertises the sitemap. `sitemap.xml` now lists six public URLs including the playable Arcade path and Apps Free Launch information page.
+- Missing canonical metadata on Games, Our Channel, Apps/access and Retro Arcade were added. These improvements help crawler discovery, **but do not submit anything to Google**; the site owner must verify the URL-prefix property in Google Search Console, submit `sitemap.xml`, then use URL Inspection/Request Indexing. Crawling/indexing/ranking are not guaranteed.
+- These changes were verified in the GitHub repository. Live Render deployment and real-browser visual behavior need separate confirmation.
