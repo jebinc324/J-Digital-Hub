@@ -97,37 +97,60 @@
   const heroLogo=document.querySelector('.j-hero-logo');
   const cover=document.querySelector('.cover-frame');
   if(heroLogo)heroLogo.classList.add('jj-parallax-logo');
-  // Keep the user's original cover image intact. Scroll position controls a
-  // curved-paper edge that rolls upward; scrolling upward reverses it exactly.
-  let paperStart=0,paperDistance=1;
+  // Paper roll v2: collapse real layout height, not just clip the image.
+  // The cover is pinned inside an overflow-hidden slot. Scrolling upward
+  // expands the slot again so no blank cover-sized gap remains.
+  const paperSlot=cover?.closest('.jj-paper-slot');
+  const introRow=paperSlot?.closest('.masthead')?.querySelector('.intro-row');
+  let paperStart=0,paperDistance=1,paperNaturalHeight=0,introNaturalGap=0;
   function measurePaper(){
-    if(!cover)return;
-    const rect=cover.getBoundingClientRect();
-    paperStart=Math.max(35,rect.top+Math.max(0,window.scrollY||0)-125);
-    paperDistance=Math.max(260,Math.min(830,rect.height*.95));
+    if(!cover||!paperSlot)return;
+    // Read the image's original size even while its outer slot is collapsed.
+    paperNaturalHeight=Math.max(1,cover.offsetHeight);
+    paperStart=Math.max(35,paperSlot.getBoundingClientRect().top+(window.scrollY||0)-125);
+    paperDistance=Math.max(260,Math.min(830,paperNaturalHeight*.95));
+    if(introRow){
+      introRow.style.marginTop='';
+      introNaturalGap=parseFloat(getComputedStyle(introRow).marginTop)||0;
+    }
   }
-  if(cover){
-    cover.classList.add('jj-paper-roll');
+  if(paperSlot){
     measurePaper();
+    paperSlot.style.height=paperNaturalHeight+'px';
+    paperSlot.style.setProperty('--jj-paper-edge-opacity','0');
+    root.classList.add('jj-paper-active');
   }
   let scheduled=false;
   function paint(){
     scheduled=false;
     const y=Math.max(0,window.scrollY||0);
-    const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
-    bar.style.transform='scaleX('+Math.min(1,y/max).toFixed(4)+')';
     if(heroLogo)heroLogo.style.setProperty('--jj-parallax',Math.min(30,y*.035).toFixed(1)+'px');
-    if(cover){
+    if(paperSlot){
       const t=Math.max(0,Math.min(1,(y-paperStart)/paperDistance));
       const p=t*t*(3-2*t);
-      cover.style.setProperty('--jj-paper-hidden',(p*100).toFixed(2)+'%');
-      cover.style.setProperty('--jj-paper-edge-opacity',Math.min(1,Math.sin(Math.PI*p)*2).toFixed(3));
-      cover.style.setProperty('--jj-cover-offset',(-Math.min(10,p*10)).toFixed(1)+'px');
+      const left=Math.max(0,paperNaturalHeight*(1-p));
+      // This height is in normal flow, so the next section rises with the roll.
+      paperSlot.style.height=left.toFixed(2)+'px';
+      paperSlot.style.setProperty('--jj-paper-edge-opacity',Math.min(1,Math.sin(Math.PI*p)*2).toFixed(3));
+      // Shrink the old decorative 72/52/42px intro gap too.
+      if(introRow){
+        introRow.style.marginTop=Math.max(18,introNaturalGap-(introNaturalGap-18)*p).toFixed(2)+'px';
+      }
     }
+    const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+    bar.style.transform='scaleX('+Math.min(1,y/max).toFixed(4)+')';
   }
   function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(paint);}
+  function resizePaper(){
+    if(paperSlot){
+      // Temporarily show full slot before measuring its natural image height.
+      // Original cover aspect ratio is unaffected by the rolling viewport.
+      measurePaper();
+    }
+    schedule();
+  }
   window.addEventListener('scroll',schedule,{passive:true});
-  window.addEventListener('resize',()=>{measurePaper();schedule();},{passive:true});
+  window.addEventListener('resize',resizePaper,{passive:true});
   window.addEventListener('pageshow',schedule,{passive:true});
   root.classList.add('jj-motion-enabled');
   schedule();
