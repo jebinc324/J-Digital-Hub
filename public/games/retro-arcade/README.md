@@ -1,16 +1,37 @@
-# J Retro Arcade Web — upload destination
+# J Retro Arcade Web v0.2.1 — Input + Resize Fix
 
-This folder is reserved for the **original** browser game package:
-`J-Retro-Arcade-Web-v0.2.1.zip`.
+This is a **new standalone web project**. It does not modify the existing Android `J-Retro-Arcade` app.
 
-Upload path in GitHub: `public/games/retro-arcade/`
+## v0.2.1 fixes
 
-After extracting the ZIP locally, upload the **contents** of its website root here, so the actual game entry file lives at:
+- Shooting: reliable pointer/touch drag, mouse drag, keyboard left/right, auto-fire retained.
+- Engineer Match: tap-two-tiles + swipe-to-swap, guaranteed playable starting board, automatic reshuffle if no move remains.
+- Tap Bird: reliable pointer/touch/Space/Up input, safer gate generation, resize-safe bird and pipe positions.
+- Gear Factory: RPM gauge now shows **CURRENT RPM** from the currently selected input/output gear teeth; target RPM is shown separately.
+- Resize/fullscreen: zero-size transient frames are ignored, ResizeObserver + viewport/fullscreen/orientation resize handling added, high-DPI backing canvas safely capped to avoid black canvases on large displays.
+- Crane Stack: fixed an undeclared runtime variable discovered during the all-game sweep.
+- One-time v0.2.1 migration refills lives for Shooting, Engineer Match, Gear Factory and Tap Bird without resetting wallet or stage progress.
 
-`public/games/retro-arcade/index.html`
+## Verification
 
-Preserve all relative asset paths, JavaScript, CSS, images, sounds, and level data as supplied. If the ZIP contains an extra outer directory, open it first rather than uploading a nested folder with no root `index.html`.
+The 12 game engines were run through a construction/update/draw/resize smoke test. All 12 passed. The canvas resize path was also tested with normal, temporary 0×0, and large 1400×2100 frame sizes.
 
-The browser URL is intended to be `https://just24things.onrender.com/games/retro-arcade/`. This is **not playable yet**: the original game files are still awaiting upload and verification.
+## Run locally
 
-Do not substitute demo games. The Android APK is not a browser game and should not be renamed to HTML.
+Open `index.html` in a modern browser. For the most consistent behavior, host the folder with a simple local server:
+
+```bash
+python -m http.server 8080
+```
+
+Then open `http://localhost:8080`.
+
+## Put it online
+
+Upload the contents of this folder to GitHub Pages, Cloudflare Pages, Netlify, Vercel, or another static host.
+
+## Optional real online rooms
+
+Solo play works without a backend. `firebase-multiplayer.js` contains the room-code layer. To enable it, configure Firebase Anonymous Authentication + Realtime Database in `firebase-config.js` and host over HTTPS.
+
+The Android app remains completely separate and untouched.

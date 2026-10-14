@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+  <meta name="theme-color" content="#e7ecf2" />
+  <title>J Retro Arcade Online</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="app" class="theme-light">
+  <section id="homeScreen" class="screen active home-screen">
+    <header class="home-header fixed-safe">
+      <div class="logo" aria-hidden="true"><span>J</span></div>
+      <div class="brand-copy">
+        <div class="brand-title">J RETRO ARCADE</div>
+        <div class="brand-sub">12 GAMES • ONLINE • ROADMAP</div>
+      </div>
+      <button id="themeBtn" class="neo-chip">BLACK</button>
+      <button id="rgbBtn" class="neo-chip">RGB</button>
+    </header>
+
+    <main class="home-scroll">
+      <section class="neo-card wallet-card">
+        <div class="wallet-copy"><b>◆ <span id="pointsText">0</span> ARCADE POINTS</b></div>
+        <button id="onlineBtn" class="neo-chip wide">ONLINE</button>
+        <button id="storeHomeBtn" class="neo-chip wide">STORE</button>
+      </section>
+
+      <section class="neo-card select-card">
+        <b>SELECT GAME</b>
+        <span>Roadmap games remember every unlocked stage</span>
+      </section>
+
+      <section id="gameGrid" class="game-grid"></section>
+      <div class="home-footer">10 STAGES = FREE MEGA BOOSTER • LOCAL SAVE</div>
+    </main>
+  </section>
+
+  <section id="roadmapScreen" class="screen full-screen">
+    <header class="sub-header fixed-safe">
+      <button class="back-btn" data-nav="home">‹</button>
+      <div class="logo mini"><span>J</span></div>
+      <div class="brand-copy">
+        <div id="roadmapTitle" class="sub-title">GAME ROADMAP</div>
+        <div id="roadmapProgress" class="brand-sub">UNLOCKED 1 / 1000</div>
+      </div>
+      <button id="roadmapStoreBtn" class="neo-chip wide">STORE</button>
+    </header>
+    <div class="roadmap-body">
+      <section class="neo-card roadmap-summary">
+        <div><b>◆ <span id="roadmapPoints">0</span> ARCADE POINTS</b><small id="roadmapLives">♥ 3/3</small></div>
+        <button id="currentStageBtn" class="neo-chip wide">CURRENT</button>
+      </section>
+      <div class="roadmap-hint">WORLD 1 BOTTOM • CLIMB UPWARD • CLEAR TO UNLOCK</div>
+      <div class="neo-card map-frame"><div id="roadmapScroll" class="roadmap-scroll"><div id="roadmapMap" class="roadmap-map"></div></div></div>
+      <div class="roadmap-foot">CURVED WORLD MAP • PROJECTED TREES • 100 WORLDS</div>
+    </div>
+  </section>
+
+  <section id="loadingScreen" class="screen loading-screen full-screen">
+    <div class="loading-wrap">
+      <div class="logo loading-logo"><span>J</span></div>
+      <div class="loading-app">J RETRO ARCADE</div>
+      <canvas id="loadingArt" width="720" height="360"></canvas>
+      <div id="loadingTitle" class="loading-title">GAME</div>
+      <div id="loadingStage" class="loading-stage">STAGE 1 / 1000</div>
+      <div class="loading-copy">LOADING GAME…</div>
+      <div class="progress-track"><i id="loadingBar"></i></div>
+    </div>
+  </section>
+
+  <section id="gameScreen" class="screen game-screen full-screen">
+    <div class="game-column fixed-safe">
+      <header class="neo-card game-toolbar">
+        <button id="gameBackBtn" class="back-btn">‹</button>
+        <div class="logo tiny"><span>J</span></div>
+        <div class="game-head-copy"><b id="gameTitle">GAME</b><small id="gameStageLabel">STAGE 1 / 1000</small></div>
+        <button id="boostBtn" class="neo-chip wide">BOOST</button>
+        <button id="mapBtn" class="neo-chip">MAP</button>
+      </header>
+      <div id="gameFrame" class="game-frame"><canvas id="gameCanvas" width="720" height="1120"></canvas><div id="domLayer" class="dom-layer"></div></div>
+      <footer class="neo-card game-controls">
+        <button id="playBtn" class="control-btn"><b>▶</b><span>PLAY</span></button>
+        <button id="pauseBtn" class="control-btn"><b>Ⅱ</b><span>PAUSE</span></button>
+        <button id="stopBtn" class="control-btn"><b>■</b><span>STOP</span></button>
+      </footer>
+    </div>
+    <div id="pauseOverlay" class="pause-overlay hidden">
+      <section class="neo-card pause-card">
+        <div class="pause-head"><div class="logo"><span>J</span></div><div><h2 id="pauseTitle">PAUSED</h2><p id="pauseSub">GAME</p></div><button id="pauseStoreBtn" class="neo-chip wide">STORE</button></div>
+        <canvas id="pauseArt" width="720" height="280"></canvas>
+        <div id="pauseStageLine" class="pause-stage">STAGE 1 / 1000 • ◆ 0</div>
+        <div id="boosterRow" class="booster-row"></div>
+        <button id="resumeBtn" class="overlay-btn">▶ RESUME</button>
+        <button id="restartBtn" class="overlay-btn">↻ RESTART STAGE</button>
+        <button id="pauseMapBtn" class="overlay-btn">▦ ROADMAP / PREVIOUS STAGES</button>
+        <button id="pauseHomeBtn" class="overlay-btn">⌂ BACK TO HOME</button>
+      </section>
+    </div>
+  </section>
+
+  <section id="storeScreen" class="screen full-screen store-screen">
+    <header class="sub-header fixed-safe">
+      <button id="storeBackBtn" class="back-btn">‹</button>
+      <div class="logo mini"><span>J</span></div>
+      <div class="brand-copy"><div id="storeTitle" class="sub-title">GAME STORE</div><div class="brand-sub">BOOSTERS • LIVES • ARCADE POINTS</div></div>
+    </header>
+    <main id="storeBody" class="store-body"></main>
+  </section>
+</div>
+
+<div id="rgbModal" class="modal hidden"><div class="neo-card modal-card"><h2>RGB Font Color</h2><p>FONT COLOR</p><input id="rgbPicker" type="color" value="#26313d"/><div id="rgbPreview">J RETRO ARCADE • 123</div><div class="modal-actions"><button id="rgbReset" class="neo-chip wide">RESET</button><button id="rgbCancel" class="neo-chip wide">CANCEL</button><button id="rgbApply" class="neo-chip wide">APPLY</button></div></div></div>
+
+<div id="onlineModal" class="modal hidden"><div class="neo-card modal-card online-card"><h2>ONLINE ROOM</h2><p class="muted">Same 12 games • private room code</p><div id="onlineStatus" class="status-pill">SETUP REQUIRED</div><input id="playerName" class="neo-input" maxlength="16" value="Player" placeholder="Player name"><button id="createRoomBtn" class="overlay-btn">CREATE ROOM</button><div class="join-row"><input id="roomCodeInput" class="neo-input" maxlength="6" placeholder="ROOM CODE"><button id="joinRoomBtn" class="neo-chip wide">JOIN</button></div><div id="roomInfo" class="room-info hidden"></div><button id="onlineClose" class="neo-chip wide">CLOSE</button></div></div>
+<div id="storePickerModal" class="modal hidden"><div class="neo-card modal-card"><h2>Choose Game Store</h2><div id="storePickerList" class="store-picker-list"></div><button id="storePickerClose" class="neo-chip wide">CANCEL</button></div></div>
+<div id="toast" class="toast"></div>
+
+<script src="firebase-config.js"></script>
+<script type="module" src="firebase-multiplayer.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
