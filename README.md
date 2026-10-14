@@ -30,3 +30,23 @@ Before promoting a build as verified:
 The current site deploys automatically from the connected `main` branch to Render. Deploy completion must be verified separately in Render; a successful GitHub commit is not the same as a confirmed live deployment.
 
 This website is a public free-launch catalogue, not a security-scanned app store.
+
+## J Apps premium catalogue UI (October 14 update)
+
+- Premium, responsive cyan-neon product cards are live in `public/apps/index.html`, `catalog.js`, and `neon.css`. Original J-branded hero, global navigation, and all 42 downloads remain in place.
+- Includes featured apps, category filters, search, version metadata, APK/archive download size, free download actions, and a keyboard-closable product detail dialog.
+- Product details have an official screenshot gallery slot and show the release file SHA-256 (when available). Deep links can use `/apps/?app=j-control-hub`.
+- **No fake previews:** original per-app icons/screenshots are not yet present in this repository. The UI displays lettermark placeholders and a clearly labeled empty screenshot gallery until real media is provided.
+
+### Add original app media later
+Upload each owner-approved logo (PNG, WebP, JPG, JPEG) under `public/assets/apps/icons/` and real captures under `public/assets/apps/screenshots/APP-ID/`. In the corresponding `public/apps/catalog.json` item, set:
+```json
+{
+  "logo": "/assets/apps/icons/j-control-hub.png",
+  "screenshots": [
+    "/assets/apps/screenshots/j-control-hub/01.webp",
+    "/assets/apps/screenshots/j-control-hub/02.webp"
+  ]
+}
+```
+This adds image media without changing existing binary download links. Do not invent or silently substitute screenshots from other apps. Accurate version labels should be confirmed against the actual package: the catalogue may include historical development-version notes.
