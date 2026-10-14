@@ -7,13 +7,20 @@
   if(reduce||!('IntersectionObserver' in window)||!('requestAnimationFrame' in window))return;
 
   const seen=new WeakSet();
+  // Keep observing: an element is reset only after completely leaving the
+  // visible region. Entering again from above OR below replays its formation.
   const observer=new IntersectionObserver(entries=>{
     for(const entry of entries){
-      if(!entry.isIntersecting)continue;
-      entry.target.classList.add('jj-visible');
-      observer.unobserve(entry.target);
+      if(entry.isIntersecting){
+        entry.target.classList.add('jj-visible');
+      }else{
+        const bounds=entry.boundingClientRect;
+        if(bounds.bottom<=0||bounds.top>=window.innerHeight*.93){
+          entry.target.classList.remove('jj-visible');
+        }
+      }
     }
-  },{rootMargin:'0px 0px -6% 0px',threshold:.06});
+  },{rootMargin:'0px 0px -7% 0px',threshold:0});
 
   function animate(el,type='rise',delay=0){
     if(!el||seen.has(el)||el.closest('dialog'))return;
@@ -90,18 +97,38 @@
   const heroLogo=document.querySelector('.j-hero-logo');
   const cover=document.querySelector('.cover-frame');
   if(heroLogo)heroLogo.classList.add('jj-parallax-logo');
+  // Keep the user's original cover image intact. Scroll position controls a
+  // curved-paper edge that rolls upward; scrolling upward reverses it exactly.
+  let paperStart=0,paperDistance=1;
+  function measurePaper(){
+    if(!cover)return;
+    const rect=cover.getBoundingClientRect();
+    paperStart=Math.max(35,rect.top+Math.max(0,window.scrollY||0)-125);
+    paperDistance=Math.max(260,Math.min(830,rect.height*.95));
+  }
+  if(cover){
+    cover.classList.add('jj-paper-roll');
+    measurePaper();
+  }
   let scheduled=false;
   function paint(){
     scheduled=false;
     const y=Math.max(0,window.scrollY||0);
     const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
     bar.style.transform='scaleX('+Math.min(1,y/max).toFixed(4)+')';
-    if(heroLogo&&y<1200)heroLogo.style.setProperty('--jj-parallax',Math.min(30,y*.035).toFixed(1)+'px');
-    if(cover&&y<1200)cover.style.setProperty('--jj-cover-offset',(-Math.min(12,y*.018)).toFixed(1)+'px');
+    if(heroLogo)heroLogo.style.setProperty('--jj-parallax',Math.min(30,y*.035).toFixed(1)+'px');
+    if(cover){
+      const t=Math.max(0,Math.min(1,(y-paperStart)/paperDistance));
+      const p=t*t*(3-2*t);
+      cover.style.setProperty('--jj-paper-hidden',(p*100).toFixed(2)+'%');
+      cover.style.setProperty('--jj-paper-edge-opacity',Math.min(1,Math.sin(Math.PI*p)*2).toFixed(3));
+      cover.style.setProperty('--jj-cover-offset',(-Math.min(10,p*10)).toFixed(1)+'px');
+    }
   }
   function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(paint);}
   window.addEventListener('scroll',schedule,{passive:true});
-  window.addEventListener('resize',schedule,{passive:true});
+  window.addEventListener('resize',()=>{measurePaper();schedule();},{passive:true});
+  window.addEventListener('pageshow',schedule,{passive:true});
   root.classList.add('jj-motion-enabled');
   schedule();
 })();
