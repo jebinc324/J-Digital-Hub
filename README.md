@@ -101,3 +101,11 @@ This adds image media without changing existing binary download links. Do not in
 - The fixed-size/clip-only version left the entire banner height in document flow. It was replaced rather than stacked with another clip.
 - Reduced-motion users see the full original static cover; CSS and JS remain scoped to the homepage paper slot.
 - A local headless Chromium layout fixture passed both 1200px desktop and 390px mobile scroll-down/up reflow checks. The deployed Render site still needs a manual visual check.
+
+## Homepage themed highlights: J Apps & J Retro Arcade (2026-10-14)
+- The homepage has two independently scoped showcase themes in `public/home-showcase.css`: `home-japps` matches the cyan-neon J Apps workshop and `home-retro-arcade` matches the dark navy / cyan / magenta Hybrid Retro Premium J Arcade.
+- All other sections retain the original cream/olive Just24Things editorial design and the reversible paper-roll home cover remains untouched.
+- The J Apps homepage section is now full-bleed, while its cards and filters retain their existing DOM/classes and filtering logic. Seven showcased projects have deep links to verified catalogue IDs; J Fun Lab is shown as a creative project only because it is not currently a downloadable catalogue entry.
+- The homepage J Arcade section now accurately states the uploaded 12-game browser build is playable, and the CTA leads to the existing in-page player on `/games/`; the former coming-soon messaging was removed.
+- The theme is pure CSS/HTML, keeps responsive 4/3/2/1-card layouts, reduced-motion preferences and existing site-wide entrance/scroll effects. No game logic, Download ZIP, or catalogue release assets were changed.
+- Visual browser inspection should still be done after Render deploy; GitHub changes alone do not verify the current published Render page.
