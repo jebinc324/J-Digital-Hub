@@ -50,3 +50,11 @@ Upload each owner-approved logo (PNG, WebP, JPG, JPEG) under `public/assets/apps
 }
 ```
 This adds image media without changing existing binary download links. Do not invent or silently substitute screenshots from other apps. Accurate version labels should be confirmed against the actual package: the catalogue may include historical development-version notes.
+
+## Premium sitewide animation update (2026-10-14)
+- Shared `/motion.css` + `/motion.js` are linked on the homepage, J Apps, J Arcade, Our Channel, and J Apps Free Launch information page.
+- Premium effects: J&J logo wordmark entrance, scattered headings gathering into place, one-time viewport card reveals, staggered app cards, gentle J Apps hero parallax, reading progress, and animated app-detail popup.
+- No external GSAP/CDN dependency. Uses `IntersectionObserver`, CSS transforms, passive scroll handling, and `requestAnimationFrame`.
+- Motion is off when the visitor enables reduced-motion in their operating system or when browser APIs are unsupported. Existing content, filters, navigation, themes, and download links remain functional without motion.
+- **Editor's Choice** now highlights Nifty Lot Calculator, J Expense Tracker / My Expense Tracker, and J Algo Trader (research/replay concept). The Algo build has not been installation-verified.
+- If polishing later, keep all app downloads and the original cover/J logo untouched. Test desktop and mobile scroll, search filtering, keyboard accessibility, and reduced-motion setting after deployment.
