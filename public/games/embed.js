@@ -29,12 +29,11 @@
    const base=preferredGameHeight();
    if(id!==activeId){
      activeId=id;
-     // Reset away from the previous screen's oversized home height BEFORE
-     // measuring a viewport-sized game/roadmap (100dvh) screen.
-     if(id!=='homeScreen'&&id!=='storeScreen'){
-       setHeight(base);
-       return;
-     }
+     // On every screen switch first restore a normal iframe viewport.
+     // This prevents a preceding long home/store page from enlarging 100dvh.
+     setHeight(base);
+     if(id==='homeScreen'||id==='storeScreen')queue();
+     return;
    }
    if(id==='homeScreen'||id==='storeScreen'){
      const blocks=id==='homeScreen'
