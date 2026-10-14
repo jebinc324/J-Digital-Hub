@@ -28,7 +28,7 @@
    const top=el('div','j-card-top');
    top.append(el('span','j-card-icon',iconFor(item.family)),el('span','j-card-badge public',available?'FREE':'FREE · COMING SOON'));
    card.append(top,el('div','j-card-type',item.family),el('h3','',item.name),el('p','j-card-desc',item.description));
-   if(item.note&&!available)card.append(el('p','j-card-note',item.note));
+   if(item.note&&(item.launchStatus==='uploaded-unverified'||!available))card.append(el('p','j-card-note',item.note));
    const bottom=el('div','j-card-bottom');
    const size=available&&available.sizeBytes?(available.sizeBytes/1048576).toFixed(2)+' MiB':'';
    bottom.append(el('span','j-card-file',available?'FREE DOWNLOAD'+(size?' · '+size:''):'FREE · RELEASE PENDING'));
