@@ -7,7 +7,7 @@
  const featured=document.getElementById('j-featured-grid');
  const dialog=document.getElementById('j-app-dialog'),details=document.getElementById('j-detail-content');
  let all=[],family='all',releaseAssets=new Map(),currentId=null;
- const features=['j-control-hub','j-mep-toolbox','j-earth-time-machine'];
+ const features=['nifty-lot-calculator','j-expense-tracker-my-expense-tracker','j-algo-trader-app-replay-concept'];
  const colors=['j2-teal','j2-indigo','j2-violet','j2-orange','j2-blue','j2-lime'];
  function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
  function monogram(item){const words=item.name.replace(/^J\s+/i,'').replace(/[^a-z0-9 ]/gi,' ').split(/\s+/).filter(Boolean);return ((words.length>1?words[0][0]+words[1][0]:(words[0]||'J').slice(0,2))||'J').toUpperCase();}
