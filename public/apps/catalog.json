@@ -7,7 +7,7 @@
     "source": "GitHub Releases public API",
     "lastVerified": "2026-10-14"
   },
-  "notice": "31 public files uploaded to GitHub Releases and linked for download. One pending: J Parameter Find & Replace (Revit Add-in). 10 restricted projects without public file links.",
+  "notice": "All 32 selected Open projects have files published to public GitHub Releases. The 10 Restricted projects have no public download links. Upload presence does not establish build compatibility or safety.",
   "items": [
     {
       "id": "j-control-hub",
@@ -584,10 +584,16 @@
       "access": "public",
       "description": "Parameter search and replacement",
       "versionLabel": "",
-      "uploadedFile": false,
+      "uploadedFile": true,
       "releaseAsset": "j-parameter-find-replace.zip",
-      "approxSizeMB": null,
-      "note": "May be a module inside the combined J Revit Tools package; standalone release not supplied."
+      "approxSizeMB": 0.005,
+      "note": "Standalone ZIP is uploaded (5.46 KB); verify package contents and Revit compatibility before installation.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-parameter-find-replace.zip",
+      "verifiedUpload": {
+        "file": "j-parameter-find-replace.zip",
+        "sizeBytes": 5458,
+        "sha256": "37b5a2f2252ac09a651c1ab17996d61b2b32131fdcb78ca53c1981280e5bc436"
+      }
     },
     {
       "id": "family-parameter-manager",
