@@ -27,7 +27,8 @@
         "file": "j-control-hub.apk",
         "sizeBytes": 56016187,
         "sha256": "2478b573ff4cd16b7c6b606f45c38e432770e51ae8566b82c3e3bff5df5f20d1"
-      }
+      },
+      "logo": "/assets/apps/j-control-hub.webp"
     },
     {
       "id": "j-mep-toolbox",
@@ -46,7 +47,8 @@
         "file": "j-mep-toolbox.apk",
         "sizeBytes": 12998333,
         "sha256": "58544fc993d668f3b97d258e71fdc364816d57507f9d433f1407a23edf6922d2"
-      }
+      },
+      "logo": "/assets/apps/j-mep-toolbox.webp"
     },
     {
       "id": "j-airgap-share",
@@ -65,7 +67,8 @@
         "file": "j-airgap-share.v1.apk",
         "sizeBytes": 29728124,
         "sha256": "e02d2d299f410692c91879fd5fe9ca6873d0f5192aab50f7ddbb914d0f69ddd4"
-      }
+      },
+      "logo": "/assets/apps/j-airgap-share.webp"
     },
     {
       "id": "j-wifi-share",
@@ -85,7 +88,8 @@
         "file": "j-wifi-share.apk",
         "sizeBytes": 25025685,
         "sha256": "4b96271bd53688d4e5c5536cafd8bf1d0ac28ffcdefadaf310fda079d4f6b208"
-      }
+      },
+      "logo": "/assets/apps/j-wifi-share.webp"
     },
     {
       "id": "j-dj-studio",
@@ -104,7 +108,8 @@
         "file": "j-dj-studio.apk",
         "sizeBytes": 9931712,
         "sha256": "d1432b4350df79d7f5b5b3b96742e61f080d72ce077e54701945132d6d66aca4"
-      }
+      },
+      "logo": "/assets/apps/j-dj-studio.webp"
     },
     {
       "id": "j-earth-time-machine",
@@ -123,7 +128,8 @@
         "file": "j-earth-time-machine.apk",
         "sizeBytes": 26582817,
         "sha256": "9e5cecb8ccf287f0015b483bc4e80eb18521a234706751d8091e3d768c1d83d4"
-      }
+      },
+      "logo": "/assets/apps/j-earth-time-machine.webp"
     },
     {
       "id": "j-recovery-cleaner",
@@ -142,7 +148,8 @@
         "file": "j-recovery-cleaner.apk",
         "sizeBytes": 14466481,
         "sha256": "2d2826f2118801271e0601b8077373b728d2eeef08637bf4027201712280fcc8"
-      }
+      },
+      "logo": "/assets/apps/j-recovery-cleaner.webp"
     },
     {
       "id": "j-grocery-planner",
@@ -162,7 +169,8 @@
         "file": "j-grocery-planner.apk",
         "sizeBytes": 1797577,
         "sha256": "92279f10c43bb70823a4ee22c06ab89465d97813459a5a8f98f8840657dc5e68"
-      }
+      },
+      "logo": "/assets/apps/j-grocery-planner.webp"
     },
     {
       "id": "j-expense-tracker-my-expense-tracker",
@@ -182,7 +190,8 @@
         "file": "j-expense-tracker-my-expense-tracker-v3.2.12.apk",
         "sizeBytes": 23067630,
         "sha256": "ac3a1cac9a237ee5e4d96888cc227cd80f24147b9a4acb04ef1eae37ff550608"
-      }
+      },
+      "logo": "/assets/apps/j-expense-tracker.webp"
     },
     {
       "id": "j-media-player",
@@ -201,7 +210,8 @@
         "file": "j-media-player.apk",
         "sizeBytes": 11342465,
         "sha256": "bb8ea77ebcfdeb0b21a95caa6dece8a88767cf493190a7ddb54167536f72eef3"
-      }
+      },
+      "logo": "/assets/apps/j-media-player.webp"
     },
     {
       "id": "j-flow-launcher",
@@ -221,7 +231,8 @@
         "file": "j-flow-launcher.apk",
         "sizeBytes": 1627673,
         "sha256": "97e1e8eadd722bc279cb456c9df1b669d242fbb19798b317a3b9aa91c094cf66"
-      }
+      },
+      "logo": "/assets/apps/j-flow-launcher.webp"
     },
     {
       "id": "j-kids-fun-pack",
@@ -240,7 +251,8 @@
         "file": "j-kids-fun-pack.apk",
         "sizeBytes": 25203556,
         "sha256": "30050259326d45c74251eb60bf52768978e5e4604392a3ab09de0e6ac87beb3e"
-      }
+      },
+      "logo": "/assets/apps/j-kids-fun-pack.webp"
     },
     {
       "id": "j-retro-arcade",
@@ -259,7 +271,8 @@
         "file": "j-retro-arcade.apk",
         "sizeBytes": 3267390,
         "sha256": "8c22a4b1b7921ad52450d955aa817d25264d1388a6dec22b5ad7509649061d19"
-      }
+      },
+      "logo": "/assets/apps/j-retro-arcade.webp"
     },
     {
       "id": "j-navi",
@@ -278,7 +291,8 @@
         "file": "j-navi.apk",
         "sizeBytes": 44941789,
         "sha256": "8a1c412766a8a867069f8244db3b8b7f406f7d16c473f5ad28676abbcbb18886"
-      }
+      },
+      "logo": "/assets/apps/j-navi.webp"
     },
     {
       "id": "j-pdf-toolkit",
@@ -298,7 +312,8 @@
         "file": "j-pdf-toolkit.apk",
         "sizeBytes": 57022837,
         "sha256": "412a29417e7519e4ab0e7f94e5612df890b5d7ebc59ded3341ff7b44c050e0b8"
-      }
+      },
+      "logo": "/assets/apps/j-pdf-toolkit.webp"
     },
     {
       "id": "j-archive-manager",
@@ -318,7 +333,8 @@
         "file": "j-archive-manager.apk",
         "sizeBytes": 10814708,
         "sha256": "2b8c3e6583eb5e264b28dbad585c682fd8a06400692ed23774280288c0f0a2a2"
-      }
+      },
+      "logo": "/assets/apps/j-archive-manager.webp"
     },
     {
       "id": "j-ar-room-designer",
@@ -337,7 +353,8 @@
         "file": "j-ar-room-designer.apk",
         "sizeBytes": 1949209,
         "sha256": "7aef2e7e0ba92cec14f8a711586800b751ad5cc8ef1d73f1a76fa5f94b9aac08"
-      }
+      },
+      "logo": "/assets/apps/j-ar-room-designer.webp"
     },
     {
       "id": "j-digital-toolbox",
@@ -356,7 +373,8 @@
         "file": "j-digital-toolbox.apk",
         "sizeBytes": 3439171,
         "sha256": "53677a886f7ddba50fd16eb7b4e8b8460099f5dd7c0afba8c185fbd9ccf9664f"
-      }
+      },
+      "logo": "/assets/apps/j-digital-toolbox.webp"
     },
     {
       "id": "j-phone-guardian",
@@ -375,7 +393,8 @@
         "file": "j-phone-guardian.apk",
         "sizeBytes": 1107933,
         "sha256": "d10e121e79e1b70b274d9e3b5f06d21a58f04c05fb5dfefc2ff6ada139ac2302"
-      }
+      },
+      "logo": "/assets/apps/j-phone-guardian.webp"
     },
     {
       "id": "j-calorie-tracker",
@@ -414,7 +433,8 @@
         "file": "j-photo-studio.apk",
         "sizeBytes": 8016664,
         "sha256": "bc43ec8902316ff6d6ac4a42298a03766acea440360821770e6c893540b4e1e9"
-      }
+      },
+      "logo": "/assets/apps/j-photo-studio.webp"
     },
     {
       "id": "forex-trading-calculator-forex-trader-pro",
@@ -473,7 +493,8 @@
         "file": "my-daily-tracker.apk",
         "sizeBytes": 5984849,
         "sha256": "cee386f29bd915fe795b98513dc264c9e1c039652456b0189544af0b263d9a0f"
-      }
+      },
+      "logo": "/assets/apps/my-daily-tracker.webp"
     },
     {
       "id": "j-algo-trader-app-replay-concept",
