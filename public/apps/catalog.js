@@ -29,11 +29,11 @@
  function logo(item,big=false){
    const box=el('span','j2-logo '+colorFor(item)+(big?' j2-logo-big':''));
    const fallback=el('span','j2-letters',monogram(item));
-   box.append(fallback);
+   if(!isLocalAsset(item.logo))box.append(fallback);
    if(isLocalAsset(item.logo)){
      const img=el('img','j2-logo-image');img.alt=item.name+' official app icon';img.loading='lazy';img.src=item.logo;
      img.addEventListener('load',()=>box.classList.add('j2-has-image'));
-     img.addEventListener('error',()=>{img.remove();box.classList.remove('j2-has-image');});
+     img.addEventListener('error',()=>{img.remove();box.classList.remove('j2-has-image');box.append(fallback);});
      box.append(img);
    }
    return box;
@@ -44,7 +44,7 @@
    currentId=item.id;details.replaceChildren();
    const release=getRelease(item);
    const media=el('div','j2-detail-media '+colorFor(item));
-   const mediaMark=el('div','j2-detail-art');mediaMark.append(logo(item,true),el('span','j2-art-kicker','JUST 24 THINGS · BY J&J'),el('strong','j2-art-title',item.name));
+   const mediaMark=el('div','j2-detail-art');mediaMark.append(logo(item,true),);
    media.append(mediaMark);
    const panel=el('div','j2-detail-panel');
    panel.append(el('p','j2-overline',item.family+' / J APPS COLLECTION'),el('h2','j2-detail-title',item.name),el('p','j2-detail-desc',item.description));
@@ -82,12 +82,12 @@
    const card=el('article','j-card j2-card');
    const preview=el('div','j2-card-cover '+colorFor(item));
    const decor=el('div','j2-cover-decor');
-   preview.append(decor,logo(item),el('span','j2-cover-text','J&J / '+(item.family==='Android'?'APPS':item.family==='Revit Add-ins'?'REVIT':'DYNAMO')));
+   preview.append(decor,logo(item),el('h3','j2-cover-app-name',item.name));
    card.append(preview);
    const body=el('div','j2-card-body');
    const head=el('div','j2-card-header');
    head.append(el('span','j2-category',item.family),el('span','j2-free',release?'FREE':'COMING SOON'));
-   body.append(head,el('h3','',item.name),el('p','j2-card-desc',item.description));
+   body.append(head,el('p','j2-card-desc',item.description));
    const meta=el('div','j2-card-meta');
    meta.append(el('span','',item.versionLabel||'Version not listed'));
    if(release?.bytes)meta.append(el('span','',size(release.bytes)));

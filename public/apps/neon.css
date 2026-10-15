@@ -174,3 +174,26 @@ html[data-theme=dark] body.japps-neon{--bg:#06121d;--warm:#091c2a;--panel:#10253
 @media(max-width:870px){.japps-neon .j-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.j2-detail-grid{grid-template-columns:1fr}.j2-detail-media{min-height:250px;border-right:0;border-bottom:1px solid #1b455a}.j2-detail-art{gap:10px}.j2-detail-art .j2-logo-big{width:72px;height:72px;border-radius:20px}.j2-art-title{font-size:29px}}
 @media(max-width:620px){.j2-featured{padding:32px 0}.j2-section-line{align-items:start}.j2-section-line>p{display:none}.j2-featured-grid{grid-template-columns:1fr}.j2-feature-card{min-height:174px}.j2-feature-card:last-child{display:none}.japps-neon .j-card-grid{grid-template-columns:1fr}.j2-card-cover{height:110px}.japps-neon .j2-card{min-height:345px}.j2-card h3{font-size:23px}.j2-card-desc{min-height:0}.j2-dialog{width:calc(100vw - 12px);max-height:calc(100dvh - 12px);border-radius:13px}.j2-detail-panel{padding:23px 20px 24px}.j2-dialog-head{padding:9px 14px}.j2-detail-media{min-height:204px}.j2-detail-art{gap:8px}.j2-detail-art .j2-logo-big{width:63px;height:63px}.j2-art-title{font-size:27px}}
 @media(prefers-reduced-motion:reduce){.j2-download,.j2-more{transition:none}}
+
+/* Compact J Apps catalog and original-logo display, 2026-10-15 */
+.japps-neon .j2-card{min-height:305px}
+.j2-card-cover{height:102px;gap:14px;padding:13px 17px}
+.j2-card-cover .j2-logo{width:68px;height:68px;border-radius:16px}
+.j2-card .j2-cover-app-name{position:relative;z-index:2;flex:1;min-width:0;margin:0;min-height:0;font:600 clamp(16px,1.5vw,20px)/1.16 Georgia,'Times New Roman',serif;letter-spacing:-.02em;color:#effbff;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.j2-card-body{padding:13px 17px 15px}
+.j2-card-desc{min-height:0;margin:11px 0 13px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.j2-card-meta{padding-bottom:12px}
+.j2-card-meta>span{padding:4px 8px}
+.j2-card-actions{padding-top:11px}
+.j2-logo.j2-has-image{border:0;background:transparent;box-shadow:none}
+.j2-logo.j2-has-image::before{display:none}
+.j2-has-image .j2-letters{display:none}
+.j2-has-image .j2-logo-image{opacity:1;padding:0;object-fit:contain}
+.j2-detail-grid{min-height:500px}
+.j2-detail-media{background:linear-gradient(145deg,#061522,#0b293e)}
+.j2-detail-media::after{content:none}
+.j2-detail-art{gap:0;max-width:100%}
+.j2-detail-art>.j2-logo-big{width:260px;height:260px;border-radius:30px}
+.j2-detail-art .j2-logo-image{padding:0}
+@media(max-width:870px){.j2-detail-grid{min-height:0}.j2-detail-media{min-height:240px}.j2-detail-art>.j2-logo-big{width:175px;height:175px;border-radius:24px}}
+@media(max-width:620px){.japps-neon .j2-card{min-height:285px}.j2-card-cover{height:98px;padding:11px 15px}.j2-card .j2-cover-app-name{font-size:19px}.j2-card-body{padding:12px 15px 14px}.j2-detail-media{min-height:210px}.j2-detail-art>.j2-logo-big{width:166px;height:166px}}
