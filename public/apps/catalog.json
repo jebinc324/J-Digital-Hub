@@ -191,7 +191,7 @@
         "sizeBytes": 23067630,
         "sha256": "ac3a1cac9a237ee5e4d96888cc227cd80f24147b9a4acb04ef1eae37ff550608"
       },
-      "logo": "/assets/apps/j-expense-tracker.webp"
+      "logo": "/assets/apps/j-expense-tracker-20261015.webp"
     },
     {
       "id": "j-media-player",
@@ -473,7 +473,8 @@
         "file": "nifty-lot-calculator.apk",
         "sizeBytes": 7534400,
         "sha256": "537bc693aaa31c251fa074e1037133539b61ce1e7da4d49082ec589023687f3e"
-      }
+      },
+      "logo": "/assets/apps/nifty-lot-calculator-20261015.webp"
     },
     {
       "id": "my-daily-tracker",
