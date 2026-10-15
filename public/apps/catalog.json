@@ -28,7 +28,8 @@
         "sizeBytes": 56016187,
         "sha256": "2478b573ff4cd16b7c6b606f45c38e432770e51ae8566b82c3e3bff5df5f20d1"
       },
-      "logo": "/assets/apps/j-control-hub.webp"
+      "logo": "/assets/apps/j-control-hub.webp",
+      "category": "Automation"
     },
     {
       "id": "j-mep-toolbox",
@@ -48,7 +49,8 @@
         "sizeBytes": 12998333,
         "sha256": "58544fc993d668f3b97d258e71fdc364816d57507f9d433f1407a23edf6922d2"
       },
-      "logo": "/assets/apps/j-mep-toolbox.webp"
+      "logo": "/assets/apps/j-mep-toolbox.webp",
+      "category": "Engineering"
     },
     {
       "id": "j-airgap-share",
@@ -68,7 +70,8 @@
         "sizeBytes": 29728124,
         "sha256": "e02d2d299f410692c91879fd5fe9ca6873d0f5192aab50f7ddbb914d0f69ddd4"
       },
-      "logo": "/assets/apps/j-airgap-share.webp"
+      "logo": "/assets/apps/j-airgap-share.webp",
+      "category": "Productivity & Files"
     },
     {
       "id": "j-wifi-share",
@@ -89,7 +92,8 @@
         "sizeBytes": 25025685,
         "sha256": "4b96271bd53688d4e5c5536cafd8bf1d0ac28ffcdefadaf310fda079d4f6b208"
       },
-      "logo": "/assets/apps/j-wifi-share.webp"
+      "logo": "/assets/apps/j-wifi-share.webp",
+      "category": "Productivity & Files"
     },
     {
       "id": "j-dj-studio",
@@ -109,7 +113,8 @@
         "sizeBytes": 9931712,
         "sha256": "d1432b4350df79d7f5b5b3b96742e61f080d72ce077e54701945132d6d66aca4"
       },
-      "logo": "/assets/apps/j-dj-studio.webp"
+      "logo": "/assets/apps/j-dj-studio.webp",
+      "category": "Media & Creative"
     },
     {
       "id": "j-earth-time-machine",
@@ -129,7 +134,8 @@
         "sizeBytes": 26582817,
         "sha256": "9e5cecb8ccf287f0015b483bc4e80eb18521a234706751d8091e3d768c1d83d4"
       },
-      "logo": "/assets/apps/j-earth-time-machine.webp"
+      "logo": "/assets/apps/j-earth-time-machine.webp",
+      "category": "Media & Creative"
     },
     {
       "id": "j-recovery-cleaner",
@@ -149,7 +155,8 @@
         "sizeBytes": 14466481,
         "sha256": "2d2826f2118801271e0601b8077373b728d2eeef08637bf4027201712280fcc8"
       },
-      "logo": "/assets/apps/j-recovery-cleaner.webp"
+      "logo": "/assets/apps/j-recovery-cleaner.webp",
+      "category": "Device & Safety"
     },
     {
       "id": "j-grocery-planner",
@@ -170,7 +177,8 @@
         "sizeBytes": 1797577,
         "sha256": "92279f10c43bb70823a4ee22c06ab89465d97813459a5a8f98f8840657dc5e68"
       },
-      "logo": "/assets/apps/j-grocery-planner.webp"
+      "logo": "/assets/apps/j-grocery-planner.webp",
+      "category": "Lifestyle"
     },
     {
       "id": "j-expense-tracker-my-expense-tracker",
@@ -191,7 +199,8 @@
         "sizeBytes": 23067630,
         "sha256": "ac3a1cac9a237ee5e4d96888cc227cd80f24147b9a4acb04ef1eae37ff550608"
       },
-      "logo": "/assets/apps/j-expense-tracker-20261015.webp"
+      "logo": "/assets/apps/j-expense-tracker-20261015.webp",
+      "category": "Finance & Trading"
     },
     {
       "id": "j-media-player",
@@ -211,7 +220,8 @@
         "sizeBytes": 11342465,
         "sha256": "bb8ea77ebcfdeb0b21a95caa6dece8a88767cf493190a7ddb54167536f72eef3"
       },
-      "logo": "/assets/apps/j-media-player.webp"
+      "logo": "/assets/apps/j-media-player.webp",
+      "category": "Media & Creative"
     },
     {
       "id": "j-flow-launcher",
@@ -232,7 +242,8 @@
         "sizeBytes": 1627673,
         "sha256": "97e1e8eadd722bc279cb456c9df1b669d242fbb19798b317a3b9aa91c094cf66"
       },
-      "logo": "/assets/apps/j-flow-launcher.webp"
+      "logo": "/assets/apps/j-flow-launcher.webp",
+      "category": "Productivity & Files"
     },
     {
       "id": "j-kids-fun-pack",
@@ -252,7 +263,8 @@
         "sizeBytes": 25203556,
         "sha256": "30050259326d45c74251eb60bf52768978e5e4604392a3ab09de0e6ac87beb3e"
       },
-      "logo": "/assets/apps/j-kids-fun-pack.webp"
+      "logo": "/assets/apps/j-kids-fun-pack.webp",
+      "category": "Kids & Games"
     },
     {
       "id": "j-retro-arcade",
@@ -272,7 +284,8 @@
         "sizeBytes": 3267390,
         "sha256": "8c22a4b1b7921ad52450d955aa817d25264d1388a6dec22b5ad7509649061d19"
       },
-      "logo": "/assets/apps/j-retro-arcade.webp"
+      "logo": "/assets/apps/j-retro-arcade.webp",
+      "category": "Kids & Games"
     },
     {
       "id": "j-navi",
@@ -292,7 +305,8 @@
         "sizeBytes": 44941789,
         "sha256": "8a1c412766a8a867069f8244db3b8b7f406f7d16c473f5ad28676abbcbb18886"
       },
-      "logo": "/assets/apps/j-navi.webp"
+      "logo": "/assets/apps/j-navi.webp",
+      "category": "Lifestyle"
     },
     {
       "id": "j-pdf-toolkit",
@@ -313,7 +327,8 @@
         "sizeBytes": 57022837,
         "sha256": "412a29417e7519e4ab0e7f94e5612df890b5d7ebc59ded3341ff7b44c050e0b8"
       },
-      "logo": "/assets/apps/j-pdf-toolkit.webp"
+      "logo": "/assets/apps/j-pdf-toolkit.webp",
+      "category": "Productivity & Files"
     },
     {
       "id": "j-archive-manager",
@@ -334,7 +349,8 @@
         "sizeBytes": 10814708,
         "sha256": "2b8c3e6583eb5e264b28dbad585c682fd8a06400692ed23774280288c0f0a2a2"
       },
-      "logo": "/assets/apps/j-archive-manager.webp"
+      "logo": "/assets/apps/j-archive-manager.webp",
+      "category": "Productivity & Files"
     },
     {
       "id": "j-ar-room-designer",
@@ -354,7 +370,8 @@
         "sizeBytes": 1949209,
         "sha256": "7aef2e7e0ba92cec14f8a711586800b751ad5cc8ef1d73f1a76fa5f94b9aac08"
       },
-      "logo": "/assets/apps/j-ar-room-designer.webp"
+      "logo": "/assets/apps/j-ar-room-designer.webp",
+      "category": "Engineering"
     },
     {
       "id": "j-digital-toolbox",
@@ -374,7 +391,8 @@
         "sizeBytes": 3439171,
         "sha256": "53677a886f7ddba50fd16eb7b4e8b8460099f5dd7c0afba8c185fbd9ccf9664f"
       },
-      "logo": "/assets/apps/j-digital-toolbox.webp"
+      "logo": "/assets/apps/j-digital-toolbox.webp",
+      "category": "Engineering"
     },
     {
       "id": "j-phone-guardian",
@@ -394,7 +412,8 @@
         "sizeBytes": 1107933,
         "sha256": "d10e121e79e1b70b274d9e3b5f06d21a58f04c05fb5dfefc2ff6ada139ac2302"
       },
-      "logo": "/assets/apps/j-phone-guardian.webp"
+      "logo": "/assets/apps/j-phone-guardian.webp",
+      "category": "Device & Safety"
     },
     {
       "id": "j-calorie-tracker",
@@ -414,7 +433,9 @@
         "file": "j-calorie-tracker.apk",
         "sizeBytes": 1662109,
         "sha256": "9766b5397c8e71b672e7763f27d68b70d943c67effa855f2724bad641af741d9"
-      }
+      },
+      "category": "Lifestyle",
+      "logo": "/assets/apps/j-calorie-tracker.webp"
     },
     {
       "id": "j-photo-studio",
@@ -434,7 +455,8 @@
         "sizeBytes": 8016664,
         "sha256": "bc43ec8902316ff6d6ac4a42298a03766acea440360821770e6c893540b4e1e9"
       },
-      "logo": "/assets/apps/j-photo-studio.webp"
+      "logo": "/assets/apps/j-photo-studio.webp",
+      "category": "Media & Creative"
     },
     {
       "id": "forex-trading-calculator-forex-trader-pro",
@@ -453,7 +475,8 @@
         "file": "forex-trading-calculator-forex-trader-pro.apk",
         "sizeBytes": 20389,
         "sha256": "deddc07604b1b6e2e718de4b70f74049c15633f299318e9198f96a5a40620693"
-      }
+      },
+      "category": "Finance & Trading"
     },
     {
       "id": "nifty-lot-calculator",
@@ -474,7 +497,8 @@
         "sizeBytes": 7534400,
         "sha256": "537bc693aaa31c251fa074e1037133539b61ce1e7da4d49082ec589023687f3e"
       },
-      "logo": "/assets/apps/nifty-lot-calculator-20261015.webp"
+      "logo": "/assets/apps/nifty-lot-calculator-20261015.webp",
+      "category": "Finance & Trading"
     },
     {
       "id": "my-daily-tracker",
@@ -495,7 +519,8 @@
         "sizeBytes": 5984849,
         "sha256": "cee386f29bd915fe795b98513dc264c9e1c039652456b0189544af0b263d9a0f"
       },
-      "logo": "/assets/apps/my-daily-tracker.webp"
+      "logo": "/assets/apps/my-daily-tracker.webp",
+      "category": "Lifestyle"
     },
     {
       "id": "j-algo-trader-app-replay-concept",
@@ -515,7 +540,8 @@
         "file": "j-algo-trader-app-replay-concept.apk",
         "sizeBytes": 68064,
         "sha256": "6b93cfdd444cbdb26ce2b9aaa72046d948ba2965bae92be5b9b9b64b8a92a47c"
-      }
+      },
+      "category": "Finance & Trading"
     },
     {
       "id": "j-revit-tools-combined",
@@ -534,7 +560,8 @@
         "file": "j-revit-tools-combined.zip",
         "sizeBytes": 752660,
         "sha256": "a0a7949ecb0b55e177f8e7ecfaf04db974adbd4df40b6a51a37d37abc0015ae0"
-      }
+      },
+      "category": "Engineering"
     },
     {
       "id": "j-revit-standards-manager",
@@ -553,7 +580,8 @@
         "file": "j-revit-standards-manager.zip",
         "sizeBytes": 44464,
         "sha256": "f2e344937bb5b46e295997a89e5f5247a37aa1aefa263a8fed4341f26879fb52"
-      }
+      },
+      "category": "Engineering"
     },
     {
       "id": "j-tag-arrow-manager",
@@ -572,7 +600,8 @@
         "file": "j-tag-arrow-manager.zip",
         "sizeBytes": 10069,
         "sha256": "c6288ad802bfac943d4d6b20c49457779c904ecaa259c0918d2f6d01472122e8"
-      }
+      },
+      "category": "Engineering"
     },
     {
       "id": "j-purge-manager",
@@ -591,7 +620,8 @@
         "file": "j-purge-manager.zip",
         "sizeBytes": 20592,
         "sha256": "77f3fa4d52db59f0dd79bf720d7d83d146c311a19b190c12c8aad01bffce97f9"
-      }
+      },
+      "category": "Engineering"
     },
     {
       "id": "j-dwg-manager",
@@ -610,7 +640,8 @@
         "file": "j-dwg-manager.zip",
         "sizeBytes": 20592,
         "sha256": "77f3fa4d52db59f0dd79bf720d7d83d146c311a19b190c12c8aad01bffce97f9"
-      }
+      },
+      "category": "Engineering"
     },
     {
       "id": "j-equipment-schedule-manager",
@@ -629,7 +660,8 @@
         "file": "j-equipment-schedule-manager.zip",
         "sizeBytes": 86478,
         "sha256": "e112086b8da98f7474f2fd8e8da8822631bd6284a08118d02eae2e562e386ff3"
-      }
+      },
+      "category": "Engineering"
     },
     {
       "id": "j-family-parameter-manager",
@@ -648,7 +680,8 @@
         "file": "j-family-parameter-manager.zip",
         "sizeBytes": 3939630,
         "sha256": "ac543bb7ea266557172e63182f6fda6082e187bc4f84e3c5afcd7d6503d416aa"
-      }
+      },
+      "category": "Engineering"
     },
     {
       "id": "j-section-box-orient-to-face",
@@ -667,7 +700,8 @@
         "file": "j-section-box-orient-to-face.zip",
         "sizeBytes": 3939630,
         "sha256": "ac543bb7ea266557172e63182f6fda6082e187bc4f84e3c5afcd7d6503d416aa"
-      }
+      },
+      "category": "Engineering"
     },
     {
       "id": "j-parameter-find-replace",
@@ -686,7 +720,8 @@
         "file": "j-parameter-find-replace.zip",
         "sizeBytes": 5458,
         "sha256": "37b5a2f2252ac09a651c1ab17996d61b2b32131fdcb78ca53c1981280e5bc436"
-      }
+      },
+      "category": "Engineering"
     },
     {
       "id": "j-batch-nwc-standalone-revit2024",
@@ -708,7 +743,8 @@
         "file": "j-batch-nwc-standalone-revit2024.zip",
         "sizeBytes": 6293,
         "sha256": "80f7278463684d51715dd8a80cf0715225ab9619dbd8be6b345453e075554724"
-      }
+      },
+      "category": "Engineering"
     },
     {
       "id": "family-parameter-manager",
@@ -727,7 +763,8 @@
         "file": "family-parameter-manager.dyn",
         "sizeBytes": 35763,
         "sha256": "7c21b1b25b90ab63f83f418b663917634afcc6bd4a8b5104b625cb523ee6c67e"
-      }
+      },
+      "category": "Automation"
     },
     {
       "id": "j-revit-standards-manager-dynamo",
@@ -746,7 +783,8 @@
         "file": "j-revit-standards-manager-dynamo.dyn",
         "sizeBytes": 96406,
         "sha256": "0d59b1c074c17595a2d57a53dd96fc8f3495fd30cbce7c78db99304829c7f5c9"
-      }
+      },
+      "category": "Automation"
     },
     {
       "id": "j-tag-arrow-manager-dynamo",
@@ -765,7 +803,8 @@
         "file": "j-tag-arrow-manager-dynamo.dyn",
         "sizeBytes": 26183,
         "sha256": "a0c9fa2f9609b090a7c9763fef8a8bd0e0bf56b762eb009b471305aff6cd3586"
-      }
+      },
+      "category": "Automation"
     },
     {
       "id": "j-select-similar-multicategory-selected-views",
@@ -784,7 +823,8 @@
         "file": "j-select-similar-multicategory-selected-views.dyn",
         "sizeBytes": 13806,
         "sha256": "54e29c8de8ca8d12cd4ad7de830fe5b94e12344a95bc1e9d2385438e7432fa56"
-      }
+      },
+      "category": "Automation"
     },
     {
       "id": "j-purge-dwg-manager",
@@ -803,7 +843,8 @@
         "file": "j-purge-dwg-manager.dyn",
         "sizeBytes": 25912,
         "sha256": "49c14a728b57eeabda2dafe28e7133c2cf1d38f00ccd981b841afda4106c7de2"
-      }
+      },
+      "category": "Automation"
     },
     {
       "id": "j-mirror-model-sync",
@@ -822,7 +863,8 @@
         "file": "j-mirror-model-sync.dyn",
         "sizeBytes": 100930,
         "sha256": "62b284c1f31f0d575e5410e7a068a01791b46d4250fecd940af40932fdbc3a54"
-      }
+      },
+      "category": "Automation"
     },
     {
       "id": "j-section-box-orient-to-face-pyrevit",
@@ -841,7 +883,8 @@
         "file": "j-section-box-orient-to-face-pyrevit.dyn",
         "sizeBytes": 13530,
         "sha256": "85b4834a2e7582d1bbdd287d98c6fd26889cfb22e85be85fc8ef1b86ab8a5f55"
-      }
+      },
+      "category": "Automation"
     },
     {
       "id": "j-tools-combined-dynamo-pack",
@@ -860,7 +903,8 @@
         "file": "j-tools-combined-dynamo-pack.zip",
         "sizeBytes": 16023,
         "sha256": "b8e56ac22defacb7f8da28ed257adffbe46c70933c798c1f591343f21a301f62"
-      }
+      },
+      "category": "Automation"
     }
   ],
   "launch": {

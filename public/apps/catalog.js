@@ -7,6 +7,35 @@
  const featured=document.getElementById('j-featured-grid');
  const dialog=document.getElementById('j-app-dialog'),details=document.getElementById('j-detail-content');
  let all=[],family='all',releaseAssets=new Map(),currentId=null;
+ const specialtyHost=document.getElementById('j-specialty-filter');
+ const specialtyNames=['Engineering','Automation','Finance & Trading','Productivity & Files','Media & Creative','Kids & Games','Device & Safety','Lifestyle'];
+ let specialty='all',specialtyButtons=[];
+ function mountSpecialties(){
+   if(!specialtyHost)return;
+   const nodes=['all',...specialtyNames].map(name=>{
+     const button=el('button','j2-specialty-chip');
+     button.type='button';
+     button.dataset.specialty=name;
+     button.append(document.createTextNode(name==='all'?'All categories':name),el('span','j2-specialty-count',''));
+     button.addEventListener('click',()=>{if(specialty===name)return;specialty=name;draw();});
+     return button;
+   });
+   specialtyButtons=nodes;
+   specialtyHost.replaceChildren(...nodes);
+ }
+ function syncSpecialties(){
+   const subset=all.filter(item=>family==='all'||item.family===family);
+   for(const button of specialtyButtons){
+     const name=button.dataset.specialty;
+     const number=name==='all'?subset.length:subset.filter(item=>item.category===name).length;
+     button.querySelector('.j2-specialty-count').textContent=String(number);
+     button.disabled=number===0;
+     button.hidden=number===0&&name!=='all';
+     button.classList.toggle('active',name===specialty);
+     button.setAttribute('aria-pressed',String(name===specialty));
+   }
+ }
+
  const features=['nifty-lot-calculator','j-expense-tracker-my-expense-tracker','j-algo-trader-app-replay-concept'];
  const colors=['j2-teal','j2-indigo','j2-violet','j2-orange','j2-blue','j2-lime'];
  function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
@@ -14,6 +43,30 @@
  function colorFor(item){let n=0;for(const char of item.id)n=(n+char.charCodeAt(0))%colors.length;return colors[n];}
  function size(bytes){return bytes?(bytes/1048576).toFixed(2)+' MB':'';}
  function isLocalAsset(s){return typeof s==='string'&&/^\/assets\/apps\/[a-zA-Z0-9/_-]+\.(png|webp|jpg|jpeg)$/i.test(s);}
+ function makeCategoryMark(item){
+   const art=el('span','j2-fallback-art');
+   art.title='Category artwork — original icon not available';
+   const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+   svg.setAttribute('viewBox','0 0 24 24');
+   svg.setAttribute('aria-hidden','true');
+   const paths={
+     'Engineering':['M4 20V7l8-4 8 4v13H4Z','M4 8l8 4 8-4','M12 12v8'],
+     'Automation':['M4 4h16v16H4z','M3 12h6l3-6 3 12 3-6h3'],
+     'Finance & Trading':['M3 17l6-6 4 3 8-8','M16 6h5v5','M3 21h18'],
+     'Productivity & Files':['M3 7h7l2 2h9v10H3z','M6 14h11'],
+     'Media & Creative':['M10 18V5l11-2v13','M10 9l11-2','M6 17a3 2 0 1 0 4 3','M17 15a3 2 0 1 0 4 3'],
+     'Kids & Games':['M6 9h12c2 0 3 1 4 4l1 5c0 3-3 4-5 2l-3-3H9l-3 3c-2 2-5 1-5-2l1-5c1-3 2-4 4-4Z','M7 11v6','M4 14h6','M16 12h.01','M19 15h.01'],
+     'Device & Safety':['M12 2 20 6v6c0 5-3 8-8 10-5-2-8-5-8-10V6z','m8 12 3 3 5-6'],
+     'Lifestyle':['M20 4C9 4 5 11 5 17a5 5 0 0 0 5 5c6 0 10-7 10-18Z','M5 21c1-6 6-11 12-14']
+   };
+   for(const pathData of paths[item.category]||paths.Engineering){
+     const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+     p.setAttribute('d',pathData);
+     svg.append(p);
+   }
+   art.append(svg);
+   return art;
+ }
  function getRelease(item){
    if(!item||item.access!=='public'||!item.releaseAsset)return null;
    const asset=releaseAssets.get(item.releaseAsset),raw=item.downloadUrl||asset?.browser_download_url;
@@ -28,12 +81,12 @@
  }
  function logo(item,big=false){
    const box=el('span','j2-logo '+colorFor(item)+(big?' j2-logo-big':''));
-   const fallback=el('span','j2-letters',monogram(item));
-   if(!isLocalAsset(item.logo))box.append(fallback);
+   const fallback=makeCategoryMark(item);
+   if(!isLocalAsset(item.logo)){box.append(fallback);box.classList.add('j2-brand-fallback');}
    if(isLocalAsset(item.logo)){
-     const img=el('img','j2-logo-image');img.alt=item.name+' official app icon';img.loading='lazy';img.src=item.logo;
+     const img=el('img','j2-logo-image');img.alt=item.name+' logo';img.loading='lazy';img.src=item.logo;
      img.addEventListener('load',()=>box.classList.add('j2-has-image'));
-     img.addEventListener('error',()=>{img.remove();box.classList.remove('j2-has-image');box.append(fallback);});
+     img.addEventListener('error',()=>{img.remove();box.classList.remove('j2-has-image');box.append(fallback);box.classList.add('j2-brand-fallback');});
      box.append(img);
    }
    return box;
@@ -47,7 +100,7 @@
    const mediaMark=el('div','j2-detail-art');mediaMark.append(logo(item,true),);
    media.append(mediaMark);
    const panel=el('div','j2-detail-panel');
-   panel.append(el('p','j2-overline',item.family+' / J APPS COLLECTION'),el('h2','j2-detail-title',item.name),el('p','j2-detail-desc',item.description));
+   panel.append(el('p','j2-overline',item.family+' / '+(item.category||'J APPS COLLECTION')),el('h2','j2-detail-title',item.name),el('p','j2-detail-desc',item.description));
    const tags=el('div','j2-detail-tags');
    tags.append(el('span','j2-pill',item.versionLabel||'Version not listed'),el('span','j2-pill','Free download'));
    if(release?.bytes)tags.append(el('span','j2-pill',size(release.bytes)));
@@ -86,7 +139,7 @@
    card.append(preview);
    const body=el('div','j2-card-body');
    const head=el('div','j2-card-header');
-   head.append(el('span','j2-category',item.family),el('span','j2-free',release?'FREE':'COMING SOON'));
+   head.append(el('span','j2-category',item.category||item.family),el('span','j2-free',release?'FREE':'COMING SOON'));
    body.append(head,el('p','j2-card-desc',item.description));
    const meta=el('div','j2-card-meta');
    meta.append(el('span','',item.versionLabel||'Version not listed'));
@@ -110,9 +163,11 @@
  }
  function draw(){
    const q=search?.value.trim().toLocaleLowerCase()||'';
+   syncSpecialties();
    const filtered=all.filter(item=>(family==='all'||item.family===family)
+     &&(specialty==='all'||item.category===specialty)
      &&(!statusFilter||statusFilter.value==='all'||(statusFilter.value==='uploaded'?Boolean(getRelease(item)):statusFilter.value==='pending'?!getRelease(item):false))
-     &&[item.name,item.family,item.description,item.versionLabel||''].some(s=>s.toLocaleLowerCase().includes(q)));
+     &&[item.name,item.family,item.category||'',item.description,item.versionLabel||''].some(s=>s.toLocaleLowerCase().includes(q)));
    cards.replaceChildren(...filtered.map(makeCard));
    count.textContent='Showing '+filtered.length+' of '+all.length+' projects';
    empty.hidden=filtered.length>0;
@@ -123,7 +178,7 @@
    if(pendingStat)pendingStat.textContent=String(all.length-ready);
  }
  familyButtons.forEach(b=>b.addEventListener('click',()=>{
-   family=b.dataset.family;
+   family=b.dataset.family;specialty='all';
    familyButtons.forEach(other=>{const active=b===other;other.classList.toggle('active',active);other.setAttribute('aria-pressed',String(active));});
    draw();
  }));
@@ -148,6 +203,7 @@
      const data=await result.json();
      if(!Array.isArray(data.items))throw Error('Invalid catalogue');
      all=data.items.filter(item=>item&&typeof item.name==='string'&&item.access==='public');
+     mountSpecialties();
      if(featured)featured.replaceChildren(...features.map(id=>all.find(x=>x.id===id)).filter(Boolean).map(makeFeature));
      draw();
      const param=new URL(location.href).searchParams.get('app'),chosen=all.find(x=>x.id===param);
