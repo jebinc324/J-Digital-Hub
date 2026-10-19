@@ -1,0 +1,44 @@
+/* J Arcade Tabletop — scoped to /games/ parent, existing 12-game iframe stays intact */
+body.jj-retro-arcade .j-classics{
+ position:relative;padding:58px 0 66px;
+ background:radial-gradient(ellipse at 15% 8%,rgba(71,210,235,.08),transparent 46%),linear-gradient(180deg,#080c1d,#10152c 60%,#080c1d);
+ border-top:1px solid rgba(95,217,242,.15);border-bottom:1px solid rgba(95,217,242,.19);
+}
+.j-classics *{box-sizing:border-box}
+.j-classics-heading{display:flex;align-items:end;justify-content:space-between;flex-wrap:wrap;gap:18px;margin-bottom:27px}
+.j-classics-heading h2{color:#f4faff;font-family:"Chakra Petch",sans-serif;font-weight:800;font-size:clamp(2rem,4.7vw,3.6rem);line-height:1.03;margin:7px 0}
+.j-classics-heading h2 em{font-style:normal;color:#6af0f4}
+.j-classics-heading p{color:#a9c4d9;max-width:400px;font-size:.96rem;line-height:1.6}
+.j-classics-select{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:22px}
+.j-classic-pick{position:relative;display:flex;align-items:center;text-align:left;gap:16px;padding:20px 22px;
+ background:linear-gradient(120deg,#14213c,#101829);border:1px solid rgba(98,191,229,.3);
+ border-radius:21px;color:#eafcff;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.2);
+ transition:transform .2s,border-color .2s,background .2s}
+.j-classic-pick:hover{transform:translateY(-3px);border-color:#78e7fa}
+.j-classic-pick.is-active{border-color:#6ef2f4;background:linear-gradient(115deg,#173c50,#14213c);box-shadow:0 0 0 2px rgba(110,242,244,.09),0 0 36px rgba(74,236,249,.12)}
+.j-classic-pick:focus-visible{outline:3px solid #ffe399;outline-offset:3px}
+.j-classic-emoji{display:grid;place-items:center;flex:0 0 76px;width:76px;height:76px;border-radius:18px;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.2),transparent 58%),linear-gradient(145deg,#20546a,#283462);font-size:2.75rem;color:#ffe99f;filter:drop-shadow(0 4px 8px rgba(0,0,0,.2))}
+.j-classic-pick:last-child .j-classic-emoji{background:linear-gradient(145deg,#864a59,#48416b)}
+.j-classic-pick strong{display:block;font-size:1.32rem;font-family:"Chakra Petch",sans-serif;font-weight:800;letter-spacing:.03em}
+.j-classic-pick small{display:block;color:#a9c7d7;margin-top:5px;font-size:.82rem;line-height:1.45}
+.j-classic-selected{position:absolute;top:12px;right:15px;font-size:.67rem;font-weight:800;letter-spacing:.08em;color:#6bf1f4}
+.j-classic-stage{border:1px solid rgba(110,242,244,.27);border-radius:20px;overflow:hidden;background:#070f24;box-shadow:0 25px 55px rgba(0,0,0,.36)}
+.j-classic-stage-head{display:flex;align-items:center;gap:13px;flex-wrap:wrap;justify-content:space-between;padding:14px 20px;background:#131d35;border-bottom:1px solid rgba(106,224,245,.18)}
+.j-classic-stage-head strong{font-family:"Chakra Petch",sans-serif;letter-spacing:.07em;color:#76f3f5}
+.j-classic-stage-head a{font-size:.77rem;color:#ddc9ff;text-decoration:none;border-bottom:1px solid rgba(221,201,255,.5)}
+.j-classic-stage-head a:hover{color:#fff}
+.j-classic-frame{display:block;width:100%;height:850px;border:0;background:#080d20}
+.j-classic-help{font-size:.79rem;color:#94acc3;line-height:1.5;margin:12px 3px 0}
+@media(max-width:750px){
+ body.jj-retro-arcade .j-classics{padding:36px 0}
+ .j-classics-select{gap:10px}
+ .j-classic-pick{flex-direction:column;text-align:center;align-items:center;justify-content:center;padding:30px 8px 12px;gap:8px;border-radius:14px}
+ .j-classic-emoji{width:57px;height:57px;flex-basis:57px;font-size:2.1rem;border-radius:13px}
+ .j-classic-pick strong{font-size:1.1rem}
+ .j-classic-pick small{font-size:.73rem}
+ .j-classic-selected{top:9px;right:10px;font-size:.57rem}
+ .j-classic-frame{height:1090px}
+ .j-classic-stage-head{padding:13px}
+}
+@media(max-width:380px){.j-classic-frame{height:1230px}}
+@media(prefers-reduced-motion:reduce){.j-classic-pick{transition:none}}
