@@ -5,7 +5,7 @@
     "repository": "jebinc324/J-Digital-Hub",
     "tag": "just24-public-v1",
     "source": "GitHub Releases public API",
-    "lastVerified": "2026-10-14",
+    "lastVerified": "2026-10-19",
     "filenameMappingConfigured": "2026-10-14"
   },
   "notice": "J&J Free Launch: all 43 project download files are published on official GitHub Releases. File availability does not establish package safety, build compatibility, or function verification.",
@@ -187,17 +187,17 @@
       "type": "Android app",
       "access": "public",
       "description": "Expenses, budgets, savings and reporting.",
-      "versionLabel": "v3.2.15",
+      "versionLabel": "v3.2.16",
       "uploadedFile": true,
-      "releaseAsset": "j-expense-tracker-my-expense-tracker-v3.2.15.apk",
-      "approxSizeMB": 22.59,
+      "releaseAsset": "j-expense-tracker-my-expense-tracker-v3.2.16.apk",
+      "approxSizeMB": 22.01,
       "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
-      "launchStatus": "uploaded-verified",
-      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-expense-tracker-my-expense-tracker-v3.2.15.apk",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-expense-tracker-my-expense-tracker-v3.2.16.apk",
       "verifiedUpload": {
-        "file": "j-expense-tracker-my-expense-tracker-v3.2.15.apk",
-        "sizeBytes": 23081580,
-        "sha256": "f55fb053a8a66c43dd86cca6eb5fd857695add48f8d7284a6eebc5cb07dd6ea8"
+        "file": "j-expense-tracker-my-expense-tracker-v3.2.16.apk",
+        "sizeBytes": 23081901,
+        "sha256": "fcdd93d431c505852e5371dfc5f0d051c7b1ae5b46ffb85899b6a16ccd55d07a"
       },
       "logo": "/assets/apps/j-expense-tracker-20261015.webp",
       "category": "Finance & Trading"
@@ -911,7 +911,7 @@
     "edition": "J&J Free Launch",
     "pricing": "free",
     "accountRequired": false,
-    "updatedAt": "2026-10-14",
+    "updatedAt": "2026-10-19",
     "pendingSafetyChecks": [],
     "unverifiedBuilds": [
       "j-wifi-share",
@@ -926,7 +926,7 @@
       "j-algo-trader-app-replay-concept"
     ],
     "listedProjects": 43,
-    "currentReleaseAssets": 42
+    "currentReleaseAssets": 49
   },
   "media": {
     "iconRoot": "/assets/apps/icons/",
