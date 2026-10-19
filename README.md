@@ -3,6 +3,14 @@
 Website: https://just24things.onrender.com/apps/
 Repository: `jebinc324/J-Digital-Hub` (public static site, Render publish directory `public`).
 
+## J Apps Publisher — manage releases without ChatGPT
+
+**[Open J Apps Publisher (GitHub Actions controller)](https://github.com/jebinc324/J-Digital-Hub/actions/workflows/j-apps-publisher.yml)**
+
+Upload your APK/ZIP to the [public GitHub Release](https://github.com/jebinc324/J-Digital-Hub/releases/tag/just24-public-v1), then use **Run workflow → update or add**. It checks the exact release file, size and SHA-256, sets matching download metadata in `public/apps/catalog.json`, and commits changes. Adding a new app updates the website's project counts. Sign in to GitHub; **ChatGPT and local programming are not needed**. Logo/screenshots are optional and must be committed to `public/assets/apps/` before referencing their paths.
+
+[Complete step-by-step manual](docs/J_APPS_PUBLISHER.md) · Files: [workflow](.github/workflows/j-apps-publisher.yml) and [publisher script](.github/scripts/publish_j_app.py). GitHub Actions write access and Render auto-deploy must be enabled for hands-off publication.
+
 ## Launch status
 - 43 catalogue listings: 25 Android, 10 Revit Add-ins/standalone Revit tools, 8 Revit Dynamo.
 - All 43 listings are free/open to browse; **no login or registration required**.
