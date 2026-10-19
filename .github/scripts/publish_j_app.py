@@ -98,9 +98,9 @@ def update_visible_counts(root, old_count, items):
 
 def publish():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mode", choices=["update", "add"], required=True)
+    parser.add_argument("--mode", choices=["update", "add", "remove"], required=True)
     parser.add_argument("--app-id", required=True)
-    parser.add_argument("--apk-filename", required=True)
+    parser.add_argument("--apk-filename", required=True, help="Release file for add/update; REMOVE:<app-id> for removal")
     parser.add_argument("--version", default="")
     parser.add_argument("--name", default="")
     parser.add_argument("--description", default="")
@@ -114,8 +114,8 @@ def publish():
     app_id, filename = args.app_id.strip(), args.apk_filename.strip()
     if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", app_id):
         fail("App ID must be lowercase-hyphenated, e.g. j-expense-tracker-my-expense-tracker")
-    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*\.(apk|zip)", filename, re.I):
-        fail("Enter the exact APK/ZIP filename, without a path")
+    if args.mode != "remove" and not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*\.(apk|zip)", filename, re.I):
+        fail("Enter the exact APK/ZIP filename, without a path (or full URL)")
     version = args.version.strip()
     if version and not re.fullmatch(r"v?[0-9][0-9a-zA-Z.+_-]{0,39}", version):
         fail("Version should look like v3.2.16 or v1.0.0")
@@ -130,6 +130,36 @@ def publish():
     found = [x for x in items if x.get("id") == app_id]
     if len(found) > 1:
         fail("Duplicate ID in catalogue")
+    if args.mode == "remove":
+        if not found:
+            fail("Cannot remove: App ID not found in catalogue.")
+        if filename != f"REMOVE:{app_id}":
+            fail(f"Removal requires confirmation: enter REMOVE:{app_id} in the APK filename field.")
+        if len(items) <= 1:
+            fail("Refusing to remove the last app in the catalogue.")
+        old_count = len(items)
+        catalog["items"] = [item for item in items if item.get("id") != app_id]
+        if isinstance(catalog.get("launch", {}).get("unverifiedBuilds"), list):
+            catalog["launch"]["unverifiedBuilds"] = [
+                item for item in catalog["launch"]["unverifiedBuilds"] if item != app_id
+            ]
+        catalog["launch"]["listedProjects"] = len(catalog["items"])
+        catalog["launch"]["updatedAt"] = datetime.now(timezone.utc).date().isoformat()
+        catalog["notice"] = catalog.get("notice", "").replace(
+            f"all {old_count} project download files",
+            f"all {len(catalog['items'])} project download files",
+        )
+        writes = {
+            catalog_file: json.dumps(catalog, ensure_ascii=False, indent=2) + "\n",
+        }
+        writes.update(update_visible_counts(root, old_count, catalog["items"]))
+        for path, body in writes.items():
+            path.write_text(body, encoding="utf-8")
+        print(f"Removed website listing: {app_id}")
+        print(f"Remaining apps: {len(catalog['items'])}")
+        print("GitHub Release APK/ZIP is NOT deleted.")
+        print("Changed files: " + ", ".join(str(path.relative_to(root)) for path in writes))
+        return
     if args.mode == "update" and not found:
         fail("App ID not found. Check the spelling or choose mode=add.")
     if args.mode == "add" and found:
@@ -198,6 +228,11 @@ def publish():
     catalog["launch"]["updatedAt"] = date
     catalog["launch"]["listedProjects"] = len(items)
     catalog["launch"]["currentReleaseAssets"] = len(release["assets"])
+    if args.mode == "add":
+        catalog["notice"] = catalog.get("notice", "").replace(
+            f"all {len(items)-1} project download files",
+            f"all {len(items)} project download files",
+        )
     writes = {catalog_file: json.dumps(catalog, ensure_ascii=False, indent=2) + "\n"}
     if args.mode == "add":
         writes.update(update_visible_counts(root, len(items) - 1, items))
