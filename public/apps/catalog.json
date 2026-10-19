@@ -187,17 +187,17 @@
       "type": "Android app",
       "access": "public",
       "description": "Expenses, budgets, savings and reporting.",
-      "versionLabel": "v3.2.12",
+      "versionLabel": "v3.2.15",
       "uploadedFile": true,
       "releaseAsset": "j-expense-tracker-my-expense-tracker-v3.2.12.apk",
-      "approxSizeMB": 21.99,
+      "approxSizeMB": 22.59,
       "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
-      "launchStatus": "uploaded-unverified",
-      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-expense-tracker-my-expense-tracker-v3.2.12.apk",
+      "launchStatus": "uploaded-verified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-expense-tracker-my-expense-tracker-v3.2.15.apk",
       "verifiedUpload": {
-        "file": "j-expense-tracker-my-expense-tracker-v3.2.12.apk",
-        "sizeBytes": 23067630,
-        "sha256": "ac3a1cac9a237ee5e4d96888cc227cd80f24147b9a4acb04ef1eae37ff550608"
+        "file": "j-expense-tracker-my-expense-tracker-v3.2.15.apk",
+        "sizeBytes": 23081580,
+        "sha256": "f55fb053a8a66c43dd86cca6eb5fd857695add48f8d7284a6eebc5cb07dd6ea8"
       },
       "logo": "/assets/apps/j-expense-tracker-20261015.webp",
       "category": "Finance & Trading"
