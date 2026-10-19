@@ -95,7 +95,7 @@ function paint(status){
   if(game.last&&((game.last.fr===r&&game.last.fc===c)||(game.last.tr===r&&game.last.tc===c)))sq.classList.add("last");
   if(selected?.r===r&&selected?.c===c)sq.classList.add("selected");
   const target=possible.find(m=>m.tr===r&&m.tc===c);
-  if(target)sq.classList.add(p?"target capture":"target");
+  if(target){sq.classList.add("target");if(p)sq.classList.add("capture");}
   if(checkPos&&checkPos[0]===r&&checkPos[1]===c)sq.classList.add("king-check");
   sq.setAttribute("role","gridcell");sq.setAttribute("aria-label",name(r,c)+": "+(p?(p[0]==="w"?"white ":"black ")+({P:"pawn",K:"king",Q:"queen",R:"rook",B:"bishop",N:"knight"}[p[1]]):"empty")+(target?", legal move":""));
   if(p){const span=document.createElement("span");span.className="piece "+p[0];span.textContent=GLYPHS[p];sq.append(span);}
