@@ -115,7 +115,7 @@ def publish():
     if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", app_id):
         fail("App ID must be lowercase-hyphenated, e.g. j-expense-tracker-my-expense-tracker")
     if args.mode != "remove" and not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*\.(apk|zip)", filename, re.I):
-        fail("Enter the exact APK/ZIP filename, without a path (or full URL)")
+        fail("Enter the exact APK/ZIP filename only (not a URL or path).")
     version = args.version.strip()
     if version and not re.fullmatch(r"v?[0-9][0-9a-zA-Z.+_-]{0,39}", version):
         fail("Version should look like v3.2.16 or v1.0.0")
