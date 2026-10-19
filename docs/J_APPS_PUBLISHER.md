@@ -30,6 +30,20 @@ This is a GitHub Actions **Run workflow** form. It works from your computer or p
 
 The Publisher automatically adds the new entry, links the verified release file and updates the **project counts on the homepage and J Apps page**, including the three family filter counts. Existing app entries are kept.
 
+## C. Remove an app card from the website
+
+**No ChatGPT needed.** Go to [J Apps Publisher](https://github.com/jebinc324/J-Digital-Hub/actions/workflows/j-apps-publisher.yml) → **Run workflow**, choose **main**, then:
+
+1. **mode:** `remove`
+2. **app_id:** the **exact** existing catalogue ID, e.g. `j-my-new-app`
+3. **apk_filename:** type `REMOVE:j-my-new-app` to confirm. Replace `j-my-new-app` with the exact ID you entered above.
+4. Leave other inputs blank/default, click **Run workflow** and wait for the green check.
+5. Verify the card is gone from [J Apps](https://just24things.onrender.com/apps/) after Render deploy.
+
+This removes only the app's **website catalogue entry**, not the actual APK/ZIP in GitHub Releases and not any uploaded logos/screenshots. The website project counts update automatically. If you want the app back later, choose `add` and enter its details again. The GitHub commit history also keeps a record of the original listing.
+
+**Safety:** The confirmation must exactly match `REMOVE:<app_id>`. Normal filenames do not remove anything. The workflow will stop with an error if the ID does not exist, the confirmation differs, or removal would empty the catalogue. An already-published release file is *never* deleted by this action.
+
 ### Optional official logo / screenshots
 
 Only submit paths for images **already added to the repository**, otherwise the workflow stops safely. You can add them later by running an **update** for the same app with the existing APK filename.
@@ -46,6 +60,8 @@ Open the failed run and expand **Verify APK and update J Apps catalogue** for th
 - **Asset not found:** file not uploaded yet, wrong tag or filename mismatch. Upload it or correct the filename.
 - **App ID not found:** select `add` only when adding a new app, or copy the existing catalogue ID precisely.
 - **App already exists:** use `update` instead of `add`.
+- **Removal confirmation error:** select `remove` and enter `REMOVE:<app_id>` in the required APK filename field, using the exact same ID.
+- **Removal not reflected on website:** check that the workflow run is green and Render has deployed the new commit.
 - **Invalid image:** upload icon/screenshot to GitHub first, then paste its exact website path.
 - **Permission denied / failed push:** in GitHub repository Settings → Actions → General, verify the workflow has permission to write repository contents, and check branch protection. An administrator may need to enable write permissions.
 - **Digest missing:** GitHub did not supply SHA-256 metadata. No catalogue update is committed; recheck the asset and retry.
@@ -56,7 +72,7 @@ Open the failed run and expand **Verify APK and update J Apps catalogue** for th
 - GitHub's built-in `GITHUB_TOKEN` is used by the workflow. **Do not paste a personal access token into this form**.
 - An asset's existence and SHA-256 are *download-integrity checks*, **not app installation, signing, quality, or malware verification**.
 - Only APKs/ZIPs whose exact filenames exist in the official Release can be published.
-- The workflow edits `public/apps/catalog.json`; adding a new app also refreshes homepage and J Apps HTML counts. Other apps are preserved.
+- The workflow edits `public/apps/catalog.json`; adding or removing an app also refreshes homepage and J Apps HTML counts. Other apps are preserved.
 - Don't publish private signing data, app passwords, sensitive user data or proprietary code bundles.
 - If you want to edit only descriptions or screenshots of an existing app, use `update` with its **current** release asset filename; the Publisher requires a real release file for every run.
 
