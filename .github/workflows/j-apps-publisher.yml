@@ -1,0 +1,115 @@
+name: J Apps Publisher
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "What do you want to do?"
+        type: choice
+        required: true
+        default: update
+        options:
+          - update
+          - add
+      app_id:
+        description: "App ID, e.g. j-expense-tracker-my-expense-tracker"
+        type: string
+        required: true
+      apk_filename:
+        description: "EXACT APK/ZIP filename in just24-public-v1 Release"
+        type: string
+        required: true
+      version:
+        description: "Version, e.g. v3.2.16 (optional for updates)"
+        type: string
+        required: false
+      name:
+        description: "App name (required only for new apps)"
+        type: string
+        required: false
+      description:
+        description: "Short description (required only for new apps)"
+        type: string
+        required: false
+      family:
+        description: "For new apps; updates keep the original family"
+        type: choice
+        required: true
+        default: Android
+        options:
+          - Android
+          - Revit Add-ins
+          - Revit Dynamo
+      category:
+        description: "Optional: Engineering, Automation, Finance & Trading, Productivity & Files, Media & Creative, Kids & Games, Device & Safety, Lifestyle"
+        type: string
+        required: false
+      logo_path:
+        description: "Optional original icon path already committed to the repo"
+        type: string
+        required: false
+      screenshots:
+        description: "Optional existing image paths, separated by commas (max 8)"
+        type: string
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: j-apps-publisher
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Verify APK and update J Apps catalogue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTION_MODE: ${{ inputs.mode }}
+          APP_ID: ${{ inputs.app_id }}
+          ASSET_FILENAME: ${{ inputs.apk_filename }}
+          APP_VERSION: ${{ inputs.version }}
+          APP_NAME: ${{ inputs.name }}
+          APP_DESCRIPTION: ${{ inputs.description }}
+          APP_FAMILY: ${{ inputs.family }}
+          APP_CATEGORY: ${{ inputs.category }}
+          APP_LOGO: ${{ inputs.logo_path }}
+          APP_SCREENSHOTS: ${{ inputs.screenshots }}
+        run: |
+          python3 .github/scripts/publish_j_app.py \
+            --mode "$ACTION_MODE" \
+            --app-id "$APP_ID" \
+            --apk-filename "$ASSET_FILENAME" \
+            --version "$APP_VERSION" \
+            --name "$APP_NAME" \
+            --description "$APP_DESCRIPTION" \
+            --family "$APP_FAMILY" \
+            --category "$APP_CATEGORY" \
+            --logo-path "$APP_LOGO" \
+            --screenshots "$APP_SCREENSHOTS"
+      - name: Validate and save changes
+        env:
+          ACTION_MODE: ${{ inputs.mode }}
+          APP_ID: ${{ inputs.app_id }}
+        run: |
+          git diff --check
+          python3 -m json.tool public/apps/catalog.json > /dev/null
+          git add public/apps/catalog.json
+          if [ "$ACTION_MODE" = "add" ]; then
+            git add public/apps/index.html public/index.html
+          fi
+          if git diff --cached --quiet; then
+            echo "Already up to date."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Publish J App: ${APP_ID}"
+            git push origin HEAD:main
+          fi
