@@ -5,7 +5,7 @@ if(!canvas)return;
 const ctx=canvas.getContext("2d");
 if(!ctx){$("carromStatus").textContent="Canvas not supported in this browser.";return;}
 const W=800,H=800,POCKETS=[[95,95],[705,95],[95,705],[705,705]];
-const LIMIT={min:105,max:695};
+const LIMIT={min:88,max:712};
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v)),dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 let coins=[],striker=null,player=0,scores=[0,0],aim=null,dragging=false,moving=false,won=false,shotPocket=0,shotFoul=false,lastTime=0,frameId=0;
 const playerColors=["#68f6f5","#ff80c9"];
