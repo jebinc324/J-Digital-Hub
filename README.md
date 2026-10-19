@@ -11,6 +11,14 @@ For **update/add**, upload your APK/ZIP to the [public GitHub Release](https://g
 
 [Complete step-by-step manual](docs/J_APPS_PUBLISHER.md) · Files: [workflow](.github/workflows/j-apps-publisher.yml) and [publisher script](.github/scripts/publish_j_app.py). GitHub Actions write access and Render auto-deploy must be enabled for hands-off publication.
 
+## J Arcade: Chess and Carrom (2026-10-19)
+- J Arcade now presents **14 playable browser games**: the untouched original 12 retro games plus standalone **J Chess** and **J Carrom** selectable on the `/games/` page.
+- J Chess: local pass-and-play, optional casual computer opponent, legal moves, check/checkmate/stalemate, castling, en passant, automatic queen promotion, undo and restart. No account or server.
+- J Carrom: touch/mouse pull-to-flick striker, local two-player scoring, four pockets, coin collision/bounce/friction, simple turn/queen/striker rules and restart. This is an *arcade-inspired* carrom game, not a full official tournament simulation.
+- The new games run in an independent local iframe `/games/classics/chess.html` or `/games/classics/carrom.html` with a shared retro-compatible design. The original game in `/games/retro-arcade/` and its local saves remain untouched.
+- Homepage arcade description and sitemap include both new games. All features are client-side JavaScript, so Render still serves a static `public/` site.
+- Source-level JavaScript syntax and core chess moves/carrom pockets were checked. A real interactive browser smoke test / live Render deployment still requires separate verification.
+
 ## Launch status
 - 43 catalogue listings: 25 Android, 10 Revit Add-ins/standalone Revit tools, 8 Revit Dynamo.
 - All 43 listings are free/open to browse; **no login or registration required**.
