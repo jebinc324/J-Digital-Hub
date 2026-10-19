@@ -11,12 +11,13 @@ on:
         options:
           - update
           - add
+          - remove
       app_id:
         description: "App ID, e.g. j-expense-tracker-my-expense-tracker"
         type: string
         required: true
       apk_filename:
-        description: "EXACT APK/ZIP filename in just24-public-v1 Release"
+        description: "Add/update: APK filename. Remove: type REMOVE:app-id to confirm"
         type: string
         required: true
       version:
@@ -102,7 +103,7 @@ jobs:
           git diff --check
           python3 -m json.tool public/apps/catalog.json > /dev/null
           git add public/apps/catalog.json
-          if [ "$ACTION_MODE" = "add" ]; then
+          if [ "$ACTION_MODE" = "add" ] || [ "$ACTION_MODE" = "remove" ]; then
             git add public/apps/index.html public/index.html
           fi
           if git diff --cached --quiet; then
@@ -110,6 +111,6 @@ jobs:
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "Publish J App: ${APP_ID}"
+            git commit -m "J Apps Publisher ${ACTION_MODE}: ${APP_ID}"
             git push origin HEAD:main
           fi
