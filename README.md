@@ -7,7 +7,7 @@ Repository: `jebinc324/J-Digital-Hub` (public static site, Render publish direct
 
 **[Private Media Studio — setup on your computer](admin/media-studio/README.md)**
 
-No image links to copy! Choose your real original PNG/JPG/WebP logo and up to 8 screenshots directly from your computer or phone. The private localhost uploader optimizes them, uploads them to this repository and automatically links media to existing J Apps. For **new apps**, upload images first, then run **J Apps Publisher → add** with the same app ID and leave image-path inputs blank; the Publisher auto-discovers the uploaded media manifest. No ChatGPT connection needed.
+No image links to copy! From your computer, open the private localhost tool to upload PNG/JPG/WebP logos or up to 8 screenshots, **remove individual screenshots** using thumbnails, and **Add / Update / Remove J Apps** directly in the same window. For new apps, the uploaded images attach automatically by app ID. The original GitHub Actions Publisher remains available. No ChatGPT connection needed.
 
 GitHub Actions dispatch forms cannot accept image files. The local desktop uploader requires a short-lived **GitHub fine-grained token restricted to this repository, with Contents: Read and write**; the token is used in browser memory and forwarded to GitHub by the localhost server, not persisted by the tool. The editor is no longer published at /apps/publisher/. [Setup and security instructions](docs/J_APPS_PUBLISHER.md).
 
