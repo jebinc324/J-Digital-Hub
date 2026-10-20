@@ -2,7 +2,7 @@
 
 This version is **not published on the Just 24 Things public website**.
 
-The original visitor-facing J Apps page, Arcade, and 43 downloadable apps are not modified by the editor.
+The public J Apps page and Arcade are unaffected until you explicitly publish an authorized change. This admin controller can now add, update, or remove app listings on demand.
 
 ## Windows (no ChatGPT needed)
 
@@ -14,8 +14,33 @@ The original visitor-facing J Apps page, Arcade, and 43 downloadable apps are no
 6. Your browser opens a **local address** such as \`http://127.0.0.1:54321/\`. Its port varies each time, which is normal.
 7. Paste a short-lived GitHub **fine-grained token** restricted to **\`jebinc324/J-Digital-Hub\`** with **Contents: Read and write**. Never share the token.
 8. Choose an existing app or Upcoming / New App; browse for the app's actual logo and/or up to 8 screenshots, then click **Upload & Attach Images**.
-9. A success message means GitHub has the images. Existing apps' catalogue references update immediately in the GitHub commit. New apps pick up uploaded media by matching their ID the next time you use **J Apps Publisher → add**.
+9. A success message means GitHub has the images. Existing apps' catalogue references update immediately in the GitHub commit. New apps pick up uploaded media by matching their ID the next time you **Add New App** in this same controller or in GitHub Actions.
 10. Close the terminal window to stop the local tool. Token is not written to disk by Media Studio.
+
+## Remove screenshots (one by one)
+
+1. Start the local Media Studio and enter your restricted GitHub token.
+2. Select the app from **Choose App**.
+3. Scroll to **04 / Manage Screenshots**, then click **Load Current Screenshots**.
+4. Your existing screenshot thumbnails appear with checkboxes. Tick only the screenshots you want to remove.
+5. Click **Remove Selected Screenshots** and confirm. The studio updates the app's visible screenshot gallery and media manifest in **one GitHub commit**.
+6. After Render deploy, refresh J Apps to confirm.
+
+**Original image files are kept in GitHub** for recovery; this action *unlinks* screenshots from the app gallery, not a permanent binary deletion. Other screenshots and the app logo stay unchanged. Re-upload any removed image later if needed.
+
+## Add / Update / Remove app cards in the same private controller
+
+The local **05 / J Apps Publisher** section now provides all three GitHub Actions Publisher actions without leaving this app:
+
+- **Update Existing App:** Select an existing app above; choose Update; enter its **exact APK/ZIP release filename** and optional new version/title/description/category; click **Update App**. The controller verifies the official GitHub Release asset including its size and SHA-256 and updates the catalogue.
+- **Add New App:** Select **Add New App** action; choose **Upcoming / New App** above and enter a unique lowercase-hyphenated app ID. Enter name, description, version, family, category, and **exact uploaded APK/ZIP release filename**. Click **Add New App**. Uploaded logo and screenshots will attach automatically.
+- **Remove App Card:** Select the existing app; choose **Remove App Card**; enter `REMOVE:<app-id>` exactly in the confirmation field; confirm. It removes **only the website catalogue listing**, not the APK/ZIP release asset or its images.
+
+New-app additions and removals update the **homepage and J Apps project/category counts**. They appear publicly after your Render deployment completes. If GitHub changes during publishing, the commit may safely fail; reload the page and retry.
+
+**Important:** The desktop controller **does not upload APK or ZIP binaries**. Upload the exact APK/ZIP to [the official GitHub Release](https://github.com/jebinc324/J-Digital-Hub/releases/tag/just24-public-v1) first, then choose Add or Update here.
+
+You can still use the original [GitHub Actions J Apps Publisher](https://github.com/jebinc324/J-Digital-Hub/actions/workflows/j-apps-publisher.yml) separately whenever you prefer.
 
 ## macOS / Linux
 
