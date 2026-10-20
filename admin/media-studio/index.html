@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="theme-color" content="#071827">
+  <meta name="description" content="Owner-only J Apps media uploader. Choose original logos and screenshots; no manual image links required.">
+  <title>Private J Apps Media Uploader · Just 24 Things by J&amp;J</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ctext y=%2249%22 font-size=%2252%22%3E%F0%9F%94%90%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="stylesheet" href="/apps/publisher/publisher.css">
+  <script src="/apps/publisher/publisher.js" defer></script>
+</head>
+<body>
+  <header class="nav">
+    <a href="https://just24things.onrender.com/apps/" class="logo">J<span>✦</span> <strong>APPS</strong> <small>MEDIA STUDIO</small></a>
+    <a href="https://just24things.onrender.com/apps/" class="nav-link">← Back to J Apps</a>
+  </header>
+  <main class="container">
+    <div class="intro">
+      <div class="kicker">JUST 24 THINGS BY J&amp;J / LOCAL-ONLY ADMIN PUBLISHING</div>
+      <h1>Attach images.<br><em>No links to copy.</em></h1>
+      <p>Choose your app, select its <strong>official logo and real screenshots</strong>, then click Upload &amp; Attach. The controller automatically saves images to GitHub and connects them to the website catalogue.</p>
+      <div class="tags"><span>✓ Original images only</span><span>✓ Upload with file picker</span><span>✓ Automatically linked</span></div>
+    </div>
+    <div class="workspace">
+      <form id="mediaForm" class="panel">
+        <div class="section-number">01 / GITHUB AUTHORIZATION</div>
+        <label for="token">Fine-grained GitHub access token</label>
+        <input id="token" type="password" required autocomplete="off" spellcheck="false" placeholder="github_pat_...">
+        <small class="hint">Create a token for only <strong>jebinc324/J-Digital-Hub</strong> with <strong>Contents: Read and write</strong>. Token is used directly with GitHub, held in memory only, and never stored or submitted to our website server. <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">Create restricted token ↗</a></small>
+        <hr>
+        <div class="section-number">02 / CHOOSE APP</div>
+        <label for="appSelect">Existing app or upcoming new app</label>
+        <select id="appSelect"><option value="">Loading J Apps…</option></select>
+        <div id="newAppGroup" hidden>
+          <label for="newAppId">New app ID (same ID you will use in Publisher)</label>
+          <input id="newAppId" type="text" placeholder="j-my-new-app" spellcheck="false" autocomplete="off">
+          <small class="hint">Images upload now; the card appears when you use J Apps Publisher → <strong>add</strong> with this same ID. No image paths needed.</small>
+        </div>
+        <hr>
+        <div class="section-number">03 / ATTACH IMAGES</div>
+        <label for="logoUpload">Official app logo (optional)</label>
+        <label class="dropzone" for="logoUpload"><span class="dropicon">✳</span><strong>Choose logo image</strong><small>PNG, JPG or WebP · automatically optimized to WebP</small></label>
+        <input class="file-input" id="logoUpload" type="file" accept="image/png,image/jpeg,image/webp">
+        <div id="logoPreview" class="preview" aria-live="polite"></div>
+        <label for="shotsUpload" class="mt">App screenshots (optional, up to 8)</label>
+        <label class="dropzone" for="shotsUpload"><span class="dropicon">▥</span><strong>Choose screenshots</strong><small>Multiple files allowed · originals from the real app</small></label>
+        <input class="file-input" id="shotsUpload" type="file" multiple accept="image/png,image/jpeg,image/webp">
+        <div id="screensPreview" class="preview" aria-live="polite"></div>
+        <small class="hint">Selecting screenshots replaces the app's gallery with these files. Selecting only a new logo leaves the current screenshots unchanged. Already uploaded files are not deleted automatically.</small>
+        <hr>
+        <button type="submit" id="uploadBtn" class="primary">⬆ Upload &amp; Attach Images</button>
+        <div id="status" class="status" role="status" aria-live="polite">Ready to upload. Nothing changes until you press the button.</div>
+      </form>
+      <aside class="side">
+        <div class="side-card">
+          <div class="section-number">HOW IT WORKS</div>
+          <div class="step"><b>1</b><span><strong>Choose app</strong><small>Select an existing app or type an upcoming app ID.</small></span></div>
+          <div class="step"><b>2</b><span><strong>Choose files</strong><small>Normal browse/file picker. No image links or folder paths.</small></span></div>
+          <div class="step"><b>3</b><span><strong>Upload</strong><small>Images go straight to the authorized GitHub repository. Existing listings update automatically.</small></span></div>
+        </div>
+        <div class="side-card">
+          <div class="section-number">ADD / UPDATE / REMOVE APPS</div>
+          <p>To publish a new APK or update its version, continue using the <strong>J Apps Publisher GitHub Actions</strong> controller. New app images are discovered automatically from the files you upload here.</p>
+          <a class="ghost" href="https://github.com/jebinc324/J-Digital-Hub/actions/workflows/j-apps-publisher.yml" target="_blank" rel="noopener noreferrer">Open J Apps Publisher ↗</a>
+          <a class="quiet" href="https://github.com/jebinc324/J-Digital-Hub/blob/main/docs/J_APPS_PUBLISHER.md" target="_blank" rel="noopener noreferrer">Read publishing guide →</a>
+        </div>
+        <div class="side-card caution"><strong>Security note</strong><p>This controller runs privately on your own computer at 127.0.0.1. It is not hosted on the public website. A repository-restricted GitHub token is still required to publish images. Use a short-lived, repository-restricted fine-grained token. Never share or screenshot your token. Close this tab when finished.</p></div>
+      </aside>
+    </div>
+  </main>
+  <footer>JUST 24 THINGS <span>BY J&amp;J</span> · IMAGE UPLOAD STUDIO · NO CHATGPT REQUIRED</footer>
+</body>
+</html>
