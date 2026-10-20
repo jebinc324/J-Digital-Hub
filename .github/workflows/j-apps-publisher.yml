@@ -46,11 +46,11 @@ on:
         type: string
         required: false
       logo_path:
-        description: "Optional original icon path already committed to the repo"
+        description: "Upload icon at /apps/publisher/ first; leave blank to auto-attach (or enter old-style path)"
         type: string
         required: false
       screenshots:
-        description: "Optional existing image paths, separated by commas (max 8)"
+        description: "Upload screenshots at /apps/publisher/ first; leave blank for auto-attach"
         type: string
         required: false
 
