@@ -171,7 +171,18 @@ def publish():
         fail("New apps require name, description and version.")
     if len(args.name) > 120 or len(args.description) > 1000:
         fail("Name or description is too long")
+    media_file = root / "public/assets/apps/media" / (app_id + ".json")
+    media = {}
+    if media_file.is_file():
+        try:
+            media = json.loads(media_file.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            fail("Invalid uploaded media manifest: " + str(exc))
+        if media.get("appId") != app_id or not isinstance(media.get("screenshots", []), list):
+            fail("Uploaded media manifest does not match this app ID.")
     logo = existing_image(args.logo_path, root)
+    if not logo and media.get("logo"):
+        logo = existing_image(media["logo"], root)
     if not logo:
         automatic_icon = f"/assets/apps/icons/{app_id}.webp"
         icon_file = root / "public" / automatic_icon.lstrip("/")
@@ -185,6 +196,12 @@ def publish():
         shots = [existing_image(x, root) for x in paths]
         if not all(shots):
             fail("Screenshot paths must not be empty")
+    elif "screenshots" in media:
+        if len(media["screenshots"]) > 8:
+            fail("Uploaded media manifest has more than 8 screenshots.")
+        shots = [existing_image(p, root) for p in media["screenshots"]]
+        if not all(shots):
+            fail("Uploaded media manifest lists an empty screenshot path.")
     else:
         auto_folder = root / "public/assets/apps/screenshots" / app_id
         if auto_folder.is_dir():
