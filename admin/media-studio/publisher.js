@@ -5,6 +5,7 @@ const $=id=>document.getElementById(id);
 const form=$("mediaForm"),selector=$("appSelect"),tokenInput=$("token"),newGroup=$("newAppGroup"),newIdInput=$("newAppId");
 const logoInput=$("logoUpload"),shotsInput=$("shotsUpload"),button=$("uploadBtn"),status=$("status");
 let currentCatalog=null,loading=false,previews=[];
+let loadedScreenshots=null;
 const PATTERN=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 function setStatus(message,level){
  status.textContent=message;
@@ -12,6 +13,9 @@ function setStatus(message,level){
 }
 function controlBusy(busy){
  loading=busy;button.disabled=busy;
+ if($("publishBtn"))$("publishBtn").disabled=busy;
+ if($("loadShotsBtn"))$("loadShotsBtn").disabled=busy;
+ if($("removeShotsBtn"))$("removeShotsBtn").disabled=busy||!loadedScreenshots||!currentShotSelection().length;
  button.textContent=busy?"Uploading… please do not close this tab":"⬆ Upload & Attach Images";
 }
 function getID(){
@@ -34,7 +38,7 @@ function showFiles(input,containerId){
 }
 logoInput.addEventListener("change",()=>{cleanPreviews();showFiles(logoInput,"logoPreview");showFiles(shotsInput,"screensPreview");});
 shotsInput.addEventListener("change",()=>{cleanPreviews();showFiles(logoInput,"logoPreview");showFiles(shotsInput,"screensPreview");});
-selector.addEventListener("change",refreshSelection);
+selector.addEventListener("change",()=>{refreshSelection();invalidateShots();syncPublishFields();});
 async function loadApps(){
  try{
   const response=await fetch("/apps/catalog.json",{cache:"no-store"});
@@ -49,7 +53,7 @@ async function loadApps(){
   }
   const expense=[...selector.options].find(o=>o.value==="j-expense-tracker-my-expense-tracker");
   selector.value=expense?expense.value:selector.options[0].value;
-  refreshSelection();setStatus("Ready. Choose an app, attach files, and upload.");
+  refreshSelection();syncPublishFields();invalidateShots();setStatus("Ready. Choose an app, attach files, and upload.");
  }catch(error){
   selector.replaceChildren();
   setStatus("Unable to load J Apps. Reload this page. "+error.message,"error");
@@ -191,11 +195,277 @@ async function process(event){
   }else{
    setStatus("✓ Success! Images uploaded for upcoming app "+id+" (commit "+created.sha.slice(0,8)+"). Open J Apps Publisher → add, enter this same app ID, and your uploaded images will automatically attach. No paths to copy.","success");
   }
-  logoInput.value="";shotsInput.value="";cleanPreviews();$("logoPreview").replaceChildren();$("screensPreview").replaceChildren();
+  logoInput.value="";shotsInput.value="";cleanPreviews();$("logoPreview").replaceChildren();$("screensPreview").replaceChildren();invalidateShots();
  }catch(error){
   setStatus("Upload stopped — "+error.message+". No GitHub branch update is considered successful unless you see the success message. If main changed during upload, refresh and retry.","error");
  }finally{controlBusy(false);}
 }
+
+/* ─── Private screenshot management and Add / Update / Remove publisher ─── */
+const loadShotsBtn=$("loadShotsBtn"),removeShotsBtn=$("removeShotsBtn");
+const currentShots=$("currentShots"),removeStatus=$("removeStatus");
+const pubMode=$("publishMode"),pubBtn=$("publishBtn"),pubStatus=$("publishStatus");
+const releaseBase="https://github.com/"+REPO+"/releases/download/just24-public-v1/";
+const families={"Android":".apk","Revit Add-ins":".zip","Revit Dynamo":".zip"};
+const categories=["Engineering","Automation","Finance & Trading","Productivity & Files","Media & Creative","Kids & Games","Device & Safety","Lifestyle"];
+function publishState(message,kind){
+ pubStatus.textContent=message;pubStatus.className="status"+(kind?" "+kind:"");
+}
+function removeState(message,kind){
+ removeStatus.textContent=message;removeStatus.className="status"+(kind?" "+kind:"");
+}
+function currentShotSelection(){return [...currentShots.querySelectorAll("input[name=removeShot]:checked")].map(x=>x.value);}
+function invalidateShots(){
+ loadedScreenshots=null;
+ currentShots.replaceChildren();
+ const p=document.createElement("p");p.className="hint";p.textContent="Click Load Current Screenshots to see this app's gallery.";currentShots.append(p);
+ removeShotsBtn.disabled=true;
+ removeState("No screenshots selected.");
+}
+function syncPublishFields(){
+ const mode=pubMode.value,added=mode==="add",removing=mode==="remove";
+ $("publishFields").hidden=removing;
+ $("removeConfirmGroup").hidden=!removing;
+ pubBtn.textContent=removing?"✕ Remove App Card":added?"＋ Add New App":"✓ Update App";
+ const app=currentCatalog?.items?.find(x=>x.id===getID());
+ const version=$("appVersion"),title=$("appName"),description=$("appDescription");
+ for(const input of [$("appFilename"),version,title,description,$("removeAppConfirmation")])input.value="";
+ $("appCategory").value="";
+ version.placeholder=app?.versionLabel||"v1.0.0";
+ title.placeholder=app?.name||"J My New App";
+ description.placeholder=app?.description||"What the app does";
+ $("appFilename").placeholder=app?.releaseAsset||"j-my-app-v1.0.0.apk";
+ $("appFamily").value=app?.family||"Android";
+ publishState(removing?"Choose an existing app and enter the REMOVE confirmation. GitHub Release file is not deleted.":added?"Choose Upcoming / New App above and enter its details. Upload APK/ZIP to the official Release first.":"Choose an existing app and enter its latest APK/ZIP filename.");
+}
+pubMode.addEventListener("change",()=>{
+ if(pubMode.value==="add"&&selector.value!=="__new__"){selector.value="__new__";refreshSelection();invalidateShots();}
+ if(pubMode.value!=="add"&&selector.value==="__new__"){
+  const existing=[...selector.options].find(o=>o.value!=="__new__");
+  if(existing){selector.value=existing.value;refreshSelection();invalidateShots();}
+ }
+ syncPublishFields();
+});
+function imagePathSafe(path){return typeof path==="string"&&/^\/assets\/apps\/[a-zA-Z0-9/_-]+\.(webp|png|jpg|jpeg)$/i.test(path)&&!path.includes("//");}
+function mediaFor(snapshot,id){
+ const item=snapshot.app||{},stored=snapshot.manifest;
+ if(stored){
+  if(stored.appId!==id||!Array.isArray(stored.screenshots)||stored.screenshots.length>8)throw Error("Saved image gallery data is invalid.");
+  return {appId:id,logo:stored.logo||item.logo||"",screenshots:stored.screenshots.slice()};
+ }
+ return {appId:id,logo:item.logo||"",screenshots:Array.isArray(item.screenshots)?item.screenshots.slice():[]};
+}
+async function getSnapshot(token,id){
+ const ref=await github("git/ref/heads/main","GET",null,token);
+ const head=ref?.object?.sha;
+ if(!/^[a-f0-9]{40}$/.test(head||""))throw Error("Cannot read current main branch revision.");
+ const commit=await github("git/commits/"+head,"GET",null,token);
+ const raw=await github("contents/public/apps/catalog.json?ref="+head,"GET",null,token);
+ const catalog=JSON.parse(decodeBase64Text(raw.content));
+ if(!Array.isArray(catalog.items))throw Error("GitHub catalogue is invalid.");
+ const app=catalog.items.find(x=>x.id===id)||null;
+ const existing=await github("contents/public/assets/apps/media/"+id+".json?ref="+head,"GET",null,token,true);
+ const manifest=existing?JSON.parse(decodeBase64Text(existing.content)):null;
+ return {head,commit,catalog,app,manifest};
+}
+async function commitChanges(snapshot,token,changes,message,notify){
+ if(!changes.length)throw Error("Nothing was changed.");
+ const entries=[];
+ for(let i=0;i<changes.length;i++){
+  if(notify)notify("Preparing GitHub change "+(i+1)+" / "+changes.length+"…");
+  const item=changes[i],blob=await github("git/blobs","POST",{content:await dataToBase64(new Blob([item.content],{type:"text/plain;charset=utf-8"})),encoding:"base64"},token);
+  entries.push({path:item.path,mode:"100644",type:"blob",sha:blob.sha});
+ }
+ const tree=await github("git/trees","POST",{base_tree:snapshot.commit.tree.sha,tree:entries},token);
+ const commit=await github("git/commits","POST",{message,tree:tree.sha,parents:[snapshot.head]},token);
+ if(notify)notify("Saving the new revision to GitHub main branch…");
+ await github("git/refs/heads/main","PATCH",{sha:commit.sha,force:false},token);
+ return commit.sha.slice(0,8);
+}
+async function readTextAt(token,path,ref){
+ const raw=await github("contents/"+path+"?ref="+ref,"GET",null,token);
+ return decodeBase64Text(raw.content);
+}
+async function loadCurrentScreenshots(){
+ if(loading)return;
+ const id=getID(),token=tokenInput.value.trim();
+ if(!PATTERN.test(id)){removeState("Select a valid app first.","error");return;}
+ if(!token){removeState("Enter your GitHub token first.","error");return;}
+ controlBusy(true);
+ try{
+  removeState("Loading current screenshots directly from GitHub…");
+  const snapshot=await getSnapshot(token,id);
+  const media=mediaFor(snapshot,id);
+  if(!media.screenshots.every(imagePathSafe))throw Error("App gallery contains invalid image paths.");
+  loadedScreenshots={id,items:media.screenshots.slice(),head:snapshot.head};
+  currentShots.replaceChildren();
+  if(!media.screenshots.length){
+   const p=document.createElement("p");p.className="hint";p.textContent="This app does not have screenshots to remove.";currentShots.append(p);
+   removeState("No screenshots on this app.");
+  }else{
+   for(let i=0;i<media.screenshots.length;i++){
+    const path=media.screenshots[i],label=document.createElement("label");
+    label.className="shot-option";
+    const image=document.createElement("img");image.loading="lazy";image.alt="Screenshot "+(i+1);
+    image.src="https://raw.githubusercontent.com/"+REPO+"/main/public"+path;
+    const caption=document.createElement("span");caption.className="shot-caption";
+    const checkbox=document.createElement("input");checkbox.type="checkbox";checkbox.name="removeShot";checkbox.value=path;
+    const title=document.createElement("strong");title.textContent="Remove #"+(i+1);
+    caption.append(checkbox,title);label.append(image,caption);currentShots.append(label);
+   }
+   removeState(media.screenshots.length+" screenshot(s) loaded. Tick only the ones to remove.");
+  }
+ }catch(error){invalidateShots();removeState("Could not load gallery: "+error.message,"error");}
+ finally{controlBusy(false);}
+}
+loadShotsBtn.addEventListener("click",loadCurrentScreenshots);
+currentShots.addEventListener("change",()=>{
+ const n=currentShotSelection().length;
+ removeShotsBtn.disabled=loading||!loadedScreenshots||n===0;
+ removeState(n?String(n)+" screenshot(s) selected for removal.":"No screenshots selected.");
+});
+async function removeChosenScreenshots(){
+ if(loading||!loadedScreenshots)return;
+ const id=getID(),token=tokenInput.value.trim();
+ const selected=currentShotSelection();
+ if(id!==loadedScreenshots.id){removeState("App selection changed. Reload screenshots.","error");return;}
+ if(!selected.length)return;
+ if(!window.confirm("Remove "+selected.length+" screenshot(s) from the "+id+" website gallery?\n\nThe original image files will remain in GitHub for recovery. This does not delete the app or its logo."))return;
+ controlBusy(true);
+ try{
+  removeState("Checking for newer GitHub changes…");
+  const snapshot=await getSnapshot(token,id);
+  const media=mediaFor(snapshot,id);
+  if(snapshot.head!==loadedScreenshots.head||JSON.stringify(media.screenshots)!==JSON.stringify(loadedScreenshots.items)){
+   throw Error("Repository changed after you loaded screenshots. Click Load Current Screenshots and try again.");
+  }
+  const remaining=media.screenshots.filter(path=>!selected.includes(path));
+  if(remaining.length===media.screenshots.length)throw Error("None of the selected screenshots is attached to this app.");
+  media.screenshots=remaining;
+  const files=[{path:"public/assets/apps/media/"+id+".json",content:JSON.stringify(media,null,2)+"\n"}];
+  if(snapshot.app){snapshot.app.screenshots=remaining.slice();files.push({path:"public/apps/catalog.json",content:JSON.stringify(snapshot.catalog,null,2)+"\n"});}
+  const sha=await commitChanges(snapshot,token,files,"J Apps media: unlink "+selected.length+" screenshots from "+id,message=>removeState(message));
+  invalidateShots();
+  removeState("✓ Removed "+selected.length+" screenshot(s) from the "+id+" website gallery. Commit "+sha+". Refresh after Render deploy. Original image files remain on GitHub.","success");
+ }catch(error){removeState("Removal stopped: "+error.message,"error");}
+ finally{controlBusy(false);}
+}
+removeShotsBtn.addEventListener("click",removeChosenScreenshots);
+function updatePageCounts(html,oldCount,items,isApps){
+ const total=items.length;
+ const countRe=new RegExp("(?<![\\w.])"+oldCount+"(?![\\w.])","g");
+ if(!countRe.test(html))throw Error("Could not locate current project count on a website page.");
+ html=html.replace(new RegExp("(?<![\\w.])"+oldCount+"(?![\\w.])","g"),String(total));
+ if(isApps){
+  for(const family of ["all",...Object.keys(families)]){
+   const amount=family==="all"?total:items.filter(x=>x.family===family).length;
+   const re=new RegExp('(<button[^>]*data-family="'+family+'"[^>]*>[^<]*<span>)\\d+(</span>)');
+   if(!re.test(html))throw Error("Cannot safely update "+family+" filter count.");
+   html=html.replace(re,(_whole,before,after)=>before+amount+after);
+  }
+  const ready=items.filter(item=>item.access==="public"&&item.releaseAsset&&item.downloadUrl===releaseBase+item.releaseAsset).length;
+  html=html.replace(/(<strong id="j-ready-count">)\d+/,(_m,b)=>b+ready)
+    .replace(/(<strong id="j-pending-count">)\d+/,(_m,b)=>b+(total-ready))
+    .replace(/(<span id="j-progress-label">)\d+ ready · \d+ pending/,(_m,b)=>b+ready+" ready · "+(total-ready)+" pending");
+ }
+ return html;
+}
+async function publishApp(){
+ if(loading)return;
+ const id=getID(),token=tokenInput.value.trim(),mode=pubMode.value,adding=mode==="add",removing=mode==="remove";
+ const filename=$("appFilename").value.trim(),version=$("appVersion").value.trim();
+ const appName=$("appName").value.trim(),description=$("appDescription").value.trim();
+ const family=$("appFamily").value,category=$("appCategory").value;
+ if(!PATTERN.test(id)){publishState("Select an existing app or enter a valid new app ID.","error");return;}
+ if(!token){publishState("Enter your GitHub token in the authorization field first.","error");return;}
+ if(adding!== (selector.value==="__new__")){publishState(adding?"Choose Upcoming / New App above.":"Choose an existing app above.","error");return;}
+ if(removing){
+  if($("removeAppConfirmation").value.trim()!=="REMOVE:"+id){publishState("Type exactly REMOVE:"+id+" to confirm app removal.","error");return;}
+  if(!window.confirm("REMOVE APP CARD: "+id+"?\n\nThe public website card will disappear after deploy. APK binaries and uploaded images will NOT be deleted."))return;
+ }else{
+  if(!/^[A-Za-z0-9][A-Za-z0-9._-]*\.(apk|zip)$/i.test(filename)){publishState("Enter the exact APK/ZIP filename, not a URL.","error");return;}
+  if(version&&!/^v?[0-9][0-9a-zA-Z.+_-]{0,39}$/.test(version)){publishState("Version must look like v1.0.0.","error");return;}
+  if(adding&&(!version||!appName||!description)){publishState("New apps require version, title and description.","error");return;}
+  if(!Object.hasOwn(families,family)||category&&!categories.includes(category)){publishState("Choose a valid family and category.","error");return;}
+  if(!window.confirm((adding?"ADD":"UPDATE")+" "+id+" using "+filename+"?\n\nThis will update GitHub catalogue and the website after Render deploy."))return;
+ }
+ controlBusy(true);
+ try{
+  publishState("Checking latest catalogue in GitHub…");
+  const snapshot=await getSnapshot(token,id),catalog=snapshot.catalog,items=catalog.items;
+  const oldCount=items.length,existing=snapshot.app;
+  if(adding&&existing)throw Error("App already exists. Choose Update mode.");
+  if(!adding&&!existing)throw Error("App not found. Choose Add mode or refresh.");
+  const date=new Date().toISOString().slice(0,10);
+  let ready=0;
+  if(removing){
+   if(items.length<=1)throw Error("Refusing to remove the last app.");
+   catalog.items=items.filter(item=>item.id!==id);
+   if(Array.isArray(catalog.launch?.unverifiedBuilds))catalog.launch.unverifiedBuilds=catalog.launch.unverifiedBuilds.filter(name=>name!==id);
+  }else{
+   if(filename.slice(-families[existing?.family||family].length).toLowerCase()!==families[existing?.family||family])throw Error("File extension does not match app family.");
+   publishState("Verifying "+filename+" from the official GitHub Release…");
+   const response=await fetch("/apps/release.json",{cache:"no-store"});
+   if(!response.ok)throw Error("Could not verify the GitHub Release.");
+   const release=await response.json(),assets=release.assets||[];
+   if(release.tag_name!=="just24-public-v1")throw Error("Wrong GitHub Release.");
+   const matches=assets.filter(asset=>asset.name===filename);
+   if(matches.length!==1)throw Error("Asset not found in official GitHub Release. Upload the exact APK/ZIP filename first.");
+   const asset=matches[0],digest=String(asset.digest||"").match(/^sha256:([a-f0-9]{64})$/i);
+   if(asset.browser_download_url!==releaseBase+filename||!Number.isSafeInteger(asset.size)||asset.size<=0||!digest)throw Error("Release file URL, size or SHA-256 cannot be verified.");
+   const media=mediaFor(snapshot,id);
+   if(media.logo&&!imagePathSafe(media.logo))throw Error("Logo path is invalid.");
+   if(!media.screenshots.every(imagePathSafe))throw Error("Screenshot gallery paths are invalid.");
+   let item;
+   if(adding){
+    item={id,name:appName,family,type:family==="Android"?"Android app":family==="Revit Add-ins"?"Revit add-in":"Dynamo script",access:"public",
+      description,versionLabel:version,category:category||(family==="Android"?"Productivity & Files":"Engineering"),
+      note:"Release uploaded; installation, signing and functionality are not independently verified."};
+    items.push(item);
+   }else{
+    item=existing;
+    if(appName)item.name=appName;
+    if(description)item.description=description;
+    if(version)item.versionLabel=version;
+    if(category)item.category=category;
+   }
+   if(media.logo)item.logo=media.logo;
+   if(snapshot.manifest&&Array.isArray(media.screenshots))item.screenshots=media.screenshots.slice();
+   item.uploadedFile=true;
+   item.releaseAsset=filename;
+   item.downloadUrl=releaseBase+filename;
+   item.approxSizeMB=Math.round(asset.size/1048576*100)/100;
+   item.verifiedUpload={file:filename,sizeBytes:asset.size,sha256:digest[1].toLowerCase()};
+   item.launchStatus="uploaded-unverified";
+   catalog.release.lastVerified=date;
+   catalog.launch.currentReleaseAssets=assets.length;
+  }
+  catalog.launch.updatedAt=date;
+  catalog.launch.listedProjects=catalog.items.length;
+  if(catalog.items.length!==oldCount){
+   catalog.notice=String(catalog.notice||"").replace("all "+oldCount+" project download files","all "+catalog.items.length+" project download files");
+  }
+  const changes=[{path:"public/apps/catalog.json",content:JSON.stringify(catalog,null,2)+"\n"}];
+  if(adding||removing){
+   publishState("Updating website download counts…");
+   for(const page of ["public/index.html","public/apps/index.html"]){
+    const html=await readTextAt(token,page,snapshot.head);
+    changes.push({path:page,content:updatePageCounts(html,oldCount,catalog.items,page==="public/apps/index.html")});
+   }
+  }
+  const sha=await commitChanges(snapshot,token,changes,"J Apps local Publisher "+mode+": "+id,message=>publishState(message));
+  const action=adding?"Added":removing?"Removed":"Updated";
+  publishState("✓ "+action+" "+id+" successfully. GitHub commit "+sha+". Wait for Render deploy, then verify the J Apps website. Published APK files and other apps stay intact.","success");
+  if(removing||adding){
+   await loadApps();
+   // loadApps updates only the current publicly deployed catalog; user can refresh after Render deploy.
+  }
+  invalidateShots();
+ }catch(error){publishState("Publisher stopped: "+error.message+" If the main branch changed, reload and try again.","error");}
+ finally{controlBusy(false);}
+}
+pubBtn.addEventListener("click",publishApp);
+
 form.addEventListener("submit",process);
 window.addEventListener("pagehide",cleanPreviews);
 loadApps();
