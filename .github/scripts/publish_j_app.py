@@ -172,6 +172,11 @@ def publish():
     if len(args.name) > 120 or len(args.description) > 1000:
         fail("Name or description is too long")
     logo = existing_image(args.logo_path, root)
+    if not logo:
+        automatic_icon = f"/assets/apps/icons/{app_id}.webp"
+        icon_file = root / "public" / automatic_icon.lstrip("/")
+        if icon_file.is_file():
+            logo = existing_image(automatic_icon, root)
     shots = []
     if args.screenshots.strip():
         paths = [x.strip() for x in args.screenshots.split(",")]
@@ -180,6 +185,19 @@ def publish():
         shots = [existing_image(x, root) for x in paths]
         if not all(shots):
             fail("Screenshot paths must not be empty")
+    else:
+        auto_folder = root / "public/assets/apps/screenshots" / app_id
+        if auto_folder.is_dir():
+            available = sorted(
+                p for p in auto_folder.glob("*.webp")
+                if p.stem in [f"{i:02d}" for i in range(1, 9)]
+            )
+            if len(available) > 8:
+                fail("Too many screenshots; maximum is 8.")
+            shots = [
+                existing_image("/assets/apps/screenshots/" + app_id + "/" + p.name, root)
+                for p in available
+            ]
 
     release = get_release()
     if release.get("tag_name") != TAG:
