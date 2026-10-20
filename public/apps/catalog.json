@@ -200,7 +200,11 @@
         "sha256": "fcdd93d431c505852e5371dfc5f0d051c7b1ae5b46ffb85899b6a16ccd55d07a"
       },
       "logo": "/assets/apps/j-expense-tracker-20261015.webp",
-      "category": "Finance & Trading"
+      "category": "Finance & Trading",
+      "screenshots": [
+        "/assets/apps/screenshots/j-expense-tracker-my-expense-tracker/01.webp",
+        "/assets/apps/screenshots/j-expense-tracker-my-expense-tracker/02.webp"
+      ]
     },
     {
       "id": "j-media-player",
