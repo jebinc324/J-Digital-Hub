@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parent
 HOST = "127.0.0.1"
 GITHUB_API = "https://api.github.com/repos/jebinc324/J-Digital-Hub/"
 CATALOG_URL = "https://raw.githubusercontent.com/jebinc324/J-Digital-Hub/main/public/apps/catalog.json"
+RELEASE_URL = "https://api.github.com/repos/jebinc324/J-Digital-Hub/releases/tags/just24-public-v1"
 MAX_BODY = 8 * 1024 * 1024
 API_PATHS = {
     ("GET", "git/ref/heads/main"),
@@ -29,6 +30,7 @@ API_PATHS = {
 SHA_PATH = re.compile(r"git/commits/[0-9a-f]{40}\Z")
 CATALOG_PATH = "contents/public/apps/catalog.json"
 MEDIA_PATH = re.compile(r"contents/public/assets/apps/media/[a-z0-9]+(?:-[a-z0-9]+)*\.json\Z")
+PAGE_PATHS = {"contents/public/index.html", "contents/public/apps/index.html"}
 SECURITY_HEADERS = (
     ("Cache-Control", "no-store, max-age=0"),
     ("X-Content-Type-Options", "nosniff"),
@@ -59,6 +61,16 @@ class Handler(BaseHTTPRequestHandler):
         data = (ROOT / filename).read_bytes()
         self._response(200, data, kind)
 
+    def _remote_release(self):
+        request = Request(RELEASE_URL, headers={"User-Agent": "JAppsMediaStudio/1.0",
+                                                "Accept": "application/vnd.github+json"})
+        try:
+            with urlopen(request, timeout=25) as response:
+                data = response.read(3 * 1024 * 1024)
+                self._response(200, data, "application/json; charset=utf-8")
+        except (HTTPError, URLError, TimeoutError):
+            self._response(502, b'{"message":"Could not verify GitHub Release. Check internet."}', "application/json")
+
     def _remote_catalog(self):
         request = Request(CATALOG_URL, headers={"User-Agent": "JAppsMediaStudio/1.0",
                                                 "Accept": "application/json"})
@@ -74,7 +86,7 @@ class Handler(BaseHTTPRequestHandler):
         # Intentionally only a small allowlist of GitHub git + catalog endpoints.
         if (method, path) in API_PATHS or (method == "GET" and SHA_PATH.fullmatch(path)):
             return not query
-        if method == "GET" and (path == CATALOG_PATH or MEDIA_PATH.fullmatch(path)):
+        if method == "GET" and (path == CATALOG_PATH or path in PAGE_PATHS or MEDIA_PATH.fullmatch(path)):
             params = parse_qs(query, keep_blank_values=False)
             return set(params) == {"ref"} and len(params["ref"]) == 1 and bool(
                 re.fullmatch("[0-9a-f]{40}", params["ref"][0])
@@ -137,6 +149,8 @@ class Handler(BaseHTTPRequestHandler):
             self._page(*pages[page])
         elif page == "/apps/catalog.json":
             self._remote_catalog()
+        elif page == "/apps/release.json":
+            self._remote_release()
         elif page.startswith("/github/"):
             self._github()
         else:
