@@ -3,6 +3,14 @@
 Website: https://just24things.onrender.com/apps/
 Repository: `jebinc324/J-Digital-Hub` (public static site, Render publish directory `public`).
 
+## J Apps Media Studio — attach actual images with one click
+
+**[Open Media Studio: Choose Logo & Screenshots](https://just24things.onrender.com/apps/publisher/)**
+
+No image links to copy! Choose your real original PNG/JPG/WebP logo and up to 8 screenshots directly from your computer or phone. The uploader optimizes them, uploads them to this repository and automatically links media to existing J Apps. For **new apps**, upload images first, then run **J Apps Publisher → add** with the same app ID and leave image-path inputs blank; the Publisher auto-discovers the uploaded media manifest. No ChatGPT connection needed.
+
+GitHub Actions dispatch forms cannot accept image files. The separate browser uploader requires a short-lived **GitHub fine-grained token restricted to this repository, with Contents: Read and write**; the token is used only in browser memory for calls to GitHub and is not persisted by this site. [Setup and security instructions](docs/J_APPS_PUBLISHER.md).
+
 ## J Apps Publisher — manage releases without ChatGPT
 
 **[Open J Apps Publisher (GitHub Actions controller)](https://github.com/jebinc324/J-Digital-Hub/actions/workflows/j-apps-publisher.yml)**
