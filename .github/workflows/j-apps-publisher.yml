@@ -46,11 +46,11 @@ on:
         type: string
         required: false
       logo_path:
-        description: "Choose logo: https://just24things.onrender.com/apps/publisher/ · then leave blank"
+        description: "Choose logo in private local Media Studio; leave blank here for auto-attach"
         type: string
         required: false
       screenshots:
-        description: "Choose screenshots: https://just24things.onrender.com/apps/publisher/ · then leave blank"
+        description: "Choose screenshots in private local Media Studio; leave blank for auto-attach"
         type: string
         required: false
 
