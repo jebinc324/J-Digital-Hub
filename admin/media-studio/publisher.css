@@ -25,7 +25,7 @@ h1 em{font-style:normal;color:var(--cyan)}
 .panel{padding:clamp(18px,3.1vw,32px)}
 .panel label:not(.dropzone){display:block;font-size:.87rem;font-weight:800;color:var(--text);margin:14px 0 9px}
 .panel label.mt{margin-top:24px}
-.panel input:not(.file-input),.panel select{width:100%;min-height:47px;background:#081a2a;border:1px solid rgba(126,211,223,.36);border-radius:11px;color:#f2feff;padding:10px 13px}
+.panel input:not(.file-input):not([type="checkbox"]),.panel select{width:100%;min-height:47px;background:#081a2a;border:1px solid rgba(126,211,223,.36);border-radius:11px;color:#f2feff;padding:10px 13px}
 .panel input::placeholder{color:#799cad}
 .panel select{appearance:auto}
 .panel select option{background:#13293a;color:#ecfcff}
@@ -91,3 +91,8 @@ footer span{color:var(--cyan)}
 .shot-option input{accent-color:#ff92aa;width:19px;height:19px;flex:0 0 19px}
 .shot-option input:disabled{cursor:wait}
 .shot-option strong{font-weight:750}
+
+/* Native show/hide for publisher modes */
+#publishFields[hidden],#removeConfirmGroup[hidden]{display:none}
+#publishBtn{margin-top:16px}
+#removeConfirmGroup .hint{margin-bottom:12px}
