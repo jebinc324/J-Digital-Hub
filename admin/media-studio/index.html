@@ -20,9 +20,9 @@
   <main class="container">
     <div class="intro">
       <div class="kicker">JUST 24 THINGS BY J&amp;J / LOCAL-ONLY ADMIN PUBLISHING</div>
-      <h1>Attach images.<br><em>No links to copy.</em></h1>
+      <h1>Your private<br><em>J Apps Controller.</em></h1>
       <p>Choose your app, select its <strong>official logo and real screenshots</strong>, then click Upload &amp; Attach. You can also remove individual screenshots directly from the gallery. The controller automatically saves images to GitHub and connects them to the website catalogue.</p>
-      <div class="tags"><span>✓ Original images only</span><span>✓ Upload with file picker</span><span>✓ Automatically linked</span><span>✓ Remove selected screenshots</span></div>
+      <div class="tags"><span>✓ Original images only</span><span>✓ Upload with file picker</span><span>✓ Automatically linked</span><span>✓ Remove selected screenshots</span><span>✓ Add / Update / Remove Apps</span></div>
     </div>
     <div class="workspace">
       <form id="mediaForm" class="panel">
@@ -62,6 +62,40 @@
         <button id="removeShotsBtn" type="button" class="danger-btn" disabled>✕ Remove Selected Screenshots</button>
         <p class="hint">This unlinks chosen screenshots from the app card/gallery on the website. Other screenshots and the logo stay unchanged. Original uploaded image files stay in GitHub for recovery. Re-publishing or Render deployment may take a moment.</p>
         <div id="removeStatus" class="status" role="status" aria-live="polite">No screenshots selected.</div>
+        <hr>
+        <div class="section-number">05 / J APPS PUBLISHER</div>
+        <h2 class="manage-title">Add · Update · Remove apps</h2>
+        <p class="hint">Same actions as the GitHub Publisher, now inside your private Media Studio. For add/update, first upload the APK/ZIP to the official GitHub Release. Images added above will attach automatically.</p>
+        <label for="publishMode">Publisher action</label>
+        <select id="publishMode" aria-label="Publisher action">
+          <option value="update">Update Existing App</option>
+          <option value="add">Add New App</option>
+          <option value="remove">Remove App Card</option>
+        </select>
+        <div id="publishFields">
+          <label for="appFilename">Exact APK/ZIP filename from GitHub Release</label>
+          <input id="appFilename" type="text" spellcheck="false" autocomplete="off" placeholder="j-my-app-v1.0.0.apk">
+          <label for="appVersion">App version (required for new apps)</label>
+          <input id="appVersion" type="text" spellcheck="false" autocomplete="off" placeholder="v1.0.0">
+          <label for="appName">App title (required for new apps)</label>
+          <input id="appName" type="text" maxlength="120" placeholder="J My New App">
+          <label for="appDescription">Short description (required for new apps)</label>
+          <input id="appDescription" type="text" maxlength="1000" placeholder="What the app does">
+          <label for="appFamily">App family (new apps only)</label>
+          <select id="appFamily"><option value="Android">Android</option><option value="Revit Add-ins">Revit Add-ins</option><option value="Revit Dynamo">Revit Dynamo</option></select>
+          <label for="appCategory">Category (optional)</label>
+          <select id="appCategory">
+            <option value="">Keep existing / Use default</option>
+            <option>Engineering</option><option>Automation</option><option>Finance &amp; Trading</option><option>Productivity &amp; Files</option><option>Media &amp; Creative</option><option>Kids &amp; Games</option><option>Device &amp; Safety</option><option>Lifestyle</option>
+          </select>
+        </div>
+        <div id="removeConfirmGroup" hidden>
+          <label for="removeAppConfirmation">Type the confirmation to remove the app card</label>
+          <input id="removeAppConfirmation" type="text" autocomplete="off" spellcheck="false" placeholder="REMOVE:j-my-app">
+          <small class="hint">This removes only the website listing; it does not delete GitHub Release files, uploaded images or the app source.</small>
+        </div>
+        <button type="button" id="publishBtn" class="primary">✓ Update App</button>
+        <div id="publishStatus" class="status" role="status" aria-live="polite">Select an app above, choose an action, and publish.</div>
       </form>
       <aside class="side">
         <div class="side-card">
@@ -71,8 +105,8 @@
           <div class="step"><b>3</b><span><strong>Upload or remove</strong><small>Add images to GitHub, or select unwanted screenshots to unlink from the app gallery.</small></span></div>
         </div>
         <div class="side-card">
-          <div class="section-number">ADD / UPDATE / REMOVE APPS</div>
-          <p>To publish a new APK or update its version, continue using the <strong>J Apps Publisher GitHub Actions</strong> controller. New app images are discovered automatically from the files you upload here.</p>
+          <div class="section-number">GITHUB ACTIONS PUBLISHER</div>
+          <p>You can now add, update, or remove apps directly using the form on this private page. The original <strong>J Apps Publisher GitHub Actions</strong> controller also stays available as a backup.</p>
           <a class="ghost" href="https://github.com/jebinc324/J-Digital-Hub/actions/workflows/j-apps-publisher.yml" target="_blank" rel="noopener noreferrer">Open J Apps Publisher ↗</a>
           <a class="quiet" href="https://github.com/jebinc324/J-Digital-Hub/blob/main/docs/J_APPS_PUBLISHER.md" target="_blank" rel="noopener noreferrer">Read publishing guide →</a>
         </div>
