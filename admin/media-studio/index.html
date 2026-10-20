@@ -21,8 +21,8 @@
     <div class="intro">
       <div class="kicker">JUST 24 THINGS BY J&amp;J / LOCAL-ONLY ADMIN PUBLISHING</div>
       <h1>Attach images.<br><em>No links to copy.</em></h1>
-      <p>Choose your app, select its <strong>official logo and real screenshots</strong>, then click Upload &amp; Attach. The controller automatically saves images to GitHub and connects them to the website catalogue.</p>
-      <div class="tags"><span>✓ Original images only</span><span>✓ Upload with file picker</span><span>✓ Automatically linked</span></div>
+      <p>Choose your app, select its <strong>official logo and real screenshots</strong>, then click Upload &amp; Attach. You can also remove individual screenshots directly from the gallery. The controller automatically saves images to GitHub and connects them to the website catalogue.</p>
+      <div class="tags"><span>✓ Original images only</span><span>✓ Upload with file picker</span><span>✓ Automatically linked</span><span>✓ Remove selected screenshots</span></div>
     </div>
     <div class="workspace">
       <form id="mediaForm" class="panel">
@@ -53,13 +53,22 @@
         <hr>
         <button type="submit" id="uploadBtn" class="primary">⬆ Upload &amp; Attach Images</button>
         <div id="status" class="status" role="status" aria-live="polite">Ready to upload. Nothing changes until you press the button.</div>
+        <hr>
+        <div class="section-number">04 / MANAGE SCREENSHOTS</div>
+        <h2 class="manage-title">Remove individual screenshots</h2>
+        <p class="hint">Select an app and click <strong>Load Current Screenshots</strong>. Tick only the pictures you want to remove. No image links or filenames to copy.</p>
+        <button id="loadShotsBtn" type="button" class="secondary-btn">↻ Load Current Screenshots</button>
+        <div id="currentShots" class="current-shots" aria-live="polite"><p class="hint">Current screenshots will appear here after loading.</p></div>
+        <button id="removeShotsBtn" type="button" class="danger-btn" disabled>✕ Remove Selected Screenshots</button>
+        <p class="hint">This unlinks chosen screenshots from the app card/gallery on the website. Other screenshots and the logo stay unchanged. Original uploaded image files stay in GitHub for recovery. Re-publishing or Render deployment may take a moment.</p>
+        <div id="removeStatus" class="status" role="status" aria-live="polite">No screenshots selected.</div>
       </form>
       <aside class="side">
         <div class="side-card">
           <div class="section-number">HOW IT WORKS</div>
           <div class="step"><b>1</b><span><strong>Choose app</strong><small>Select an existing app or type an upcoming app ID.</small></span></div>
           <div class="step"><b>2</b><span><strong>Choose files</strong><small>Normal browse/file picker. No image links or folder paths.</small></span></div>
-          <div class="step"><b>3</b><span><strong>Upload</strong><small>Images go straight to the authorized GitHub repository. Existing listings update automatically.</small></span></div>
+          <div class="step"><b>3</b><span><strong>Upload or remove</strong><small>Add images to GitHub, or select unwanted screenshots to unlink from the app gallery.</small></span></div>
         </div>
         <div class="side-card">
           <div class="section-number">ADD / UPDATE / REMOVE APPS</div>
