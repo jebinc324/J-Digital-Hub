@@ -4,6 +4,24 @@
 
 This is a GitHub Actions **Run workflow** form. It works from your computer or phone after you sign in to GitHub. It does not require ChatGPT, a local Python installation or a GitHub token on your computer.
 
+## Image attachments — choose files, no links to copy
+
+**[Open J Apps Media Studio](https://just24things.onrender.com/apps/publisher/)**
+
+This is the browser-based image uploader for your existing J Apps Publisher. GitHub Actions **Run workflow** cannot accept binary images directly, so the Media Studio gives you normal **Choose logo** and **Choose screenshots** file inputs.
+
+1. Sign in to GitHub and [create a fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) restricted to only **`jebinc324/J-Digital-Hub`**, with **Contents: Read and write** permission. A short expiration is recommended. Keep the token secret.
+2. Open [J Apps Media Studio](https://just24things.onrender.com/apps/publisher/). Paste the restricted token in its password field. It is sent only from your browser to GitHub's API, held temporarily in the page, **not stored in local storage, cookies, or the website's server**. Close the page when you finish.
+3. Choose an existing app from the dropdown (or **Upcoming / New App** and type a matching new ID such as `j-my-new-app`).
+4. Click **Choose logo image**, **Choose screenshots**, or both, and select your actual app PNG/JPG/WebP files (up to eight screenshots). The controller optimizes them to WebP.
+5. Click **Upload & Attach Images** and confirm. The studio commits the original images + media manifest together; if the app already exists, it also updates its `logo` and `screenshots` references in `catalog.json` automatically.
+6. For a **new app**, the media will be saved by its app ID. Next, upload your actual APK/ZIP to the [Release](https://github.com/jebinc324/J-Digital-Hub/releases/tag/just24-public-v1) and use **J Apps Publisher → Run workflow → add** with the **same app ID**. Leave `logo_path` and `screenshots` blank: the Publisher automatically picks up uploaded images.
+7. For an **existing app** already in the catalogue, the upload itself updates the website's linked images. Let Render deploy and refresh the J Apps page. You do not need to run another Actions workflow for image-only updates.
+
+**No image links or folder paths need copying.** Selecting screenshots replaces the visible screenshot gallery for that app; old GitHub image blobs are not automatically deleted. Uploading only a logo preserves the current screenshots; uploading only screenshots preserves the current logo. The uploader does not change, upload, sign or validate APK binaries.
+
+**Security:** Use only an authorized, short-lived, repo-restricted GitHub token. The website's admin page is publicly viewable, but it cannot publish without that authorization. Never share a token with another person. The token is entered by you in your own browser, not sent to ChatGPT. GitHub commit success means repository files were saved; Render must still deploy before the website displays them.
+
 ## A. Update an existing app (example: Expense Tracker v3.2.16)
 
 1. Build and test your release APK locally. Android updates must use the **same app/package ID, the same signing key and a higher versionCode**; publishing an APK does not verify any of these.
@@ -14,7 +32,7 @@ This is a GitHub Actions **Run workflow** form. It works from your computer or p
    - **app_id:** `j-expense-tracker-my-expense-tracker`
    - **apk_filename:** `j-expense-tracker-my-expense-tracker-v3.2.16.apk` (use your **real** file name, not this example)
    - **version:** `v3.2.16` (enter the actual version; optional if unchanged)
-   - Leave **name, description, category, logo_path, screenshots** blank to keep their existing values. **family** is ignored for updates.
+   - Leave **name, description, category, logo_path, screenshots** blank to keep their existing values. After using Media Studio, leaving the two image fields blank automatically attaches your uploaded files. **family** is ignored for updates.
 5. Press **Run workflow**. Wait for a green check on the workflow run. The workflow looks up that **exact** asset on GitHub Release, verifies its download URL, size and SHA-256, and updates `public/apps/catalog.json` in the `main` branch.
 6. Wait for your Render auto-deploy if configured, then verify [J Apps](https://just24things.onrender.com/apps/) and the app's **View Details → Download file** link. If stale, hard refresh. A successful commit does not itself prove Render has deployed.
 
