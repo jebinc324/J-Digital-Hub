@@ -456,10 +456,8 @@ async function publishApp(){
   const sha=await commitChanges(snapshot,token,changes,"J Apps local Publisher "+mode+": "+id,message=>publishState(message));
   const action=adding?"Added":removing?"Removed":"Updated";
   publishState("✓ "+action+" "+id+" successfully. GitHub commit "+sha+". Wait for Render deploy, then verify the J Apps website. Published APK files and other apps stay intact.","success");
-  if(removing||adding){
-   await loadApps();
-   // loadApps updates only the current publicly deployed catalog; user can refresh after Render deploy.
-  }
+  // Avoid reloading the public catalogue before Render deploy: it may still be
+  // stale and would erase the success message. The next session refreshes it.
   invalidateShots();
  }catch(error){publishState("Publisher stopped: "+error.message+" If the main branch changed, reload and try again.","error");}
  finally{controlBusy(false);}
