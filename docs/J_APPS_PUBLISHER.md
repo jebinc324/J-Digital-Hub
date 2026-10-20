@@ -18,6 +18,15 @@ The Image Upload Studio is **no longer available at /apps/publisher/** on the pu
 
 Existing app logos and screenshots are automatically published and linked to the catalogue when the GitHub commit succeeds. New app images are picked up automatically when you use J Apps Publisher `add` with the **same ID**. No manual image paths required.
 
+### Remove individual screenshots in the Private Media Studio
+Select the app, click **04 / Manage Screenshots → Load Current Screenshots**, tick exactly the images you want removed, then click **Remove Selected Screenshots** and confirm. Selected images disappear from the public app gallery after Render deploy; **the original image files remain in GitHub** for recovery. The other screenshots and logo are preserved.
+
+### Add / Update / Remove apps directly in the Private Media Studio
+The same localhost tool now includes **05 / J Apps Publisher** controls. You can choose **Update Existing App**, **Add New App**, or **Remove App Card** here instead of navigating to GitHub Actions. Enter the exact APK/ZIP filename already uploaded to the official GitHub Release for add/update; the tool verifies download URL, size and SHA-256. For Remove, enter `REMOVE:<app-id>` as confirmation. New/removed apps update website counts, and uploaded media is linked automatically.
+
+These are the same publishing capabilities as GitHub Actions. **The private tool does not upload APK binaries**; first upload those files to the official GitHub Release. [Full desktop usage guide](../admin/media-studio/README.md).
+
+
 **Security:** The token is used in local browser memory and forwarded to GitHub through the local Python server. No token is committed or stored by the tool. Close the window when finished. The images themselves will be public on the J Apps website; the editor is private. The public website cannot host this admin controller without adding an authenticated backend.
 
 ## A. Update an existing app (example: Expense Tracker v3.2.16)
