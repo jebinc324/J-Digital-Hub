@@ -46,11 +46,11 @@ on:
         type: string
         required: false
       logo_path:
-        description: "Upload icon at /apps/publisher/ first; leave blank to auto-attach (or enter old-style path)"
+        description: "Choose logo: https://just24things.onrender.com/apps/publisher/ · then leave blank"
         type: string
         required: false
       screenshots:
-        description: "Upload screenshots at /apps/publisher/ first; leave blank for auto-attach"
+        description: "Choose screenshots: https://just24things.onrender.com/apps/publisher/ · then leave blank"
         type: string
         required: false
 
