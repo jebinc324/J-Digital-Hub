@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#f7f5ed"/><path d="M5 50h54" stroke="#bdac8e" stroke-width="1"/><text x="7" y="46" font-family="Georgia,serif" font-size="47" fill="#556b51">24</text><path d="M9 14h14" stroke="#282923" stroke-width="2"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+<rect width="96" height="96" rx="19" fill="#fbf8ef"/>
+<rect x="2" y="2" width="92" height="92" rx="17" fill="none" stroke="#d6c5a3" stroke-width="2"/>
+<text x="8" y="45" font-family="Georgia,serif" font-style="italic" font-size="31" fill="#211e18">Just</text>
+<path d="M12 51h43" stroke="#ad8646" stroke-width="1.5"/>
+<path d="M56 19v53" stroke="#2a2b22" stroke-width="1.5"/>
+<text x="57" y="57" font-family="Arial,sans-serif" font-weight="700" font-size="31" fill="#586948">24</text>
+<text x="59" y="69" font-family="Arial,sans-serif" font-size="7.5" letter-spacing="1" fill="#24251f">THINGS</text>
+</svg>
