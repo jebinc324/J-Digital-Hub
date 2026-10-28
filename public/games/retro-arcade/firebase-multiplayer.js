@@ -43,9 +43,8 @@ if (!configured) {
 
     function makeCode(){
       const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-      let out='';
-      for(let i=0;i<6;i++) out += chars[Math.floor(Math.random()*chars.length)];
-      return out;
+      const bytes=crypto.getRandomValues(new Uint8Array(6));
+      return Array.from(bytes,b=>chars[b%chars.length]).join('');
     }
 
     async function watchRoom(code){
