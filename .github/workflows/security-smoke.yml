@@ -1,0 +1,31 @@
+name: Security smoke checks
+
+on:
+  push:
+    branches:
+      - 'security/**'
+  pull_request:
+    paths:
+      - 'public/games/retro-arcade/**'
+      - 'public/ambient.js'
+      - 'tests/security-smoke.mjs'
+      - '.github/workflows/security-smoke.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax-check browser scripts
+        run: |
+          node --check public/games/retro-arcade/app.js
+          node --check public/ambient.js
+          node --check --input-type=module < public/games/retro-arcade/firebase-multiplayer.js
+      - name: Test hostile multiplayer room data
+        run: node --test tests/security-smoke.mjs

@@ -1,6 +1,6 @@
 /* Just 24 Things by J&J — live orbit wallpaper v1.
  * Visual only, one lightweight canvas, never captures clicks/keyboard.
- * ~24 desktop / ~11 mobile particles, capped 30fps, pauses in hidden tabs.
+ * ~24 desktop / ~11 mobile particles, capped 30fps desktop / 15fps mobile, pauses in hidden tabs.
  * No gameplay, scroll or application state is modified. */
 (()=>{
  'use strict';
@@ -14,7 +14,7 @@
  if(!ctx){canvas.remove();return;}
  const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)');
  let w=0,h=0,dpr=1,particles=[],raf=0,lastDraw=-Infinity,disabled=!!reduced?.matches;
- let resizePending=false,lastAccentTime=-Infinity,accent='base';
+ let resizePending=false,lastAccentTime=-Infinity,accent='base',frameInterval=33;
  const TAU=Math.PI*2;
  // No flickering positions on rerender; seeded deterministic distribution.
  function rand(i,seed){
@@ -24,11 +24,12 @@
  function reset(){
    w=Math.max(1,window.innerWidth);
    h=Math.max(1,window.innerHeight);
-   dpr=Math.min(1.5,Math.max(1,window.devicePixelRatio||1));
+   const mobile=w<720;
+   frameInterval=mobile?66:33; // Limit full-screen canvas work to ~15fps on mobile.
+   dpr=Math.min(mobile?1.25:1.5,Math.max(1,window.devicePixelRatio||1));
    canvas.width=Math.round(w*dpr);
    canvas.height=Math.round(h*dpr);
    ctx.setTransform(dpr,0,0,dpr,0,0);
-   const mobile=w<720;
    const slowDevice=(navigator.hardwareConcurrency||4)<=2||navigator.connection?.saveData;
    const count=disabled?Math.min(7,mobile?8:12):(mobile?11:(slowDevice?16:24));
    const radius=Math.min(w*.47,h*.60);
@@ -56,7 +57,7 @@
    raf=0;
    if(document.hidden)return;
    // Limit animation to 30fps even on 120/144 Hz displays.
-   if(!disabled&&now-lastDraw<33){raf=requestAnimationFrame(paint);return;}
+   if(!disabled&&now-lastDraw<frameInterval){raf=requestAnimationFrame(paint);return;}
    lastDraw=now;
    ctx.clearRect(0,0,w,h);
    const mode=getAccent(now);
