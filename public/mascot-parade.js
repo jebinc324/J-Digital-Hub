@@ -87,6 +87,104 @@
   controls.append(soundButton,visibleButton);
   root.appendChild(controls);
   document.body.appendChild(root);
+
+  /* Screen-wide character motion using the owner's original koala, sloth, pug and chick images. */
+  const spriteIndex={"Koo Koo":0,"Goo Goo":1,"Boo Boo":2,"Kili Kili":3};
+  const lowMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
+  const isMobile=()=>window.innerWidth<=640;
+  const bounds=()=>({w:window.innerWidth,h:window.innerHeight,size:isMobile()?58:76,height:isMobile()?69:90});
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const actors=nodes.map((el,i)=>{
+    const friend=friends[i], art=el.querySelector(".jj-friend-art"),bubble=el.querySelector(".jj-friend-bubble");
+    art.style.backgroundPosition=(spriteIndex[friend.name]*100/3)+"% center";
+    const b=bounds();
+    return {friend,el,art,bubble,x:rnd(10,Math.max(20,b.w-120)),y:rnd(80,Math.max(100,b.h-150)),tx:0,ty:0,state:"",until:0,pair:null};
+  });
+  let motionPaused=false,frameAt=0,nextConversation=performance.now()+14000;
+  const pauseButton=document.createElement("button");
+  pauseButton.type="button";pauseButton.textContent="⏸ Pause";pauseButton.setAttribute("aria-label","Pause characters");
+  controls.appendChild(pauseButton);
+  pauseButton.addEventListener("click",()=>{
+    motionPaused=!motionPaused;
+    pauseButton.textContent=motionPaused?"▶ Move":"⏸ Pause";
+    pauseButton.setAttribute("aria-label",motionPaused?"Resume characters":"Pause characters");
+    root.classList.toggle("is-paused",motionPaused||document.hidden);
+  });
+  function destination(p){
+    const b=bounds();
+    p.tx=rnd(8,Math.max(10,b.w-b.size-10));
+    p.ty=p.friend.name==="Kili Kili"?rnd(35,Math.max(50,b.h-b.height-100)):rnd(65,Math.max(75,b.h-b.height-35));
+  }
+  function state(p,s,seconds){
+    p.state=s;p.until=performance.now()+seconds*1000;
+    p.el.dataset.state=s;
+    p.bubble.textContent=s==="sleep"?"Zzz… 😴":s==="think"?"Hmm… 🤔":s==="rest"?"Rest time! 🧡":s==="talk"?"Hello, friend! 💛":p.friend.message;
+  }
+  function choose(p){
+    if(p.pair)return;
+    const r=Math.random(),bird=p.friend.name==="Kili Kili";
+    if(bird){
+      if(r<.72){state(p,"fly",rnd(4,8));destination(p);}
+      else if(r<.82){state(p,"think",rnd(2,4));}
+      else if(r<.92){state(p,"rest",rnd(3,5));}
+      else{state(p,"sleep",rnd(3,5));}
+    }else if(r<.36){state(p,"walk",rnd(4,8));destination(p);}
+    else if(r<.63){state(p,"run",rnd(3,6));destination(p);}
+    else if(r<.77){state(p,"rest",rnd(3,6));}
+    else if(r<.88){state(p,"think",rnd(3,6));}
+    else{state(p,"sleep",rnd(5,9));}
+  }
+  actors.forEach((p,i)=>{
+    if(lowMotion.matches){
+      const b=bounds();p.x=clamp(6+i*(b.w-b.size-12)/3,0,b.w-b.size);
+      p.y=Math.max(20,b.h-b.height-45);state(p,"rest",999999);
+      p.el.style.transform="translate3d("+p.x+"px,"+p.y+"px,0)";
+    }else choose(p);
+  });
+  function startConversation(t){
+    if(actors.some(p=>p.pair))return;
+    const shuffled=actors.slice().sort(()=>Math.random()-.5),a=shuffled[0],b=shuffled[1];
+    const v=bounds(),cx=rnd(v.w*.24,v.w*.68),cy=rnd(v.h*.26,v.h*.69);
+    const group={end:t+10200,a,b};
+    a.pair=b.pair=group;
+    a.tx=clamp(cx-v.size*.7,0,v.w-v.size);
+    b.tx=clamp(cx+v.size*.7,0,v.w-v.size);
+    a.ty=b.ty=clamp(cy,24,v.h-v.height-35);
+    state(a,a.friend.name==="Kili Kili"?"fly":"walk",10);
+    state(b,b.friend.name==="Kili Kili"?"fly":"walk",10);
+  }
+  function animate(t){
+    requestAnimationFrame(animate);
+    if(document.hidden||motionPaused||!visible||lowMotion.matches||t-frameAt<33)return;
+    const dt=Math.min(.060,Math.max(.016,(t-frameAt)/1000));frameAt=t;
+    if(t>nextConversation){startConversation(t);nextConversation=t+rnd(18000,25000);}
+    const v=bounds();
+    for(const p of actors){
+      if(p.el.classList.contains("is-greeting")||p.el.matches(":hover,:focus"))continue;
+      if(p.pair&&t>p.pair.end){p.pair=null;choose(p);}
+      if(p.pair||["walk","run","fly"].includes(p.state)){
+        const dx=p.tx-p.x,dy=p.ty-p.y,d=Math.hypot(dx,dy);
+        let speed=(p.pair?165:p.state==="run"?133:p.state==="fly"?122:52)*dt;
+        if(d>2){
+          p.x+=dx/d*Math.min(d,speed);p.y+=dy/d*Math.min(d,speed);
+          p.art.style.scale=dx<0?"-1 1":"1 1";
+        }
+        if(p.pair&&d<7){
+          if(p.state!=="talk")state(p,"talk",7);
+          const speaking=Math.floor(t/2300)%2===0?p.pair.a:p.pair.b;
+          p.bubble.textContent=speaking===p?"Hi, "+(p===p.pair.a?p.pair.b.friend.name:p.pair.a.friend.name)+"! 😊":"";
+        }else if(!p.pair&&(d<=2||t>p.until)){choose(p);}
+      }else if(t>p.until){choose(p);}
+      p.x=clamp(p.x,0,Math.max(0,v.w-v.size));
+      p.y=clamp(p.y,14,Math.max(14,v.h-v.height-38));
+      p.el.style.transform="translate3d("+Math.round(p.x)+"px,"+Math.round(p.y)+"px,0)";
+    }
+  }
+  document.addEventListener("visibilitychange",()=>{root.classList.toggle("is-paused",document.hidden||motionPaused);});
+  window.addEventListener("resize",()=>{const v=bounds();actors.forEach(p=>{p.x=clamp(p.x,0,v.w-v.size);p.y=clamp(p.y,14,v.h-v.height-38);if(!p.pair)destination(p);});});
+  requestAnimationFrame(animate);
+
   document.addEventListener("visibilitychange",()=>{
     root.classList.toggle("is-paused",document.hidden);
     if(document.hidden&&canSpeak)window.speechSynthesis.cancel();

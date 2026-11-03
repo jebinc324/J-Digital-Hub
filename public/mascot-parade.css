@@ -18,3 +18,27 @@
 @keyframes jj-friend-hop{from{transform:translateY(0) rotate(-4deg)}to{transform:translateY(-10px) rotate(4deg)}}
 @media(max-width:640px){.jj-friend{width:58px;height:69px;left:-70px;bottom:var(--mobile-lane,24px);animation-duration:var(--mobile-trip,24s)}.jj-friend-bubble{font-size:11px;max-width:154px;padding:8px 10px}.jj-friends-controls{right:6px;bottom:5px;gap:4px}.jj-friends-controls button{min-height:31px;padding:4px 7px;font-size:10px}}
 @media(prefers-reduced-motion:reduce){.jj-friend{animation:none!important;left:calc(5% + var(--slot,0)*21%);bottom:42px;will-change:auto}.jj-friend-art{animation:none!important}.jj-friend-bubble{transition:none}}
+
+
+/* Original photo-mascots — vertical/diagonal screen-saver motion (v2). */
+.jj-friend{left:0!important;top:0!important;bottom:auto!important;animation:none!important;width:76px;height:90px;will-change:transform}
+.jj-friend-art{background-image:url('/assets/characters/friends-v2.webp');background-size:400% 100%;background-repeat:no-repeat;background-position:0 center}
+.jj-friend-art svg{display:none}
+.jj-friend[data-state="walk"] .jj-friend-art{animation:jj-v2-walk .5s ease-in-out infinite alternate}
+.jj-friend[data-state="run"] .jj-friend-art{animation:jj-v2-walk .22s ease-in-out infinite alternate}
+.jj-friend[data-state="fly"] .jj-friend-art{animation:jj-v2-fly .38s ease-in-out infinite alternate}
+.jj-friend[data-state="rest"] .jj-friend-art{animation:jj-v2-rest 2s ease-in-out infinite alternate}
+.jj-friend[data-state="sleep"] .jj-friend-art{animation:jj-v2-sleep 2.7s ease-in-out infinite alternate}
+.jj-friend[data-state="think"] .jj-friend-art{animation:jj-v2-think 1.8s ease-in-out infinite alternate}
+.jj-friend[data-state="talk"] .jj-friend-art{animation:jj-v2-talk .32s ease-in-out infinite alternate}
+.jj-friend[data-state="sleep"] .jj-friend-bubble,.jj-friend[data-state="think"] .jj-friend-bubble,.jj-friend[data-state="talk"] .jj-friend-bubble,.jj-friend[data-state="rest"] .jj-friend-bubble{opacity:1;visibility:visible;transform:translate(-50%,0) scale(1)}
+.jj-friend:hover .jj-friend-art,.jj-friend:focus-visible .jj-friend-art,.jj-friend.is-greeting .jj-friend-art{animation-play-state:paused!important}
+.jj-friends-layer.is-paused .jj-friend-art{animation-play-state:paused!important}
+@keyframes jj-v2-walk{from{transform:translateY(2px) rotate(-6deg)}to{transform:translateY(-8px) rotate(5deg)}}
+@keyframes jj-v2-fly{from{transform:translateY(8px) rotate(8deg)}to{transform:translateY(-8px) rotate(-9deg)}}
+@keyframes jj-v2-rest{from{transform:scaleY(.82) translateY(9px)}to{transform:scaleY(.89) translateY(7px)}}
+@keyframes jj-v2-sleep{from{transform:rotate(-65deg) translate(-10px,12px)}to{transform:rotate(-70deg) translate(-12px,14px)}}
+@keyframes jj-v2-think{from{transform:rotate(-6deg)}to{transform:rotate(8deg)}}
+@keyframes jj-v2-talk{from{transform:translateY(2px)}to{transform:translateY(-4px)}}
+@media(max-width:640px){.jj-friend{width:58px;height:69px}}
+@media(prefers-reduced-motion:reduce){.jj-friend-art{animation:none!important}}
