@@ -1,0 +1,20 @@
+/* Just24Things — four animated friends. Decorative layer only; controls remain accessible. */
+.jj-friends-layer{position:fixed;inset:0;z-index:45;pointer-events:none;overflow:hidden;isolation:isolate}
+.jj-friend{position:absolute;left:-94px;bottom:var(--lane,22px);width:76px;height:90px;padding:0;border:0;background:transparent;color:inherit;cursor:pointer;pointer-events:auto;overflow:visible;animation:jj-friend-run var(--trip,32s) linear infinite;animation-delay:var(--delay,0s);will-change:transform;-webkit-tap-highlight-color:transparent}
+.jj-friend:focus-visible{outline:3px solid #36bde0;outline-offset:3px;border-radius:18px}
+.jj-friend-art{position:relative;display:block;width:100%;height:100%;animation:jj-friend-hop .5s ease-in-out infinite alternate;filter:drop-shadow(0 5px 6px rgba(6,17,38,.20));transform-origin:center bottom}
+.jj-friend-art svg{width:100%;height:100%;display:block;overflow:visible}
+.jj-friend-bubble{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translate(-50%,8px) scale(.95);opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease,visibility .18s;display:block;width:max-content;max-width:190px;min-width:120px;padding:10px 12px;border:2px solid rgba(15,56,82,.15);border-radius:16px;background:#fffef9;color:#173649;font:700 12px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:normal;text-align:center;box-shadow:0 9px 25px rgba(0,0,0,.15);white-space:normal;pointer-events:none}
+.jj-friend-bubble:after{content:"";position:absolute;left:calc(50% - 6px);bottom:-7px;width:12px;height:12px;background:#fffef9;border-right:2px solid rgba(15,56,82,.15);border-bottom:2px solid rgba(15,56,82,.15);transform:rotate(45deg)}
+.jj-friend:hover,.jj-friend:focus-visible,.jj-friend.is-greeting{animation-play-state:paused;z-index:2}
+.jj-friend:hover .jj-friend-art,.jj-friend:focus-visible .jj-friend-art,.jj-friend.is-greeting .jj-friend-art{animation-play-state:paused;transform:scale(1.12)}
+.jj-friend:hover .jj-friend-bubble,.jj-friend:focus-visible .jj-friend-bubble,.jj-friend.is-greeting .jj-friend-bubble{opacity:1;visibility:visible;transform:translate(-50%,0) scale(1)}
+.jj-friends-controls{position:absolute;right:12px;bottom:10px;display:flex;align-items:center;gap:5px;pointer-events:auto;z-index:4}
+.jj-friends-controls button{min-height:34px;border:1px solid rgba(55,91,103,.25);border-radius:999px;background:rgba(255,255,252,.94);color:#173747;box-shadow:0 3px 12px rgba(0,0,0,.13);padding:5px 10px;font:700 11px/1.2 system-ui,-apple-system,Segoe UI,sans-serif;cursor:pointer;backdrop-filter:blur(8px)}
+.jj-friends-controls button:focus-visible{outline:3px solid #32b9e0;outline-offset:2px}
+.jj-friends-layer.is-hidden .jj-friend{display:none}
+.jj-friends-layer.is-paused .jj-friend,.jj-friends-layer.is-paused .jj-friend-art{animation-play-state:paused}
+@keyframes jj-friend-run{from{transform:translateX(0)}to{transform:translateX(calc(100vw + 190px))}}
+@keyframes jj-friend-hop{from{transform:translateY(0) rotate(-4deg)}to{transform:translateY(-10px) rotate(4deg)}}
+@media(max-width:640px){.jj-friend{width:58px;height:69px;left:-70px;bottom:var(--mobile-lane,24px);animation-duration:var(--mobile-trip,24s)}.jj-friend-bubble{font-size:11px;max-width:154px;padding:8px 10px}.jj-friends-controls{right:6px;bottom:5px;gap:4px}.jj-friends-controls button{min-height:31px;padding:4px 7px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.jj-friend{animation:none!important;left:calc(5% + var(--slot,0)*21%);bottom:42px;will-change:auto}.jj-friend-art{animation:none!important}.jj-friend-bubble{transition:none}}
