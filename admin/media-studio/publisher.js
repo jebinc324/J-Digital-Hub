@@ -187,17 +187,21 @@ async function process(event){
    message:"J Apps media: "+id+" ("+(logo?"logo ":"")+(shots.length?shots.length+" screenshots":"")+")",
    tree:tree.sha,parents:[head]
   },token);
-  setStatus("Publishing media to main branch…");
-  await github("git/refs/heads/main","PATCH",{sha:created.sha,force:false},token);
-  // Successful ref update: all written files are in one commit.
+  setStatus("Opening a draft PR for media review…");
+  const draftBranch="studio/media-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
+  await github("git/refs","POST",{ref:"refs/heads/"+draftBranch,sha:head},token);
+  await github("git/refs/heads/"+draftBranch,"PATCH",{sha:created.sha,force:false},token);
+  const pr=await github("pulls","POST",{title:"J Apps media: "+id,head:draftBranch,base:BRANCH,draft:true,
+   body:"Private Media Studio upload. Review screenshots/logo, wait for CI, and merge when approved. Only then will Render deploy the images."},token);
+  const reviewUrl=pr.html_url||"https://github.com/"+REPO+"/pull/"+pr.number;
   if(app){
-   setStatus("✓ Success! Original images uploaded and linked to "+app.name+". GitHub commit "+created.sha.slice(0,8)+". Wait for Render deploy, then refresh the J Apps page.","success");
+   setStatus("✓ Draft PR created for "+app.name+": "+reviewUrl+". Review and merge after CI; only then refresh the website.","success");
   }else{
-   setStatus("✓ Success! Images uploaded for upcoming app "+id+" (commit "+created.sha.slice(0,8)+"). Open J Apps Publisher → add, enter this same app ID, and your uploaded images will automatically attach. No paths to copy.","success");
+   setStatus("✓ Draft PR created for upcoming app "+id+": "+reviewUrl+". Merge this PR first, then use J Apps Publisher with the same ID.","success");
   }
   logoInput.value="";shotsInput.value="";cleanPreviews();$("logoPreview").replaceChildren();$("screensPreview").replaceChildren();invalidateShots();
  }catch(error){
-  setStatus("Upload stopped — "+error.message+". No GitHub branch update is considered successful unless you see the success message. If main changed during upload, refresh and retry.","error");
+  setStatus("Upload stopped — "+error.message+". A draft PR is needed before any public website change. If main changed during upload, refresh and retry.","error");
  }finally{controlBusy(false);}
 }
 
@@ -353,7 +357,7 @@ async function removeChosenScreenshots(){
   if(snapshot.app){snapshot.app.screenshots=remaining.slice();files.push({path:"public/apps/catalog.json",content:JSON.stringify(snapshot.catalog,null,2)+"\n"});}
   const sha=await commitChanges(snapshot,token,files,"J Apps media: unlink "+selected.length+" screenshots from "+id,message=>removeState(message));
   invalidateShots();
-  removeState("✓ Removed "+selected.length+" screenshot(s) from the "+id+" website gallery. Commit "+sha+". Refresh after Render deploy. Original image files remain on GitHub.","success");
+  removeState("✓ Removed "+selected.length+" screenshot(s) from the "+id+" website gallery. Review "+sha+" and merge after CI passes. Original image files remain on GitHub.","success");
  }catch(error){removeState("Removal stopped: "+error.message,"error");}
  finally{controlBusy(false);}
 }
