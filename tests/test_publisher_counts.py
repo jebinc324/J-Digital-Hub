@@ -2,10 +2,12 @@
 import json
 from pathlib import Path
 import runpy
+import sys
 import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / ".github/scripts"))
 publisher = runpy.run_path(str(ROOT / ".github/scripts/publish_j_app.py"))
 update = publisher["update_visible_counts"]
 
