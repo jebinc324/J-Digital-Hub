@@ -1,5 +1,5 @@
 const cfg = window.J_ARCADE_FIREBASE_CONFIG || {};
-const configured = Boolean(cfg.apiKey && cfg.authDomain && cfg.databaseURL && cfg.projectId && cfg.appId);
+const configured = Boolean(window.J_ARCADE_MULTIPLAYER_ENABLED === true && cfg.apiKey && cfg.authDomain && cfg.databaseURL && cfg.projectId && cfg.appId);
 
 const api = {
   enabled: false,
