@@ -3,27 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="/favicon.png" type="image/png" sizes="512x512"><link rel="apple-touch-icon" href="/favicon.png">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#e7ecf2" />
   <title>J Retro Arcade Online</title><meta name="description" content="Play J Retro Arcade browser games, solo, with levels, points and saved progress. Part of Just 24 Things by J&amp;J."><link rel="canonical" href="https://just24things.online/games/retro-arcade/">
   <link rel="stylesheet" href="styles.css" />
-  <script>
-    // Arcade stays original when opened directly; retro skin is for the
-    // embedded J&J /games/ experience only, without touching game logic.
-    if (new URLSearchParams(location.search).get('embed') === '1') {
-      document.documentElement.classList.add('jj-in-page-arcade');
-    }
-  </script>
+  <script src="embed-mode.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700;800&display=swap" />
   <link rel="stylesheet" href="retro-embedded.css" />
-</head>
+<meta property="og:type" content="website"><meta property="og:title" content="J Retro Arcade Online"><meta property="og:description" content="Play J Retro Arcade browser games, solo, with levels, points and saved progress. Part of Just 24 Things by J&amp;J."><meta property="og:url" content="https://just24things.online/games/retro-arcade/"><meta property="og:image" content="https://just24things.online/assets/just24-cover.webp"><meta name="twitter:card" content="summary_large_image"></head>
 <body>
 <div id="app" class="theme-light">
   <section id="homeScreen" class="screen active home-screen">
     <header class="home-header fixed-safe">
       <div class="logo" aria-hidden="true"><span>J</span></div>
       <div class="brand-copy">
-        <div class="brand-title">J RETRO ARCADE</div>
+        <h1 class="brand-title" style="margin:0">J RETRO ARCADE</h1>
         <div class="brand-sub">12 GAMES • ONLINE • ROADMAP</div>
       </div>
       <button id="themeBtn" class="neo-chip">BLACK</button>
@@ -120,9 +114,9 @@
   </section>
 </div>
 
-<div id="rgbModal" class="modal hidden"><div class="neo-card modal-card"><h2>RGB Font Color</h2><p>FONT COLOR</p><input id="rgbPicker" type="color" value="#26313d"/><div id="rgbPreview">J RETRO ARCADE • 123</div><div class="modal-actions"><button id="rgbReset" class="neo-chip wide">RESET</button><button id="rgbCancel" class="neo-chip wide">CANCEL</button><button id="rgbApply" class="neo-chip wide">APPLY</button></div></div></div>
+<div id="rgbModal" class="modal hidden"><div class="neo-card modal-card"><h2>RGB Font Color</h2><p>FONT COLOR</p><input id="rgbPicker" aria-label="Arcade font color" type="color" value="#26313d"/><div id="rgbPreview">J RETRO ARCADE • 123</div><div class="modal-actions"><button id="rgbReset" class="neo-chip wide">RESET</button><button id="rgbCancel" class="neo-chip wide">CANCEL</button><button id="rgbApply" class="neo-chip wide">APPLY</button></div></div></div>
 
-<div id="onlineModal" class="modal hidden"><div class="neo-card modal-card online-card"><h2>ONLINE ROOM</h2><p class="muted">Same 12 games • private room code</p><div id="onlineStatus" class="status-pill">SETUP REQUIRED</div><input id="playerName" class="neo-input" maxlength="16" value="Player" placeholder="Player name"><button id="createRoomBtn" class="overlay-btn">CREATE ROOM</button><div class="join-row"><input id="roomCodeInput" class="neo-input" maxlength="6" placeholder="ROOM CODE"><button id="joinRoomBtn" class="neo-chip wide">JOIN</button></div><div id="roomInfo" class="room-info hidden"></div><button id="onlineClose" class="neo-chip wide">CLOSE</button></div></div>
+<div id="onlineModal" class="modal hidden"><div class="neo-card modal-card online-card"><h2>ONLINE ROOM</h2><p class="muted">Same 12 games • private room code</p><div id="onlineStatus" class="status-pill">SETUP REQUIRED</div><input id="playerName" aria-label="Player name" class="neo-input" maxlength="16" value="Player" placeholder="Player name"><button id="createRoomBtn" class="overlay-btn">CREATE ROOM</button><div class="join-row"><input id="roomCodeInput" aria-label="Six-character room code" class="neo-input" maxlength="6" placeholder="ROOM CODE"><button id="joinRoomBtn" class="neo-chip wide">JOIN</button></div><div id="roomInfo" class="room-info hidden"></div><button id="onlineClose" class="neo-chip wide">CLOSE</button></div></div>
 <div id="storePickerModal" class="modal hidden"><div class="neo-card modal-card"><h2>Choose Game Store</h2><div id="storePickerList" class="store-picker-list"></div><button id="storePickerClose" class="neo-chip wide">CANCEL</button></div></div>
 <div id="toast" class="toast"></div>
 

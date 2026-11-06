@@ -1,0 +1,25 @@
+# Copy these rules into the existing Render Static Site Settings > Headers,
+# or into its already-connected Render Blueprint service's headers: field.
+# This is an example section, NOT an independently applied live configuration.
+headers:
+  - path: /*
+    name: X-Content-Type-Options
+    value: nosniff
+  - path: /*
+    name: X-Frame-Options
+    value: SAMEORIGIN
+  - path: /*
+    name: Referrer-Policy
+    value: strict-origin-when-cross-origin
+  - path: /*
+    name: Permissions-Policy
+    value: camera=(), microphone=(), geolocation=()
+  - path: /*
+    name: Strict-Transport-Security
+    value: max-age=31536000
+  - path: /*
+    name: Content-Security-Policy-Report-Only
+    value: "default-src 'self'; script-src 'self' https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://api.github.com https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
+  - path: /apps/catalog.json
+    name: Cache-Control
+    value: no-cache, must-revalidate

@@ -56,3 +56,13 @@ test('room code generation uses a cryptographic random source', () => {
   assert.match(block, /crypto\.getRandomValues/);
   assert.doesNotMatch(block, /Math\.random/);
 });
+
+test('multiplayer requires explicit opt-in and server denies default access', () => {
+  const fs = readFileSync('public/games/retro-arcade/firebase-config.js', 'utf8');
+  const js = readFileSync('public/games/retro-arcade/firebase-multiplayer.js', 'utf8');
+  const rules = JSON.parse(readFileSync('firebase/database.rules.json', 'utf8'));
+  assert.match(fs, /J_ARCADE_MULTIPLAYER_ENABLED = false/);
+  assert.match(js, /J_ARCADE_MULTIPLAYER_ENABLED === true/);
+  assert.equal(rules.rules['.read'], false);
+  assert.equal(rules.rules['.write'], false);
+});

@@ -74,7 +74,7 @@
   }));
   document.querySelectorAll('.j-hero-text .j-kicker,.j-hero-text>p,.j-hero-ctas,.j-stats').forEach((el,i)=>animate(el,'rise',140+i*85));
 
-  // J Apps builds its 42 cards after a JSON fetch; register newly drawn cards safely.
+  // J Apps builds catalogue cards after a JSON fetch; register newly drawn cards safely.
   for(const id of ['catalog-grid','j-featured-grid']){
     const host=document.getElementById(id);
     if(!host||!('MutationObserver' in window))continue;

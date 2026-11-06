@@ -13,10 +13,10 @@ The Image Upload Studio is **no longer available at /apps/publisher/** on the pu
 1. Download the J-Digital-Hub repo ZIP from GitHub and extract it.
 2. On Windows, double-click `admin/media-studio/START_MEDIA_STUDIO.bat`. On Mac/Linux, run `python3 admin/media-studio/serve.py`. Python 3 is required.
 3. Your browser opens a private `http://127.0.0.1:<port>/` page, accessible only from your computer.
-4. Paste a short-lived GitHub fine-grained token restricted to `jebinc324/J-Digital-Hub` with **Contents: Read and write**.
+4. Paste a short-lived GitHub fine-grained token restricted to `jebinc324/J-Digital-Hub` with **Contents: Read and write and Pull requests: Read and write**.
 5. Choose an app, select logo and screenshots directly from your computer, and press **Upload & Attach Images**.
 
-Existing app logos and screenshots are automatically published and linked to the catalogue when the GitHub commit succeeds. New app images are picked up automatically when you use J Apps Publisher `add` with the **same ID**. No manual image paths required.
+Existing app logos and screenshots are proposed in a draft pull request and linked to the catalogue after that PR is reviewed, passes CI, and is merged. New app images are picked up automatically when you use J Apps Publisher `add` with the **same ID**. No manual image paths required.
 
 ### Remove individual screenshots in the Private Media Studio
 Select the app, click **04 / Manage Screenshots → Load Current Screenshots**, tick exactly the images you want removed, then click **Remove Selected Screenshots** and confirm. Selected images disappear from the public app gallery after Render deploy; **the original image files remain in GitHub** for recovery. The other screenshots and logo are preserved.
@@ -40,8 +40,8 @@ These are the same publishing capabilities as GitHub Actions. **The private tool
    - **apk_filename:** `j-expense-tracker-my-expense-tracker-v3.2.16.apk` (use your **real** file name, not this example)
    - **version:** `v3.2.16` (enter the actual version; optional if unchanged)
    - Leave **name, description, category, logo_path, screenshots** blank to keep their existing values. After using Media Studio, leaving the two image fields blank automatically attaches your uploaded files. **family** is ignored for updates.
-5. Press **Run workflow**. Wait for a green check on the workflow run. The workflow looks up that **exact** asset on GitHub Release, verifies its download URL, size and SHA-256, and updates `public/apps/catalog.json` in the `main` branch.
-6. Wait for your Render auto-deploy if configured, then verify [J Apps](https://just24things.onrender.com/apps/) and the app's **View Details → Download file** link. If stale, hard refresh. A successful commit does not itself prove Render has deployed.
+5. Press **Run workflow**. Wait for a green check on the workflow run. The workflow looks up that **exact** asset on GitHub Release, verifies its download URL, size and SHA-256, and downloads the actual release file to compare SHA-256 and inspect APK/ZIP archive structure, then opens a draft pull request against `main`.
+6. Wait for your Render auto-deploy if configured, then verify [J Apps](https://just24things.online/apps/) and the app's **View Details → Download file** link. If stale, hard refresh. A successful commit does not itself prove Render has deployed.
 
 **Important:** `releaseAsset` and `downloadUrl` must resolve to the same filename. The Publisher fills both automatically. It also fills `verifiedUpload.file`, `sizeBytes`, `sha256`, and `approxSizeMB` from GitHub.
 
@@ -62,8 +62,8 @@ The Publisher automatically adds the new entry, links the verified release file 
 1. **mode:** `remove`
 2. **app_id:** the **exact** existing catalogue ID, e.g. `j-my-new-app`
 3. **apk_filename:** type `REMOVE:j-my-new-app` to confirm. Replace `j-my-new-app` with the exact ID you entered above.
-4. Leave other inputs blank/default, click **Run workflow** and wait for the green check.
-5. Verify the card is gone from [J Apps](https://just24things.onrender.com/apps/) after Render deploy.
+4. Leave other inputs blank/default, click **Run workflow** and wait for the green check, then review/merge the draft PR after status checks pass.
+5. Verify the card is gone from [J Apps](https://just24things.online/apps/) after Render deploy.
 
 This removes only the app's **website catalogue entry**, not the actual APK/ZIP in GitHub Releases and not any uploaded logos/screenshots. The website project counts update automatically. If you want the app back later, choose `add` and enter its details again. The GitHub commit history also keeps a record of the original listing.
 
@@ -88,7 +88,7 @@ Open the failed run and expand **Verify APK and update J Apps catalogue** for th
 - **Removal confirmation error:** select `remove` and enter `REMOVE:<app_id>` in the required APK filename field, using the exact same ID.
 - **Removal not reflected on website:** check that the workflow run is green and Render has deployed the new commit.
 - **Invalid image:** upload icon/screenshot to GitHub first, then paste its exact website path.
-- **Permission denied / failed push:** in GitHub repository Settings → Actions → General, verify the workflow has permission to write repository contents, and check branch protection. An administrator may need to enable write permissions.
+- **Permission denied / failed PR:** in GitHub repository Settings → Actions → General, verify the workflow has permission to write repository contents, and check branch protection. An administrator may need to enable write and GitHub Actions pull-request creation permissions.
 - **Digest missing:** GitHub did not supply SHA-256 metadata. No catalogue update is committed; recheck the asset and retry.
 - **Workflow button missing:** make sure the default branch is `main`, GitHub Actions is enabled for the repo and you have write access.
 

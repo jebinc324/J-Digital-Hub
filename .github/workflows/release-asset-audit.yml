@@ -1,0 +1,32 @@
+name: Release asset integrity audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_id:
+        description: "Catalogue app ID; enter all for a full download/hash scan"
+        required: true
+        default: "j-expense-tracker-my-expense-tracker"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Independently download and inspect release assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APP_ID: ${{ inputs.app_id }}
+        run: python3 tests/verify_release_assets.py --app-id "$APP_ID"
+      - name: Preserve integrity results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-asset-integrity-report
+          path: release_audit_report.json
+          if-no-files-found: warn

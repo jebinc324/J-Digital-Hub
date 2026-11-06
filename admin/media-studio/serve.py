@@ -25,12 +25,13 @@ MAX_BODY = 8 * 1024 * 1024
 API_PATHS = {
     ("GET", "git/ref/heads/main"),
     ("POST", "git/blobs"), ("POST", "git/trees"), ("POST", "git/commits"),
-    ("PATCH", "git/refs/heads/main"),
+    ("POST", "git/refs"), ("POST", "pulls"),
 }
 SHA_PATH = re.compile(r"git/commits/[0-9a-f]{40}\Z")
+STUDIO_BRANCH_REF = re.compile(r"git/refs/heads/studio/[a-zA-Z0-9_-]+\Z")
 CATALOG_PATH = "contents/public/apps/catalog.json"
 MEDIA_PATH = re.compile(r"contents/public/assets/apps/media/[a-z0-9]+(?:-[a-z0-9]+)*\.json\Z")
-PAGE_PATHS = {"contents/public/index.html", "contents/public/apps/index.html"}
+PAGE_PATHS = {"contents/public/index.html", "contents/public/apps/index.html", "contents/public/apps/access/index.html"}
 SECURITY_HEADERS = (
     ("Cache-Control", "no-store, max-age=0"),
     ("X-Content-Type-Options", "nosniff"),
@@ -84,7 +85,7 @@ class Handler(BaseHTTPRequestHandler):
     @staticmethod
     def _valid_route(method, path, query):
         # Intentionally only a small allowlist of GitHub git + catalog endpoints.
-        if (method, path) in API_PATHS or (method == "GET" and SHA_PATH.fullmatch(path)):
+        if (method, path) in API_PATHS or (method == "GET" and SHA_PATH.fullmatch(path)) or (method == "PATCH" and STUDIO_BRANCH_REF.fullmatch(path)):
             return not query
         if method == "GET" and (path == CATALOG_PATH or path in PAGE_PATHS or MEDIA_PATH.fullmatch(path)):
             params = parse_qs(query, keep_blank_values=False)

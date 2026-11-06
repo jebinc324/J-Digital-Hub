@@ -26,25 +26,51 @@ let engine=null, animation=0, resizeObserver=null;
 let gamePaused=false, onlineMode=false, roomState=null, roomUnsub=null;
 let loadingTimer=null;
 
-const defaultState={theme:'light',fontColor:null,points:0,highs:{},unlocked:{},lives:{},boosters:{}};
-let state=loadState();
-for(const g of GAMES){
-  if(!state.unlocked[g.id]) state.unlocked[g.id]=1;
-  if(!state.lives[g.id]) state.lives[g.id]={count:3,last:Date.now()};
-  if(!state.boosters[g.id]) state.boosters[g.id]={shield:0,slow:0,power:0,speed:0,multi:0};
+const SAVE_KEY='jRetroArcadeWebState', SAVE_SCHEMA=1;
+const defaultState={theme:'light',fontColor:null,points:0,highs:{},unlocked:{},lives:{},boosters:{},saveSchema:SAVE_SCHEMA};
+const safeObject=value=>value!==null&&typeof value==='object'&&!Array.isArray(value);
+const safeInt=(value,min,max,fallback)=>typeof value==='number'&&Number.isFinite(value)?Math.max(min,Math.min(max,Math.floor(value))):fallback;
+function normalizeState(raw){
+  const data=safeObject(raw)?raw:{},now=Date.now();
+  const normalized={...defaultState,theme:data.theme==='dark'?'dark':'light',
+    fontColor:typeof data.fontColor==='string'&&/^#[0-9a-fA-F]{6}$/.test(data.fontColor)?data.fontColor:null,
+    points:safeInt(data.points,0,1000000000,0),highs:{},unlocked:{},lives:{},boosters:{},
+    webVersion:typeof data.webVersion==='string'&&data.webVersion.length<40?data.webVersion:null};
+  for(const game of GAMES){
+    const id=game.id,life=safeObject(data.lives?.[id])?data.lives[id]:{},
+      owned=safeObject(data.boosters?.[id])?data.boosters[id]:{};
+    normalized.highs[id]=safeInt(data.highs?.[id],0,1000000000,0);
+    normalized.unlocked[id]=safeInt(data.unlocked?.[id],1,MAX_STAGE,1);
+    normalized.lives[id]={count:safeInt(life.count,0,3,3),last:safeInt(life.last,0,now,now)};
+    normalized.boosters[id]={};
+    for(const type of ['shield','slow','power','speed','multi']){
+      normalized.boosters[id][type]=safeInt(owned[type],0,100000,0);
+    }
+  }
+  return normalized;
 }
-// One-time patch migration: preserve progression/wallet, but refill the games
-// that were affected by the v0.2.0 input/runtime bugs so retesting is immediate.
+function loadState(){
+  let raw=null;
+  try{
+    raw=localStorage.getItem(SAVE_KEY);
+    return normalizeState(raw?JSON.parse(raw):{});
+  }catch(error){
+    // Keep one recoverable copy when a previous save is malformed.
+    if(raw!==null){try{localStorage.setItem(SAVE_KEY+'CorruptBackup',raw);}catch(_){/* Storage disabled. */}}
+    return normalizeState({});
+  }
+}
+function saveState(){
+  try{localStorage.setItem(SAVE_KEY,JSON.stringify(state));return true;}
+  catch(_){return false;} // Private browsing or quota limits must not block games.
+}
+let state=loadState();
+// One-time v0.2.1 migration: retain wallet/stages; refill only affected games.
 if(state.webVersion!==WEB_VERSION){
   for(const id of ['shooter','match','bird','gear'])state.lives[id]={count:3,last:Date.now()};
   state.webVersion=WEB_VERSION;
 }
 saveState();
-
-function loadState(){
-  try{return {...defaultState,...JSON.parse(localStorage.getItem('jRetroArcadeWebState')||'{}')};}catch{return structuredClone(defaultState)}
-}
-function saveState(){localStorage.setItem('jRetroArcadeWebState',JSON.stringify(state));}
 function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
 function stageWorld(s){return Math.floor((clamp(s,1,MAX_STAGE)-1)/10)+1}
 function stageLocal(s){return ((clamp(s,1,MAX_STAGE)-1)%10)+1}
@@ -182,11 +208,12 @@ function renderBoosters(){const row=$('#boosterRow');row.innerHTML='';const type
 function useBooster(type){const inv=state.boosters[currentGame];if((inv[type]||0)<=0)return toast('No booster left. Open Store.');const ok=engine?.booster?.(type);if(ok===false)return toast('Booster cannot be used now.');inv[type]--;saveState();toast('Booster activated!');renderBoosters();hidePause()}
 
 function openStore(id=currentGame){currentGame=id;stopEngine();const g=gameById(id);$('#storeTitle').textContent=`${g.title} STORE`;showScreen('storeScreen');renderStore()}
+function elStore(tag,cls,value){const node=document.createElement(tag);if(cls)node.className=cls;node.textContent=String(value);return node;}
 function renderStore(){
   const id=currentGame,b=state.boosters[id],body=$('#storeBody');body.innerHTML=`<section class="neo-card store-hero"><h2>${gameById(id).title}</h2><p>Use Arcade Points earned by clearing stages.</p></section>`;
-  const inv=document.createElement('div');inv.className='inventory-grid';const its=[['◆','WALLET',state.points],['🚀','STAGE',id==='race'?1:unlocked(id)],['♥','LIVES',lives(id)]];its.forEach(x=>{const d=document.createElement('div');d.className='inventory-tile';d.innerHTML=`<span class="ico">${x[0]}</span><small>${x[1]}</small><b>×${x[2]}</b>`;inv.appendChild(d)});body.appendChild(inv);
+  const inv=document.createElement('div');inv.className='inventory-grid';const its=[['◆','WALLET',state.points],['🚀','STAGE',id==='race'?1:unlocked(id)],['♥','LIVES',lives(id)]];its.forEach(x=>{const d=document.createElement('div');d.className='inventory-tile';d.append(elStore('span','ico',x[0]),elStore('small','',x[1]),elStore('b','','×'+x[2]));inv.appendChild(d)});body.appendChild(inv);
   const items=[['♥','LIFE REFILL','Refill this game to 3 lives',120,'life'],['🛡','SHIELD','Protect one mistake / hit',90,'shield'],['⏱','SLOW','Slow hazards / motion',85,'slow'],['⚡','POWER','Strong game-specific power',110,'power']];if(id==='brick'){items.push(['＋','SPEED','Increase ball speed',70,'speed'],['×3','MULTI BALL','Add extra balls',100,'multi'])}
-  items.forEach(([ico,title,desc,price,type])=>{const s=document.createElement('section');s.className='neo-card store-item';s.innerHTML=`<div class="sicon">${ico}</div><div><h3>${title}</h3><p>${desc}</p></div><button class="buy-btn">◆ ${price}</button>`;s.querySelector('button').onclick=()=>{if(!spendPoints(price))return toast('Not enough Arcade Points');if(type==='life')addLives(id,3);else{b[type]=(b[type]||0)+1;saveState()}toast(`${title} ADDED`);renderStore()};body.appendChild(s)})
+  items.forEach(([ico,title,desc,price,type])=>{const s=document.createElement('section');s.className='neo-card store-item';const detail=document.createElement('div');detail.append(elStore('h3','',title),elStore('p','',desc));s.append(elStore('div','sicon',ico),detail,elStore('button','buy-btn','◆ '+price));s.querySelector('button').onclick=()=>{if(!spendPoints(price))return toast('Not enough Arcade Points');if(type==='life')addLives(id,3);else{b[type]=(b[type]||0)+1;saveState()}toast(`${title} ADDED`);renderStore()};body.appendChild(s)})
 }
 
 function renderStorePicker(){const list=$('#storePickerList');list.innerHTML='';GAMES.forEach(g=>{const b=document.createElement('button');b.className='store-pick';b.textContent=g.title;b.onclick=()=>{$('#storePickerModal').classList.add('hidden');openStore(g.id)};list.appendChild(b)})}
