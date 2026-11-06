@@ -56,6 +56,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: j-apps-publisher
@@ -95,22 +96,27 @@ jobs:
             --category "$APP_CATEGORY" \
             --logo-path "$APP_LOGO" \
             --screenshots "$APP_SCREENSHOTS"
-      - name: Validate and save changes
+      - name: Validate website changes
+        run: |
+          git diff --check
+          bash tests/run_checks.sh
+      - name: Open draft publishing PR (never push to main)
         env:
+          GH_TOKEN: ${{ github.token }}
           ACTION_MODE: ${{ inputs.mode }}
           APP_ID: ${{ inputs.app_id }}
         run: |
-          git diff --check
-          python3 -m json.tool public/apps/catalog.json > /dev/null
-          git add public/apps/catalog.json
-          if [ "$ACTION_MODE" = "add" ] || [ "$ACTION_MODE" = "remove" ]; then
-            git add public/apps/index.html public/index.html
-          fi
+          git add public/apps/catalog.json public/apps/index.html public/apps/access/index.html public/index.html
           if git diff --cached --quiet; then
-            echo "Already up to date."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "J Apps Publisher ${ACTION_MODE}: ${APP_ID}"
-            git push origin HEAD:main
+            echo "Catalogue already up to date."
+            exit 0
           fi
+          branch="publisher/run-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git checkout -b "$branch"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "J Apps Publisher ${ACTION_MODE}: ${APP_ID}"
+          git push origin "HEAD:$branch"
+          gh pr create --draft --base main --head "$branch" \
+            --title "J Apps Publisher ${ACTION_MODE}: ${APP_ID}" \
+            --body "Automated catalogue change. Check release metadata and CI; review and merge manually before Render deploys. Metadata alone does not confirm APK/ZIP safety."
