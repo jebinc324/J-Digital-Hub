@@ -53,45 +53,70 @@ def get_release():
 
 
 def update_visible_counts(root, old_count, items):
+    """Only rewrite explicitly marked stats, not unrelated number literals."""
     total = len(items)
-    pages = [root / "public/apps/index.html", root / "public/index.html"]
-    result = {}
     ready = sum(
         item.get("downloadUrl") ==
         f"https://github.com/{REPO}/releases/download/{TAG}/{item.get('releaseAsset', '')}"
         for item in items if item.get("access") == "public"
     )
+    pages = [
+        root / "public/index.html",
+        root / "public/apps/index.html",
+        root / "public/apps/access/index.html",
+    ]
+    result = {}
+
+    def update_marker(html, marker, value, page, required=True):
+        pattern = re.compile(
+            r'(<(?:span|strong)\\b(?=[^>]*\\bdata-count-' + re.escape(marker) +
+            r'\\b)[^>]*>)\\d+(</(?:span|strong)>)'
+        )
+        html, changes = pattern.subn(lambda match: match.group(1) + str(value) + match.group(2), html)
+        if required and not changes:
+            fail(f"Missing data-count-{marker} marker in {page}")
+        return html
+
+    def update_exact(html, pattern, value, page):
+        html, matches = re.subn(pattern, lambda match: match.group(1) + str(value) + match.group(2), html)
+        if matches != 1:
+            fail(f"Expected one scoped count in {page}, found {matches}")
+        return html
+
     for page in pages:
         html = page.read_text(encoding="utf-8")
-        html, changes = re.subn(
-            r"(?<![\w.])" + str(old_count) + r"(?![\w.])", str(total), html
-        )
-        if not changes:
-            fail(f"Couldn't locate old project count on {page}")
-        if page.parent.name == "apps":
+        html = update_marker(html, "total", total, page)
+        if page.parent.name == "apps" and page.name == "index.html":
             for family in ("all", *FAMILIES):
-                amount = total if family == "all" else sum(
-                    item.get("family") == family for item in items
-                )
+                amount = total if family == "all" else sum(item.get("family") == family for item in items)
                 pattern = (r'(<button[^>]*data-family="' + re.escape(family) +
-                           r'"[^>]*>[^<]*<span>)\d+(</span>)')
+                           r'"[^>]*>[^<]*<span>)\\d+(</span>)')
+                html = update_exact(html, pattern, amount, page)
+            html = update_exact(html, r'(<strong id="j-ready-count">)\\d+(</strong>)', ready, page)
+            html = update_exact(html, r'(<strong id="j-pending-count">)\\d+(</strong>)', total-ready, page)
+            html, changes = re.subn(
+                r'(<span id="j-progress-label">)\\d+ ready · \\d+ pending(</span>)',
+                lambda m: m.group(1) + f"{ready} ready · {total-ready} pending" + m.group(2),
+                html,
+            )
+            if changes != 1:
+                fail("Expected one scoped progress count in J Apps page")
+            html, changes = re.subn(
+                r'(<meta name="description" content="Explore )\\d+( free J&amp;J apps)',
+                lambda m: m.group(1) + str(total) + m.group(2),
+                html,
+            )
+            # Existing text uses a literal ampersand, not HTML-escaped J&amp;J.
+            if changes == 0:
                 html, changes = re.subn(
-                    pattern, lambda m: m.group(1) + str(amount) + m.group(2), html
+                    r'(<meta name="description" content="Explore )\\d+( free J&J apps)',
+                    lambda m: m.group(1) + str(total) + m.group(2), html,
                 )
-                if changes != 1:
-                    fail(f"Cannot safely update {family} count on J Apps page")
-            html = re.sub(
-                r'(<strong id="j-ready-count">)\d+',
-                lambda m: m.group(1) + str(ready), html
-            )
-            html = re.sub(
-                r'(<strong id="j-pending-count">)\d+',
-                lambda m: m.group(1) + str(total - ready), html
-            )
-            html = re.sub(
-                r'(<span id="j-progress-label">)\d+ ready · \d+ pending',
-                lambda m: m.group(1) + f"{ready} ready · {total-ready} pending", html
-            )
+            if changes != 1:
+                fail("Expected one scoped J Apps meta-description count")
+        elif page.parent.name == "access":
+            html = update_marker(html, "ready", ready, page)
+            html = update_marker(html, "pending", total-ready, page)
         result[page] = html
     return result
 
