@@ -1,15 +1,14 @@
-name: Security smoke checks
+name: Security and site quality checks
 
 on:
   push:
     branches:
+      - main
       - 'security/**'
   pull_request:
-    paths:
-      - 'public/games/retro-arcade/**'
-      - 'public/ambient.js'
-      - 'tests/security-smoke.mjs'
-      - '.github/workflows/security-smoke.yml'
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -17,15 +16,11 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Syntax-check browser scripts
-        run: |
-          node --check public/games/retro-arcade/app.js
-          node --check public/ambient.js
-          node --check --input-type=module < public/games/retro-arcade/firebase-multiplayer.js
-      - name: Test hostile multiplayer room data
-        run: node --test tests/security-smoke.mjs
+      - name: Validate static site, release metadata and security regressions
+        run: bash tests/run_checks.sh
