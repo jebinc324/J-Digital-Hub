@@ -12,9 +12,9 @@ The public J Apps page and Arcade are unaffected until you explicitly publish an
 4. Double-click **START_MEDIA_STUDIO.bat**.
 5. Python 3 must be installed. If Windows says Python is missing, install it from https://www.python.org/downloads/ (enable **Add Python to PATH** during installation), then double-click the batch file again.
 6. Your browser opens a **local address** such as \`http://127.0.0.1:54321/\`. Its port varies each time, which is normal.
-7. Paste a short-lived GitHub **fine-grained token** restricted to **\`jebinc324/J-Digital-Hub\`** with **Contents: Read and write**. Never share the token.
+7. Paste a short-lived GitHub **fine-grained token** restricted to **\`jebinc324/J-Digital-Hub\`** with **Contents: Read and write and Pull requests: Read and write**. Never share the token.
 8. Choose an existing app or Upcoming / New App; browse for the app's actual logo and/or up to 8 screenshots, then click **Upload & Attach Images**.
-9. A success message means GitHub has the images. Existing apps' catalogue references update immediately in the GitHub commit. New apps pick up uploaded media by matching their ID the next time you **Add New App** in this same controller or in GitHub Actions.
+9. A success message provides a draft GitHub PR URL. Existing apps' catalogue references become public only after review, passing CI, merging and Render deployment. New apps pick up uploaded media by matching their ID the next time you **Add New App** in this same controller or in GitHub Actions.
 10. Close the terminal window to stop the local tool. Token is not written to disk by Media Studio.
 
 ## Remove screenshots (one by one)
@@ -23,7 +23,7 @@ The public J Apps page and Arcade are unaffected until you explicitly publish an
 2. Select the app from **Choose App**.
 3. Scroll to **04 / Manage Screenshots**, then click **Load Current Screenshots**.
 4. Your existing screenshot thumbnails appear with checkboxes. Tick only the screenshots you want to remove.
-5. Click **Remove Selected Screenshots** and confirm. The studio updates the app's visible screenshot gallery and media manifest in **one GitHub commit**.
+5. Click **Remove Selected Screenshots** and confirm. The studio updates the app's visible screenshot gallery and media manifest in **one GitHub commit on a review branch**, then opens a draft PR.
 6. After Render deploy, refresh J Apps to confirm.
 
 **Original image files are kept in GitHub** for recovery; this action *unlinks* screenshots from the app gallery, not a permanent binary deletion. Other screenshots and the app logo stay unchanged. Re-upload any removed image later if needed.
@@ -36,7 +36,7 @@ The local **05 / J Apps Publisher** section now provides all three GitHub Action
 - **Add New App:** Select **Add New App** action; choose **Upcoming / New App** above and enter a unique lowercase-hyphenated app ID. Enter name, description, version, family, category, and **exact uploaded APK/ZIP release filename**. Click **Add New App**. Uploaded logo and screenshots will attach automatically.
 - **Remove App Card:** Select the existing app; choose **Remove App Card**; enter `REMOVE:<app-id>` exactly in the confirmation field; confirm. It removes **only the website catalogue listing**, not the APK/ZIP release asset or its images.
 
-New-app additions and removals update the **homepage and J Apps project/category counts**. They appear publicly after your Render deployment completes. If GitHub changes during publishing, the commit may safely fail; reload the page and retry.
+New-app additions and removals update the **homepage and J Apps project/category counts**. They appear publicly only after the draft PR is reviewed, merged and the Render deployment completes. If GitHub changes during publishing, the commit may safely fail; reload the page and retry.
 
 **Important:** The desktop controller **does not upload APK or ZIP binaries**. Upload the exact APK/ZIP to [the official GitHub Release](https://github.com/jebinc324/J-Digital-Hub/releases/tag/just24-public-v1) first, then choose Add or Update here.
 
