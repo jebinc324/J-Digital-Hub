@@ -104,11 +104,12 @@
    const tags=el('div','j2-detail-tags');
    tags.append(el('span','j2-pill',item.versionLabel||'Version not listed'),el('span','j2-pill','Free download'));
    if(release?.bytes)tags.append(el('span','j2-pill',size(release.bytes)));
+   if(item.launchStatus==='uploaded-unverified')tags.append(el('span','j2-pill','Not independently tested'));
    panel.append(tags);
    const box=el('div','j2-detail-cta');
    if(release){
      const a=el('a','j2-primary','↓ Download file');a.href=release.url;a.target='_blank';a.rel='noopener noreferrer';box.append(a);
-     box.append(btn('Copy link','j2-secondary',()=>{navigator.clipboard?.writeText(release.url).then(()=>{box.querySelector('.j2-secondary').textContent='Link copied ✓';}).catch(()=>{window.prompt('Copy download link:',release.url);});}));
+     box.append(btn('Copy link','j2-secondary',()=>{const fallback=()=>window.prompt('Copy download link:',release.url);if(navigator.clipboard?.writeText){navigator.clipboard.writeText(release.url).then(()=>{box.querySelector('.j2-secondary').textContent='Link copied ✓';}).catch(fallback);}else fallback();}));
    }else box.append(el('p','j2-notice','Release upload pending.'));
    panel.append(box);
    if(item.note){
