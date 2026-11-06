@@ -69,8 +69,8 @@ def update_visible_counts(root, old_count, items):
 
     def update_marker(html, marker, value, page, required=True):
         pattern = re.compile(
-            r'(<(?:span|strong)\\b(?=[^>]*\\bdata-count-' + re.escape(marker) +
-            r'\\b)[^>]*>)\\d+(</(?:span|strong)>)'
+            r'(<(?:span|strong)\b(?=[^>]*\bdata-count-' + re.escape(marker) +
+            r'\b)[^>]*>)\d+(</(?:span|strong)>)'
         )
         html, changes = pattern.subn(lambda match: match.group(1) + str(value) + match.group(2), html)
         if required and not changes:
@@ -90,26 +90,26 @@ def update_visible_counts(root, old_count, items):
             for family in ("all", *FAMILIES):
                 amount = total if family == "all" else sum(item.get("family") == family for item in items)
                 pattern = (r'(<button[^>]*data-family="' + re.escape(family) +
-                           r'"[^>]*>[^<]*<span>)\\d+(</span>)')
+                           r'"[^>]*>[^<]*<span>)\d+(</span>)')
                 html = update_exact(html, pattern, amount, page)
-            html = update_exact(html, r'(<strong id="j-ready-count">)\\d+(</strong>)', ready, page)
-            html = update_exact(html, r'(<strong id="j-pending-count">)\\d+(</strong>)', total-ready, page)
+            html = update_exact(html, r'(<strong id="j-ready-count">)\d+(</strong>)', ready, page)
+            html = update_exact(html, r'(<strong id="j-pending-count">)\d+(</strong>)', total-ready, page)
             html, changes = re.subn(
-                r'(<span id="j-progress-label">)\\d+ ready · \\d+ pending(</span>)',
+                r'(<span id="j-progress-label">)\d+ ready · \d+ pending(</span>)',
                 lambda m: m.group(1) + f"{ready} ready · {total-ready} pending" + m.group(2),
                 html,
             )
             if changes != 1:
                 fail("Expected one scoped progress count in J Apps page")
             html, changes = re.subn(
-                r'(<meta name="description" content="Explore )\\d+( free J&amp;J apps)',
+                r'(<meta name="description" content="Explore )\d+( free J&amp;J apps)',
                 lambda m: m.group(1) + str(total) + m.group(2),
                 html,
             )
             # Existing text uses a literal ampersand, not HTML-escaped J&amp;J.
             if changes == 0:
                 html, changes = re.subn(
-                    r'(<meta name="description" content="Explore )\\d+( free J&J apps)',
+                    r'(<meta name="description" content="Explore )\d+( free J&J apps)',
                     lambda m: m.group(1) + str(total) + m.group(2), html,
                 )
             if changes != 1:
