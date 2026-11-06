@@ -1,6 +1,6 @@
 # Just 24 Things by J&J — J Apps Free Launch (October 2026)
 
-Website: https://just24things.onrender.com/apps/
+Website: https://just24things.online/apps/
 Repository: `jebinc324/J-Digital-Hub` (public static site, Render publish directory `public`).
 
 ## J Apps Media Studio — attach actual images with one click
@@ -9,15 +9,15 @@ Repository: `jebinc324/J-Digital-Hub` (public static site, Render publish direct
 
 No image links to copy! From your computer, open the private localhost tool to upload PNG/JPG/WebP logos or up to 8 screenshots, **remove individual screenshots** using thumbnails, and **Add / Update / Remove J Apps** directly in the same window. For new apps, the uploaded images attach automatically by app ID. The original GitHub Actions Publisher remains available. No ChatGPT connection needed.
 
-GitHub Actions dispatch forms cannot accept image files. The local desktop uploader requires a short-lived **GitHub fine-grained token restricted to this repository, with Contents: Read and write**; the token is used in browser memory and forwarded to GitHub by the localhost server, not persisted by the tool. The editor is no longer published at /apps/publisher/. [Setup and security instructions](docs/J_APPS_PUBLISHER.md).
+GitHub Actions dispatch forms cannot accept image files. The local desktop uploader requires a short-lived **GitHub fine-grained token restricted to this repository, with Contents: Read and write **and Pull requests: Read and write****; the token is used in browser memory and forwarded to GitHub by the localhost server, not persisted by the tool. The editor is no longer published at /apps/publisher/. [Setup and security instructions](docs/J_APPS_PUBLISHER.md).
 
 ## J Apps Publisher — manage releases without ChatGPT
 
 **[Open J Apps Publisher (GitHub Actions controller)](https://github.com/jebinc324/J-Digital-Hub/actions/workflows/j-apps-publisher.yml)**
 
-For **update/add**, upload your APK/ZIP to the [public GitHub Release](https://github.com/jebinc324/J-Digital-Hub/releases/tag/just24-public-v1), then use **Run workflow → update or add**. To remove a website app listing, select **Run workflow → remove**, enter its exact ID and type `REMOVE:<app-id>` in the APK filename confirmation field; release binaries stay intact. It checks the exact release file, size and SHA-256, sets matching download metadata in `public/apps/catalog.json`, and commits changes. Adding or removing an app updates the website's project counts. Sign in to GitHub; **ChatGPT and local programming are not needed**. Logo/screenshots are optional and must be committed to `public/assets/apps/` before referencing their paths.
+For **update/add**, upload your APK/ZIP to the [public GitHub Release](https://github.com/jebinc324/J-Digital-Hub/releases/tag/just24-public-v1), then use **Run workflow → update or add**. To remove a website app listing, select **Run workflow → remove**, enter its exact ID and type `REMOVE:<app-id>` in the APK filename confirmation field; release binaries stay intact. It checks the exact release file, size and SHA-256, sets matching download metadata in `public/apps/catalog.json`, downloads and hashes the release file, and opens a **draft pull request** for review. Adding or removing an app updates the website's project counts once the PR passes checks and is merged. Sign in to GitHub; **ChatGPT and local programming are not needed**. Logo/screenshots are optional and must be committed to `public/assets/apps/` before referencing their paths.
 
-[Complete step-by-step manual](docs/J_APPS_PUBLISHER.md) · Files: [workflow](.github/workflows/j-apps-publisher.yml) and [publisher script](.github/scripts/publish_j_app.py). GitHub Actions write access and Render auto-deploy must be enabled for hands-off publication.
+[Complete step-by-step manual](docs/J_APPS_PUBLISHER.md) · Files: [workflow](.github/workflows/j-apps-publisher.yml) and [publisher script](.github/scripts/publish_j_app.py). GitHub Actions permission to create pull requests and Render auto-deploy on reviewed `main` commits must be configured. Review and merge are required; the workflow does not push directly to `main`.
 
 ## J Arcade: Chess and Carrom (2026-10-19)
 - J Arcade now presents **14 playable browser games**: the untouched original 12 retro games plus standalone **J Chess** and **J Carrom** selectable on the `/games/` page.
@@ -49,6 +49,10 @@ Before promoting a build as verified:
 - Optional accounts, admin access or paid/professional editions can be designed later. The static site currently has no active login or payments.
 - Backend draft code under `backend/` is **not deployed**, and it must not be configured/published while free-launch-only operation is intended.
 - Individual project logos, screenshots, descriptions and detail pages are a later project phase, after initial downloads are complete.
+
+## Release validation and site security
+
+See [CI and release safety](docs/CI_RELEASE_SAFETY.md), [Render security header rollout](docs/RENDER_SECURITY_HEADERS.md), and [Firebase multiplayer rollout gate](docs/FIREBASE_MULTIPLAYER_GATES.md). APK/ZIP files still need independent device/signature testing before describing them as safe. A manual [Release asset integrity audit](.github/workflows/release-asset-audit.yml) is available after the PR is merged.
 
 ## Deploy
 The current site deploys automatically from the connected `main` branch to Render. Deploy completion must be verified separately in Render; a successful GitHub commit is not the same as a confirmed live deployment.
