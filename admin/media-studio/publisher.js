@@ -117,7 +117,7 @@ async function optimizeImage(file,icon){
 }
 function confirmPayload(appId,logo,shots,isNew){
  const desc=(isNew?"Upcoming new app":"Existing app")+" "+appId;
- return window.confirm("Upload "+(logo?"1 logo":"no logo")+" and "+shots.length+" screenshot(s) for "+desc+"?\n\nThe images will be saved to GitHub main branch, and existing app gallery links will update automatically.");
+ return window.confirm("Upload "+(logo?"1 logo":"no logo")+" and "+shots.length+" screenshot(s) for "+desc+"?\n\nA draft GitHub pull request will be opened. Changes appear on the public website only after review, merge and Render deployment.");
 }
 function readCurrentItem(catalog,id){return catalog.items.find(x=>x.id===id);}
 async function process(event){
@@ -278,9 +278,16 @@ async function commitChanges(snapshot,token,changes,message,notify){
  }
  const tree=await github("git/trees","POST",{base_tree:snapshot.commit.tree.sha,tree:entries},token);
  const commit=await github("git/commits","POST",{message,tree:tree.sha,parents:[snapshot.head]},token);
- if(notify)notify("Saving the new revision to GitHub main branch…");
- await github("git/refs/heads/main","PATCH",{sha:commit.sha,force:false},token);
- return commit.sha.slice(0,8);
+ // Never update main from the local editor: publish to a reviewable draft PR.
+ const branchName="studio/"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
+ await github("git/refs","POST",{ref:"refs/heads/"+branchName,sha:snapshot.head},token);
+ await github("git/refs/heads/"+branchName,"PATCH",{sha:commit.sha,force:false},token);
+ if(notify)notify("Opening a draft pull request for review…");
+ const pr=await github("pulls","POST",{
+  title:message,head:branchName,base:BRANCH,draft:true,
+  body:"Created by private localhost Media Studio. Review these changes, wait for CI, then merge to deploy. This PR must not be treated as a verified binary-security audit."
+ },token);
+ return pr.html_url||("https://github.com/"+REPO+"/pull/"+pr.number);
 }
 async function readTextAt(token,path,ref){
  const raw=await github("contents/"+path+"?ref="+ref,"GET",null,token);
@@ -351,23 +358,35 @@ async function removeChosenScreenshots(){
  finally{controlBusy(false);}
 }
 removeShotsBtn.addEventListener("click",removeChosenScreenshots);
-function updatePageCounts(html,oldCount,items,isApps){
+function updatePageCounts(html,oldCount,items,isApps,isAccess=false){
  const total=items.length;
- const countRe=new RegExp("(?<![\\w.])"+oldCount+"(?![\\w.])","g");
- if(!countRe.test(html))throw Error("Could not locate current project count on a website page.");
- html=html.replace(new RegExp("(?<![\\w.])"+oldCount+"(?![\\w.])","g"),String(total));
+ const ready=items.filter(item=>item.access==="public"&&item.releaseAsset&&item.downloadUrl===releaseBase+item.releaseAsset).length;
+ function marker(name,value){
+  let found=0;
+  const re=new RegExp('(<(?:span|strong)[^>]*data-count-'+name+'[^>]*>)\\d+(<\\/(?:span|strong)>)','g');
+  html=html.replace(re,(_match,start,end)=>{found++;return start+value+end;});
+  if(!found)throw Error("Missing data-count-"+name+" marker.");
+ }
+ function exact(re,value,name){
+  let found=0;
+  html=html.replace(re,(_m,left,right)=>{found++;return left+value+right;});
+  if(found!==1)throw Error("Cannot safely update "+name+": expected one match, found "+found+".");
+ }
+ marker("total",total);
  if(isApps){
   for(const family of ["all",...Object.keys(families)]){
    const amount=family==="all"?total:items.filter(x=>x.family===family).length;
    const re=new RegExp('(<button[^>]*data-family="'+family+'"[^>]*>[^<]*<span>)\\d+(</span>)');
-   if(!re.test(html))throw Error("Cannot safely update "+family+" filter count.");
-   html=html.replace(re,(_whole,before,after)=>before+amount+after);
+   exact(re,amount,family+" filter");
   }
-  const ready=items.filter(item=>item.access==="public"&&item.releaseAsset&&item.downloadUrl===releaseBase+item.releaseAsset).length;
-  html=html.replace(/(<strong id="j-ready-count">)\d+/,(_m,b)=>b+ready)
-    .replace(/(<strong id="j-pending-count">)\d+/,(_m,b)=>b+(total-ready))
-    .replace(/(<span id="j-progress-label">)\d+ ready · \d+ pending/,(_m,b)=>b+ready+" ready · "+(total-ready)+" pending");
+  exact(/(<strong id="j-ready-count">)\d+(<\/strong>)/,ready,"recorded download links");
+  exact(/(<strong id="j-pending-count">)\d+(<\/strong>)/,total-ready,"pending links");
+  let progress=0;
+  html=html.replace(/(<span id="j-progress-label">)\d+ ready · \d+ pending(<\/span>)/,(_m,a,z)=>{progress++;return a+ready+" ready · "+(total-ready)+" pending"+z;});
+  if(progress!==1)throw Error("Missing J Apps progress label.");
+  exact(/(<meta name="description" content="Explore )\d+( free J&J apps)/,total,"meta description");
  }
+ if(isAccess){marker("ready",ready);marker("pending",total-ready);}
  return html;
 }
 async function publishApp(){
@@ -448,18 +467,18 @@ async function publishApp(){
   const changes=[{path:"public/apps/catalog.json",content:JSON.stringify(catalog,null,2)+"\n"}];
   if(adding||removing){
    publishState("Updating website download counts…");
-   for(const page of ["public/index.html","public/apps/index.html"]){
+   for(const page of ["public/index.html","public/apps/index.html","public/apps/access/index.html"]){
     const html=await readTextAt(token,page,snapshot.head);
-    changes.push({path:page,content:updatePageCounts(html,oldCount,catalog.items,page==="public/apps/index.html")});
+    changes.push({path:page,content:updatePageCounts(html,oldCount,catalog.items,page==="public/apps/index.html",page==="public/apps/access/index.html")});
    }
   }
   const sha=await commitChanges(snapshot,token,changes,"J Apps local Publisher "+mode+": "+id,message=>publishState(message));
   const action=adding?"Added":removing?"Removed":"Updated";
-  publishState("✓ "+action+" "+id+" successfully. GitHub commit "+sha+". Wait for Render deploy, then verify the J Apps website. Published APK files and other apps stay intact.","success");
+  publishState("✓ "+action+" "+id+" successfully. Review "+sha+" and merge after CI passes; only then verify the Render website. Published APK files and other apps stay intact.","success");
   // Avoid reloading the public catalogue before Render deploy: it may still be
   // stale and would erase the success message. The next session refreshes it.
   invalidateShots();
- }catch(error){publishState("Publisher stopped: "+error.message+" If the main branch changed, reload and try again.","error");}
+ }catch(error){publishState("Publisher stopped: "+error.message+" If the main branch changed, reload and try again. The GitHub token also needs Pull requests: write permission.","error");}
  finally{controlBusy(false);}
 }
 pubBtn.addEventListener("click",publishApp);
