@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+from verify_release import verify_release_asset
 
 REPO = "jebinc324/J-Digital-Hub"
 TAG = "just24-public-v1"
@@ -253,6 +254,10 @@ def publish():
     size = asset.get("size")
     if asset.get("browser_download_url") != url or type(size) is not int or size < 1 or not digest:
         fail("Release URL, size or SHA-256 not verified; refusing publication")
+    try:
+        integrity = verify_release_asset(url, filename, size, digest.group(1))
+    except (ValueError, OSError, TimeoutError, RuntimeError) as exc:
+        fail("Independent release download/hash/archive verification failed: " + str(exc))
 
     if found:
         item = found[0]
@@ -282,6 +287,7 @@ def publish():
             "file": filename, "sizeBytes": size, "sha256": digest.group(1).lower()
         },
         "launchStatus": "uploaded-unverified",
+        "integrityCheck": integrity,
     })
     date = datetime.now(timezone.utc).date().isoformat()
     catalog["release"]["lastVerified"] = date
