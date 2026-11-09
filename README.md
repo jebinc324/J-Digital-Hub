@@ -148,6 +148,10 @@ This adds image media without changing existing binary download links. Do not in
 - Missing canonical metadata on Games, Our Channel, Apps/access and Retro Arcade were added. These improvements help crawler discovery, **but do not submit anything to Google**; the site owner must verify the URL-prefix property in Google Search Console, submit `sitemap.xml`, then use URL Inspection/Request Indexing. Crawling/indexing/ranking are not guaranteed.
 - These changes were verified in the GitHub repository. Live Render deployment and real-browser visual behavior need separate confirmation.
 
-## J iPhone Share v0.2.1 — added November 9, 2026
+## J Share v0.2.1 — added November 9, 2026
 
-J iPhone Share is now listed in J Apps under Productivity & Files. The public APK is hosted on the existing official GitHub Release (`just24-public-v1`) as `j-iphone-share-v0.2.1.apk`, 132,728 bytes, SHA-256 `a888c8b7cd129778b22f9110f563c8c8de1003eb1116e42f67c36fbf4d8bd48c`. It is a developer-signed APK and has not been independently security-audited. Some receiver shutdown behavior was user-tested on Android. The app uses private-network **HTTP (unencrypted)** and a six-digit PIN; recommend trusted private Wi-Fi/hotspot only. iPhone operates through Safari, no iOS native app is currently shipped.
+J Share is now listed in J Apps under Productivity & Files. The public APK is hosted on the existing official GitHub Release (`just24-public-v1`) as `j-iphone-share-v0.2.1.apk`, 132,728 bytes, SHA-256 `a888c8b7cd129778b22f9110f563c8c8de1003eb1116e42f67c36fbf4d8bd48c`. It is a developer-signed APK and has not been independently security-audited. Some receiver shutdown behavior was user-tested on Android. The app uses private-network **HTTP (unencrypted)** and a six-digit PIN; recommend trusted private Wi-Fi/hotspot only. iPhone operates through Safari, no iOS native app is currently shipped.
+
+## J Share v0.3.1 — latest public APK
+
+Display name: **J Share**. Just24Things copyright remains visible in the splash screen and About screen; no “By J24T” in the app title. The public APK `j-share-v0.3.1.apk` (137,492 bytes, SHA-256 `cdb7fb2a1f2fe5d3d41a910d3e1b238ac8d9e0f062628124be189760f5246d62`) replaces the J Apps catalogue's previous v0.2.1 download link. Original logo and Light/Dark screenshots remain attached. The package ID and signing identity are preserved for in-place updates. Native Android peer discovery is not yet included, and local HTTP transfer is not encrypted.
