@@ -130,7 +130,7 @@
    const preview=getPreview(item);
    if(preview){
      const previewButtons=el('div','j2-detail-cta');
-     const tryBuild=el('a','j2-secondary','↓ Try Open with preview '+(item.previewVersion||''));
+     const tryBuild=el('a','j2-secondary',item.previewButtonLabel||('↓ Try Open with preview '+(item.previewVersion||'')));
      tryBuild.href=preview.url;tryBuild.target='_blank';tryBuild.rel='noopener noreferrer';
      previewButtons.append(tryBuild);
      panel.append(previewButtons);
