@@ -79,6 +79,21 @@
      return {url:url.href,bytes:Number.isFinite(bytes)?bytes:0,hash:item.verifiedUpload?.sha256||''};
    }catch(_){return null;}
  }
+
+ // Keep test builds separate from stable downloads: signer mismatches make them non-upgradeable.
+ function getPreview(item){
+   if(!item || !item.previewAsset || !item.verifiedPreview?.sha256) return null;
+   const asset=releaseAssets.get(item.previewAsset);
+   const raw=item.previewDownloadUrl || asset?.browser_download_url;
+   if(typeof raw!=='string')return null;
+   try{
+     const url=new URL(raw);
+     const wanted='/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/'+encodeURIComponent(item.previewAsset);
+     if(url.protocol!=='https:'||url.hostname!=='github.com'||url.pathname!==wanted)return null;
+     const bytes=Number(item.verifiedPreview.sizeBytes||asset?.size||0);
+     return {url:url.href,bytes:Number.isFinite(bytes)?bytes:0};
+   }catch(_){return null;}
+ }
  function logo(item,big=false){
    const box=el('span','j2-logo '+colorFor(item)+(big?' j2-logo-big':''));
    const fallback=makeCategoryMark(item);
@@ -112,6 +127,16 @@
      box.append(btn('Copy link','j2-secondary',()=>{const fallback=()=>window.prompt('Copy download link:',release.url);if(navigator.clipboard?.writeText){navigator.clipboard.writeText(release.url).then(()=>{box.querySelector('.j2-secondary').textContent='Link copied ✓';}).catch(fallback);}else fallback();}));
    }else box.append(el('p','j2-notice','Release upload pending.'));
    panel.append(box);
+   const preview=getPreview(item);
+   if(preview){
+     const previewButtons=el('div','j2-detail-cta');
+     const tryBuild=el('a','j2-secondary','↓ Try Open with preview '+(item.previewVersion||''));
+     tryBuild.href=preview.url;tryBuild.target='_blank';tryBuild.rel='noopener noreferrer';
+     previewButtons.append(tryBuild);
+     panel.append(previewButtons);
+     panel.append(el('p','j2-gallery-caption',item.previewNotice||
+       'This separately signed preview is for testing. It cannot update the installed stable version directly. Back up important app data before any replacement.'));
+   }
    if(item.note){
      const caution=el('p','j2-note',item.note);
      panel.append(caution);
