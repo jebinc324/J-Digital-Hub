@@ -155,3 +155,11 @@ J Share is now listed in J Apps under Productivity & Files. The public APK is ho
 ## J Share v0.3.1 — latest public APK
 
 Display name: **J Share**. Just24Things copyright remains visible in the splash screen and About screen; no “By J24T” in the app title. The public APK `j-share-v0.3.1.apk` (137,492 bytes, SHA-256 `cdb7fb2a1f2fe5d3d41a910d3e1b238ac8d9e0f062628124be189760f5246d62`) replaces the J Apps catalogue's previous v0.2.1 download link. Original logo and Light/Dark screenshots remain attached. The package ID and signing identity are preserved for in-place updates. Native Android peer discovery is not yet included, and local HTTP transfer is not encrypted.
+
+## J Share v0.4.0 — Android app-to-app sharing (2026-11-09)
+
+- Public release binary: `j-share-v0.4.0.apk`; size **186,852 bytes**, SHA-256 `fa2e8d11190a28b0ce307d198dfc87f03cc0cb9532958dadc4f93b243a3209ba`.
+- J Apps page retains the original app logo and existing light/dark screenshots. The stable project identifier remains `j-iphone-share` so existing deep links work.
+- The Android app includes a new **Nearby Android Devices** screen using local NSD/mDNS to find other J Share receivers while sharing is active. A 6-digit PIN is required before in-app file sending or downloading. Manual private IP:port pairing is available when multicast discovery fails.
+- This is **same-network Android app-to-app sharing**, not Wi-Fi Direct in the absence of Wi-Fi/hotspot. iPhone/PC browser transfer continues. The LAN protocol remains **unencrypted HTTP**, so only trusted private networks should be used; device models are advertised locally during discovery.
+- Developer signed using the preserved signing identity for update installation; compilation and APK integrity passed, but two-device transfer behavior has **not** been independently tested. No security audit is claimed.
