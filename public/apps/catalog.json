@@ -238,12 +238,12 @@
       "family": "Android",
       "type": "Android app",
       "access": "public",
-      "description": "Offline audio and video playback.",
+      "description": "Offline audio and video playback. A new Open with / WhatsApp media preview build is available in app details.",
       "versionLabel": "v1.3.1",
       "uploadedFile": true,
       "releaseAsset": "j-media-player.apk",
       "approxSizeMB": 10.82,
-      "note": "Uploaded 0.1.1 APK; later v1.3.1 release was discussed.",
+      "note": "Stable public APK remains available. The new Open with preview is compiled but is signed with a different Android certificate from the existing release.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-media-player.apk",
       "verifiedUpload": {
         "file": "j-media-player.apk",
@@ -251,7 +251,16 @@
         "sha256": "bb8ea77ebcfdeb0b21a95caa6dece8a88767cf493190a7ddb54167536f72eef3"
       },
       "logo": "/assets/apps/j-media-player.webp",
-      "category": "Media & Creative"
+      "category": "Media & Creative",
+      "previewVersion": "v1.3.2",
+      "previewAsset": "j-media-player-v1.3.2-preview.apk",
+      "previewDownloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-media-player-v1.3.2-preview.apk",
+      "verifiedPreview": {
+        "file": "j-media-player-v1.3.2-preview.apk",
+        "sizeBytes": 11343046,
+        "sha256": "1f0af23881c44bac9c13c61ebc4d62a4ef7e2547f5bcac3ecfa1e78a2184333d"
+      },
+      "previewNotice": "TEST BUILD · v1.3.2 adds Android Open with and Share routing for audio/video. Its signing certificate differs from the installed stable APK, so it cannot be installed as an in-place update. Test on another device or back up your app data before changing installations. WhatsApp chooser behavior depends on the file MIME type and still needs phone testing."
     },
     {
       "id": "j-flow-launcher",
@@ -366,12 +375,12 @@
       "family": "Android",
       "type": "Android app",
       "access": "public",
-      "description": "Manage and organize archive files.",
+      "description": "Manage ZIP, RAR, 7Z and other archives. A new Android Open with / Share preview build is available in app details.",
       "versionLabel": "v1.0.2",
       "uploadedFile": true,
       "releaseAsset": "j-archive-manager.apk",
       "approxSizeMB": 10.31,
-      "note": "APK uploaded to the public GitHub Release. Installation, signing and functional testing have not been independently verified.",
+      "note": "Stable public APK remains available. The new Open with preview is compiled but is signed with a different Android certificate from the existing release.",
       "launchStatus": "uploaded-unverified",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-archive-manager.apk",
       "verifiedUpload": {
@@ -380,7 +389,16 @@
         "sha256": "2b8c3e6583eb5e264b28dbad585c682fd8a06400692ed23774280288c0f0a2a2"
       },
       "logo": "/assets/apps/j-archive-manager.webp",
-      "category": "Productivity & Files"
+      "category": "Productivity & Files",
+      "previewVersion": "v1.0.3",
+      "previewAsset": "j-archive-manager-v1.0.3-preview.apk",
+      "previewDownloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-archive-manager-v1.0.3-preview.apk",
+      "verifiedPreview": {
+        "file": "j-archive-manager-v1.0.3-preview.apk",
+        "sizeBytes": 11491044,
+        "sha256": "5e5101105ce41ee0ae3f7fd59d29e2aaf652595c160e56e25e67cbafb119b164"
+      },
+      "previewNotice": "TEST BUILD · v1.0.3 adds Open with / Share handling for common archive MIME types and routes to extraction. Its signing certificate differs from the installed stable APK, so it cannot be installed as an in-place update. Test on another device or back up your app data before changing installations. External chooser visibility still requires phone testing."
     },
     {
       "id": "j-ar-room-designer",
@@ -957,7 +975,7 @@
       "j-iphone-share"
     ],
     "listedProjects": 44,
-    "currentReleaseAssets": 52
+    "currentReleaseAssets": 55
   },
   "media": {
     "iconRoot": "/assets/apps/icons/",
