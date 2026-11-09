@@ -1,0 +1,28 @@
+name: Publish J Share v0.3.1 APK (one-time)
+on:
+  push:
+    paths: ['.github/workflows/publish-j-share-v031-once.yml']
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download verified signed J Share APK
+        env:
+          PACKAGE_URL: "https://sdmntprindiasocentral.oaiusercontent.com/files/00000000-7004-8211-a3bc-e68c7b6c0c08/raw?se=2026-11-09T08%3A18%3A06Z&sp=r&sv=2026-02-06&sr=b&scid=c252514c-717c-552b-8a7a-b62492e85efe&skoid=697dc613-6c29-4a76-87a7-d1b783c6d43f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-08T21%3A30%3A58Z&ske=2026-11-09T21%3A30%3A58Z&sks=b&skv=2026-02-06&sig=25aH%2BnhsO2F5NMzA2JsoGI2hygNE5m/njEwBAGMlpKU%3D"
+        run: |
+          set -euo pipefail
+          curl -fLsS --retry 3 --max-time 90 "$PACKAGE_URL" -o /tmp/j-share-build.zip
+          unzip -p /tmp/j-share-build.zip app-debug.apk > /tmp/j-share-v0.3.1.apk
+          echo 'cdb7fb2a1f2fe5d3d41a910d3e1b238ac8d9e0f062628124be189760f5246d62  /tmp/j-share-v0.3.1.apk' | sha256sum -c -
+          test "$(stat -c%s /tmp/j-share-v0.3.1.apk)" = "137492"
+      - name: Publish public downloadable APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release upload just24-public-v1 /tmp/j-share-v0.3.1.apk --clobber
+          gh release view just24-public-v1 --json assets --jq '.assets[] | select(.name == "j-share-v0.3.1.apk") | .name + " (" + (.size | tostring) + " bytes)"'
