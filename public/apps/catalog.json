@@ -5,10 +5,10 @@
     "repository": "jebinc324/J-Digital-Hub",
     "tag": "just24-public-v1",
     "source": "GitHub Releases public API",
-    "lastVerified": "2026-10-19",
+    "lastVerified": "2026-11-09",
     "filenameMappingConfigured": "2026-10-14"
   },
-  "notice": "J&J Free Launch: all 43 project download files are published on official GitHub Releases. File availability does not establish package safety, build compatibility, or function verification.",
+  "notice": "J&J Free Launch: all 44 project download files are published on official GitHub Releases. File availability does not establish package safety, build compatibility, or function verification. J iPhone Share currently uses local HTTP, not HTTPS; use only trusted private networks.",
   "items": [
     {
       "id": "j-control-hub",
@@ -93,6 +93,27 @@
         "sha256": "4b96271bd53688d4e5c5536cafd8bf1d0ac28ffcdefadaf310fda079d4f6b208"
       },
       "logo": "/assets/apps/j-wifi-share.webp",
+      "category": "Productivity & Files"
+    },
+    {
+      "id": "j-iphone-share",
+      "name": "J iPhone Share",
+      "family": "Android",
+      "type": "Android app",
+      "access": "public",
+      "description": "Transfer photos and files between Android and iPhone Safari over local Wi-Fi or hotspot, with PIN pairing, connected-device monitoring and idle auto-stop.",
+      "versionLabel": "v0.2.1",
+      "uploadedFile": true,
+      "releaseAsset": "j-iphone-share-v0.2.1.apk",
+      "approxSizeMB": 0.13,
+      "note": "Developer-signed Android APK. Requires Android 10 or newer. iPhone users connect through Safari; no iOS installation. Files travel over local HTTP without TLS encryption, so use only trusted Wi-Fi or your private hotspot. The build has not undergone an independent security audit.",
+      "launchStatus": "uploaded-unverified",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-iphone-share-v0.2.1.apk",
+      "verifiedUpload": {
+        "file": "j-iphone-share-v0.2.1.apk",
+        "sizeBytes": 132728,
+        "sha256": "a888c8b7cd129778b22f9110f563c8c8de1003eb1116e42f67c36fbf4d8bd48c"
+      },
       "category": "Productivity & Files"
     },
     {
@@ -915,7 +936,7 @@
     "edition": "J&J Free Launch",
     "pricing": "free",
     "accountRequired": false,
-    "updatedAt": "2026-10-19",
+    "updatedAt": "2026-11-09",
     "pendingSafetyChecks": [],
     "unverifiedBuilds": [
       "j-wifi-share",
@@ -927,10 +948,11 @@
       "j-calorie-tracker",
       "nifty-lot-calculator",
       "my-daily-tracker",
-      "j-algo-trader-app-replay-concept"
+      "j-algo-trader-app-replay-concept",
+      "j-iphone-share"
     ],
-    "listedProjects": 43,
-    "currentReleaseAssets": 49
+    "listedProjects": 44,
+    "currentReleaseAssets": 50
   },
   "media": {
     "iconRoot": "/assets/apps/icons/",

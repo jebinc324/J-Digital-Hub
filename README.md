@@ -28,8 +28,8 @@ For **update/add**, upload your APK/ZIP to the [public GitHub Release](https://g
 - Source-level JavaScript syntax and core chess moves/carrom pockets were checked. A real interactive browser smoke test / live Render deployment still requires separate verification.
 
 ## Launch status
-- 43 catalogue listings: 25 Android, 10 Revit Add-ins/standalone Revit tools, 8 Revit Dynamo.
-- All 43 listings are free/open to browse; **no login or registration required**.
+- 44 catalogue listings: 25 Android, 10 Revit Add-ins/standalone Revit tools, 8 Revit Dynamo.
+- All 44 listings are free/open to browse; **no login or registration required**.
 - **43** project download files are linked directly from GitHub Releases, including J Batch NWC Exporter for Revit 2024. Existence does not verify installation or functionality.
 - The 10 additional Android APKs have also been uploaded and linked. Upload confirms availability, not safety or compatibility; these builds remain marked as independently untested.
 - GitHub Release: https://github.com/jebinc324/J-Digital-Hub/releases/tag/just24-public-v1
@@ -61,7 +61,7 @@ This website is a public free-launch catalogue, not a security-scanned app store
 
 ## J Apps premium catalogue UI (October 14 update)
 
-- Premium, responsive cyan-neon product cards are live in `public/apps/index.html`, `catalog.js`, and `neon.css`. Original J-branded hero, global navigation, and all 43 downloads remain in place.
+- Premium, responsive cyan-neon product cards are live in `public/apps/index.html`, `catalog.js`, and `neon.css`. Original J-branded hero, global navigation, and all 44 downloads remain in place.
 - Includes featured apps, category filters, search, version metadata, APK/archive download size, free download actions, and a keyboard-closable product detail dialog.
 - Product details have an official screenshot gallery slot. SHA-256 hashes remain in catalogue metadata but are hidden from visitors. Deep links can use `/apps/?app=j-control-hub`.
 - **No fake previews:** original per-app icons/screenshots are not yet present in this repository. The UI displays lettermark placeholders and a clearly labeled empty screenshot gallery until real media is provided.
@@ -147,3 +147,7 @@ This adds image media without changing existing binary download links. Do not in
 - Existing `robots.txt` allows all crawlers and advertises the sitemap. `sitemap.xml` now lists six public URLs including the playable Arcade path and Apps Free Launch information page.
 - Missing canonical metadata on Games, Our Channel, Apps/access and Retro Arcade were added. These improvements help crawler discovery, **but do not submit anything to Google**; the site owner must verify the URL-prefix property in Google Search Console, submit `sitemap.xml`, then use URL Inspection/Request Indexing. Crawling/indexing/ranking are not guaranteed.
 - These changes were verified in the GitHub repository. Live Render deployment and real-browser visual behavior need separate confirmation.
+
+## J iPhone Share v0.2.1 — added November 9, 2026
+
+J iPhone Share is now listed in J Apps under Productivity & Files. The public APK is hosted on the existing official GitHub Release (`just24-public-v1`) as `j-iphone-share-v0.2.1.apk`, 132,728 bytes, SHA-256 `a888c8b7cd129778b22f9110f563c8c8de1003eb1116e42f67c36fbf4d8bd48c`. It is a developer-signed APK and has not been independently security-audited. Some receiver shutdown behavior was user-tested on Android. The app uses private-network **HTTP (unencrypted)** and a six-digit PIN; recommend trusted private Wi-Fi/hotspot only. iPhone operates through Safari, no iOS native app is currently shipped.
