@@ -114,7 +114,12 @@
         "sizeBytes": 132728,
         "sha256": "a888c8b7cd129778b22f9110f563c8c8de1003eb1116e42f67c36fbf4d8bd48c"
       },
-      "category": "Productivity & Files"
+      "category": "Productivity & Files",
+      "logo": "/assets/apps/icons/j-iphone-share.webp",
+      "screenshots": [
+        "/assets/apps/screenshots/j-iphone-share/01.webp",
+        "/assets/apps/screenshots/j-iphone-share/02.webp"
+      ]
     },
     {
       "id": "j-dj-studio",
