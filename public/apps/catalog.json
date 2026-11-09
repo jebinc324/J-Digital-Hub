@@ -106,7 +106,7 @@
       "uploadedFile": true,
       "releaseAsset": "j-share-v0.4.0.apk",
       "approxSizeMB": 0.18,
-      "note": "New in-app Android nearby discovery, PIN pairing, send and download are implemented but have not been independently tested on two physical devices. Both phones must be on the same local Wi-Fi/hotspot; Connect by IP is available if discovery is blocked. Android 10+. The app advertises its device model on the local network while sharing. Browser and app transfers use unencrypted local HTTP; use trusted private networks only. Developer-signed; no independent security audit.",
+      "note": "Android-to-Android nearby discovery, PIN pairing and direct app-to-app file transfers are included. Both devices need the same local Wi-Fi or hotspot. Use Connect by IP if discovery is blocked. Android 10+. Transfers use unencrypted local HTTP, so use only a trusted private network. No independent security audit has been conducted.",
       "launchStatus": "uploaded-unverified",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-share-v0.4.0.apk",
       "verifiedUpload": {
