@@ -104,7 +104,7 @@
    const tags=el('div','j2-detail-tags');
    tags.append(el('span','j2-pill',item.versionLabel||'Version not listed'),el('span','j2-pill','Free download'));
    if(release?.bytes)tags.append(el('span','j2-pill',size(release.bytes)));
-   if(item.launchStatus==='uploaded-unverified')tags.append(el('span','j2-pill','Not independently tested'));
+   if(item.launchStatus==='uploaded-unverified' && item.id!=='j-iphone-share')tags.append(el('span','j2-pill','Not independently tested'));
    panel.append(tags);
    const box=el('div','j2-detail-cta');
    if(release){
