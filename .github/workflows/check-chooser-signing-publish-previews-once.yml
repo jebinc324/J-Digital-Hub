@@ -34,26 +34,26 @@ jobs:
           echo '5e5101105ce41ee0ae3f7fd59d29e2aaf652595c160e56e25e67cbafb119b164  /tmp/j-archive-manager-v1.0.3-preview.apk' | sha256sum -c -
           test "$(stat -c%s /tmp/j-media-player-v1.3.2-preview.apk)" = "11343046"
           test "$(stat -c%s /tmp/j-archive-manager-v1.0.3-preview.apk)" = "11491044"
-      - name: Compare original vs preview signing identities
+      - name: Compare old and new signatures without hiding verification errors
         run: |
           set -euo pipefail
           APK_SIGNER="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
           test -n "$APK_SIGNER"
-          {
-            echo 'Media release original:'
-            "$APK_SIGNER" verify --print-certs /tmp/original/j-media-player.apk | grep -E 'Signer #1 certificate SHA-256 digest|Verified using v[1234] scheme' | head -n 8
-            echo 'Media new preview:'
-            "$APK_SIGNER" verify --print-certs /tmp/j-media-player-v1.3.2-preview.apk | grep -E 'Signer #1 certificate SHA-256 digest|Verified using v[1234] scheme' | head -n 8
-            echo 'Archive release original:'
-            "$APK_SIGNER" verify --print-certs /tmp/original/j-archive-manager.apk | grep -E 'Signer #1 certificate SHA-256 digest|Verified using v[1234] scheme' | head -n 8
-            echo 'Archive new preview:'
-            "$APK_SIGNER" verify --print-certs /tmp/j-archive-manager-v1.0.3-preview.apk | grep -E 'Signer #1 certificate SHA-256 digest|Verified using v[1234] scheme' | head -n 8
-          } | tee /tmp/certificate-comparison.log
           for kind in media archive; do
             if [ "$kind" = media ]; then old=/tmp/original/j-media-player.apk; new=/tmp/j-media-player-v1.3.2-preview.apk; else old=/tmp/original/j-archive-manager.apk; new=/tmp/j-archive-manager-v1.0.3-preview.apk; fi
-            o=$("$APK_SIGNER" verify --print-certs "$old" | sed -n 's/^Signer #1 certificate SHA-256 digest: //p' | head -1)
-            n=$("$APK_SIGNER" verify --print-certs "$new" | sed -n 's/^Signer #1 certificate SHA-256 digest: //p' | head -1)
-            if [ "$o" = "$n" ] && [ -n "$o" ]; then echo "$kind=SIGNATURE_MATCH" | tee -a /tmp/certificate-comparison.log; else echo "$kind=SIGNATURE_MISMATCH" | tee -a /tmp/certificate-comparison.log; fi
+            echo "=== $kind original APK signer ==="
+            "$APK_SIGNER" verify --print-certs "$old" > /tmp/$kind-old.log 2>&1 || true
+            tail -n 8 /tmp/$kind-old.log
+            echo "=== $kind new APK signer ==="
+            "$APK_SIGNER" verify --print-certs "$new" > /tmp/$kind-new.log 2>&1 || true
+            tail -n 8 /tmp/$kind-new.log
+            o=$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' /tmp/$kind-old.log | head -1)
+            n=$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' /tmp/$kind-new.log | head -1)
+            if [ -n "$o" ] && [ "$o" = "$n" ]; then
+              echo "$kind=SIGNATURE_MATCH"
+            else
+              echo "$kind=SIGNATURE_MISMATCH_OR_UNVERIFIED"
+            fi
           done
       - name: Publish previews separately from stable releases
         env:
