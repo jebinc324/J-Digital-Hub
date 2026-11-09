@@ -21,6 +21,7 @@ class CountsTest(unittest.TestCase):
         extra["downloadUrl"] = ("https://github.com/jebinc324/J-Digital-Hub/"
                                 "releases/download/just24-public-v1/new-test-project.apk")
         expanded = [*items, extra]
+        expected_count = len(expanded)
         with tempfile.TemporaryDirectory() as directory:
             base = Path(directory)
             for rel in ("public/index.html", "public/apps/index.html",
@@ -33,12 +34,12 @@ class CountsTest(unittest.TestCase):
             self.assertEqual(len(updates), 3)
             for text in updates.values():
                 self.assertIn("unrelated notice: 43", text)
-                self.assertIn('data-count-total>44', text)
+                self.assertIn(f'data-count-total>{expected_count}', text)
             apps = updates[base / "public/apps/index.html"]
             self.assertIn('data-family="all"', apps)
-            self.assertIn('<strong id="j-ready-count">44</strong>', apps)
+            self.assertIn(f'<strong id="j-ready-count">{expected_count}</strong>', apps)
             access = updates[base / "public/apps/access/index.html"]
-            self.assertIn("data-count-ready>44", access)
+            self.assertIn(f"data-count-ready>{expected_count}", access)
             self.assertIn("data-count-pending>0", access)
 
 
