@@ -238,12 +238,12 @@
       "family": "Android",
       "type": "Android app",
       "access": "public",
-      "description": "Offline audio and video playback. A new Open with / WhatsApp media preview build is available in app details.",
-      "versionLabel": "v1.3.1",
+      "description": "Offline audio/video playback. J Media Player v1.3.2 adds WhatsApp and file-manager Open with support; the original stable-key update download is listed below.",
+      "versionLabel": "Legacy APK",
       "uploadedFile": true,
       "releaseAsset": "j-media-player.apk",
       "approxSizeMB": 10.82,
-      "note": "Stable public APK remains available. The new Open with preview is compiled but is signed with a different Android certificate from the existing release.",
+      "note": "The main Download file is the older website APK, signed with a different certificate. For an installed v1.3.1 Stable Offline app, use the separate v1.3.2 Original Stable Key update below. No uninstall is required for that matching certificate and higher versionCode. Physical device testing is still pending.",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-media-player.apk",
       "verifiedUpload": {
         "file": "j-media-player.apk",
@@ -253,14 +253,15 @@
       "logo": "/assets/apps/j-media-player.webp",
       "category": "Media & Creative",
       "previewVersion": "v1.3.2",
-      "previewAsset": "j-media-player-v1.3.2-preview.apk",
-      "previewDownloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-media-player-v1.3.2-preview.apk",
+      "previewAsset": "j-media-player-v1.3.2-stable-key.apk",
+      "previewDownloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-media-player-v1.3.2-stable-key.apk",
       "verifiedPreview": {
-        "file": "j-media-player-v1.3.2-preview.apk",
-        "sizeBytes": 11343046,
-        "sha256": "1f0af23881c44bac9c13c61ebc4d62a4ef7e2547f5bcac3ecfa1e78a2184333d"
+        "file": "j-media-player-v1.3.2-stable-key.apk",
+        "sizeBytes": 9265763,
+        "sha256": "9f7412cb686e304610f5f8f724b5c01fb1244e255058b79f7382ecf883009d55"
       },
-      "previewNotice": "TEST BUILD · v1.3.2 adds Android Open with and Share routing for audio/video. Its signing certificate differs from the installed stable APK, so it cannot be installed as an in-place update. Test on another device or back up your app data before changing installations. WhatsApp chooser behavior depends on the file MIME type and still needs phone testing."
+      "previewNotice": "This APK's signing certificate matches J-Media-Player-v1.3.1-Stable-Offline.apk (Oct 6 original stable key). It cannot update the different-key legacy website APK. Android Open with still needs real-phone testing.",
+      "previewButtonLabel": "↓ Download v1.3.2 · Original Stable Key"
     },
     {
       "id": "j-flow-launcher",
@@ -375,12 +376,12 @@
       "family": "Android",
       "type": "Android app",
       "access": "public",
-      "description": "Manage ZIP, RAR, 7Z and other archives. A new Android Open with / Share preview build is available in app details.",
+      "description": "ZIP, RAR, 7Z and archive extraction. Android Open with integration is developed, but its update APK requires the original v1.0.2 signing key.",
       "versionLabel": "v1.0.2",
       "uploadedFile": true,
       "releaseAsset": "j-archive-manager.apk",
       "approxSizeMB": 10.31,
-      "note": "Stable public APK remains available. The new Open with preview is compiled but is signed with a different Android certificate from the existing release.",
+      "note": "Original v1.0.2 APK certificate and current test APK certificates differ. The original Archive Manager private signing key has not been recovered; a compatible update is not being offered until it is found. The stable existing download is unchanged.",
       "launchStatus": "uploaded-unverified",
       "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-archive-manager.apk",
       "verifiedUpload": {
@@ -389,16 +390,7 @@
         "sha256": "2b8c3e6583eb5e264b28dbad585c682fd8a06400692ed23774280288c0f0a2a2"
       },
       "logo": "/assets/apps/j-archive-manager.webp",
-      "category": "Productivity & Files",
-      "previewVersion": "v1.0.3",
-      "previewAsset": "j-archive-manager-v1.0.3-preview.apk",
-      "previewDownloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-archive-manager-v1.0.3-preview.apk",
-      "verifiedPreview": {
-        "file": "j-archive-manager-v1.0.3-preview.apk",
-        "sizeBytes": 11491044,
-        "sha256": "5e5101105ce41ee0ae3f7fd59d29e2aaf652595c160e56e25e67cbafb119b164"
-      },
-      "previewNotice": "TEST BUILD · v1.0.3 adds Open with / Share handling for common archive MIME types and routes to extraction. Its signing certificate differs from the installed stable APK, so it cannot be installed as an in-place update. Test on another device or back up your app data before changing installations. External chooser visibility still requires phone testing."
+      "category": "Productivity & Files"
     },
     {
       "id": "j-ar-room-designer",
@@ -975,7 +967,7 @@
       "j-iphone-share"
     ],
     "listedProjects": 44,
-    "currentReleaseAssets": 55
+    "currentReleaseAssets": 56
   },
   "media": {
     "iconRoot": "/assets/apps/icons/",
