@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://just24things.online/</loc></url>
-  <url><loc>https://just24things.online/apps/</loc></url>
+  <url><loc>https://just24things.online/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://just24things.online/apps/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://just24things.online/apps/access/</loc></url>
-  <url><loc>https://just24things.online/games/</loc></url>
+  <url><loc>https://just24things.online/games/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://just24things.online/games/retro-arcade/</loc></url>
   <url><loc>https://just24things.online/games/classics/chess.html</loc></url>
   <url><loc>https://just24things.online/games/classics/carrom.html</loc></url>
