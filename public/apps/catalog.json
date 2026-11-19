@@ -5,7 +5,7 @@
     "repository": "jebinc324/J-Digital-Hub",
     "tag": "just24-public-v1",
     "source": "GitHub Releases public API",
-    "lastVerified": "2026-11-09",
+    "lastVerified": "2026-11-19",
     "filenameMappingConfigured": "2026-10-14"
   },
   "notice": "J&J Free Launch: all 44 project download files are published on official GitHub Releases. File availability does not establish package safety, build compatibility, or function verification. J iPhone Share currently uses local HTTP, not HTTPS; use only trusted private networks.",
@@ -238,30 +238,30 @@
       "family": "Android",
       "type": "Android app",
       "access": "public",
-      "description": "Offline audio/video playback. J Media Player v1.3.2 adds WhatsApp and file-manager Open with support; the original stable-key update download is listed below.",
-      "versionLabel": "Legacy APK",
+      "description": "Offline audio and video player with in-video Audio Language selection, horizontal drag to seek forward or backward, double-tap 10-second seeking, pinch zoom, playback speed, and WhatsApp/File Manager Open with support.",
+      "versionLabel": "v1.3.5",
       "uploadedFile": true,
-      "releaseAsset": "j-media-player.apk",
-      "approxSizeMB": 10.82,
-      "note": "The main Download file is the older website APK, signed with a different certificate. For an installed v1.3.1 Stable Offline app, use the separate v1.3.2 Original Stable Key update below. No uninstall is required for that matching certificate and higher versionCode. Physical device testing is still pending.",
-      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-media-player.apk",
+      "releaseAsset": "j-media-player-v1.3.5-stable-key.apk",
+      "approxSizeMB": 9.27,
+      "note": "Latest v1.3.5 signed release uses the same original stable signing certificate as J-Media-Player-v1.3.1-Stable-Offline.apk and v1.3.2–v1.3.4 original-key builds. Updates can install without uninstall only when the existing app has that matching certificate and a lower versionCode. The legacy website APK below uses a different certificate, so it cannot update directly to v1.3.5. Do not uninstall before backing up data. Audio language switching requires multiple audio tracks in the file; swipe seeking and track switching require real-device testing.",
+      "downloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-media-player-v1.3.5-stable-key.apk",
       "verifiedUpload": {
+        "file": "j-media-player-v1.3.5-stable-key.apk",
+        "sizeBytes": 9268175,
+        "sha256": "b59c943ae26f750e2e9822b955b4a803c95ddb7abb174b3f3159f43da1be2cba"
+      },
+      "logo": "/assets/apps/j-media-player.webp",
+      "category": "Media & Creative",
+      "previewVersion": "Legacy",
+      "previewAsset": "j-media-player.apk",
+      "previewDownloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-media-player.apk",
+      "verifiedPreview": {
         "file": "j-media-player.apk",
         "sizeBytes": 11342465,
         "sha256": "bb8ea77ebcfdeb0b21a95caa6dece8a88767cf493190a7ddb54167536f72eef3"
       },
-      "logo": "/assets/apps/j-media-player.webp",
-      "category": "Media & Creative",
-      "previewVersion": "v1.3.2",
-      "previewAsset": "j-media-player-v1.3.2-stable-key.apk",
-      "previewDownloadUrl": "https://github.com/jebinc324/J-Digital-Hub/releases/download/just24-public-v1/j-media-player-v1.3.2-stable-key.apk",
-      "verifiedPreview": {
-        "file": "j-media-player-v1.3.2-stable-key.apk",
-        "sizeBytes": 9265763,
-        "sha256": "9f7412cb686e304610f5f8f724b5c01fb1244e255058b79f7382ecf883009d55"
-      },
-      "previewNotice": "This APK's signing certificate matches J-Media-Player-v1.3.1-Stable-Offline.apk (Oct 6 original stable key). It cannot update the different-key legacy website APK. Android Open with still needs real-phone testing.",
-      "previewButtonLabel": "↓ Download v1.3.2 · Original Stable Key"
+      "previewNotice": "Legacy website build retained for existing users. This APK and the new v1.3.5 stable-key build have different signing certificates; neither can update the other. Back up app data before changing distributions. For current original stable-key installs, use the main Download file above.",
+      "previewButtonLabel": "↓ Download legacy APK · Different Key"
     },
     {
       "id": "j-flow-launcher",
@@ -951,7 +951,7 @@
     "edition": "J&J Free Launch",
     "pricing": "free",
     "accountRequired": false,
-    "updatedAt": "2026-11-09",
+    "updatedAt": "2026-11-19",
     "pendingSafetyChecks": [],
     "unverifiedBuilds": [
       "j-wifi-share",
@@ -967,7 +967,7 @@
       "j-iphone-share"
     ],
     "listedProjects": 44,
-    "currentReleaseAssets": 56
+    "currentReleaseAssets": 57
   },
   "media": {
     "iconRoot": "/assets/apps/icons/",
