@@ -1,0 +1,31 @@
+name: Publish J Media Player v1.3.5 stable-key APK (one-time)
+on:
+  push:
+    paths: ['.github/workflows/publish-jmedia-v135-once.yml']
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download signed APK and verify fingerprint/integrity
+        env:
+          VERIFIED_SOURCE_URL: "https://release-assets.githubusercontent.com/github-production-release-asset/1352322598/66e82c8e-c0d7-4e9f-9e01-b03f72d70ca4?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-11-19T10%3A45%3A35Z&rscd=attachment%3B+filename%3DJ-Media-Player-v1.3.4-Stable-Key.apk&rsct=application%2Fvnd.android.package-archive&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-11-19T09%3A45%3A34Z&ske=2026-11-19T10%3A45%3A35Z&sks=b&skv=2018-11-09&sig=iR1xx6tFwy01TdUm3tyD2Lmmv%2BUHKKSuvDnqaRU4uZE%3D&jwt=***"
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error --retry 3 --max-time 110 "$VERIFIED_SOURCE_URL" -o "/tmp/j-media-player-v1.3.5-stable-key.apk"
+          echo '2cdaf3db73ff78a09eb2d7cfdd840af61aae0dd314917b3829f006c6bac88df5  /tmp/j-media-player-v1.3.5-stable-key.apk' | sha256sum -c -
+          test "$(stat -c%s /tmp/j-media-player-v1.3.5-stable-key.apk)" = "9268175"
+          APK_SIGNER="$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)"
+          test -n "$APK_SIGNER"
+          "$APK_SIGNER" verify --print-certs "/tmp/j-media-player-v1.3.5-stable-key.apk" | tee /tmp/media-certificate.txt
+          grep -q 'certificate SHA-256 digest: 93823ab0f2ded987ac1e4cc320cbe9ceef6fd8edfcad5d005f33eec432d21462' /tmp/media-certificate.txt
+      - name: Upload new stable-key version to public J Apps Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release upload just24-public-v1 "/tmp/j-media-player-v1.3.5-stable-key.apk" --clobber
+          gh release view just24-public-v1 --json assets --jq '.assets[] | select(.name=="j-media-player-v1.3.5-stable-key.apk") | .name + ": " + (.size|tostring) + " bytes"'
